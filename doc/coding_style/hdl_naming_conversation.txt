@@ -1,0 +1,35 @@
+----- NAMING CONVENTION
+prefix_ and suffix_ follow the clockwise rule in C/C++
+	http://c-faq.com/decl/spiral.anderson.html
+Google Coding style for naming:
+	https://google.github.io/styleguide/cppguide.html#Naming
+NOTEs: There are some main types of naming:
+	camel_case
+	camelCase
+	CamelCase
+
+----- C/C++ -----
+type 						Prefix 		Suffix 		Recommendation Style 	Note
+variable											snake_case				noun
+const						k						kCamelCase				noun
+pointer						p_						p_snake_case			noun
+global v					g_						g_camelcase				noun
+type						_t						snake_case_t			noun
+function											snake_case				verb
+define												camel_case				noun
+struct						_t						snake_case_t			noun
+class
+class pri					m_
+
+
+----- HDL -----
+
+Type						Prefix		Suffix 		Recommendation Style	Note
+input						i_						i_camel_case			noun
+output						o_						o_camel_case			noun
+signal						s_						s_camel_case			noun
+entity												camel_case				verb
+const/define										CAMEL_CASE				noun
+function/proces/entity								camel_case				verb
+active_low								_l			camel_case_l
+Reset at low level									rstn
