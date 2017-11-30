@@ -23,5 +23,5 @@ add wave -radix decima *
 add wave -radix decima -group uut uut/*
 config wave -signalnamewidth 1
 log -r /*
-run 1000 ns
+run -a
 exit

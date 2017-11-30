@@ -21,29 +21,30 @@
 ---------------------------------------------------------------------------------
 -- Library declaration
 ---------------------------------------------------------------------------------
-use STD.textio.all;
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.fixed_pkg.all;
 use ieee.fixed_float_types.all;
 use ieee.std_logic_textio.all;
-use work.config_pkg.is_real_equal;
+use work.config_pkg.all;
+
+use std.textio.all;
+use std.env.all;
 
 ---------------------------------------------------------------------------------
 -- Entity declaration
 --------------------------------------------------------------------------------- 
 entity bias_tb is
-    generic (
-        INIT_VALUE      : real    := -1.0;
-        INTEGER_WIDTH   : integer := 8;
-        FLOAT_WIDTH     : integer := -24
-    );
+
 end;
 
 ---------------------------------------------------------------------------------
 -- Architecture description
 ---------------------------------------------------------------------------------
 architecture bench of bias_tb is
+
+    constant INIT_VALUE      : real    := -1.0;
+
     component bias
         generic (
             INIT_VALUE      : real := -1.0;
@@ -64,8 +65,8 @@ architecture bench of bias_tb is
     signal areset:           std_logic  := '0';
     signal i_select_initial: std_logic  := '0';
     signal i_select_update:  std_logic  := '0';
-    signal i_dbias:          sfixed(INTEGER_WIDTH - 1 downto FLOAT_WIDTH) := (others => '0');
-    signal o_bias:           sfixed(INTEGER_WIDTH - 1 downto FLOAT_WIDTH) := (others => '0');
+    signal i_dbias:          nn_float_t := (others => '0');
+    signal o_bias:           nn_float_t := (others => '0');
 
     constant PERIOD:         time := 100 ns;
 begin
@@ -81,89 +82,23 @@ begin
                   o_bias           => o_bias );
 
     clk <= not(clk) after PERIOD / 2;
-    areset <= '1' after PERIOD;
-
-    prt_input: process (i_dbias)
-        variable my_line : LINE;
-    begin
-        write(my_line, string'("i_dbias ="));
-        write(my_line, to_real(i_dbias), right, 15);
-        write(my_line, string'(", at "));
-        write(my_line, now);
-        writeline(output, my_line);
-    end process;
-
-    prt_output: process (o_bias)
-        variable my_line : LINE;
-    begin
-        write(my_line, string'("o_bias  ="));
-        write(my_line, to_real(o_bias), right, 15);
-        write(my_line, string'(", at "));
-        write(my_line, now);
-        writeline(output, my_line);
-        writeline(output, my_line);
-    end process;
+    areset <= '1' after 10*PERIOD + PERIOD / 2;
 
     stimulus: process
         variable v_expected: real := 0.0;
     begin
         wait until areset = '1';
 
-        -- Main simulation
-        wait until rising_edge(clk);
+        -- -- Main simulation
+        -- wait until rising_edge(clk);
 
-        i_select_initial <= '1';
-        i_select_update  <= '0';
-        i_dbias <= to_sfixed(2.5, i_dbias);
-        v_expected := -1.0;
-
-        wait until rising_edge(clk); 
-        wait for 1 ns;
-        assert is_real_equal(to_real(o_bias), v_expected, -6.0)
-            report "Test 1 failed!";
-
-
-        i_select_initial <= '1';
-        i_select_update  <= '1';
-        i_dbias <= to_sfixed(3.2, i_dbias);
-        v_expected := -1.0;
-
-        wait until rising_edge(clk); 
-        wait for 1 ns;
-        assert is_real_equal(to_real(o_bias), v_expected, -6.0)
-            report "Test 2 failed!";
-
-
-        i_select_initial <= '0';
-        i_select_update  <= '0';
-        i_dbias <= to_sfixed(7.5, i_dbias);
-        v_expected := 0.0;
-
-        wait until rising_edge(clk); 
-        wait for 1 ns;
-        assert is_real_equal(to_real(o_bias), v_expected, -6.0)
-            report "Test 3 failed!";
-
-        i_select_initial <= '0';
-        i_select_update  <= '1';
-        i_dbias <= to_sfixed(2.6, i_dbias);
-        v_expected := 2.6;
-
-        wait until rising_edge(clk); 
-        wait for 1 ns;
-        assert is_real_equal(to_real(o_bias), v_expected, -6.0)
-            report "Test 4 failed!";
+        test_case(clk, '1', '0', 2.5, o_bias, -1.0, i_select_initial, i_select_update, i_dbias);
+        test_case(clk, '1', '1', 3.2, o_bias, -1.0, i_select_initial, i_select_update, i_dbias);
+        test_case(clk, '0', '0', 7.5, o_bias, 0.0, i_select_initial, i_select_update, i_dbias);
+        test_case(clk, '0', '1', 2.6, o_bias, 2.6, i_select_initial, i_select_update, i_dbias);
 
         -- UPDATE: Convert from compare fixed_point to cal error with bias
-        i_select_initial <= '0';
-        i_select_update  <= '1';
-        i_dbias <= to_sfixed(2.6, i_dbias);
-        v_expected := 5.2;
-
-        wait until rising_edge(clk); 
-        wait for 10 ns;
-        assert is_real_equal(to_real(o_bias), v_expected, -6.0)
-            report "Test 5 failed!";
-        wait;
+        test_case(clk, '0', '1', 2.6, o_bias, 5.2, i_select_initial, i_select_update, i_dbias);
+        finish(2);
     end process;
 end;
