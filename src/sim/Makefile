@@ -28,4 +28,4 @@ run:
 	@$(SIMULATE) -do $(TARGET)
 
 clean:
-	@-rm -rf work/ modelsim.ini transcript vsim.wlf w*
+	@-rm -rf work/ modelsim.ini transcript vsim.wlf w* ../rtl/modelsim.init ../tb/modelsim.ini

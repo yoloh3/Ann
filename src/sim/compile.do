@@ -13,15 +13,20 @@
 
 ## Script
 
-vcom ../tb/config_pkg.vhd
-vcom ../rtl/bias.vhd
-vcom ../tb/bias_tb.vhd
+vcom -check_synthesis ../rtl/rtl_pkg.vhd
+vcom -check_synthesis ../tb/tb_pkg.vhd
 
-vsim bias_tb
-#layout load Simulate
+#vcom -check_synthesis ../rtl/backward.vhd
+#vcom -check_synthesis ../tb/backward_tb.vhd
+#vsim backward_tb
+
+vcom ../rtl/delta_bias_cumulation.vhd
+vcom ../tb/delta_bias_cumulation_tb.vhd
+vsim delta_bias_cumulation_tb
+
 add wave -radix decima *
-add wave -radix decima -group uut uut/*
+add wave -radix decima -group dut dut/*
 config wave -signalnamewidth 1
 log -r /*
-run -a
+run 1000 ns
 exit

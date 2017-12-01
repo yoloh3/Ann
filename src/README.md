@@ -9,19 +9,32 @@
 *******************************************************************************/
 -->
 
+# INTRO
+
+Files and directories:
+-   cpp/
+-   matlab/
+-   rtl/
+-   script/
+-   sim/
+-   tb/
+-   verilog/
+-   README.md
+
 # HOW TO RUN
 
-## Insert file which need to simulation in ./sim/compile.do
+Insert file which need to simulation in ./sim/compile.do
 
-## Init library
+Init library
 	cd sim; make init
 
-## Check error
-	cd sim; make 
+Simulation
+	cd sim; make
 
-## Simulation
+Check error
 	cd sim; make run
 
-
 # TIP
+
+Insert vimrc for simulation
 	- Read ./script/insert_script_vim.sh
