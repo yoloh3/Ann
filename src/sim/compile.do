@@ -10,23 +10,24 @@
 ## Some trick
 # dataset reload -f
 
-
-## Script
-
-vcom -check_synthesis ../rtl/rtl_pkg.vhd
-vcom -check_synthesis ../tb/tb_pkg.vhd
-
-vcom -check_synthesis ../rtl/forward.vhd
-vcom -check_synthesis ../tb/forward_tb.vhd
-vsim forward
-
+## Compiler module
 #vcom ../rtl/weighted_input.vhd
 #vcom ../tb/weighted_input_tb.vhd
 #vsim weighted_input_tb
 
-add wave -radix decima *
-add wave -radix decima -group dut dut/*
-config wave -signalnamewidth 1
-log -r /*
-run 1000 ns
-exit
+## Compile forward
+vcom -check_synthesis ../rtl/rtl_pkg.vhd
+vcom -check_synthesis ../rtl/forward.vhd
+vsim forward
+
+
+## Simulation testbench
+#vcom -check_synthesis ../tb/tb_pkg.vhd
+#vcom -check_synthesis ../tb/forward_tb.vhd
+
+#add wave -radix decima *
+#add wave -radix decima -group dut dut/*
+#config wave -signalnamewidth 1
+#log -r /*
+#run 1000 ns
+#exit

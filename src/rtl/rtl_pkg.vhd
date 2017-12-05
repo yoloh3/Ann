@@ -73,6 +73,7 @@ package rtl_pkg is
         is array (integer range <>) of weighted_input_float_t;
     type weight_array_t
         is array (integer range <>) of weight_float_t;
+
     type weight_array2_input2hidden_t
         is array (layer_hidden_size - 1 downto 0)
             of weight_array_t(layer_input_size - 1 downto 0);
@@ -83,18 +84,18 @@ package rtl_pkg is
         is array (integer range <>) of activation_float_t;
 
     type bias_init_array_t is array (integer range <>) of real;
-    type weight_init_hidden_array_t is array (layer_input_size - 1 downto 0)
+    type weight_init_input2hidden_array_t is array (layer_hidden_size - 1 downto 0)
+        of bias_init_array_t(layer_input_size - 1 downto 0);
+    type weight_init_hidden2output_array_t is array (layer_output_size - 1 downto 0)
         of bias_init_array_t(layer_hidden_size - 1 downto 0);
-    type weight_init_output_array_t is array (layer_hidden_size - 1 downto 0)
-        of bias_init_array_t(layer_output_size - 1 downto 0);
 
     constant bias_init_hidden : bias_init_array_t(layer_hidden_size - 1 downto 0)
         := (others => -1.0);
     constant bias_init_output  : bias_init_array_t(layer_output_size - 1 downto 0)
         := (others => -1.0);
-    constant weight_init_hidden : weight_init_hidden_array_t
+    constant weight_init_hidden : weight_init_input2hidden_array_t
         := (others => (others => -1.0));
-    constant weight_init_output : weight_init_output_array_t
+    constant weight_init_output : weight_init_hidden2output_array_t
         := (others => (others => -1.0));
 
     -- backward package

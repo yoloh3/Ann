@@ -45,7 +45,7 @@ entity weighted_input is
     port (
         clk              : in  std_logic;
         areset           : in  std_logic;
-        i_input          : in  input_array_t(layer_size - 1 downto 0);
+        i_input          : in  activation_array_t(layer_size - 1 downto 0);
         i_weight         : in  weight_array_t(layer_size - 1 downto 0);
         i_bias           : in  bias_float_t;
         o_weighted_input : out weighted_input_float_t

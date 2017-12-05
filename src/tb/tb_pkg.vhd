@@ -110,19 +110,18 @@ package tb_pkg is
             constant i_expected2            : in real;
 
             constant i_adder_weight_hidden11 : in real;
-            constant i_adder_weight_hidden12 : in real;
-            constant i_adder_weight_hidden13 : in real;
             constant i_adder_weight_hidden21 : in real;
+            constant i_adder_weight_hidden12 : in real;
             constant i_adder_weight_hidden22 : in real;
-            constant i_adder_weight_output23 : in real;
+            constant i_adder_weight_hidden13 : in real;
+            constant i_adder_weight_hidden23 : in real;
 
             constant i_adder_weight_output11 : in real;
-            constant i_adder_weight_output12 : in real;
             constant i_adder_weight_output21 : in real;
-            constant i_adder_weight_output22 : in real;
             constant i_adder_weight_output31 : in real;
+            constant i_adder_weight_output12 : in real;
+            constant i_adder_weight_output22 : in real;
             constant i_adder_weight_output32 : in real;
-
             constant i_adder_bias_hidden1   : in real;
             constant i_adder_bias_hidden2   : in real;
             constant i_adder_bias_output1   : in real;
@@ -185,21 +184,21 @@ package body tb_pkg is
         signal o_acti_hid      : out activation_array_t(layer_hidden_size - 1 downto 0))
     is 
     begin
-        o_input(0)             <= to_sfixed(i_input1, input_int_w-1, -input_fract_w);
-        o_input(1)             <= to_sfixed(i_input2, input_int_w-1, -input_fract_w);
-        o_expected(0)          <= to_sfixed(i_expected1, input_int_w-1, -input_fract_w);
-        o_expected(1)          <= to_sfixed(i_expected2, input_int_w-1, -input_fract_w);
-        o_weight_output(0)(0)  <= to_sfixed(i_weight_out11, weight_int_w-1, -weight_fract_w);
-        o_weight_output(0)(1)  <= to_sfixed(i_weight_out12, weight_int_w-1, -weight_fract_w);
-        o_weight_output(1)(0)  <= to_sfixed(i_weight_out21, weight_int_w-1, -weight_fract_w);
-        o_weight_output(1)(1)  <= to_sfixed(i_weight_out22, weight_int_w-1, -weight_fract_w);
-        o_weight_output(2)(0)  <= to_sfixed(i_weight_out31, weight_int_w-1, -weight_fract_w);
-        o_weight_output(2)(1)  <= to_sfixed(i_weight_out32, weight_int_w-1, -weight_fract_w);
-        o_acti_out(0)          <= to_sfixed(i_acti_out1, activation_int_w-1, -activation_fract_w);
-        o_acti_out(1)          <= to_sfixed(i_acti_out2, activation_int_w-1, -activation_fract_w);
-        o_acti_hid(0)          <= to_sfixed(i_acti_hid1, activation_int_w-1, -activation_fract_w);
-        o_acti_hid(1)          <= to_sfixed(i_acti_hid2, activation_int_w-1, -activation_fract_w);
-        o_acti_hid(2)          <= to_sfixed(i_acti_hid3, activation_int_w-1, -activation_fract_w);
+        --o_input(0)             <= to_sfixed(i_input1, input_int_w-1, -input_fract_w);
+        --o_input(1)             <= to_sfixed(i_input2, input_int_w-1, -input_fract_w);
+        --o_expected(0)          <= to_sfixed(i_expected1, input_int_w-1, -input_fract_w);
+        --o_expected(1)          <= to_sfixed(i_expected2, input_int_w-1, -input_fract_w);
+        --o_weight_output(0)(0)  <= to_sfixed(i_weight_out11, weight_int_w-1, -weight_fract_w);
+        --o_weight_output(0)(1)  <= to_sfixed(i_weight_out12, weight_int_w-1, -weight_fract_w);
+        --o_weight_output(1)(0)  <= to_sfixed(i_weight_out21, weight_int_w-1, -weight_fract_w);
+        --o_weight_output(1)(1)  <= to_sfixed(i_weight_out22, weight_int_w-1, -weight_fract_w);
+        --o_weight_output(2)(0)  <= to_sfixed(i_weight_out31, weight_int_w-1, -weight_fract_w);
+        --o_weight_output(2)(1)  <= to_sfixed(i_weight_out32, weight_int_w-1, -weight_fract_w);
+        --o_acti_out(0)          <= to_sfixed(i_acti_out1, activation_int_w-1, -activation_fract_w);
+        --o_acti_out(1)          <= to_sfixed(i_acti_out2, activation_int_w-1, -activation_fract_w);
+        --o_acti_hid(0)          <= to_sfixed(i_acti_hid1, activation_int_w-1, -activation_fract_w);
+        --o_acti_hid(1)          <= to_sfixed(i_acti_hid2, activation_int_w-1, -activation_fract_w);
+        --o_acti_hid(2)          <= to_sfixed(i_acti_hid3, activation_int_w-1, -activation_fract_w);
 
         wait until rising_edge(clk);
         wait for 1 ns;
@@ -215,17 +214,17 @@ package body tb_pkg is
             constant i_expected2            : in real;
 
             constant i_adder_weight_hidden11 : in real;
-            constant i_adder_weight_hidden12 : in real;
-            constant i_adder_weight_hidden13 : in real;
             constant i_adder_weight_hidden21 : in real;
+            constant i_adder_weight_hidden12 : in real;
             constant i_adder_weight_hidden22 : in real;
-            constant i_adder_weight_output23 : in real;
+            constant i_adder_weight_hidden13 : in real;
+            constant i_adder_weight_hidden23 : in real;
 
             constant i_adder_weight_output11 : in real;
-            constant i_adder_weight_output12 : in real;
             constant i_adder_weight_output21 : in real;
-            constant i_adder_weight_output22 : in real;
             constant i_adder_weight_output31 : in real;
+            constant i_adder_weight_output12 : in real;
+            constant i_adder_weight_output22 : in real;
             constant i_adder_weight_output32 : in real;
 
             constant i_adder_bias_hidden1   : in real;
@@ -248,18 +247,18 @@ package body tb_pkg is
         o_expected(1)             <= to_sfixed(i_expected2, input_int_w-1, -input_fract_w);
 
         o_adder_weight_hidden(0)(0)  <= to_sfixed(i_adder_weight_hidden11, weight_int_w-1, -weight_fract_w);
-        o_adder_weight_hidden(0)(1)  <= to_sfixed(i_adder_weight_hidden12, weight_int_w-1, -weight_fract_w);
-        o_adder_weight_hidden(0)(2)  <= to_sfixed(i_adder_weight_hidden13, weight_int_w-1, -weight_fract_w);
-        o_adder_weight_hidden(1)(0)  <= to_sfixed(i_adder_weight_hidden21, weight_int_w-1, -weight_fract_w);
+        o_adder_weight_hidden(0)(1)  <= to_sfixed(i_adder_weight_hidden21, weight_int_w-1, -weight_fract_w);
+        o_adder_weight_hidden(1)(0)  <= to_sfixed(i_adder_weight_hidden12, weight_int_w-1, -weight_fract_w);
         o_adder_weight_hidden(1)(1)  <= to_sfixed(i_adder_weight_hidden22, weight_int_w-1, -weight_fract_w);
-        o_adder_weight_hidden(1)(2)  <= to_sfixed(i_adder_weight_hidden22, weight_int_w-1, -weight_fract_w);
+        o_adder_weight_hidden(2)(0)  <= to_sfixed(i_adder_weight_hidden13, weight_int_w-1, -weight_fract_w);
+        o_adder_weight_hidden(2)(1)  <= to_sfixed(i_adder_weight_hidden23, weight_int_w-1, -weight_fract_w);
 
         o_adder_weight_output(0)(0)   <= to_sfixed(i_adder_weight_output11, weight_int_w-1, -weight_fract_w);
-        o_adder_weight_output(0)(1)   <= to_sfixed(i_adder_weight_output12, weight_int_w-1, -weight_fract_w);
-        o_adder_weight_output(1)(0)   <= to_sfixed(i_adder_weight_output21, weight_int_w-1, -weight_fract_w);
+        o_adder_weight_output(0)(1)   <= to_sfixed(i_adder_weight_output21, weight_int_w-1, -weight_fract_w);
+        o_adder_weight_output(0)(2)   <= to_sfixed(i_adder_weight_output31, weight_int_w-1, -weight_fract_w);
+        o_adder_weight_output(1)(0)   <= to_sfixed(i_adder_weight_output12, weight_int_w-1, -weight_fract_w);
         o_adder_weight_output(1)(1)   <= to_sfixed(i_adder_weight_output22, weight_int_w-1, -weight_fract_w);
-        o_adder_weight_output(2)(0)   <= to_sfixed(i_adder_weight_output31, weight_int_w-1, -weight_fract_w);
-        o_adder_weight_output(2)(1)   <= to_sfixed(i_adder_weight_output32, weight_int_w-1, -weight_fract_w);
+        o_adder_weight_output(1)(2)   <= to_sfixed(i_adder_weight_output32, weight_int_w-1, -weight_fract_w);
 
         o_adder_bias_hidden(0)    <= to_sfixed(i_adder_bias_hidden1, bias_int_w-1, -bias_fract_w);
         o_adder_bias_hidden(1)    <= to_sfixed(i_adder_bias_hidden2, bias_int_w-1, -bias_fract_w);

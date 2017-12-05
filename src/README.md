@@ -34,6 +34,9 @@ Simulation
 Check error
 	cd sim; make run
 
+Compiler sub-module of forward
+	cd sim; make forward
+
 # TIP
 
 Insert vimrc for simulation

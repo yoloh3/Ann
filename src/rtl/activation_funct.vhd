@@ -51,20 +51,20 @@ end activation_funct;
 -- architecture description
 ---------------------------------------------------------------------------------
 architecture mem_256k of activation_funct is
+    constant addr_width : integer := 8;
     constant mem_depth  : integer := 2**addr_width;
-    type mem_type is array(0 to mem_depth - 1)
-        of sfixed(integer_width - 1 downto -float_width);
+    type mem_type is array(0 to mem_depth - 1) of activation_float_t;
 
     function init_mem return mem_type is
         variable temp_mem : mem_type;
     begin
         for i in 0 to mem_depth / 2 - 1 loop
             temp_mem(i) := to_sfixed(1.0 / (1.0 + exp(-(real(i)/16.0))),
-                integer_width - 1, -float_width);
+                activation_int_w - 1, -activation_fract_w);
         end loop;
         for i in mem_depth / 2 to mem_depth - 1 loop
             temp_mem(i) := to_sfixed(1.0 / (1.0 + exp(-(real(i-mem_depth)/16.0))),
-                integer_width - 1, -float_width);
+                activation_int_w - 1, -activation_fract_w);
         end loop;
         return temp_mem;
     end function;
@@ -77,7 +77,7 @@ begin
               if(i_din = '1') then
                   o_activation_funct <= mem(to_integer(i_weighted_input));
               else
-                  o_activation_funct <= (others => 'z');
+                  o_activation_funct <= (others => 'Z');
               end if;
           end if;
     end process;
