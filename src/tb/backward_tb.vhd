@@ -58,7 +58,7 @@ architecture bench of backward_tb is
 
     -- signal declaration
     signal clk                   : std_logic := '0';
-    signal areset                : std_logic := '0';
+    signal areset                : std_logic := '1';
     signal i_input               : input_array_t(layer_input_size - 1 downto 0)
                                     := (others => (others => '0'));
     signal i_expected            : input_array_t(layer_input_size - 1 downto 0)
@@ -69,7 +69,6 @@ architecture bench of backward_tb is
                                     := (others => (others => '0'));
     signal i_activation_hidden   : activation_array_t(layer_hidden_size - 1 downto 0)
                                     := (others => (others => '0'));
-
     signal o_adder_weight_output : weight_array2_hidden2output_t
                                     := (others => (others => (others => '0')));
     signal o_adder_weight_hidden : weight_array2_input2hidden_t
@@ -81,9 +80,8 @@ architecture bench of backward_tb is
 
     constant period  : time := 100 ns;
 begin
-    -- unit under test
-
-    uut: backward port map ( clk                 => clk,
+    -- device unit test
+    dut: backward port map ( clk                 => clk,
                            areset                => areset,
                            i_input               => i_input,
                            i_expected            => i_expected,
@@ -96,11 +94,11 @@ begin
                            o_adder_bias_hidden   => o_adder_bias_hidden );
 
     clk <= not(clk) after period / 2;
-    areset <= '1' after period;
+    areset <= '0' after period;
 
      stimulus: process
     begin
-        wait until areset = '1';
+        wait until areset = '0';
 
         -- Main simulation
         test_case_backward ( clk, 8.0, 8.0, 1.0, 0.0,
@@ -109,18 +107,21 @@ begin
             0.9526, 0.9955, 0.99,
             i_input, i_expected, i_weight_output,
             i_activation_output, i_activation_hidden);
+
         test_case_backward ( clk, 8.0, 5.0, 0.0, 1.0,
             0.7, 0.2, 0.2, 0.5, 1.3, 1.1,
             0.7464, 0.6785,
             0.8581, 0.9802, 0.09866,
             i_input, i_expected, i_weight_output,
             i_activation_output, i_activation_hidden);
+
         test_case_backward ( clk, 5.0, 8.0, 0.0, 1.0,
             0.7, 0.2, 0.2, 0.5, 1.3, 1.1,
             0.7463, 0.6724,
             0.9370, 0.9890, 0.9427,
             i_input, i_expected, i_weight_output,
             i_activation_output, i_activation_hidden);
+
         test_case_backward ( clk, 5.0, 5.0, 0.0, 1.0,
             0.7, 0.2, 0.2, 0.5, 1.3, 1.1,
             0.724, 0.6584,

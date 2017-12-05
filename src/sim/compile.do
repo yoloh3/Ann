@@ -16,13 +16,13 @@
 vcom -check_synthesis ../rtl/rtl_pkg.vhd
 vcom -check_synthesis ../tb/tb_pkg.vhd
 
-#vcom -check_synthesis ../rtl/backward.vhd
-#vcom -check_synthesis ../tb/backward_tb.vhd
-#vsim backward_tb
+vcom -check_synthesis ../rtl/forward.vhd
+vcom -check_synthesis ../tb/forward_tb.vhd
+vsim forward
 
-vcom ../rtl/delta_bias_cumulation.vhd
-vcom ../tb/delta_bias_cumulation_tb.vhd
-vsim delta_bias_cumulation_tb
+#vcom ../rtl/weighted_input.vhd
+#vcom ../tb/weighted_input_tb.vhd
+#vsim weighted_input_tb
 
 add wave -radix decima *
 add wave -radix decima -group dut dut/*

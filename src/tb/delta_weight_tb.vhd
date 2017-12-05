@@ -47,10 +47,12 @@ architecture bench of delta_weight_tb is
     end component delta_weight;
 
     -- signal declaration
-
-    signal s_clk      : std_logic := '0';
-    signal s_areset   : std_logic := '1';
-    constant period : time := 100 ns;
+    signal s_i_error        : error_float_t;
+    signal s_i_input_signal : input_float_t;
+    signal s_o_delta_weight : weight_float_t;
+    signal s_clk            : std_logic := '0';
+    signal s_areset         : std_logic := '1';
+    constant period         : time := 100 ns;
 begin
     -- device unit test
 

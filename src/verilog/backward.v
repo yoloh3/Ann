@@ -54,15 +54,18 @@ module backward(
 	 output signed [15:0] cap_delta_w3_12, 
 	 output signed [15:0] cap_delta_w3_22, 
 	 output signed [15:0] cap_delta_w3_32,
+
 	 output signed [15:0] cap_delta_w2_11, 
 	 output signed [15:0] cap_delta_w2_21,
 	 output signed [15:0] cap_delta_w2_12, 
 	 output signed [15:0] cap_delta_w2_22,
 	 output signed [15:0] cap_delta_w2_13, 
 	 output signed [15:0] cap_delta_w2_23,
+
 	 output signed [15:0] cap_delta_b3_1, 
 	 output signed [15:0] cap_delta_b3_2,
 	 output signed [15:0] cap_delta_b2_1, 
+
 	 output signed [15:0] cap_delta_b2_2, 
 	 output signed [15:0] cap_delta_b2_3
 	 );
@@ -149,15 +152,18 @@ module backward(
 	
 	wire signed[15:0] tmp_cap_delta_b3_1; 
 	wire signed[15:0] tmp_cap_delta_b3_2;
+
 	wire signed[15:0] tmp_cap_delta_b2_1; 
 	wire signed[15:0] tmp_cap_delta_b2_2; 
 	wire signed[15:0] tmp_cap_delta_b2_3;
+
 	wire signed[15:0] tmp2_cap_delta_b3_1; 
 	wire signed[15:0] tmp2_cap_delta_b3_2;
 	
 	// Calculate dadz
 	dadz DADZ3_1(.clk(clk), .res(res), .a(a3_1), .dadz(dadz3_1));
 	dadz DADZ3_2(.clk(clk), .res(res), .a(a3_2), .dadz(dadz3_2));
+
 	dadz DADZ2_1(.clk(clk), .res(res), .a(a2_1), .dadz(dadz2_1));
 	dadz DADZ2_2(.clk(clk), .res(res), .a(a2_2), .dadz(dadz2_2));
 	dadz DADZ2_3(.clk(clk), .res(res), .a(a2_3), .dadz(dadz2_3));
@@ -185,6 +191,7 @@ module backward(
 	delay1 DELAY_W3_22(.clk(clk), .res(res),  .inputdata(w3_22), .outputdata(tmp_w3_22));
 	delay1 DELAY_W3_31(.clk(clk), .res(res),  .inputdata(w3_31), .outputdata(tmp_w3_31));
 	delay1 DELAY_W3_32(.clk(clk), .res(res),  .inputdata(w3_32), .outputdata(tmp_w3_32));
+
 	delay1 DELAY2_W3_11(.clk(clk), .res(res),  .inputdata(tmp_w3_11), .outputdata(tmp2_w3_11));
 	delay1 DELAY2_W3_12(.clk(clk), .res(res),  .inputdata(tmp_w3_12), .outputdata(tmp2_w3_12));
 	delay1 DELAY2_W3_21(.clk(clk), .res(res),  .inputdata(tmp_w3_21), .outputdata(tmp2_w3_21));
@@ -213,10 +220,12 @@ module backward(
 	delay1 DELAY_DELTA3_2(.clk(clk), .res(res),  .inputdata(delta3_2), .outputdata(tmp_delta3_2));
 	
 	dw DW3_11( .clk(clk), .res(res), .unit_error(tmp_delta3_1), .input_signal(tmp3_a2_1), .renew_parameter(dw3_11) );
-	dw DW3_21( .clk(clk), .res(res), .unit_error(tmp_delta3_1), .input_signal(tmp3_a2_2), .renew_parameter(dw3_21) );
-	dw DW3_31( .clk(clk), .res(res), .unit_error(tmp_delta3_1), .input_signal(tmp3_a2_3), .renew_parameter(dw3_31) );
 	dw DW3_12( .clk(clk), .res(res), .unit_error(tmp_delta3_2), .input_signal(tmp3_a2_1), .renew_parameter(dw3_12) );
+
+	dw DW3_21( .clk(clk), .res(res), .unit_error(tmp_delta3_1), .input_signal(tmp3_a2_2), .renew_parameter(dw3_21) );
 	dw DW3_22( .clk(clk), .res(res), .unit_error(tmp_delta3_2), .input_signal(tmp3_a2_2), .renew_parameter(dw3_22) );
+
+	dw DW3_31( .clk(clk), .res(res), .unit_error(tmp_delta3_1), .input_signal(tmp3_a2_3), .renew_parameter(dw3_31) );
 	dw DW3_32( .clk(clk), .res(res), .unit_error(tmp_delta3_2), .input_signal(tmp3_a2_3), .renew_parameter(dw3_32) );
 	
 	// dw2
@@ -229,26 +238,30 @@ module backward(
 	delay1 DELAY3_K_2(.clk(clk),  .res(res), .inputdata(tmp2_k_2), .outputdata(tmp3_k_2));
 
 	dw DW2_11( .clk(clk), .res(res), .unit_error(delta2_1), .input_signal(tmp3_k_1), .renew_parameter(dw2_11) );
-	dw DW2_21( .clk(clk), .res(res), .unit_error(delta2_1), .input_signal(tmp3_k_2), .renew_parameter(dw2_21) );
 	dw DW2_12( .clk(clk), .res(res), .unit_error(delta2_2), .input_signal(tmp3_k_1), .renew_parameter(dw2_12) );
-	dw DW2_22( .clk(clk), .res(res), .unit_error(delta2_2), .input_signal(tmp3_k_2), .renew_parameter(dw2_22) );
 	dw DW2_13( .clk(clk), .res(res), .unit_error(delta2_3), .input_signal(tmp3_k_1), .renew_parameter(dw2_13) );
+
+	dw DW2_21( .clk(clk), .res(res), .unit_error(delta2_1), .input_signal(tmp3_k_2), .renew_parameter(dw2_21) );
+	dw DW2_22( .clk(clk), .res(res), .unit_error(delta2_2), .input_signal(tmp3_k_2), .renew_parameter(dw2_22) );
 	dw DW2_23( .clk(clk), .res(res), .unit_error(delta2_3), .input_signal(tmp3_k_2), .renew_parameter(dw2_23) );
 	
 	// Cap_delta_w3
 	dw_adder DW_ADDER3_11( .clk(clk), .res(res), .dw(dw3_11), .dcdw3(cap_delta_w3_11) );
-	dw_adder DW_ADDER3_21( .clk(clk), .res(res), .dw(dw3_21), .dcdw3(cap_delta_w3_21) );
-	dw_adder DW_ADDER3_31( .clk(clk), .res(res), .dw(dw3_31), .dcdw3(cap_delta_w3_31) );
 	dw_adder DW_ADDER3_12( .clk(clk), .res(res), .dw(dw3_12), .dcdw3(cap_delta_w3_12) );
+
+	dw_adder DW_ADDER3_21( .clk(clk), .res(res), .dw(dw3_21), .dcdw3(cap_delta_w3_21) );
 	dw_adder DW_ADDER3_22( .clk(clk), .res(res), .dw(dw3_22), .dcdw3(cap_delta_w3_22) );
+
+	dw_adder DW_ADDER3_31( .clk(clk), .res(res), .dw(dw3_31), .dcdw3(cap_delta_w3_31) );
 	dw_adder DW_ADDER3_32( .clk(clk), .res(res), .dw(dw3_32), .dcdw3(cap_delta_w3_32) );
 		
 	// Cap_delta_w2
 	dw_adder DW_ADDER2_11( .clk(clk), .res(res), .dw(dw2_11), .dcdw3(cap_delta_w2_11) );
-	dw_adder DW_ADDER2_21( .clk(clk), .res(res), .dw(dw2_21), .dcdw3(cap_delta_w2_21) );
 	dw_adder DW_ADDER2_12( .clk(clk), .res(res), .dw(dw2_12), .dcdw3(cap_delta_w2_12) );
-	dw_adder DW_ADDER2_22( .clk(clk), .res(res), .dw(dw2_22), .dcdw3(cap_delta_w2_22) );
 	dw_adder DW_ADDER2_13( .clk(clk), .res(res), .dw(dw2_13), .dcdw3(cap_delta_w2_13) );
+
+	dw_adder DW_ADDER2_21( .clk(clk), .res(res), .dw(dw2_21), .dcdw3(cap_delta_w2_21) );
+	dw_adder DW_ADDER2_22( .clk(clk), .res(res), .dw(dw2_22), .dcdw3(cap_delta_w2_22) );
 	dw_adder DW_ADDER2_23( .clk(clk), .res(res), .dw(dw2_23), .dcdw3(cap_delta_w2_23) );
 	
 	// Cap_delta_b3
@@ -269,6 +282,4 @@ module backward(
 	db_adder DB_ADDER2_1( .clk(clk), .res(res), .delta(tmp_delta2_1), .dcdb(cap_delta_b2_1) );
 	db_adder DB_ADDER2_2( .clk(clk), .res(res), .delta(tmp_delta2_2), .dcdb(cap_delta_b2_2) );
 	db_adder DB_ADDER2_3( .clk(clk), .res(res), .delta(tmp_delta2_3), .dcdb(cap_delta_b2_3) );	
-
-
 endmodule

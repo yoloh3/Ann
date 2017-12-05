@@ -18,11 +18,12 @@ TB   := $(wildcard ../tb/*.$(LANG))
 
 
 all:
+	@$(COMPILE) ../rtl/rtl_pkg.vhd
+	@$(COMPILE) $(SRCS)
 	@$(SIMULATE) -c -do $(TARGET)
 
 init:
 	vlib work
-	vmap work work
 	
 run:
 	@$(SIMULATE) -do $(TARGET)

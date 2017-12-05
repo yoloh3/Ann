@@ -9,7 +9,7 @@
 *******************************************************************************/
 -->
 
-# Introduction
+# INTRO
 
 The SISLAB team in LSI Design Contest 2018.
 
@@ -19,9 +19,15 @@ The goals of project is learning about neural network, the flow from algorithm t
 hardware architecture, having an result.
 
 
-# Link
+# LINK
 
 - [`Important information - Thông tin quan trọng`](INFO.md)
 - [The website](http://www.lsi-contest.com/index_e.html).
 
-THUAT NGUYEN 
+
+# TIP
+
+## Pull repo without error
+-   git fetch --all
+-   git reset --hard origin/master
+

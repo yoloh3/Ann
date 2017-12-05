@@ -5,11 +5,11 @@
 -- All right resevered.
 -- -- Copyright notification -- No part may be reproduced except as authorized by written permission.
 --
--- @File            : delta_bias_cumulation_tb.vhd
+-- @File            : error_hidden_tb.vhd
 -- @Author          : Huy-Hung Ho       @Modifier      : Huy-Hung Ho
--- @Created Date    : kax 01 2017       @Modified Date : kax 01 2017 13:30
+-- @Created Date    : kax 01 2017       @Modified Date : kax 01 2017 14:57
 -- @Project         : Artificial Neural Network
--- @Module          : delta_bias_cumulation_tb
+-- @Module          : error_hidden_tb
 -- @Description     :
 -- @Version         :
 -- @ID              :
@@ -28,37 +28,45 @@ use work.tb_pkg.all;
 ---------------------------------------------------------------------------------
 -- entity declaration
 ---------------------------------------------------------------------------------
-entity delta_bias_cumulation_tb is
+entity error_hidden_tb is
 end entity;
 
 ---------------------------------------------------------------------------------
 -- architecture description
 ---------------------------------------------------------------------------------
-architecture bench of delta_bias_cumulation_tb is
+architecture bench of error_hidden_tb is
     -- component declaration
-    component delta_bias_cumulation
+    component error_hidden
         port (
-            clk                    : in  std_logic;
-            areset                 : in  std_logic;
-            i_delta_bias           : in  bias_float_t;
-            o_bias_cumulation      : out bias_float_t
+            clk                  : in  std_logic;
+            areset               : in  std_logic;
+            i_dadz2              : in  dadz_float_t;
+            i_weight_ouput_array : in  weight_array_t(layer_output_size - 1 downto 0);
+            i_error_ouput_array  : in  error_array_t(layer_output_size - 1 downto 0);
+            o_error_hidden       : out error_float_t
         );
-    end component delta_bias_cumulation;
+    end component error_hidden;
 
     -- signal declaration
-    signal s_i_delta_bias           :  bias_float_t := (others => '0');
-    signal s_o_bias_cumulation      :  bias_float_t := (others => '0');
+    signal s_i_dadz2              :   dadz_float_t := (others => '0');
+    signal s_i_weight_ouput_array :   weight_array_t(layer_output_size - 1 downto 0)
+        := (others => (others => '0'));
+    signal s_i_error_ouput_array  :   error_array_t(layer_output_size - 1 downto 0)
+        := (others => (others => '0'));
+    signal s_o_error_hidden       :  error_float_t := (others => '0');
     signal s_clk      : std_logic := '0';
     signal s_areset   : std_logic := '1';
     constant period : time := 100 ns;
 begin
     -- device unit test
-    dut: delta_bias_cumulation
+    dut: error_hidden
     port map (
-       clk                     => s_clk,
-       areset                  => s_areset,
-       i_delta_bias            => s_i_delta_bias,
-       o_bias_cumulation       => s_o_bias_cumulation      
+       clk                   => s_clk,
+       areset                => s_areset,
+       i_dadz2               => s_i_dadz2,
+       i_weight_ouput_array  => s_i_weight_ouput_array,
+       i_error_ouput_array   => s_i_error_ouput_array,
+       o_error_hidden        => s_o_error_hidden       
     );
 
     s_clk <= not(s_clk) after period / 2;
@@ -69,10 +77,9 @@ begin
         wait until s_areset = '0';
 
         -- -- Main simulation
-        test_case_der_activ(s_clk, 1.5, s_o_bias_cumulation, -0.15, s_i_delta_bias);
-        test_case_der_activ(s_clk, 2.5, s_o_bias_cumulation, -0.4, s_i_delta_bias);
-        test_case_der_activ(s_clk, -1.0, s_o_bias_cumulation, -0.3, s_i_delta_bias);
-        test_case_der_activ(s_clk, 2.0, s_o_bias_cumulation, -0.5, s_i_delta_bias);
-        test_case_der_activ(s_clk, 7.0, s_o_bias_cumulation, -1.05, s_i_delta_bias);
+        test_case_error_hidden(s_clk, 1.5, -5.0, -0.2, 5.4, 2.1, s_o_error_hidden,
+                                -41.13, s_i_dadz2, s_i_weight_ouput_array,
+                                s_i_error_ouput_array);
+
     end process;
 end bench;

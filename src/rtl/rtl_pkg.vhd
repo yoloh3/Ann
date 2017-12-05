@@ -48,11 +48,12 @@ package rtl_pkg is
     subtype bias_float_t
         is sfixed(bias_int_w - 1 downto -bias_fract_w);
 
-    constant weighted_input_int_w   : integer := 4;
-    constant weighted_input_fract_w : integer := 4;
+    constant weighted_input_int_w   : integer := 8;
+    constant weighted_input_fract_w : integer := 24;
     subtype weighted_input_float_t
         is sfixed(weighted_input_int_w - 1 downto -weighted_input_fract_w);
 
+    -- 4, 4
     constant weight_int_w           : integer := 8;
     constant weight_fract_w         : integer := 24;
     subtype weight_float_t
@@ -72,15 +73,29 @@ package rtl_pkg is
         is array (integer range <>) of weighted_input_float_t;
     type weight_array_t
         is array (integer range <>) of weight_float_t;
-    type weight_array2_hidden2output_t
-        is array (layer_hidden_size - 1 downto 0)
-            of weight_array_t(layer_output_size - 1 downto 0);
     type weight_array2_input2hidden_t
-        is array (layer_input_size - 1 downto 0)
+        is array (layer_hidden_size - 1 downto 0)
+            of weight_array_t(layer_input_size - 1 downto 0);
+    type weight_array2_hidden2output_t
+        is array (layer_output_size - 1 downto 0)
             of weight_array_t(layer_hidden_size - 1 downto 0);
     type activation_array_t
         is array (integer range <>) of activation_float_t;
 
+    type bias_init_array_t is array (integer range <>) of real;
+    type weight_init_hidden_array_t is array (layer_input_size - 1 downto 0)
+        of bias_init_array_t(layer_hidden_size - 1 downto 0);
+    type weight_init_output_array_t is array (layer_hidden_size - 1 downto 0)
+        of bias_init_array_t(layer_output_size - 1 downto 0);
+
+    constant bias_init_hidden : bias_init_array_t(layer_hidden_size - 1 downto 0)
+        := (others => -1.0);
+    constant bias_init_output  : bias_init_array_t(layer_output_size - 1 downto 0)
+        := (others => -1.0);
+    constant weight_init_hidden : weight_init_hidden_array_t
+        := (others => (others => -1.0));
+    constant weight_init_output : weight_init_output_array_t
+        := (others => (others => -1.0));
 
     -- backward package
 
