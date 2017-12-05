@@ -137,7 +137,7 @@ begin
         end if;
     end process;
 
-    delay: process(clk, areset)
+    output_buffer: process(clk, areset)
     begin
         if(areset = '1') then
             o_weight_hidden <= (others => (others => (others => '0')));

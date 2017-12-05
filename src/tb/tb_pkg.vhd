@@ -106,8 +106,6 @@ package tb_pkg is
             signal clk                      : in  std_logic;
             constant i_input1               : in real;
             constant i_input2               : in real;
-            constant i_expected1            : in real;
-            constant i_expected2            : in real;
 
             constant i_adder_weight_hidden11 : in real;
             constant i_adder_weight_hidden21 : in real;
@@ -128,7 +126,6 @@ package tb_pkg is
             constant i_adder_bias_output2   : in real;
 
             signal o_input                  : out input_array_t(layer_input_size - 1 downto 0);
-            signal o_expected               : out input_array_t(layer_input_size - 1 downto 0);
             signal o_adder_weight_hidden    : out weight_array2_input2hidden_t;
             signal o_adder_weight_output    : out weight_array2_hidden2output_t;
             signal o_adder_bias_hidden      : out bias_array_t(layer_hidden_size - 1 downto 0);
@@ -210,8 +207,6 @@ package body tb_pkg is
             signal clk                      : in  std_logic;
             constant i_input1               : in real;
             constant i_input2               : in real;
-            constant i_expected1            : in real;
-            constant i_expected2            : in real;
 
             constant i_adder_weight_hidden11 : in real;
             constant i_adder_weight_hidden21 : in real;
@@ -233,7 +228,6 @@ package body tb_pkg is
             constant i_adder_bias_output2   : in real;
 
             signal o_input                  : out input_array_t(layer_input_size - 1 downto 0);
-            signal o_expected               : out input_array_t(layer_input_size - 1 downto 0);
             signal o_adder_weight_hidden    : out weight_array2_input2hidden_t;
             signal o_adder_weight_output    : out weight_array2_hidden2output_t;
             signal o_adder_bias_hidden      : out bias_array_t(layer_hidden_size - 1 downto 0);
@@ -243,8 +237,6 @@ package body tb_pkg is
     begin
         o_input(0)                <= to_sfixed(i_input1, input_int_w-1, -input_fract_w);
         o_input(1)                <= to_sfixed(i_input2, input_int_w-1, -input_fract_w);
-        o_expected(0)             <= to_sfixed(i_expected1, input_int_w-1, -input_fract_w);
-        o_expected(1)             <= to_sfixed(i_expected2, input_int_w-1, -input_fract_w);
 
         o_adder_weight_hidden(0)(0)  <= to_sfixed(i_adder_weight_hidden11, weight_int_w-1, -weight_fract_w);
         o_adder_weight_hidden(0)(1)  <= to_sfixed(i_adder_weight_hidden21, weight_int_w-1, -weight_fract_w);

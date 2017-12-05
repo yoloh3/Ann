@@ -69,7 +69,7 @@ begin
             tmp_sum    <= (others => '0');
         elsif rising_edge(clk) then
             v_tmp_mult := to_sfixed(0.0, v_tmp_mult); 
-            for i in 0 to layer_input_size - 1 loop
+            for i in 0 to layer_size - 1 loop
                 v_tmp_mult := v_tmp_mult(mult_int_w - 1 downto -mult_fract_w)
                             + i_input(i) * i_weight(i);
             end loop;
