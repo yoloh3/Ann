@@ -35,7 +35,6 @@ entity forward is
         i_din                 : in  std_logic;
         i_select_initial      : in  std_logic;
         i_input               : in  input_array_t(layer_input_size - 1 downto 0);
-        --i_expected            : in  input_array_t(layer_input_size - 1 downto 0);
 
         i_adder_weight_hidden : in  weight_array2_input2hidden_t;
         i_adder_weight_output : in  weight_array2_hidden2output_t;
@@ -138,22 +137,6 @@ begin
         end if;
     end process;
 
-    -- buffer_input: process(clk, areset)
-    -- begin
-        -- if(areset = '1') then
-            -- s_input    <= (others => (others => '0'));
-            -- s_expected <= (others => (others => '0'));
-        -- elsif rising_edge(clk) then
-            -- if s_select_update = '1' then
-                -- s_input    <= i_input;
-                -- s_expected <= i_expected;
-            -- else
-                -- s_input    <= s_input;
-                -- s_expected <= s_expected;
-            -- end if;
-        -- end if;
-    -- end process;
-
     delay: process(clk, areset)
     begin
         if(areset = '1') then
@@ -169,6 +152,10 @@ begin
         end if;
     end process;
 
+    calc_input: for i in 0 to layer_input_size - 1 generate
+        s_activ_funct_input(i) <= i_input(i)(activation_int_w - 1 downto -activation_fract_w);
+    end generate calc_input;
+
     calc_hidden: for i in 0 to layer_hidden_size - 1 generate
         dut_bias_hidden: bias
             generic map (
@@ -182,8 +169,6 @@ begin
                i_dbias           => i_adder_bias_hidden(i),
                o_bias            => s_bias_hidden(i)
             );
-
-        s_activ_funct_input(i) <= i_input(i)(activation_int_w - 1 downto -activation_fract_w);
 
         dut_weighted_in_hidden: weighted_input
             generic map (
