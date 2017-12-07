@@ -31,36 +31,37 @@ use ieee.numeric_std.all;
 -- entity declaration
 --------------------------------------------------------------------------------- 
 package rtl_pkg is
-    -- common
+    -- -- common
     constant layer_output_size      : integer := 2;
     constant layer_hidden_size      : integer := 3;
     constant layer_input_size       : integer := 2;
-    constant weight_output_size      : integer := 2;
+    constant weight_output_size     : integer := 2;
+    constant epochs                 : integer := 10000;
+    constant learning_rate          : real    := -0.1;
 
-    -- forward package
-    constant input_int_w            : integer := 8;
-    constant input_fract_w          : integer := 24;
+    -- -- forward package
+    constant input_int_w            : integer := 6;
+    constant input_fract_w          : integer := 10;
     subtype input_float_t
         is sfixed(input_int_w - 1 downto -input_fract_w);
 
-    constant bias_int_w             : integer := 8;
-    constant bias_fract_w           : integer := 24;
+    constant bias_int_w             : integer := 6;
+    constant bias_fract_w           : integer := 10;
     subtype bias_float_t
         is sfixed(bias_int_w - 1 downto -bias_fract_w);
 
-    constant weighted_input_int_w   : integer := 8;
-    constant weighted_input_fract_w : integer := 24;
+    constant weighted_input_int_w   : integer := 6;
+    constant weighted_input_fract_w : integer := 10;
     subtype weighted_input_float_t
         is sfixed(weighted_input_int_w - 1 downto -weighted_input_fract_w);
 
-    -- 4, 4
-    constant weight_int_w           : integer := 8;
-    constant weight_fract_w         : integer := 24;
+    constant weight_int_w           : integer := 6;
+    constant weight_fract_w         : integer := 10;
     subtype weight_float_t
         is sfixed(weight_int_w - 1 downto -weight_fract_w);
 
-    constant activation_int_w       : integer := 8;
-    constant activation_fract_w     : integer := 24;
+    constant activation_int_w       : integer := 6;
+    constant activation_fract_w     : integer := 10;
     subtype activation_float_t
         is sfixed(activation_int_w - 1 downto -activation_fract_w);
 
@@ -91,25 +92,28 @@ package rtl_pkg is
         of bias_init_array_t(layer_hidden_size - 1 downto 0);
 
     constant bias_init_hidden : bias_init_array_t(layer_hidden_size - 1 downto 0)
-        := (others => -15.0);
+        := (others => -1.0);
     constant bias_init_output  : bias_init_array_t(layer_output_size - 1 downto 0)
-        := (others => -5.0);
+        := (others => -1.0);
     constant weight_init_hidden : weight_init_input2hidden_array_t
-        := (others => (others => 1.0));
+        := ((0.1, 0.6),
+            (0.5, 0.3),
+            (0.4, 0.1));
     constant weight_init_output : weight_init_hidden2output_array_t
-        := (others => (others => 2.0));
+        := ((1.1, 0.5, 0.2),
+            (1.3, 0.2, 0.7));
 
-    -- backward package
+    -- -- backward package
 
     -- derivative of activation (a'(z))
-    constant dadz_int_w             : integer := 8;
-    constant dadz_fract_w           : integer := 24;
+    constant dadz_int_w             : integer := 6;
+    constant dadz_fract_w           : integer := 10;
     subtype  dadz_float_t
         is sfixed(dadz_int_w - 1 downto -dadz_fract_w);
 
     -- error layer (delta)
-    constant error_int_w            : integer := 8;
-    constant error_fract_w          : integer := 24;
+    constant error_int_w            : integer := 6;
+    constant error_fract_w          : integer := 10;
     subtype  error_float_t
         is sfixed(error_int_w - 1 downto -error_fract_w);
 
@@ -122,7 +126,7 @@ package rtl_pkg is
     type weight_array2_hidden2input_t
         is array (layer_input_size - 1 downto 0)
             of weight_array_t(layer_hidden_size - 1 downto 0);
-    type weight_array2_ouput2hidden_t
+    type weight_array2_output2hidden_t
         is array (layer_hidden_size - 1 downto 0)
             of weight_array_t(layer_output_size - 1 downto 0);
 end rtl_pkg; 

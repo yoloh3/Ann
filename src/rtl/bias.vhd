@@ -74,7 +74,7 @@ begin
             elsif (i_select_update = '1') then
                 bias_tmp <= bias_tmp(bias_int_w - 1 downto -bias_fract_w) + i_dbias;
             else
-                bias_tmp <= (others => '0');
+                bias_tmp <= bias_tmp;
             end if;
         end if;
     end process;

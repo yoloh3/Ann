@@ -21,23 +21,20 @@ Files and directories:
 -   verilog/
 -   README.md
 
+# REQUIREMENT
+
+- modelsim/questasim
+- makefile
+
 # HOW TO RUN
 
-Insert file which need to simulation in ./sim/compile.do
+Edit $TARGET variable in sim/Makefile
 
-Init library
+Library initiation
 	cd sim; make init
 
-Simulation
+Compile and debug
 	cd sim; make
 
-Check error
-	cd sim; make run
-
-Compiler sub-module of forward
-	cd sim; make forward
-
-# TIP
-
-Insert vimrc for simulation
-	- Read ./script/insert_script_vim.sh
+Simulation
+	cd sim; make sim

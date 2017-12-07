@@ -26,8 +26,3 @@ hardware architecture, having an result.
 
 
 # TIP
-
-## Pull repo without error
--   git fetch --all
--   git reset --hard origin/master
-

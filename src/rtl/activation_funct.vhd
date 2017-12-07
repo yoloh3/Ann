@@ -41,7 +41,7 @@ use work.rtl_pkg.all;
 entity activation_funct is
     port (
         clk                : in  std_logic;
-        i_din              : in  std_logic;
+        areset             : in  std_logic;
         i_weighted_input   : in  weighted_input_float_t;
         o_activation_funct : out activation_float_t
     );
@@ -50,21 +50,21 @@ end activation_funct;
 ---------------------------------------------------------------------------------
 -- architecture description
 ---------------------------------------------------------------------------------
-architecture mem_256k of activation_funct is
-    constant addr_int_w: integer := 4;
+architecture arch of activation_funct is
+    constant addr_int_w   : integer := 4;
     constant addr_fract_w : integer := 4;
-    constant mem_depth  : integer := 2**(addr_int_w + addr_fract_w);
+    constant mem_depth    : integer := 2**(addr_int_w + addr_fract_w);
     type mem_type is array(0 to mem_depth - 1) of activation_float_t;
 
     function init_mem return mem_type is
         variable temp_mem : mem_type;
     begin
         for i in 0 to mem_depth / 2 - 1 loop
-            temp_mem(i) := to_sfixed(1.0 / (1.0 + exp(-(real(i)/16.0))),
+            temp_mem(i) := to_sfixed(1.0 / (1.0 + exp(-(real(i)/2.0**addr_fract_w))),
                 activation_int_w - 1, -activation_fract_w);
         end loop;
         for i in mem_depth / 2 to mem_depth - 1 loop
-            temp_mem(i) := to_sfixed(1.0 / (1.0 + exp((real(i-mem_depth/2)/16.0))),
+            temp_mem(i) := to_sfixed(1.0 / (1.0 + exp((real(i-mem_depth/2)/2.0**addr_fract_w))),
                 activation_int_w - 1, -activation_fract_w);
         end loop;
         return temp_mem;
@@ -72,17 +72,18 @@ architecture mem_256k of activation_funct is
 
     signal mem: mem_type := init_mem;
 begin
-    process(clk)
+    process(areset, clk)
         variable address : std_logic_vector(addr_int_w + addr_fract_w - 1 downto 0);
     begin
-        if rising_edge(clk) then
-            if(i_din = '1') then
-                address :=
-                    std_logic_vector(i_weighted_input(addr_int_w -1 downto -addr_fract_w));
-                o_activation_funct <= mem(to_integer(unsigned(address)));
-            else
-                o_activation_funct <= (others => '0');
-            end if;
+        if areset = '1' then
+            o_activation_funct <= (others => '0');
+        elsif rising_edge(clk) then
+            address(addr_int_w + addr_fract_w - 1 downto addr_fract_w)
+                := std_logic_vector(i_weighted_input(addr_int_w - 1 downto 0));
+            address(addr_fract_w - 1 downto 0)
+                := std_logic_vector(i_weighted_input(-1 downto -addr_fract_w));
+
+            o_activation_funct <= mem(to_integer(unsigned(address)));
         end if;
     end process;
-end mem_256k;
+end arch;

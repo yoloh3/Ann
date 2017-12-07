@@ -2,15 +2,16 @@
 # Project name   :
 # File name      : Makefile
 # Last modified  : xim 29 2017 16:15
-# Guide          : Edit compile.do for other simulation
+# Guide          : run make sim_top & dataset open/reload
 ###############################################################################
 
-TARGET   := forward_tb
+TARGET   := top_ann_tb
 LANG     := vhd
 COMPILE  := vcom
 SIMULATE := vsim
-CHECK_COMMAND := "log -r /*; log -r /*; run 1000 ns; exit"
-SIM_COMMAND   := "log -r /*; add wave -radix decima dut/*; add wave -radix decima -group tb *; config wave -signalnamewidth 1; log -r /*; run 1000 ns; exit"
+CHECK_COMMAND   := "log -r /*; run 1000 ns; exit;"
+SIM_COMMAND     := "add wave -radix decima dut/*; add wave -radix decima -group tb *; config wave -signalnamewidth 1; log -r /*; run 1000 ns;"
+TOP_SIM_COMMAND := "add wave s_clk s_areset; add wave -radix decima -group forward dut/dut_fw/*; add wave -radix decima -group backward dut/dut_bw/*; add wave -radix decima -group dut dut/*; add wave -radix decima -group tb *; config wave -signalnamewidth 1; log -r /*; run -all; exit;"
 
 vpath %.vhd ../rtl ../tb
 
@@ -20,18 +21,26 @@ TB   := $(wildcard ../tb/*.$(LANG))
 all: $(TARGET)
 	@$(SIMULATE) -c $(TARGET) -do $(CHECK_COMMAND)
 
-sim: forward_tb
+sim: $(TARGET)
 	@$(SIMULATE) $(TARGET) -do $(SIM_COMMAND)
+
+sim_top: $(TARGET)
+	@$(SIMULATE) -c -t 1ps -wlf vhdl.wlf $(TARGET) -do $(TOP_SIM_COMMAND)
 
 init:
 	vlib work
+
+top_ann_tb: forward_tb backward_tb
+	@$(COMPILE) ../rtl/top_ann.vhd
+	@$(COMPILE) ../tb/top_ann_tb.vhd
+
 	
-forward: forward_module
+forward_tb: forward_module
 	@$(COMPILE) ../rtl/forward.vhd
 	@$(COMPILE) ../tb/tb_pkg.vhd
 	@$(COMPILE) ../tb/forward_tb.vhd
 
-backward: backward_module
+backward_tb: backward_module
 	@$(COMPILE) ../rtl/backward.vhd
 	@$(COMPILE) ../tb/tb_pkg.vhd
 	@$(COMPILE) ../tb/backward_tb.vhd
@@ -55,4 +64,4 @@ backward_module: init
 clean:
 	@-rm -rf work/ modelsim.ini transcript vsim.wlf w* ../rtl/modelsim.ini ../tb/modelsim.ini
 
-.PHONY: all sim clean init $(TARGET) 
+.PHONY: all sim clean init $(TARGET) forward_tb backward_tb forward_module backward_module

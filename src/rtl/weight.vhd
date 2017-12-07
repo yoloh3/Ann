@@ -67,7 +67,7 @@ begin
     process(clk, areset)
     begin
         if(areset = '1') then
-                weight_tmp <= (others => '0');
+            weight_tmp <= (others => '0');
         elsif(rising_edge(clk)) then
             if(i_select_initial = '1') then
                 weight_tmp <= '0' & init_weight;
@@ -75,7 +75,7 @@ begin
                 weight_tmp <= weight_tmp(weight_int_w - 1 downto -weight_fract_w)
                             + i_dweight;
             else
-                weight_tmp <= (others => '0');
+                weight_tmp <= weight_tmp;
             end if;
         end if;
     end process;

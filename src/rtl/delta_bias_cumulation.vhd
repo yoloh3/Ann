@@ -40,7 +40,7 @@ architecture rtl of delta_bias_cumulation  is
     signal s_delta_bias : bias_array_t(2 downto 0);
 
     constant learning_rate : bias_float_t
-        := to_sfixed(-0.1, bias_int_w - 1, -bias_fract_w);
+        := to_sfixed(learning_rate, bias_int_w - 1, -bias_fract_w);
     signal tmp_ouput
         : sfixed(2*bias_int_w + 1 downto -2*bias_fract_w);
 begin

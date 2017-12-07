@@ -44,14 +44,14 @@ end derivative_activation;
 ---------------------------------------------------------------------------------
 architecture rtl of derivative_activation is
     signal tmp_dadz :
-        sfixed(2 * activation_int_w downto -2 *activation_fract_w);
+        sfixed(2 * activation_int_w downto - 2 *activation_fract_w);
 begin
     derivative_activation: process(clk, areset)
     begin
         if areset = '1' then
             tmp_dadz <= (others => '0');
         elsif rising_edge(clk) then
-            tmp_dadz <= (to_sfixed(1, i_a) - i_a) * i_a;
+            tmp_dadz <= (to_sfixed(1.0, i_a) - i_a) * i_a;
         end if;
     end process;
 

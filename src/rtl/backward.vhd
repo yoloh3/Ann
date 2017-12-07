@@ -106,9 +106,16 @@ architecture struct of backward is
     end component;
 
     signal s_error_output             : error_array_t(layer_output_size - 1 downto 0);
+    signal s_tmp_error_output         : error_array_t(layer_output_size - 1 downto 0);
+    signal s_tmp2_error_output        : error_array_t(layer_output_size - 1 downto 0);
+
     signal s_error_hidden             : error_array_t(layer_hidden_size - 1 downto 0);
+    --signal s_tmp_error_hidden         : error_array_t(layer_hidden_size - 1 downto 0);
+
     signal s_dadz_output              : dadz_array_t(layer_output_size - 1 downto 0);
     signal s_dadz_hidden              : dadz_array_t(layer_hidden_size - 1 downto 0);
+    signal s_tmp_dadz_hidden          : dadz_array_t(layer_hidden_size - 1 downto 0);
+
     signal s_delta_weight_output      : weight_array2_hidden2output_t;
     signal s_delta_weight_hidden      : weight_array2_input2hidden_t;
 
@@ -118,21 +125,16 @@ architecture struct of backward is
     signal s_tmp_expected             : input_array_t(layer_input_size - 1 downto 0);
 
     signal s_tmp_activation_output    : activation_array_t(layer_output_size - 1 downto 0);
+
     signal s_tmp_activation_hidden    : activation_array_t(layer_hidden_size - 1 downto 0);
     signal s_tmp2_activation_hidden   : activation_array_t(layer_hidden_size - 1 downto 0);
     signal s_tmp3_activation_hidden   : activation_array_t(layer_hidden_size - 1 downto 0);
 
-    signal s_tmp_dadz_hidden          : dadz_array_t(layer_hidden_size - 1 downto 0);
-
-    signal s_tmp_error_output         : error_array_t(layer_output_size - 1 downto 0);
-    signal s_tmp2_error_output        : error_array_t(layer_output_size - 1 downto 0);
-    signal s_tmp_error_hidden         : error_array_t(layer_hidden_size - 1 downto 0);
-
     signal s_tmp_adder_bias_output    : bias_array_t(layer_output_size - 1 downto 0);
     signal s_tmp_adder_bias_hidden    : bias_array_t(layer_hidden_size - 1 downto 0);
 
-    signal s_tmp_adder_weight_output  : weight_array2_hidden2output_t;
-    signal s_tmp2_adder_weight_output : weight_array2_hidden2output_t;
+    signal s_weight_output  : weight_array2_output2hidden_t;
+    signal s_weight_output_2 : weight_array2_output2hidden_t;
 begin
 
    -- Calculate dadz, error, delta_bias
@@ -164,6 +166,12 @@ begin
            );
    end generate;
 
+   convert_matrix_weight: for i in 0 to layer_hidden_size - 1 generate
+       w_j: for j in 0 to layer_output_size - 1 generate
+            s_weight_output(i)(j) <= i_weight_output(j)(i);
+        end generate w_j;
+    end generate convert_matrix_weight;
+
    -- calc dadz, error, delta bias
    calc_layer_hidden: for i in 0 to layer_hidden_size - 1 generate
        DUT_derivative_activation: derivative_activation
@@ -179,7 +187,7 @@ begin
               clk                   => clk,
               areset                => areset,
               i_dadz2               => s_tmp_dadz_hidden(i),
-              i_weight_ouput_array  => s_tmp2_adder_weight_output(i),
+              i_weight_ouput_array  => s_weight_output_2(i),
               i_error_ouput_array   => s_error_output,
               o_error_hidden        => s_error_hidden(i)
            );
@@ -201,7 +209,7 @@ begin
                   areset          => areset,
                   i_error         => s_tmp_error_output(j),
                   i_input_signal  => s_tmp3_activation_hidden(i),
-                  o_delta_weight  => s_delta_weight_output(i)(j)
+                  o_delta_weight  => s_delta_weight_output(j)(i)
                );
        end generate dw_j;
    end generate calc_dw_output_i;
@@ -214,20 +222,19 @@ begin
                   areset          => areset,
                   i_error         => s_error_hidden(j),
                   i_input_signal  => s_tmp3_input(i),
-                  o_delta_weight  => s_delta_weight_hidden(i)(j)
+                  o_delta_weight  => s_delta_weight_hidden(j)(i)
                );
        end generate dw_j;
    end generate calc_dw_hidden_i;
 
    delay: process(clk, areset)
    begin
-       if(areset = '0') then
+       if(areset = '1') then
                s_tmp_activation_output     <= (others => (others => '0'));
                s_tmp_expected              <= (others => (others => '0'));
                s_tmp_dadz_hidden           <= (others => (others => '0'));
 
-               s_tmp_adder_weight_output   <= (others => (others => (others => '0')));
-               s_tmp2_adder_weight_output  <= (others => (others => (others => '0')));
+               s_weight_output_2           <= (others => (others => (others => '0')));
 
                s_tmp_activation_hidden     <= (others => (others => '0'));
                s_tmp2_activation_hidden    <= (others => (others => '0'));
@@ -245,8 +252,7 @@ begin
            s_tmp_expected              <= i_expected;
            s_tmp_dadz_hidden           <= s_dadz_hidden;
 
-           s_tmp_adder_weight_output   <= i_weight_output;
-           s_tmp2_adder_weight_output  <= s_tmp_adder_weight_output;
+           s_weight_output_2           <= s_weight_output;
 
            s_tmp_activation_hidden     <= i_activation_hidden;
            s_tmp2_activation_hidden    <= s_tmp_activation_hidden;
@@ -268,8 +274,8 @@ begin
                port map (
                   clk                       => clk,
                   areset                    => areset,
-                  i_delta_weight            => s_delta_weight_output(i)(j),
-                  o_dw_cumulation           => o_adder_weight_output(i)(j)
+                  i_delta_weight            => s_delta_weight_output(j)(i),
+                  o_dw_cumulation           => o_adder_weight_output(j)(i)
                );
        end generate adder_j;
    end generate calc_dw_adder_output_i;
@@ -280,8 +286,8 @@ begin
                port map (
                   clk                       => clk,
                   areset                    => areset,
-                  i_delta_weight            => s_delta_weight_hidden(i)(j),
-                  o_dw_cumulation           => o_adder_weight_hidden(i)(j)
+                  i_delta_weight            => s_delta_weight_hidden(j)(i),
+                  o_dw_cumulation           => o_adder_weight_hidden(j)(i)
                );
        end generate adder_j;
    end generate calc_dw_adder_hidden_i;
@@ -291,7 +297,7 @@ begin
            port map (
               clk                     => clk,
               areset                  => areset,
-              i_delta_bias            => s_tmp_error_output(i),
+              i_delta_bias            => s_tmp_adder_bias_output(i),
               o_bias_cumulation       => o_adder_bias_output(i)
            );
    end generate calc_db_adder_output;
@@ -301,7 +307,7 @@ begin
            port map (
               clk                     => clk,
               areset                  => areset,
-              i_delta_bias            => s_tmp_error_hidden(i),
+              i_delta_bias            => s_tmp_adder_bias_hidden(i),
               o_bias_cumulation       => o_adder_bias_hidden(i)
            );
   end generate calc_db_adder_hidden;

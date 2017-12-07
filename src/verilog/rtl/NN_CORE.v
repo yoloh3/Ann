@@ -195,7 +195,7 @@ module NN_CORE(
     .a2_3(tmp2_a2_3),
     .k_1(tmp4_k_1),
     .k_2(tmp4_k_2),
-	 .t_1(tmp4_t_1),
+	.t_1(tmp4_t_1),
     .t_2(tmp4_t_2),
     .w3_11(w3_11),
     .w3_21(w3_21),

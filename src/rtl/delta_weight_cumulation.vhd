@@ -40,7 +40,7 @@ architecture rtl of delta_weight_cumulation  is
     signal s_delta_weight: weight_array_t(2 downto 0);
 
     constant learning_rate : weight_float_t
-        := to_sfixed(-0.1, weight_int_w - 1, -weight_fract_w);
+        := to_sfixed(learning_rate, weight_int_w - 1, -weight_fract_w);
     signal tmp_output
         : sfixed(2*weight_int_w + 1 downto -2*weight_fract_w);
 begin
