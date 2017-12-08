@@ -19,7 +19,7 @@
 --  Input:
 --      dw2_11  : 32 bits 0000_0000.0000_0000_0000_0000_0000_0000 signed : delta weight2_11
 --      clk : 1 bit
---      reset   : 1 bit : high active
+--      reset    : 1 bit : high active
 --      i_select_initial    : 1 bit : high active
 --      i_select_update : 1 bit : high active
 --  Output:
@@ -46,7 +46,7 @@ entity weight is
     );
     port(
         clk              : in  std_logic;
-        areset           : in  std_logic;
+        reset            : in  std_logic;
         i_select_initial : in  std_logic;
         i_select_update  : in  std_logic;
         i_dweight        : in  weight_float_t;
@@ -64,18 +64,20 @@ architecture rtl of weight is
     signal init_weight : weight_float_t
         := to_sfixed(init_value, weight_int_w - 1, -weight_fract_w);
 begin
-    process(clk, areset)
+    process(clk)
     begin
-        if(areset = '1') then
-            weight_tmp <= (others => '0');
-        elsif(rising_edge(clk)) then
-            if(i_select_initial = '1') then
-                weight_tmp <= '0' & init_weight;
-            elsif (i_select_update = '1') then
-                weight_tmp <= weight_tmp(weight_int_w - 1 downto -weight_fract_w)
-                            + i_dweight;
+        if(rising_edge(clk)) then
+            if(reset  = '1') then
+                weight_tmp <= (others => '0');
             else
-                weight_tmp <= weight_tmp;
+                if(i_select_initial = '1') then
+                    weight_tmp <= '0' & init_weight;
+                elsif (i_select_update = '1') then
+                    weight_tmp <= weight_tmp(weight_int_w - 1 downto -weight_fract_w)
+                                + i_dweight;
+                else
+                    weight_tmp <= weight_tmp;
+                end if;
             end if;
         end if;
     end process;

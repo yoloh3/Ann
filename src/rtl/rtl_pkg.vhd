@@ -49,8 +49,8 @@ package rtl_pkg is
     subtype bias_float_t
         is sfixed(bias_int_w - 1 downto -bias_fract_w);
 
-    constant weighted_input_int_w   : integer := 6;
-    constant weighted_input_fract_w : integer := 10;
+    constant weighted_input_int_w   : integer := 4;
+    constant weighted_input_fract_w : integer := 4;
     subtype weighted_input_float_t
         is sfixed(weighted_input_int_w - 1 downto -weighted_input_fract_w);
 

@@ -42,7 +42,7 @@ architecture bench of weighted_input_tb is
         );
         port (
             clk              : in  std_logic;
-            areset           : in  std_logic;
+            reset            : in  std_logic;
             i_input_array    : in  input_array_t(layer_size - 1 downto 0);
             i_weight_array   : in  weight_array_t(layer_size - 1 downto 0);
             i_bias_hidden    : in  bias_float_t;
@@ -59,7 +59,7 @@ architecture bench of weighted_input_tb is
     signal s_i_bias_hidden    : bias_float_t := (others => '0');
     signal s_o_weighted_input : weighted_input_float_t := (others => '0');
     signal s_clk              : std_logic := '0';
-    signal s_areset           : std_logic := '1';
+    signal s_reset            : std_logic := '1';
     constant period           : time := 100 ns;
 begin
     -- device unit test
@@ -69,7 +69,7 @@ begin
     )
     port map (
        clk               => s_clk,
-       areset            => s_areset,
+       reset             => s_reset ,
        i_input_array     => s_i_input_array,
        i_weight_array    => s_i_weight_array,
        i_bias_hidden     => s_i_bias_hidden,
@@ -77,11 +77,11 @@ begin
     );
 
     s_clk <= not(s_clk) after period / 2;
-    s_areset <= '0'     after period;
+    s_reset  <= '0'     after period;
 
     stimulus: process
     begin
-        wait until s_areset = '0';
+        wait until s_reset  = '0';
 
     -- -- Main simulation
     test_case_error_hidden (s_clk, 1.5, -5.0, -0.2, 5.4, 2.1,

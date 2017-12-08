@@ -31,7 +31,7 @@ entity forward is
     port
     (
         clk                   : in  std_logic;
-        areset                : in  std_logic;
+        reset                 : in  std_logic;
         i_select_initial      : in  std_logic;
         i_update_coeff        : in std_logic;
         i_input               : in  input_array_t(layer_input_size - 1 downto 0);
@@ -59,7 +59,7 @@ architecture rtl of forward is
         );
         port (
             clk              : in  std_logic;
-            areset           : in  std_logic;
+            reset            : in  std_logic;
             i_select_initial : in  std_logic;
             i_select_update  : in  std_logic;
             i_dweight        : in  weight_float_t;
@@ -73,7 +73,7 @@ architecture rtl of forward is
         );
         port (
             clk              : in  std_logic;
-            areset           : in  std_logic;
+            reset            : in  std_logic;
             i_select_initial : in  std_logic;
             i_select_update  : in  std_logic;
             i_dbias          : in  bias_float_t;
@@ -87,7 +87,7 @@ architecture rtl of forward is
         );
         port (
             clk              : in  std_logic;
-            areset           : in  std_logic;
+            reset            : in  std_logic;
             i_input          : in  activation_array_t(layer_size - 1 downto 0);
             i_weight         : in  weight_array_t(layer_size - 1 downto 0);
             i_bias           : in  bias_float_t;
@@ -98,7 +98,7 @@ architecture rtl of forward is
     component activation_funct
         port (
             clk                : in  std_logic;
-            areset             : in  std_logic;
+            reset              : in  std_logic;
             i_weighted_input   : in  weighted_input_float_t;
             o_activation_funct : out activation_float_t
         );
@@ -109,8 +109,8 @@ architecture rtl of forward is
     signal s_weight_hidden      : weight_array2_input2hidden_t;
     signal s_weight_output      : weight_array2_hidden2output_t;
 
-    signal s_weighted_in_hidden : weight_array_t(layer_hidden_size - 1 downto 0);
-    signal s_weighted_in_output : weight_array_t(layer_output_size - 1 downto 0);
+    signal s_weighted_in_hidden : weighted_input_array_t(layer_hidden_size - 1 downto 0);
+    signal s_weighted_in_output : weighted_input_array_t(layer_output_size - 1 downto 0);
 
     signal s_activ_funct_input  : activation_array_t(layer_input_size - 1 downto 0);
     signal s_activ_funct_hidden : activation_array_t(layer_hidden_size - 1 downto 0);
@@ -123,38 +123,40 @@ architecture rtl of forward is
     signal   s_select_update : std_logic;
 begin
 
-    count: process(clk, areset)
+    count: process(clk)
     begin
-        if(areset = '1') then
-            counter <= (others => '0');
-            o_finish_calc <= '0';
-            s_select_update <= '0';
-        elsif rising_edge(clk) then
-            if (i_update_coeff = '1') then
-                if counter = to_unsigned(finish_count, counter_w) then
-                    o_finish_calc <= '1';
-                else
-                    o_finish_calc <= '0';
-                end if;
-
-                if counter = to_unsigned(max_count - 1, counter_w) then
-                    counter <= (others => '0');
-
-                    if (i_update_coeff = '1') then
-                        s_select_update <= '1';
+        if rising_edge(clk) then
+            if(reset  = '1') then
+                counter <= (others => '0');
+                o_finish_calc <= '0';
+                s_select_update <= '0';
+            else
+                if (i_update_coeff = '1') then
+                    if counter = to_unsigned(finish_count, counter_w) then
+                        o_finish_calc <= '1';
                     else
+                        o_finish_calc <= '0';
+                    end if;
+
+                    if counter = to_unsigned(max_count - 1, counter_w) then
+                        counter <= (others => '0');
+
+                        if (i_update_coeff = '1') then
+                            s_select_update <= '1';
+                        else
+                            s_select_update <= '0';
+                        end if;
+                    else
+                        counter <= counter + to_unsigned(1, counter_w);
+
                         s_select_update <= '0';
                     end if;
-                else
-                    counter <= counter + to_unsigned(1, counter_w);
-
-                    s_select_update <= '0';
                 end if;
             end if;
         end if;
     end process;
 
-        calc_input: for i in 0 to layer_input_size - 1 generate
+    calc_input: for i in 0 to layer_input_size - 1 generate
         s_activ_funct_input(i) <= i_input(i)(activation_int_w - 1 downto -activation_fract_w);
     end generate calc_input;
 
@@ -165,7 +167,7 @@ begin
             )
             port map (
                clk               => clk,
-               areset            => areset,
+               reset             => reset ,
                i_select_initial  => i_select_initial,
                i_select_update   => s_select_update,
                i_dbias           => i_adder_bias_hidden(i),
@@ -178,17 +180,17 @@ begin
             )
             port map (
                clk               => clk,
-               areset            => areset,
+               reset             => reset ,
                i_input           => s_activ_funct_input,
                i_weight          => s_weight_hidden(i),
                i_bias            => s_bias_hidden(i),
                o_weighted_input  => s_weighted_in_hidden(i)
             );
 
-        dut_activ_funct_hidden: activation_funct
+        sigmoid: activation_funct
             port map (
                clk                 => clk,
-               areset              => areset,
+               reset               => reset ,
                i_weighted_input    => s_weighted_in_hidden(i),
                o_activation_funct  => s_activ_funct_hidden(i)
             );
@@ -201,7 +203,7 @@ begin
             )
             port map (
                clk               => clk,
-               areset            => areset,
+               reset             => reset ,
                i_select_initial  => i_select_initial,
                i_select_update   => s_select_update,
                i_dbias           => i_adder_bias_output(i),
@@ -214,17 +216,17 @@ begin
             )
             port map (
                clk               => clk,
-               areset            => areset,
+               reset             => reset ,
                i_input           => s_activ_funct_hidden,
                i_weight          => s_weight_output(i),
                i_bias            => s_bias_output(i),
                o_weighted_input  => s_weighted_in_output(i)
             );
 
-        dut_activ_funct_output: activation_funct
+        sigmoid: activation_funct
             port map (
                clk                 => clk,
-               areset              => areset,
+               reset               => reset ,
                i_weighted_input    => s_weighted_in_output(i),
                o_activation_funct  => s_activ_funct_output(i)
             );
@@ -238,7 +240,7 @@ begin
                 )
                 port map (
                    clk               => clk,
-                   areset            => areset,
+                   reset             => reset ,
                    i_select_initial  => i_select_initial,
                    i_select_update   => s_select_update,
                    i_dweight         => i_adder_weight_hidden(i)(j),
@@ -255,7 +257,7 @@ begin
                 )
                 port map (
                    clk               => clk,
-                   areset            => areset,
+                   reset             => reset ,
                    i_select_initial  => i_select_initial,
                    i_select_update   => s_select_update,
                    i_dweight         => i_adder_weight_output(i)(j),

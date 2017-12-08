@@ -41,18 +41,18 @@ architecture bench of !!MODULE is
     -- signal declaration
 
     signal s_clk      : std_logic := '0';
-    signal s_areset   : std_logic := '1';
+    signal s_reset    : std_logic := '1';
     constant period : time := 100 ns;
 begin
     -- device unit test
 
 
     s_clk <= not(s_clk) after period / 2;
-    s_areset <= '0'     after period;
+    s_reset  <= '0'     after period;
 
     stimulus: process
     begin
-        wait until s_areset = '0';
+        wait until s_reset  = '0';
 
         -- -- Main simulation
         test_case_der_activ(s_clk, 1.5, s_o_dadz, -0.75, s_i_a);

@@ -39,7 +39,7 @@ architecture bench of delta_bias_tb is
     component delta_bias
         port (
             clk               : in  std_logic;
-            areset            : in  std_logic;
+            reset             : in  std_logic;
             i_error           : in  error_float_t;
             o_delta_bias      : out weight_float_t
         );
@@ -47,7 +47,7 @@ architecture bench of delta_bias_tb is
 
     -- signal declaration
 	signal s_clk            : std_logic := '0';
-    signal s_areset         : std_logic := '1';
+    signal s_reset          : std_logic := '1';
     signal s_i_error      : error_float_t := (others => '0');
     signal s_o_delta_bias : weight_float_t := (others => '0');
     constant period       : time := 100 ns;
@@ -55,17 +55,17 @@ begin
     -- device unit test
     dut: delta_bias port map (
            clk             => s_clk,
-           areset          => s_areset,
+           reset           => s_reset ,
            i_error         => s_i_error,
            o_delta_bias    => s_o_delta_bias   
     );
 
     s_clk <= not(s_clk) after period / 2;
-    s_areset <= '0'     after period;
+    s_reset  <= '0'     after period;
 
     stimulus: process
     begin
-        wait until s_areset = '0';
+        wait until s_reset  = '0';
 
         -- -- Main simulation
         test_case_der_activ(s_clk,  1.5, s_o_delta_bias,  1.5, s_i_error);

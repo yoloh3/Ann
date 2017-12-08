@@ -29,7 +29,7 @@ use work.rtl_pkg.all;
 entity top_ann is
     port(
         clk              : in std_logic;
-        areset           : in std_logic;
+        reset            : in std_logic;
         i_select_initial : in std_logic;
         i_update_coeff   : in std_logic;
         i_input          : in  input_array_t(layer_input_size - 1 downto 0);
@@ -47,7 +47,7 @@ architecture behavior of top_ann is
     component forward
         port (
             clk                   : in  std_logic;
-            areset                : in  std_logic;
+            reset                 : in  std_logic;
             i_select_initial      : in  std_logic;
             i_update_coeff        : in  std_logic;
             i_input               : in  input_array_t(layer_input_size - 1 downto 0);
@@ -65,7 +65,7 @@ architecture behavior of top_ann is
     component backward
         port (
             clk                   : in  std_logic;
-            areset                : in  std_logic;
+            reset                 : in  std_logic;
             i_input               : in  input_array_t(layer_input_size - 1 downto 0);
             i_expected            : in  input_array_t(layer_input_size - 1 downto 0);
             i_weight_output       : in  weight_array2_hidden2output_t;
@@ -104,7 +104,7 @@ begin
     dut_fw: forward
     port map (
        clk                    => clk,
-       areset                 => areset,
+       reset                  => reset ,
        i_select_initial       => i_select_initial,
        i_update_coeff         => i_update_coeff,
        i_input                => i_input,
@@ -119,41 +119,43 @@ begin
        o_activation_output    => s_activation_output   
     );
 
-    delay: process(areset, clk)
+    delay: process(reset , clk)
     begin
-        if (areset = '1') then
-            s_tmp_input <= (others => (others => '0'));
-            s_tmp2_input <= (others => (others => '0'));
-            s_tmp3_input <= (others => (others => '0'));
-            s_tmp4_input <= (others => (others => '0'));
+        if rising_edge(clk) then
+            if (reset  = '1') then
+                s_tmp_input <= (others => (others => '0'));
+                s_tmp2_input <= (others => (others => '0'));
+                s_tmp3_input <= (others => (others => '0'));
+                s_tmp4_input <= (others => (others => '0'));
 
-            s_tmp_expected <= (others => (others => '0'));
-            s_tmp2_expected <= (others => (others => '0'));
-            s_tmp3_expected <= (others => (others => '0'));
-            s_tmp4_expected <= (others => (others => '0'));
+                s_tmp_expected <= (others => (others => '0'));
+                s_tmp2_expected <= (others => (others => '0'));
+                s_tmp3_expected <= (others => (others => '0'));
+                s_tmp4_expected <= (others => (others => '0'));
 
-            s_tmp_activation_hidden <= (others => (others => '0'));
-            s_tmp2_activation_hidden <= (others => (others => '0'));
-        elsif rising_edge(clk) then
-            s_tmp_input <= i_input;
-            s_tmp2_input <= s_tmp_input;
-            s_tmp3_input <= s_tmp2_input;
-            s_tmp4_input <= s_tmp3_input;
+                s_tmp_activation_hidden <= (others => (others => '0'));
+                s_tmp2_activation_hidden <= (others => (others => '0'));
+            else
+                s_tmp_input <= i_input;
+                s_tmp2_input <= s_tmp_input;
+                s_tmp3_input <= s_tmp2_input;
+                s_tmp4_input <= s_tmp3_input;
 
-            s_tmp_expected <= i_expected;
-            s_tmp2_expected <= s_tmp_expected;
-            s_tmp3_expected <= s_tmp2_expected;
-            s_tmp4_expected <= s_tmp3_expected;
+                s_tmp_expected <= i_expected;
+                s_tmp2_expected <= s_tmp_expected;
+                s_tmp3_expected <= s_tmp2_expected;
+                s_tmp4_expected <= s_tmp3_expected;
 
-            s_tmp_activation_hidden <= s_activation_hidden;
-            s_tmp2_activation_hidden <= s_tmp_activation_hidden;
+                s_tmp_activation_hidden <= s_activation_hidden;
+                s_tmp2_activation_hidden <= s_tmp_activation_hidden;
+            end if;
         end if;
     end process;
 
     dut_bw: backward
     port map (
        clk                    => clk,
-       areset                 => areset,
+       reset                  => reset ,
        i_input                => s_tmp4_input,
        i_expected             => s_tmp4_expected,
        i_weight_output        => s_weight_output,
@@ -167,15 +169,17 @@ begin
 
     o_output_result <= s_activation_output;
 
-    cout: process(areset, clk)
+    cout: process(reset , clk)
     begin
-        if (areset = '1') then
-            count <= 0;
-        elsif rising_edge(clk) then
-            if i_update_coeff = '1' then
-                count <= count + 1;
-            else
+        if rising_edge(clk) then
+            if (reset  = '1') then
                 count <= 0;
+            else
+                if i_update_coeff = '1' then
+                    count <= count + 1;
+                else
+                    count <= 0;
+                end if;
             end if;
         end if;
     end process;

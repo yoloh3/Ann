@@ -29,7 +29,7 @@ use work.rtl_pkg.all;
 entity delta_weight_cumulation  is
     port (
         clk             : in  std_logic;
-        areset          : in  std_logic;
+        reset           : in  std_logic;
         i_delta_weight  : in  weight_float_t;
         o_dw_cumulation : out weight_float_t
     );
@@ -44,18 +44,20 @@ architecture rtl of delta_weight_cumulation  is
     signal tmp_output
         : sfixed(2*weight_int_w + 1 downto -2*weight_fract_w);
 begin
-    mux4: process(clk, areset)
+    mux4: process(clk)
     begin
-        if areset = '1' then
-            s_delta_weight <= (others => (others => '0'));
-            tmp_output      <= (others => '0');
-        elsif rising_edge(clk) then
-            s_delta_weight(2) <= s_delta_weight(1);
-            s_delta_weight(1) <= s_delta_weight(0);
-            s_delta_weight(0) <= i_delta_weight;
-            tmp_output <= learning_rate
-                       * ((s_delta_weight(2) + s_delta_weight(1))
-                        + (s_delta_weight(0) + i_delta_weight));
+        if rising_edge(clk) then
+            if reset  = '1' then
+                s_delta_weight <= (others => (others => '0'));
+                tmp_output      <= (others => '0');
+            else
+                s_delta_weight(2) <= s_delta_weight(1);
+                s_delta_weight(1) <= s_delta_weight(0);
+                s_delta_weight(0) <= i_delta_weight;
+                tmp_output <= learning_rate
+                           * ((s_delta_weight(2) + s_delta_weight(1))
+                            + (s_delta_weight(0) + i_delta_weight));
+            end if;
         end if;
     end process mux4;
 

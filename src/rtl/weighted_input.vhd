@@ -18,7 +18,7 @@
 --  b2      : 32 bits 0000_0000.0000_0000_0000_0000_0000_0000 sfixed    : bias value
 --  w2_i        : 32 bits 0000_0000.0000_0000_0000_0000_0000_0000 sfixed    : weight value (i=1,2)
 --  clk     : 1 bit
---  areset      : 1 bit : high active
+--  reset       : 1 bit : high active
 -- Output:
 --  weighted_input      : 8 bits 0000.0000 : output value
 -- Latency: 1 clk
@@ -44,7 +44,7 @@ entity weighted_input is
     generic (layer_size  : integer := 2);
     port (
         clk              : in  std_logic;
-        areset           : in  std_logic;
+        reset            : in  std_logic;
         i_input          : in  activation_array_t(layer_size - 1 downto 0);
         i_weight         : in  weight_array_t(layer_size - 1 downto 0);
         i_bias           : in  bias_float_t;
@@ -56,25 +56,37 @@ end weighted_input;
 -- architecture description
 ---------------------------------------------------------------------------------
 architecture rtl of weighted_input is
+    constant mult_int_w   : integer := input_int_w + weight_int_w;
+    constant mult_fract_w : integer := input_fract_w + weight_fract_w;
+    type mult_array_t is array (integer range <>)
+        of sfixed(mult_int_w -1 downto -mult_fract_w);
+
+    signal s_mult_array   : mult_array_t(layer_size - 1 downto 0);
+
     --add more 1 bit of sum
-    signal tmp_sum : sfixed(bias_int_w downto -bias_fract_w);
+    signal tmp_sum        : sfixed(bias_int_w downto -bias_fract_w);
 begin
-    weighted: process(clk, areset)
-        constant mult_int_w   : integer := input_int_w + weight_int_w;
-        constant mult_fract_w : integer := input_fract_w + weight_fract_w;
-        variable v_tmp_mult   : sfixed(mult_int_w downto -mult_fract_w);
+
+    mult_parallel: for i in 0 to layer_size - 1 generate
+        s_mult_array(i) <= i_input(i) * i_weight(i);
+    end generate mult_parallel;
+
+    weighted: process(clk)
+        variable v_sum_mult : sfixed(mult_int_w downto -mult_fract_w);
     begin
-        if(areset = '1') then
-            v_tmp_mult := (others => '0');
-            tmp_sum    <= (others => '0');
-        elsif rising_edge(clk) then
-            v_tmp_mult := to_sfixed(0.0, v_tmp_mult); 
-            for i in 0 to layer_size - 1 loop
-                v_tmp_mult := v_tmp_mult(mult_int_w - 1 downto -mult_fract_w)
-                            + i_input(i) * i_weight(i);
-            end loop;
-                tmp_sum <= v_tmp_mult(bias_int_w - 1 downto -bias_fract_w)
-                         + i_bias;
+        if rising_edge(clk) then
+            if(reset  = '1') then
+                v_sum_mult := (others => '0');
+                tmp_sum    <= (others => '0');
+            else 
+                v_sum_mult := to_sfixed(0.0, v_sum_mult); 
+                for i in 0 to layer_size - 1 loop
+                    v_sum_mult := v_sum_mult(mult_int_w - 1 downto -mult_fract_w)
+                                + s_mult_array(i);
+                end loop;
+                    tmp_sum <= v_sum_mult(bias_int_w - 1 downto -bias_fract_w)
+                             + i_bias;
+            end if;
         end if;
     end process;
 

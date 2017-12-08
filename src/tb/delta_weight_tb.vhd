@@ -39,7 +39,7 @@ architecture bench of delta_weight_tb is
     component delta_weight
         port (
             clk            : in  std_logic;
-            areset         : in  std_logic;
+            reset          : in  std_logic;
             i_error        : in  error_float_t;
             i_input_signal : in  input_float_t;
             o_delta_weight : out weight_float_t
@@ -51,18 +51,18 @@ architecture bench of delta_weight_tb is
     signal s_i_input_signal : input_float_t;
     signal s_o_delta_weight : weight_float_t;
     signal s_clk            : std_logic := '0';
-    signal s_areset         : std_logic := '1';
+    signal s_reset          : std_logic := '1';
     constant period         : time := 100 ns;
 begin
     -- device unit test
 
 
     s_clk <= not(s_clk) after period / 2;
-    s_areset <= '0'     after period;
+    s_reset  <= '0'     after period;
 
     stimulus: process
     begin
-        wait until s_areset = '0';
+        wait until s_reset  = '0';
 
         -- -- Main simulation
         test_case_der_activ(s_clk, 1.5, s_o_dadz, -0.75, s_i_a);

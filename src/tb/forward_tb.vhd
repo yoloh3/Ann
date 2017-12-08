@@ -39,7 +39,7 @@ architecture bench of forward_tb is
     component forward
         port (
             clk                   : in  std_logic;
-            areset                : in  std_logic;
+            reset                 : in  std_logic;
             i_select_initial      : in  std_logic;
             i_update_coeff        : in  std_logic;
             i_input               : in  input_array_t(layer_input_size - 1 downto 0);
@@ -74,14 +74,14 @@ architecture bench of forward_tb is
     signal s_o_activation_hidden   :  activation_array_t(layer_hidden_size - 1 downto 0);
     signal s_o_activation_output   :  activation_array_t(layer_output_size - 1 downto 0);
     signal s_clk      : std_logic := '0';
-    signal s_areset   : std_logic := '1';
+    signal s_reset    : std_logic := '1';
     constant period   : time := 10 ns;
 begin
     -- device unit test
     dut: forward
     port map (
        clk                    => s_clk,
-       areset                 => s_areset,
+       reset                  => s_reset ,
        i_select_initial       => s_i_select_initial,
        i_update_coeff         => s_i_update_coeff,
        i_input                => s_i_input,
@@ -97,11 +97,11 @@ begin
     );
 
     s_clk     <= not(s_clk)   after period / 2;
-    s_areset  <= '0'          after 3 * period;
+    s_reset   <= '0'          after 3 * period;
 
     stimulus: process
     begin
-        wait until s_areset = '0';
+        wait until s_reset  = '0';
         wait until rising_edge(s_clk);
         wait for 1 ns;
         s_i_select_initial <= '0';

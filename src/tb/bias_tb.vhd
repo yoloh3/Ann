@@ -44,7 +44,7 @@ architecture bench of bias_tb is
         );
         port(
             clk              : in  std_logic;
-            areset           : in  std_logic;
+            reset            : in  std_logic;
             i_select_initial : in  std_logic;
             i_select_update  : in  std_logic;
             i_dbias          : in  bias_float_t;
@@ -54,7 +54,7 @@ architecture bench of bias_tb is
 
     constant init_value     : real       := -1.0;
     signal clk              : std_logic  := '0';
-    signal areset           : std_logic  := '1';
+    signal reset            : std_logic  := '1';
     signal i_select_initial : std_logic  := '0';
     signal i_select_update  : std_logic  := '0';
     signal i_dbias          : bias_float_t := (others => '0');
@@ -65,18 +65,18 @@ begin
     dut: bias
         generic map (init_value     => init_value)
         port map (clk               => clk,
-                  areset            => areset,
+                  reset             => reset ,
                   i_select_initial  => i_select_initial,
                   i_select_update   => i_select_update,
                   i_dbias           => i_dbias,
                   o_bias            => o_bias );
 
     clk <= not(clk) after period / 2;
-    areset <= '0'   after period;
+    reset  <= '0'   after period;
 
      stimulus: process
     begin
-        wait until areset = '0';
+        wait until reset  = '0';
 
         -- -- Main simulation
         -- wait until rising_edge(clk);

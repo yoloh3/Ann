@@ -41,7 +41,7 @@ architecture bench of top_ann_tb is
     component top_ann
     port (
 	    clk              : in std_logic;
-        areset           : in std_logic;
+        reset            : in std_logic;
         i_select_initial : in std_logic;
         i_update_coeff   : in std_logic;
         i_input          : in  input_array_t(layer_input_size - 1 downto 0);
@@ -61,14 +61,14 @@ architecture bench of top_ann_tb is
     signal s_o_finish_update  : std_logic;
     signal s_o_output_result  : activation_array_t(layer_output_size - 1 downto 0);
     signal s_clk              : std_logic := '0';
-    signal s_areset           : std_logic := '1';
+    signal s_reset            : std_logic := '1';
     constant period           : time := 100 ns;
 begin
     -- device unit test
     dut: top_ann
     port map (
        clk               => s_clk,
-       areset            => s_areset,
+       reset             => s_reset ,
        i_select_initial  => s_i_select_initial,
        i_update_coeff    => s_i_update_coeff,
        i_input           => s_i_input,
@@ -78,7 +78,7 @@ begin
     );
 
     s_clk <= not(s_clk) after period / 2;
-    s_areset <= '0'     after period;
+    s_reset  <= '0'     after period;
 
     readio : process 
         variable iline        : line;
@@ -102,7 +102,7 @@ begin
 
         s_i_select_initial <= '1';
         s_i_update_coeff   <= '1';
-        wait until s_areset = '0';
+        wait until s_reset  = '0';
         wait until rising_edge(s_clk);
         s_i_select_initial <= '0';
 

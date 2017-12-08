@@ -43,7 +43,7 @@ architecture bench of derivative_activation_tb is
     component derivative_activation
         port (
             clk                    : in  std_logic;
-            areset                 : in  std_logic;
+            reset                  : in  std_logic;
             i_a                    : in  activation_float_t;
             o_dadz                 : out dadz_float_t
         );
@@ -51,7 +51,7 @@ architecture bench of derivative_activation_tb is
 
     -- signal declaration
     signal s_clk       : std_logic := '0';
-    signal s_areset    : std_logic := '1';
+    signal s_reset     : std_logic := '1';
     signal s_i_a       : activation_float_t := (others => '0');
     signal s_o_dadz    : dadz_float_t       := (others => '0');
 
@@ -61,17 +61,17 @@ begin
     dut: derivative_activation
         port map (
            clk                     => s_clk,
-           areset                  => s_areset,
+           reset                   => s_reset ,
            i_a                     => s_i_a,
            o_dadz                  => s_o_dadz                 
         );
 
     s_clk <= not(s_clk) after period / 2;
-    s_areset <= '0'     after period;
+    s_reset  <= '0'     after period;
 
     stimulus: process
     begin
-        wait until s_areset = '0';
+        wait until s_reset  = '0';
 
         -- -- Main simulation
         test_case_der_activ(s_clk, 1.5, s_o_dadz, -0.75, s_i_a);

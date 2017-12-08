@@ -28,13 +28,13 @@ Files and directories:
 
 # HOW TO RUN
 
-Edit $TARGET variable in sim/Makefile
-
-Library initiation
-	cd sim; make init
+Edit $TARGET variable in ./sim/Makefile
 
 Compile and debug
 	cd sim; make
 
 Simulation
 	cd sim; make sim
+
+TOP_ANN core simulation
+	cd sim; vsim vhdl.wlf

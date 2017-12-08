@@ -42,7 +42,7 @@ architecture bench of backward_tb is
     component backward
         port (
             clk                   : in  std_logic;
-            areset                : in  std_logic;
+            reset                 : in  std_logic;
             i_input               : in  input_array_t(layer_input_size - 1 downto 0);
             i_expected            : in  input_array_t(layer_input_size - 1 downto 0);
             i_weight_output       : in  weight_array2_hidden2output_t;
@@ -57,7 +57,7 @@ architecture bench of backward_tb is
 end component backward;
     -- signal declaration
     signal clk                     : std_logic := '0';
-    signal areset                  : std_logic := '1';
+    signal reset                   : std_logic := '1';
     signal s_i_input               : input_array_t(layer_input_size - 1 downto 0)
         := (others => (others => '0'));
     signal s_i_expected            : input_array_t(layer_input_size - 1 downto 0)
@@ -79,7 +79,7 @@ begin
     dut: backward
         port map (
            clk                    => clk,
-           areset                 => areset,
+           reset                  => reset ,
            i_input                => s_i_input,
            i_expected             => s_i_expected,
            i_weight_output        => s_i_weight_output,
@@ -92,11 +92,11 @@ begin
         );
 
     clk <= not(clk) after period / 2;
-    areset <= '0' after 3 * period + period / 2;
+    reset  <= '0' after 3 * period + period / 2;
 
      stimulus: process
     begin
-        wait until areset = '0';
+        wait until reset  = '0';
 
         -- Main simulation
         test1: test_case_backward (
