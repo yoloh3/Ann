@@ -49,9 +49,50 @@ entity activation_funct is
 end activation_funct;
 
 ---------------------------------------------------------------------------------
--- Architecture description
+-- Function memory generate architecture description
 ---------------------------------------------------------------------------------
-architecture beh of activation_funct is
+architecture funct of activation_funct is
+    constant addr_int_w   : integer := 4;
+    constant addr_fract_w : integer := 4;
+    constant mem_depth    : integer := 2**(addr_int_w + addr_fract_w);
+    type mem_type is array(0 to mem_depth - 1) of activation_float_t;
+
+    function init_mem return mem_type is
+        variable temp_mem : mem_type;
+    begin
+        for i in 0 to mem_depth / 2 - 1 loop
+            temp_mem(i) := to_sfixed(1.0 / (1.0 + exp(-(real(i)/2.0**addr_fract_w))),
+                activation_int_w - 1, -activation_fract_w);
+        end loop;
+        for i in mem_depth / 2 to mem_depth - 1 loop
+            temp_mem(i) := to_sfixed(1.0 / (1.0 + exp((real(i-mem_depth/2)/2.0**addr_fract_w))),
+                activation_int_w - 1, -activation_fract_w);
+        end loop;
+        return temp_mem;
+    end function;
+
+    signal mem: mem_type := init_mem;
+begin
+    process(reset , clk)
+        subtype address_t is std_logic_vector (i_weighted_input'length - 1 downto 0);
+        variable address : address_t;
+    begin
+        if rising_edge(clk) then
+            if reset  = '1' then
+                o_activation_funct <= (others => '0');
+            else
+                address := address_t(i_weighted_input);
+                o_activation_funct <= mem(to_integer(unsigned(address)));
+            end if;
+
+        end if;
+    end process;
+end funct;
+
+---------------------------------------------------------------------------------
+-- Specifier architecture description
+---------------------------------------------------------------------------------
+architecture behavior of activation_funct is
 type reg_type is array(0 to 255) of sfixed(7 downto -24);
 signal mem: reg_type :=(
             "00000000100000000000000000000000",	--0.0000//addr: 0
@@ -325,9 +366,8 @@ signal mem: reg_type :=(
             "00000000011100000001010100110011",
             "00000000011101000000100011111000",
             "00000000011110000000001010101010",
-            "00000000011111000000000001010101");--addr: 255
+            "00000000011111000000000001010101") ;--addr: 255
   --end at -0.06250"
-
 begin
     process(clk)
         subtype address_t is std_logic_vector(i_weighted_input'length - 1 downto 0);
@@ -345,5 +385,9 @@ begin
 			  end if;
 		  end if;
 	end process;
-end beh;
+end behavior;
 
+configuration config1 of activation_funct is
+    for behavior
+    end for behavior;
+end config1;
