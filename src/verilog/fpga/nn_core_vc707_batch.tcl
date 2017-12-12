@@ -31,7 +31,7 @@ report_timing_summary -file $output_dir/post_route_timing_summary.rpt
 report_timing -sort_by group -max_paths 100 -path_type summary -file $output_dir/post_route_timing_timing.rpt
 
 report_clock_utilization -file $output_dir/clock_util.rpt
-report_utilization -file $output_dir/post_route_power.rpt
+report_utilization -file $output_dir/post_route_utilization.rpt
 report_drc -file $output_dir/post_imp_drc.rpt
 write_verilog -force $output_dir/nn_core_impl_netlist.v
 write_xdc -no_fixed_only -force $output_dir/nn_core_impl.xdc
