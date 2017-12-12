@@ -61,8 +61,6 @@ architecture rtl of bias is
     -- signal is 33 bit for sum
     signal bias_tmp     : sfixed(bias_int_w downto -bias_fract_w);
 
-    signal init_bias    : bias_float_t
-        := to_sfixed(init_value, bias_int_w - 1, -bias_fract_w);
 begin
     process(clk)
     begin
@@ -70,7 +68,7 @@ begin
             if(reset  = '1') then
                     bias_tmp <= (others => '0');
             elsif(i_select_initial = '1') then
-                bias_tmp <= '0' & init_bias;
+                bias_tmp <= to_sfixed(init_value, bias_tmp);
             elsif (i_select_update = '1') then
                 bias_tmp <= bias_tmp(bias_int_w - 1 downto -bias_fract_w) + i_dbias;
             else

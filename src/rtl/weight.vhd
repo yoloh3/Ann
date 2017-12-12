@@ -61,8 +61,6 @@ architecture rtl of weight is
     -- signal is 33 bit for sum
     signal weight_tmp  : sfixed(weight_int_w downto -weight_fract_w);
 
-    signal init_weight : weight_float_t
-        := to_sfixed(init_value, weight_int_w - 1, -weight_fract_w);
 begin
     process(clk)
     begin
@@ -71,7 +69,8 @@ begin
                 weight_tmp <= (others => '0');
             else
                 if(i_select_initial = '1') then
-                    weight_tmp <= '0' & init_weight;
+                    weight_tmp <= to_sfixed(init_value, weight_tmp);
+
                 elsif (i_select_update = '1') then
                     weight_tmp <= weight_tmp(weight_int_w - 1 downto -weight_fract_w)
                                 + i_dweight;
