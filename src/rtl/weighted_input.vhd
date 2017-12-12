@@ -65,6 +65,12 @@ architecture rtl of weighted_input is
 
     --add more 1 bit of sum
     signal tmp_sum        : sfixed(bias_int_w downto -bias_fract_w);
+    signal saturation     : std_logic;
+
+    constant max_output     : weighted_input_float_t := '1' &
+    (weighted_input_int_w - 2 downto -weighted_input_fract_w => '0');
+    constant near_max_output: weighted_input_float_t := '0' &
+    (weighted_input_int_w - 2 downto -weighted_input_fract_w => '1');
 begin
 
     mult_parallel: for i in 0 to layer_size - 1 generate
@@ -72,7 +78,7 @@ begin
     end generate mult_parallel;
 
     weighted: process(clk)
-        variable v_sum_mult : sfixed(mult_int_w downto -mult_fract_w);
+        variable v_sum_mult : sfixed(bias_int_w downto -bias_fract_w);
     begin
         if rising_edge(clk) then
             if(reset  = '1') then
@@ -81,8 +87,8 @@ begin
             else 
                 v_sum_mult := to_sfixed(0.0, v_sum_mult); 
                 for i in 0 to layer_size - 1 loop
-                    v_sum_mult := v_sum_mult(mult_int_w - 1 downto -mult_fract_w)
-                                + s_mult_array(i);
+                    v_sum_mult := v_sum_mult(bias_int_w - 1 downto -bias_fract_w)
+                                + s_mult_array(i)(bias_int_w - 1 downto -bias_fract_w);
                 end loop;
                     tmp_sum <= v_sum_mult(bias_int_w - 1 downto -bias_fract_w)
                              + i_bias;
@@ -90,5 +96,11 @@ begin
         end if;
     end process;
 
-    o_weighted_input <= tmp_sum(weighted_input_int_w - 1 downto -weighted_input_fract_w);
+    saturation <= (not(and(tmp_sum(bias_int_w downto weighted_input_int_w - 1)))) and
+                  (or(tmp_sum(bias_int_w downto weighted_input_int_w - 1)));
+
+    o_weighted_input <= tmp_sum(weighted_input_int_w - 1 downto
+                        -weighted_input_fract_w) when saturation = '0' else
+                        max_output when tmp_sum(weight_int_w - 1) = '1' else
+                        near_max_output;
 end rtl;

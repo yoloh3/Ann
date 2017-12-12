@@ -36,7 +36,7 @@ package rtl_pkg is
     constant layer_input_size       : integer := 2;
     constant weight_output_size     : integer := 2;
     constant epochs                 : integer := 10000;
-    constant learning_rate          : real    := -0.1;
+    constant learning_rate          : real    := -0.100586;
 
     -- -- forward package
     constant input_int_w            : integer := 6;
@@ -97,10 +97,10 @@ package rtl_pkg is
     constant weight_init_hidden : weight_init_input2hidden_array_t
         := ((0.1, 0.6),
             (0.5, 0.3),
-            (0.4, 0.1));
+            (0.399414, 0.1));
     constant weight_init_output : weight_init_hidden2output_array_t
-        := ((1.1, 0.5, 0.2),
-            (1.3, 0.2, 0.7));
+        := ((1.1, 0.5, 0.19921875),
+            (1.3, 0.19921875, 0.69921875));
 
     -- -- backward package
 

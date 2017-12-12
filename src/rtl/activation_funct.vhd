@@ -389,5 +389,5 @@ end behavior;
 
 configuration config1 of activation_funct is
     for behavior
-    end for behavior;
+    end for;
 end config1;

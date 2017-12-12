@@ -105,20 +105,6 @@ architecture struct of backward is
         );
     end component;
 
-    signal s_error_output             : error_array_t(layer_output_size - 1 downto 0);
-    signal s_tmp_error_output         : error_array_t(layer_output_size - 1 downto 0);
-    -- signal s_tmp2_error_output        : error_array_t(layer_output_size - 1 downto 0);
-
-    signal s_error_hidden             : error_array_t(layer_hidden_size - 1 downto 0);
-    --signal s_tmp_error_hidden         : error_array_t(layer_hidden_size - 1 downto 0);
-
-    signal s_dadz_output              : dadz_array_t(layer_output_size - 1 downto 0);
-    signal s_dadz_hidden              : dadz_array_t(layer_hidden_size - 1 downto 0);
-    signal s_tmp_dadz_hidden          : dadz_array_t(layer_hidden_size - 1 downto 0);
-
-    signal s_delta_weight_output      : weight_array2_hidden2output_t;
-    signal s_delta_weight_hidden      : weight_array2_input2hidden_t;
-
     signal s_tmp_input                : input_array_t(layer_input_size - 1 downto 0);
     signal s_tmp2_input               : input_array_t(layer_input_size - 1 downto 0);
     signal s_tmp3_input               : input_array_t(layer_input_size - 1 downto 0);
@@ -130,12 +116,60 @@ architecture struct of backward is
     signal s_tmp2_activation_hidden   : activation_array_t(layer_hidden_size - 1 downto 0);
     signal s_tmp3_activation_hidden   : activation_array_t(layer_hidden_size - 1 downto 0);
 
-    signal s_tmp_adder_bias_output    : bias_array_t(layer_output_size - 1 downto 0);
-    signal s_tmp_adder_bias_hidden    : bias_array_t(layer_hidden_size - 1 downto 0);
-
     signal s_weight_output  : weight_array2_output2hidden_t;
     signal s_weight_output_2 : weight_array2_output2hidden_t;
+
+    signal s_error_output             : error_array_t(layer_output_size - 1 downto 0);
+    signal s_tmp_error_output         : error_array_t(layer_output_size - 1 downto 0);
+
+    signal s_error_hidden             : error_array_t(layer_hidden_size - 1 downto 0);
+
+    signal s_dadz_output              : dadz_array_t(layer_output_size - 1 downto 0);
+    signal s_dadz_hidden              : dadz_array_t(layer_hidden_size - 1 downto 0);
+    signal s_tmp_dadz_hidden          : dadz_array_t(layer_hidden_size - 1 downto 0);
+
+    signal s_delta_weight_output      : weight_array2_hidden2output_t;
+    signal s_delta_weight_hidden      : weight_array2_input2hidden_t;
+
+    signal s_delta_bias_output    : bias_array_t(layer_output_size - 1 downto 0);
+    signal s_delta_bias_output_2    : bias_array_t(layer_output_size - 1 downto 0);
+    signal s_delta_bias_hidden    : bias_array_t(layer_hidden_size - 1 downto 0);
+
+    -- -- For simulation
+    -- signal real_error_output        : bias_init_array_t(layer_output_size - 1 downto 0);
+    -- signal real_error_hidden        : bias_init_array_t(layer_hidden_size - 1 downto 0);
+    -- signal real_dadz_output         : bias_init_array_t(layer_output_size - 1 downto 0);
+    -- signal real_delta_bias_output   : bias_init_array_t(layer_output_size - 1 downto 0);
+    -- signal real_delta_bias_hidden   : bias_init_array_t(layer_hidden_size - 1 downto 0);
+    -- signal real_dadz_hidden         : bias_init_array_t(layer_hidden_size - 1 downto 0);
+    -- signal real_delta_weight_output : weight_init_hidden2output_array_t;
+    -- signal real_delta_weight_hidden : weight_init_input2hidden_array_t;
 begin
+    -- -- For simulation
+    -- mult_real_w_hidden: for i in 0 to layer_hidden_size - 1 generate
+        -- for_j: for j in 0 to layer_input_size - 1 generate
+            -- real_delta_weight_hidden(i)(j) <= 1024.0 * to_real(s_delta_weight_hidden(i)(j));
+        -- end generate for_j;
+    -- end generate mult_real_w_hidden;
+
+    -- mult_real_w_output: for i in 0 to layer_output_size - 1 generate
+        -- for_j: for j in 0 to layer_hidden_size - 1 generate
+            -- real_delta_weight_output(i)(j) <= 1024.0 * to_real(s_delta_weight_output(i)(j));
+        -- end generate for_j;
+    -- end generate mult_real_w_output;
+
+    -- mult_real_hidden: for i in 0 to layer_hidden_size - 1 generate
+        -- real_error_hidden(i) <= 1024.0 * to_real(s_error_hidden(i));
+        -- real_dadz_hidden(i) <= 1024.0 * to_real(s_dadz_hidden(i));
+        -- real_delta_bias_hidden(i) <= 1024.0 * to_real(s_error_hidden(i));
+    -- end generate mult_real_hidden;
+
+    -- mult_real_output: for i in 0 to layer_output_size - 1 generate
+        -- real_error_output(i) <= 1024.0 * to_real(s_error_output(i));
+        -- real_dadz_output(i) <= 1024.0 * to_real(s_dadz_output(i));
+        -- real_delta_bias_output(i) <= 1024.0 * to_real(s_error_output(i));
+    -- end generate  mult_real_output;
+
 
    -- Calculate dadz, error, delta_bias
    calc_layer_output: for i in 0 to layer_output_size - 1 generate
@@ -162,7 +196,7 @@ begin
               clk             => clk,
               reset           => reset ,
               i_error         => s_error_output(i),
-              o_delta_bias    => s_tmp_adder_bias_output(i)
+              o_delta_bias    => s_delta_bias_output(i)
            );
    end generate;
 
@@ -197,7 +231,7 @@ begin
               clk             => clk,
               reset           => reset ,
               i_error         => s_error_hidden(i),
-              o_delta_bias    => s_tmp_adder_bias_hidden(i)
+              o_delta_bias    => s_delta_bias_hidden(i)
            );
    end generate;
 
@@ -242,8 +276,7 @@ begin
                    s_tmp3_activation_hidden    <= (others => (others => '0'));
 
                    s_tmp_error_output          <= (others => (others => '0'));
-
-                   --s_tmp2_error_output         <= (others => (others => '0'));
+                   s_delta_bias_output_2       <= (others => (others => '0'));
 
                    s_tmp_input                 <= (others => (others => '0'));
                    s_tmp2_input                <= (others => (others => '0'));
@@ -260,8 +293,7 @@ begin
                s_tmp3_activation_hidden    <= s_tmp2_activation_hidden;
 
                s_tmp_error_output          <= s_error_output;
-
-               --s_tmp2_error_output         <= s_tmp_error_output;
+               s_delta_bias_output_2       <= s_delta_bias_output;
 
                s_tmp_input                 <= i_input;
                s_tmp2_input                <= s_tmp_input;
@@ -299,7 +331,7 @@ begin
            port map (
               clk                     => clk,
               reset                   => reset ,
-              i_delta_bias            => s_tmp_adder_bias_output(i),
+              i_delta_bias            => s_delta_bias_output_2(i),
               o_bias_cumulation       => o_adder_bias_output(i)
            );
    end generate calc_db_adder_output;
@@ -309,7 +341,7 @@ begin
            port map (
               clk                     => clk,
               reset                   => reset ,
-              i_delta_bias            => s_tmp_adder_bias_hidden(i),
+              i_delta_bias            => s_delta_bias_hidden(i),
               o_bias_cumulation       => o_adder_bias_hidden(i)
            );
   end generate calc_db_adder_hidden;
