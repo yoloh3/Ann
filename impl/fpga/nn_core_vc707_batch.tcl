@@ -22,7 +22,7 @@ read_vhdl -library ieee $vivado_dir/scripts/rt/data/fixed_pkg_2008.vhd
 read_vhdl $src_dir/rtl_pkg.vhd
 read_vhdl $src_dir/weight.vhd
 read_vhdl $src_dir/bias.vhd
-read_vhdl $src_dir/weighted_input.vhd
+read_vhdl -vhdl2008 $src_dir/weighted_input.vhd
 read_vhdl $src_dir/activation_funct.vhd
 read_vhdl $src_dir/derivative_activation.vhd
 read_vhdl $src_dir/error_ouput.vhd

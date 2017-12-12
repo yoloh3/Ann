@@ -65,6 +65,8 @@ architecture rtl of weighted_input is
 
     --add more 1 bit of sum
     signal tmp_sum        : sfixed(bias_int_w downto -bias_fract_w);
+    signal overflow       : std_logic;
+    signal carry          : std_logic;
     signal saturation     : std_logic;
 
     constant max_output     : weighted_input_float_t := '1' &
@@ -95,9 +97,9 @@ begin
             end if;
         end if;
     end process;
-
-    saturation <= (not(and(tmp_sum(bias_int_w downto weighted_input_int_w - 1)))) and
-                  (or(tmp_sum(bias_int_w downto weighted_input_int_w - 1)));
+    overflow   <= and(std_logic_vector(tmp_sum(bias_int_w downto weighted_input_int_w - 1)));
+    carry      <= or(std_logic_vector(tmp_sum(bias_int_w downto weighted_input_int_w - 1)));
+    saturation <= (not overflow) and carry;
 
     o_weighted_input <= tmp_sum(weighted_input_int_w - 1 downto
                         -weighted_input_fract_w) when saturation = '0' else

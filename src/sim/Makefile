@@ -11,7 +11,9 @@ COMPILE  := vcom
 SIMULATE := vsim
 CHECK_COMMAND   := "log -r /*; run 1000 ns; exit;"
 SIM_COMMAND     := "add wave -radix decima dut/*; add wave -radix decima -group tb *; config wave -signalnamewidth 1; log -r /*; run 1000 ns;"
-TOP_SIM_COMMAND := "add wave s_clk s_areset; add wave -radix decima -group forward dut/dut_fw/*; add wave -radix decima -group backward dut/dut_bw/*; add wave -radix decima -group dut dut/*; add wave -radix decima -group tb *; config wave -signalnamewidth 1; log -r /*; run -all; exit;"
+TOP_SIM_COMMAND := "log -r /*; run -all; exit;"
+
+VSIM_OPTS=-c -t 1ps -wlf vhdl.wlf
 
 vpath %.vhd ../rtl ../tb
 
@@ -25,7 +27,7 @@ sim: $(TARGET)
 	@$(SIMULATE) $(TARGET) -do $(SIM_COMMAND)
 
 sim_top: $(TARGET)
-	@$(SIMULATE) -c -t 1ps -wlf vhdl.wlf $(TARGET) -do $(TOP_SIM_COMMAND)
+	@$(SIMULATE) $(VSIM_OPTS) $(TARGET) -do $(TOP_SIM_COMMAND)
 
 init:
 	vlib work
@@ -34,7 +36,7 @@ top_ann_tb: forward_tb backward_tb
 	@$(COMPILE) ../rtl/top_ann.vhd
 	@$(COMPILE) ../tb/top_ann_tb.vhd
 
-	
+
 forward_tb: forward_module
 	@$(COMPILE) ../rtl/forward.vhd
 	@$(COMPILE) ../tb/tb_pkg.vhd
@@ -49,7 +51,7 @@ forward_module: init
 	@$(COMPILE) ../rtl/rtl_pkg.vhd
 	@$(COMPILE) ../rtl/weight.vhd
 	@$(COMPILE) ../rtl/bias.vhd
-	@$(COMPILE) ../rtl/weighted_input.vhd
+	@$(COMPILE) -2008 ../rtl/weighted_input.vhd
 	@$(COMPILE) ../rtl/activation_funct.vhd
 
 backward_module: init
