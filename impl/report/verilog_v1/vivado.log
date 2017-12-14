@@ -1,0 +1,1866 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:07 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Fri Dec  8 08:53:58 2017
+# Process ID: 16182
+# Current directory: /home/hunghh_59d/Ann/src/verilog/fpga
+# Command line: vivado -mode tcl -source nn_core_vc707_batch.tcl
+# Log file: /home/hunghh_59d/Ann/src/verilog/fpga/vivado.log
+# Journal file: /home/hunghh_59d/Ann/src/verilog/fpga/vivado.jou
+#-----------------------------------------------------------
+source nn_core_vc707_batch.tcl
+# set output_dir ./nn_core_vc707
+# file mkdir $output_dir
+# read_verilog [glob ../rtl/*.v]
+# read_xdc ./nn_core_vc707.xdc
+# synth_design -top NN_CORE -part xc7vx485tffg1761-2 -flatten rebuilt
+Command: synth_design -top NN_CORE -part xc7vx485tffg1761-2 -flatten rebuilt
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7vx485t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 16207 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1376.781 ; gain = 90.000 ; free physical = 145 ; free virtual = 12506
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'NN_CORE' [/home/hunghh_59d/Ann/src/verilog/rtl/NN_CORE.v:30]
+INFO: [Synth 8-638] synthesizing module 'gen_din_sel' [/home/hunghh_59d/Ann/src/verilog/rtl/gen_din_sel.v:32]
+INFO: [Synth 8-4471] merging register 'din_tmp_reg' into 'din_reg_reg' [/home/hunghh_59d/Ann/src/verilog/rtl/gen_din_sel.v:54]
+WARNING: [Synth 8-6014] Unused sequential element din_tmp_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/gen_din_sel.v:54]
+INFO: [Synth 8-256] done synthesizing module 'gen_din_sel' (1#1) [/home/hunghh_59d/Ann/src/verilog/rtl/gen_din_sel.v:32]
+INFO: [Synth 8-638] synthesizing module 'forward' [/home/hunghh_59d/Ann/src/verilog/rtl/forward.v:43]
+INFO: [Synth 8-638] synthesizing module 'counter' [/home/hunghh_59d/Ann/src/verilog/rtl/counter.v:31]
+	Parameter N bound to: 13 - type: integer 
+	Parameter M bound to: 10000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'counter' (2#1) [/home/hunghh_59d/Ann/src/verilog/rtl/counter.v:31]
+INFO: [Synth 8-638] synthesizing module 'k1' [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:31]
+	Parameter DWIDTH bound to: 16 - type: integer 
+	Parameter AWIDTH bound to: 4 - type: integer 
+	Parameter DWIDTH_TMP bound to: 32 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[0] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[1] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[2] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[3] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[4] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[5] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[6] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[7] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[8] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[9] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[10] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[11] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[12] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[13] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[14] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[15] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element k1_tmp_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:64]
+INFO: [Synth 8-256] done synthesizing module 'k1' (3#1) [/home/hunghh_59d/Ann/src/verilog/rtl/k1.v:31]
+INFO: [Synth 8-638] synthesizing module 'k2' [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:31]
+	Parameter DWIDTH bound to: 16 - type: integer 
+	Parameter AWIDTH bound to: 4 - type: integer 
+	Parameter DWIDTH_TMP bound to: 32 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[0] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[1] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[2] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[3] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[4] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[5] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[6] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[7] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[8] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[9] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[10] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[11] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[12] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[13] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[14] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[15] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element k2_tmp_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:64]
+INFO: [Synth 8-256] done synthesizing module 'k2' (4#1) [/home/hunghh_59d/Ann/src/verilog/rtl/k2.v:31]
+INFO: [Synth 8-638] synthesizing module 't1' [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:31]
+	Parameter DWIDTH bound to: 16 - type: integer 
+	Parameter AWIDTH bound to: 4 - type: integer 
+	Parameter DWIDTH_TMP bound to: 32 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[0] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[1] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[2] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[3] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[4] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[5] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[6] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[7] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[8] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[9] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[10] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[11] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[12] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[13] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[14] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[15] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:46]
+WARNING: [Synth 8-6014] Unused sequential element t1_tmp_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:64]
+INFO: [Synth 8-256] done synthesizing module 't1' (5#1) [/home/hunghh_59d/Ann/src/verilog/rtl/t1.v:31]
+INFO: [Synth 8-638] synthesizing module 't2' [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:31]
+	Parameter DWIDTH bound to: 16 - type: integer 
+	Parameter AWIDTH bound to: 4 - type: integer 
+	Parameter DWIDTH_TMP bound to: 32 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[0] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[1] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[2] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[3] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[4] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[5] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[6] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[7] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[8] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[9] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[10] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[11] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[12] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[13] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[14] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element mem_reg[15] was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:46]
+WARNING: [Synth 8-6014] Unused sequential element t2_tmp_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:64]
+INFO: [Synth 8-256] done synthesizing module 't2' (6#1) [/home/hunghh_59d/Ann/src/verilog/rtl/t2.v:31]
+INFO: [Synth 8-638] synthesizing module 'sel_k' [/home/hunghh_59d/Ann/src/verilog/rtl/sel_k.v:29]
+INFO: [Synth 8-256] done synthesizing module 'sel_k' (7#1) [/home/hunghh_59d/Ann/src/verilog/rtl/sel_k.v:29]
+INFO: [Synth 8-638] synthesizing module 'selector' [/home/hunghh_59d/Ann/src/verilog/rtl/selector.v:31]
+	Parameter N bound to: 13 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'selector' (8#1) [/home/hunghh_59d/Ann/src/verilog/rtl/selector.v:31]
+INFO: [Synth 8-638] synthesizing module 'b2_1' [/home/hunghh_59d/Ann/src/verilog/rtl/b2_1.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b2_1.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b2_1.v:49]
+INFO: [Synth 8-256] done synthesizing module 'b2_1' (9#1) [/home/hunghh_59d/Ann/src/verilog/rtl/b2_1.v:32]
+INFO: [Synth 8-638] synthesizing module 'b2_2' [/home/hunghh_59d/Ann/src/verilog/rtl/b2_2.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b2_2.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b2_2.v:49]
+INFO: [Synth 8-256] done synthesizing module 'b2_2' (10#1) [/home/hunghh_59d/Ann/src/verilog/rtl/b2_2.v:32]
+INFO: [Synth 8-638] synthesizing module 'b2_3' [/home/hunghh_59d/Ann/src/verilog/rtl/b2_3.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b2_3.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b2_3.v:49]
+INFO: [Synth 8-256] done synthesizing module 'b2_3' (11#1) [/home/hunghh_59d/Ann/src/verilog/rtl/b2_3.v:32]
+INFO: [Synth 8-638] synthesizing module 'w2_11' [/home/hunghh_59d/Ann/src/verilog/rtl/w2_11.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_11.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_11.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w2_11' (12#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w2_11.v:32]
+INFO: [Synth 8-638] synthesizing module 'w2_12' [/home/hunghh_59d/Ann/src/verilog/rtl/w2_12.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_12.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_12.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w2_12' (13#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w2_12.v:32]
+INFO: [Synth 8-638] synthesizing module 'w2_13' [/home/hunghh_59d/Ann/src/verilog/rtl/w2_13.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_13.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_13.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w2_13' (14#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w2_13.v:32]
+INFO: [Synth 8-638] synthesizing module 'w2_21' [/home/hunghh_59d/Ann/src/verilog/rtl/w2_21.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_21.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_21.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w2_21' (15#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w2_21.v:32]
+INFO: [Synth 8-638] synthesizing module 'w2_22' [/home/hunghh_59d/Ann/src/verilog/rtl/w2_22.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_22.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_22.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w2_22' (16#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w2_22.v:32]
+INFO: [Synth 8-638] synthesizing module 'w2_23' [/home/hunghh_59d/Ann/src/verilog/rtl/w2_23.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_23.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w2_23.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w2_23' (17#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w2_23.v:32]
+INFO: [Synth 8-638] synthesizing module 'b3_1' [/home/hunghh_59d/Ann/src/verilog/rtl/b3_1.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b3_1.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b3_1.v:49]
+INFO: [Synth 8-256] done synthesizing module 'b3_1' (18#1) [/home/hunghh_59d/Ann/src/verilog/rtl/b3_1.v:32]
+INFO: [Synth 8-638] synthesizing module 'b3_2' [/home/hunghh_59d/Ann/src/verilog/rtl/b3_2.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b3_2.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/b3_2.v:49]
+INFO: [Synth 8-256] done synthesizing module 'b3_2' (19#1) [/home/hunghh_59d/Ann/src/verilog/rtl/b3_2.v:32]
+INFO: [Synth 8-638] synthesizing module 'w3_11' [/home/hunghh_59d/Ann/src/verilog/rtl/w3_11.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_11.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_11.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w3_11' (20#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w3_11.v:32]
+INFO: [Synth 8-638] synthesizing module 'w3_12' [/home/hunghh_59d/Ann/src/verilog/rtl/w3_12.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_12.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_12.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w3_12' (21#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w3_12.v:32]
+INFO: [Synth 8-638] synthesizing module 'w3_21' [/home/hunghh_59d/Ann/src/verilog/rtl/w3_21.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_21.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_21.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w3_21' (22#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w3_21.v:32]
+INFO: [Synth 8-638] synthesizing module 'w3_22' [/home/hunghh_59d/Ann/src/verilog/rtl/w3_22.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_22.v:48]
+WARNING: [Synth 8-6014] Unused sequential element net2_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_22.v:49]
+INFO: [Synth 8-256] done synthesizing module 'w3_22' (23#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w3_22.v:32]
+INFO: [Synth 8-638] synthesizing module 'w3_31' [/home/hunghh_59d/Ann/src/verilog/rtl/w3_31.v:32]
+WARNING: [Synth 8-6014] Unused sequential element net1_reg was removed.  [/home/hunghh_59d/Ann/src/verilog/rtl/w3_31.v:48]
+INFO: [Common 17-14] Message 'Synth 8-6014' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-256] done synthesizing module 'w3_31' (24#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w3_31.v:32]
+INFO: [Synth 8-638] synthesizing module 'w3_32' [/home/hunghh_59d/Ann/src/verilog/rtl/w3_32.v:32]
+INFO: [Synth 8-256] done synthesizing module 'w3_32' (25#1) [/home/hunghh_59d/Ann/src/verilog/rtl/w3_32.v:32]
+INFO: [Synth 8-638] synthesizing module 'z2' [/home/hunghh_59d/Ann/src/verilog/rtl/z2.v:34]
+INFO: [Synth 8-256] done synthesizing module 'z2' (26#1) [/home/hunghh_59d/Ann/src/verilog/rtl/z2.v:34]
+INFO: [Synth 8-638] synthesizing module 'mem' [/home/hunghh_59d/Ann/src/verilog/rtl/mem.v:31]
+	Parameter DWIDTH bound to: 16 - type: integer 
+	Parameter AWIDTH bound to: 8 - type: integer 
+	Parameter DWIDTH_TMP bound to: 32 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'mem' (27#1) [/home/hunghh_59d/Ann/src/verilog/rtl/mem.v:31]
+INFO: [Synth 8-638] synthesizing module 'z3' [/home/hunghh_59d/Ann/src/verilog/rtl/z3.v:33]
+INFO: [Synth 8-256] done synthesizing module 'z3' (28#1) [/home/hunghh_59d/Ann/src/verilog/rtl/z3.v:33]
+INFO: [Synth 8-256] done synthesizing module 'forward' (29#1) [/home/hunghh_59d/Ann/src/verilog/rtl/forward.v:43]
+INFO: [Synth 8-638] synthesizing module 'delay1' [/home/hunghh_59d/Ann/src/verilog/rtl/delay1.v:30]
+INFO: [Synth 8-256] done synthesizing module 'delay1' (30#1) [/home/hunghh_59d/Ann/src/verilog/rtl/delay1.v:30]
+INFO: [Synth 8-638] synthesizing module 'backward' [/home/hunghh_59d/Ann/src/verilog/rtl/backward.v:33]
+INFO: [Synth 8-638] synthesizing module 'dadz' [/home/hunghh_59d/Ann/src/verilog/rtl/dadz.v:34]
+INFO: [Synth 8-256] done synthesizing module 'dadz' (31#1) [/home/hunghh_59d/Ann/src/verilog/rtl/dadz.v:34]
+INFO: [Synth 8-638] synthesizing module 'delta3' [/home/hunghh_59d/Ann/src/verilog/rtl/delta3.v:33]
+INFO: [Synth 8-256] done synthesizing module 'delta3' (32#1) [/home/hunghh_59d/Ann/src/verilog/rtl/delta3.v:33]
+INFO: [Synth 8-638] synthesizing module 'delta2' [/home/hunghh_59d/Ann/src/verilog/rtl/delta2.v:32]
+INFO: [Synth 8-256] done synthesizing module 'delta2' (33#1) [/home/hunghh_59d/Ann/src/verilog/rtl/delta2.v:32]
+INFO: [Synth 8-638] synthesizing module 'dw' [/home/hunghh_59d/Ann/src/verilog/rtl/dw.v:31]
+INFO: [Synth 8-256] done synthesizing module 'dw' (34#1) [/home/hunghh_59d/Ann/src/verilog/rtl/dw.v:31]
+INFO: [Synth 8-638] synthesizing module 'dw_adder' [/home/hunghh_59d/Ann/src/verilog/rtl/dw_adder.v:30]
+INFO: [Synth 8-256] done synthesizing module 'dw_adder' (35#1) [/home/hunghh_59d/Ann/src/verilog/rtl/dw_adder.v:30]
+INFO: [Synth 8-638] synthesizing module 'db_adder' [/home/hunghh_59d/Ann/src/verilog/rtl/db_adder.v:30]
+INFO: [Synth 8-256] done synthesizing module 'db_adder' (36#1) [/home/hunghh_59d/Ann/src/verilog/rtl/db_adder.v:30]
+INFO: [Synth 8-256] done synthesizing module 'backward' (37#1) [/home/hunghh_59d/Ann/src/verilog/rtl/backward.v:33]
+INFO: [Synth 8-256] done synthesizing module 'NN_CORE' (38#1) [/home/hunghh_59d/Ann/src/verilog/rtl/NN_CORE.v:30]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1418.320 ; gain = 131.539 ; free physical = 188 ; free virtual = 12518
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1418.320 ; gain = 131.539 ; free physical = 190 ; free virtual = 12519
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7vx485tffg1761-2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc:4]
+Finished Parsing XDC File [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1938.098 ; gain = 0.000 ; free physical = 136 ; free virtual = 12126
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:34 ; elapsed = 00:01:26 . Memory (MB): peak = 1938.098 ; gain = 651.316 ; free physical = 193 ; free virtual = 12213
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7vx485tffg1761-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:34 ; elapsed = 00:01:26 . Memory (MB): peak = 1938.098 ; gain = 651.316 ; free physical = 193 ; free virtual = 12213
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:01:26 . Memory (MB): peak = 1938.098 ; gain = 651.316 ; free physical = 193 ; free virtual = 12214
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5544] ROM "Nupdate" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "finish_updating" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:35 ; elapsed = 00:01:26 . Memory (MB): peak = 1938.098 ; gain = 651.316 ; free physical = 197 ; free virtual = 12207
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 5     
+	   3 Input     32 Bit       Adders := 2     
+	   4 Input     32 Bit       Adders := 17    
+	   2 Input     16 Bit       Adders := 18    
+	   3 Input     16 Bit       Adders := 3     
+	   4 Input     16 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               48 Bit    Registers := 3     
+	               32 Bit    Registers := 24    
+	               16 Bit    Registers := 137   
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Multipliers : 
+	                16x48  Multipliers := 3     
+	                16x32  Multipliers := 7     
+	                 8x32  Multipliers := 17    
++---Muxes : 
+	  16 Input     28 Bit        Muxes := 2     
+	  16 Input     25 Bit        Muxes := 2     
+	   2 Input     16 Bit        Muxes := 25    
+	   3 Input     16 Bit        Muxes := 12    
+	   2 Input     11 Bit        Muxes := 5     
+	   2 Input      8 Bit        Muxes := 1     
+	   3 Input      8 Bit        Muxes := 5     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module gen_din_sel 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
+Module counter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   3 Input      1 Bit        Muxes := 1     
+Module k1 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input     28 Bit        Muxes := 1     
+Module k2 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input     28 Bit        Muxes := 1     
+Module t1 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input     25 Bit        Muxes := 1     
+Module t2 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input     25 Bit        Muxes := 1     
+Module sel_k 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 1     
+Module selector 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+Module b2_1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input     11 Bit        Muxes := 1     
+Module b2_2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input     11 Bit        Muxes := 1     
+Module b2_3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input     11 Bit        Muxes := 1     
+Module w2_11 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w2_12 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w2_13 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w2_21 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w2_22 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w2_23 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module b3_1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input     11 Bit        Muxes := 1     
+Module b3_2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   2 Input     11 Bit        Muxes := 1     
+Module w3_11 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w3_12 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w3_21 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w3_22 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w3_31 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module w3_32 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     16 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+Module z2 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input      8 Bit        Muxes := 1     
+Module z3 
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
++---Muxes : 
+	   3 Input      8 Bit        Muxes := 1     
+Module delay1 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module dadz 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
++---Multipliers : 
+	                16x32  Multipliers := 1     
+Module delta3 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
++---Multipliers : 
+	                16x32  Multipliers := 1     
+Module delta2 
+Detailed RTL Component Info : 
++---Registers : 
+	               48 Bit    Registers := 1     
++---Multipliers : 
+	                16x48  Multipliers := 1     
+Module dw_adder 
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 3     
++---Multipliers : 
+	                 8x32  Multipliers := 1     
+Module db_adder 
+Detailed RTL Component Info : 
++---Adders : 
+	   4 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               16 Bit    Registers := 3     
++---Multipliers : 
+	                 8x32  Multipliers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 2800 (col length:140)
+BRAMs: 2060 (col length: RAMB18 140 RAMB36 70)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP z2_tmp2, operation Mode is: A*B.
+DSP Report: operator z2_tmp2 is absorbed into DSP z2_tmp2.
+DSP Report: Generating DSP z2_tmp2, operation Mode is: A*B.
+DSP Report: operator z2_tmp2 is absorbed into DSP z2_tmp2.
+DSP Report: Generating DSP z2_tmp2, operation Mode is: A*B.
+DSP Report: operator z2_tmp2 is absorbed into DSP z2_tmp2.
+DSP Report: Generating DSP z2_tmp2, operation Mode is: A*B.
+DSP Report: operator z2_tmp2 is absorbed into DSP z2_tmp2.
+DSP Report: Generating DSP z2_tmp2, operation Mode is: A*B.
+DSP Report: operator z2_tmp2 is absorbed into DSP z2_tmp2.
+DSP Report: Generating DSP z2_tmp2, operation Mode is: A*B.
+DSP Report: operator z2_tmp2 is absorbed into DSP z2_tmp2.
+DSP Report: Generating DSP z3_tmp3, operation Mode is: A*B.
+DSP Report: operator z3_tmp3 is absorbed into DSP z3_tmp3.
+DSP Report: Generating DSP z3_tmp2, operation Mode is: A*B.
+DSP Report: operator z3_tmp2 is absorbed into DSP z3_tmp2.
+DSP Report: Generating DSP z3_tmp3, operation Mode is: A*B.
+DSP Report: operator z3_tmp3 is absorbed into DSP z3_tmp3.
+DSP Report: Generating DSP z3_tmp3, operation Mode is: A*B.
+DSP Report: operator z3_tmp3 is absorbed into DSP z3_tmp3.
+DSP Report: Generating DSP z3_tmp2, operation Mode is: A*B.
+DSP Report: operator z3_tmp2 is absorbed into DSP z3_tmp2.
+DSP Report: Generating DSP z3_tmp3, operation Mode is: A*B.
+DSP Report: operator z3_tmp3 is absorbed into DSP z3_tmp3.
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/verilog/rtl/delta3.v:48]
+DSP Report: Generating DSP tmp_delta3_i0, operation Mode is: A*B.
+DSP Report: operator tmp_delta3_i0 is absorbed into DSP tmp_delta3_i0.
+DSP Report: operator tmp_delta3_i0 is absorbed into DSP tmp_delta3_i0.
+DSP Report: Generating DSP tmp_delta3_i_reg, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register tmp_delta3_i_reg is absorbed into DSP tmp_delta3_i_reg.
+DSP Report: operator tmp_delta3_i0 is absorbed into DSP tmp_delta3_i_reg.
+DSP Report: operator tmp_delta3_i0 is absorbed into DSP tmp_delta3_i_reg.
+DSP Report: Generating DSP tmp_delta3_i0, operation Mode is: A*B.
+DSP Report: operator tmp_delta3_i0 is absorbed into DSP tmp_delta3_i0.
+DSP Report: operator tmp_delta3_i0 is absorbed into DSP tmp_delta3_i0.
+DSP Report: Generating DSP tmp_delta3_i_reg, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register tmp_delta3_i_reg is absorbed into DSP tmp_delta3_i_reg.
+DSP Report: operator tmp_delta3_i0 is absorbed into DSP tmp_delta3_i_reg.
+DSP Report: operator tmp_delta3_i0 is absorbed into DSP tmp_delta3_i_reg.
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/verilog/rtl/dadz.v:47]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 3 [/home/hunghh_59d/Ann/src/verilog/rtl/delta2.v:46]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/verilog/rtl/dadz.v:47]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 3 [/home/hunghh_59d/Ann/src/verilog/rtl/delta2.v:46]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/verilog/rtl/dadz.v:47]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 3 [/home/hunghh_59d/Ann/src/verilog/rtl/delta2.v:46]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/verilog/rtl/dadz.v:47]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/verilog/rtl/dadz.v:47]
+DSP Report: Generating DSP DW3_11/q_reg, operation Mode is: (A2*B'')'.
+DSP Report: register DELAY2_A2_1/out_reg is absorbed into DSP DW3_11/q_reg.
+DSP Report: register DELAY3_A2_1/out_reg is absorbed into DSP DW3_11/q_reg.
+DSP Report: register DELAY_DELTA3_1/out_reg is absorbed into DSP DW3_11/q_reg.
+DSP Report: register DW3_11/q_reg is absorbed into DSP DW3_11/q_reg.
+DSP Report: operator DW3_11/q0 is absorbed into DSP DW3_11/q_reg.
+DSP Report: Generating DSP DW3_12/q_reg, operation Mode is: (A2*BCIN2)'.
+DSP Report: register DELAY_DELTA3_2/out_reg is absorbed into DSP DW3_12/q_reg.
+DSP Report: register DELAY3_A2_1/out_reg is absorbed into DSP DW3_12/q_reg.
+DSP Report: register DW3_12/q_reg is absorbed into DSP DW3_12/q_reg.
+DSP Report: operator DW3_12/q0 is absorbed into DSP DW3_12/q_reg.
+DSP Report: Generating DSP DW3_21/q_reg, operation Mode is: (A2*B'')'.
+DSP Report: register DELAY2_A2_2/out_reg is absorbed into DSP DW3_21/q_reg.
+DSP Report: register DELAY3_A2_2/out_reg is absorbed into DSP DW3_21/q_reg.
+DSP Report: register DELAY_DELTA3_1/out_reg is absorbed into DSP DW3_21/q_reg.
+DSP Report: register DW3_21/q_reg is absorbed into DSP DW3_21/q_reg.
+DSP Report: operator DW3_21/q0 is absorbed into DSP DW3_21/q_reg.
+DSP Report: Generating DSP DW3_22/q_reg, operation Mode is: (A2*BCIN2)'.
+DSP Report: register DELAY_DELTA3_2/out_reg is absorbed into DSP DW3_22/q_reg.
+DSP Report: register DELAY3_A2_2/out_reg is absorbed into DSP DW3_22/q_reg.
+DSP Report: register DW3_22/q_reg is absorbed into DSP DW3_22/q_reg.
+DSP Report: operator DW3_22/q0 is absorbed into DSP DW3_22/q_reg.
+DSP Report: Generating DSP DW3_32/q_reg, operation Mode is: (A2*B'')'.
+DSP Report: register DELAY2_A2_3/out_reg is absorbed into DSP DW3_32/q_reg.
+DSP Report: register DELAY3_A2_3/out_reg is absorbed into DSP DW3_32/q_reg.
+DSP Report: register DELAY_DELTA3_2/out_reg is absorbed into DSP DW3_32/q_reg.
+DSP Report: register DW3_32/q_reg is absorbed into DSP DW3_32/q_reg.
+DSP Report: operator DW3_32/q0 is absorbed into DSP DW3_32/q_reg.
+DSP Report: Generating DSP DW3_31/q_reg, operation Mode is: (A2*BCIN2)'.
+DSP Report: register DELAY3_A2_3/out_reg is absorbed into DSP DW3_31/q_reg.
+DSP Report: register DELAY_DELTA3_1/out_reg is absorbed into DSP DW3_31/q_reg.
+DSP Report: register DW3_31/q_reg is absorbed into DSP DW3_31/q_reg.
+DSP Report: operator DW3_31/q0 is absorbed into DSP DW3_31/q_reg.
+DSP Report: Generating DSP DELTA2_1/tmp_delta2_i2, operation Mode is: A''*B.
+DSP Report: register DELAY_W3_11/out_reg is absorbed into DSP DELTA2_1/tmp_delta2_i2.
+DSP Report: register DELAY2_W3_11/out_reg is absorbed into DSP DELTA2_1/tmp_delta2_i2.
+DSP Report: operator DELTA2_1/tmp_delta2_i2 is absorbed into DSP DELTA2_1/tmp_delta2_i2.
+DSP Report: Generating DSP DELTA2_1/tmp_delta2_i1, operation Mode is: PCIN+A''*B.
+DSP Report: register DELAY_W3_12/out_reg is absorbed into DSP DELTA2_1/tmp_delta2_i1.
+DSP Report: register DELAY2_W3_12/out_reg is absorbed into DSP DELTA2_1/tmp_delta2_i1.
+DSP Report: operator DELTA2_1/tmp_delta2_i1 is absorbed into DSP DELTA2_1/tmp_delta2_i1.
+DSP Report: operator DELTA2_1/tmp_delta2_i2 is absorbed into DSP DELTA2_1/tmp_delta2_i1.
+DSP Report: Generating DSP DADZ2_1/tmp_dadz0, operation Mode is: A*B.
+DSP Report: operator DADZ2_1/tmp_dadz0 is absorbed into DSP DADZ2_1/tmp_dadz0.
+DSP Report: operator DADZ2_1/tmp_dadz0 is absorbed into DSP DADZ2_1/tmp_dadz0.
+DSP Report: Generating DSP DADZ2_1/tmp_dadz_reg, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register DADZ2_1/tmp_dadz_reg is absorbed into DSP DADZ2_1/tmp_dadz_reg.
+DSP Report: operator DADZ2_1/tmp_dadz0 is absorbed into DSP DADZ2_1/tmp_dadz_reg.
+DSP Report: operator DADZ2_1/tmp_dadz0 is absorbed into DSP DADZ2_1/tmp_dadz_reg.
+DSP Report: Generating DSP DELTA2_1/tmp_delta2_i_reg, operation Mode is: (A2*B)'.
+DSP Report: register DELAY_DADZ2_1/out_reg is absorbed into DSP DELTA2_1/tmp_delta2_i_reg.
+DSP Report: register DELTA2_1/tmp_delta2_i_reg is absorbed into DSP DELTA2_1/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_1/tmp_delta2_i0 is absorbed into DSP DELTA2_1/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_1/tmp_delta2_i0 is absorbed into DSP DELTA2_1/tmp_delta2_i_reg.
+DSP Report: Generating DSP DELTA2_1/tmp_delta2_i0, operation Mode is: A*B2.
+DSP Report: register DELAY_DADZ2_1/out_reg is absorbed into DSP DELTA2_1/tmp_delta2_i0.
+DSP Report: operator DELTA2_1/tmp_delta2_i0 is absorbed into DSP DELTA2_1/tmp_delta2_i0.
+DSP Report: operator DELTA2_1/tmp_delta2_i0 is absorbed into DSP DELTA2_1/tmp_delta2_i0.
+DSP Report: Generating DSP DELTA2_1/tmp_delta2_i_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register DELAY_DADZ2_1/out_reg is absorbed into DSP DELTA2_1/tmp_delta2_i_reg.
+DSP Report: register DELTA2_1/tmp_delta2_i_reg is absorbed into DSP DELTA2_1/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_1/tmp_delta2_i0 is absorbed into DSP DELTA2_1/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_1/tmp_delta2_i0 is absorbed into DSP DELTA2_1/tmp_delta2_i_reg.
+DSP Report: Generating DSP DW2_11/q_reg, operation Mode is: (A*B'')'.
+DSP Report: register DELAY2_K_1/out_reg is absorbed into DSP DW2_11/q_reg.
+DSP Report: register DELAY3_K_1/out_reg is absorbed into DSP DW2_11/q_reg.
+DSP Report: register DW2_11/q_reg is absorbed into DSP DW2_11/q_reg.
+DSP Report: operator DW2_11/q0 is absorbed into DSP DW2_11/q_reg.
+DSP Report: Generating DSP DELTA2_2/tmp_delta2_i2, operation Mode is: A''*B.
+DSP Report: register DELAY_W3_21/out_reg is absorbed into DSP DELTA2_2/tmp_delta2_i2.
+DSP Report: register DELAY2_W3_21/out_reg is absorbed into DSP DELTA2_2/tmp_delta2_i2.
+DSP Report: operator DELTA2_2/tmp_delta2_i2 is absorbed into DSP DELTA2_2/tmp_delta2_i2.
+DSP Report: Generating DSP DELTA2_2/tmp_delta2_i1, operation Mode is: PCIN+A''*B.
+DSP Report: register DELAY_W3_22/out_reg is absorbed into DSP DELTA2_2/tmp_delta2_i1.
+DSP Report: register DELAY2_W3_22/out_reg is absorbed into DSP DELTA2_2/tmp_delta2_i1.
+DSP Report: operator DELTA2_2/tmp_delta2_i1 is absorbed into DSP DELTA2_2/tmp_delta2_i1.
+DSP Report: operator DELTA2_2/tmp_delta2_i2 is absorbed into DSP DELTA2_2/tmp_delta2_i1.
+DSP Report: Generating DSP DADZ2_2/tmp_dadz0, operation Mode is: A*B.
+DSP Report: operator DADZ2_2/tmp_dadz0 is absorbed into DSP DADZ2_2/tmp_dadz0.
+DSP Report: operator DADZ2_2/tmp_dadz0 is absorbed into DSP DADZ2_2/tmp_dadz0.
+DSP Report: Generating DSP DADZ2_2/tmp_dadz_reg, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register DADZ2_2/tmp_dadz_reg is absorbed into DSP DADZ2_2/tmp_dadz_reg.
+DSP Report: operator DADZ2_2/tmp_dadz0 is absorbed into DSP DADZ2_2/tmp_dadz_reg.
+DSP Report: operator DADZ2_2/tmp_dadz0 is absorbed into DSP DADZ2_2/tmp_dadz_reg.
+DSP Report: Generating DSP DELTA2_2/tmp_delta2_i_reg, operation Mode is: (A2*B)'.
+DSP Report: register DELAY_DADZ2_2/out_reg is absorbed into DSP DELTA2_2/tmp_delta2_i_reg.
+DSP Report: register DELTA2_2/tmp_delta2_i_reg is absorbed into DSP DELTA2_2/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_2/tmp_delta2_i0 is absorbed into DSP DELTA2_2/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_2/tmp_delta2_i0 is absorbed into DSP DELTA2_2/tmp_delta2_i_reg.
+DSP Report: Generating DSP DELTA2_2/tmp_delta2_i0, operation Mode is: A*B2.
+DSP Report: register DELAY_DADZ2_2/out_reg is absorbed into DSP DELTA2_2/tmp_delta2_i0.
+DSP Report: operator DELTA2_2/tmp_delta2_i0 is absorbed into DSP DELTA2_2/tmp_delta2_i0.
+DSP Report: operator DELTA2_2/tmp_delta2_i0 is absorbed into DSP DELTA2_2/tmp_delta2_i0.
+DSP Report: Generating DSP DELTA2_2/tmp_delta2_i_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register DELAY_DADZ2_2/out_reg is absorbed into DSP DELTA2_2/tmp_delta2_i_reg.
+DSP Report: register DELTA2_2/tmp_delta2_i_reg is absorbed into DSP DELTA2_2/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_2/tmp_delta2_i0 is absorbed into DSP DELTA2_2/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_2/tmp_delta2_i0 is absorbed into DSP DELTA2_2/tmp_delta2_i_reg.
+DSP Report: Generating DSP DW2_12/q_reg, operation Mode is: (A*BCIN2)'.
+DSP Report: register DELAY3_K_1/out_reg is absorbed into DSP DW2_12/q_reg.
+DSP Report: register DW2_12/q_reg is absorbed into DSP DW2_12/q_reg.
+DSP Report: operator DW2_12/q0 is absorbed into DSP DW2_12/q_reg.
+DSP Report: Generating DSP DELTA2_3/tmp_delta2_i2, operation Mode is: A''*B.
+DSP Report: register DELAY_W3_31/out_reg is absorbed into DSP DELTA2_3/tmp_delta2_i2.
+DSP Report: register DELAY2_W3_31/out_reg is absorbed into DSP DELTA2_3/tmp_delta2_i2.
+DSP Report: operator DELTA2_3/tmp_delta2_i2 is absorbed into DSP DELTA2_3/tmp_delta2_i2.
+DSP Report: Generating DSP DELTA2_3/tmp_delta2_i1, operation Mode is: PCIN+A''*B.
+DSP Report: register DELAY_W3_32/out_reg is absorbed into DSP DELTA2_3/tmp_delta2_i1.
+DSP Report: register DELAY2_W3_32/out_reg is absorbed into DSP DELTA2_3/tmp_delta2_i1.
+DSP Report: operator DELTA2_3/tmp_delta2_i1 is absorbed into DSP DELTA2_3/tmp_delta2_i1.
+DSP Report: operator DELTA2_3/tmp_delta2_i2 is absorbed into DSP DELTA2_3/tmp_delta2_i1.
+DSP Report: Generating DSP DADZ2_3/tmp_dadz0, operation Mode is: A*B.
+DSP Report: operator DADZ2_3/tmp_dadz0 is absorbed into DSP DADZ2_3/tmp_dadz0.
+DSP Report: operator DADZ2_3/tmp_dadz0 is absorbed into DSP DADZ2_3/tmp_dadz0.
+DSP Report: Generating DSP DADZ2_3/tmp_dadz_reg, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register DADZ2_3/tmp_dadz_reg is absorbed into DSP DADZ2_3/tmp_dadz_reg.
+DSP Report: operator DADZ2_3/tmp_dadz0 is absorbed into DSP DADZ2_3/tmp_dadz_reg.
+DSP Report: operator DADZ2_3/tmp_dadz0 is absorbed into DSP DADZ2_3/tmp_dadz_reg.
+DSP Report: Generating DSP DELTA2_3/tmp_delta2_i_reg, operation Mode is: (A2*B)'.
+DSP Report: register DELAY_DADZ2_3/out_reg is absorbed into DSP DELTA2_3/tmp_delta2_i_reg.
+DSP Report: register DELTA2_3/tmp_delta2_i_reg is absorbed into DSP DELTA2_3/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_3/tmp_delta2_i0 is absorbed into DSP DELTA2_3/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_3/tmp_delta2_i0 is absorbed into DSP DELTA2_3/tmp_delta2_i_reg.
+DSP Report: Generating DSP DELTA2_3/tmp_delta2_i0, operation Mode is: A*B2.
+DSP Report: register DELAY_DADZ2_3/out_reg is absorbed into DSP DELTA2_3/tmp_delta2_i0.
+DSP Report: operator DELTA2_3/tmp_delta2_i0 is absorbed into DSP DELTA2_3/tmp_delta2_i0.
+DSP Report: operator DELTA2_3/tmp_delta2_i0 is absorbed into DSP DELTA2_3/tmp_delta2_i0.
+DSP Report: Generating DSP DELTA2_3/tmp_delta2_i_reg, operation Mode is: (PCIN>>17)+A*B2.
+DSP Report: register DELAY_DADZ2_3/out_reg is absorbed into DSP DELTA2_3/tmp_delta2_i_reg.
+DSP Report: register DELTA2_3/tmp_delta2_i_reg is absorbed into DSP DELTA2_3/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_3/tmp_delta2_i0 is absorbed into DSP DELTA2_3/tmp_delta2_i_reg.
+DSP Report: operator DELTA2_3/tmp_delta2_i0 is absorbed into DSP DELTA2_3/tmp_delta2_i_reg.
+DSP Report: Generating DSP DW2_13/q_reg, operation Mode is: (A*B'')'.
+DSP Report: register DELAY2_K_1/out_reg is absorbed into DSP DW2_13/q_reg.
+DSP Report: register DELAY3_K_1/out_reg is absorbed into DSP DW2_13/q_reg.
+DSP Report: register DW2_13/q_reg is absorbed into DSP DW2_13/q_reg.
+DSP Report: operator DW2_13/q0 is absorbed into DSP DW2_13/q_reg.
+DSP Report: Generating DSP DW2_21/q_reg, operation Mode is: (A*B'')'.
+DSP Report: register DELAY2_K_2/out_reg is absorbed into DSP DW2_21/q_reg.
+DSP Report: register DELAY3_K_2/out_reg is absorbed into DSP DW2_21/q_reg.
+DSP Report: register DW2_21/q_reg is absorbed into DSP DW2_21/q_reg.
+DSP Report: operator DW2_21/q0 is absorbed into DSP DW2_21/q_reg.
+DSP Report: Generating DSP DW2_22/q_reg, operation Mode is: (A*BCIN2)'.
+DSP Report: register DELAY3_K_2/out_reg is absorbed into DSP DW2_22/q_reg.
+DSP Report: register DW2_22/q_reg is absorbed into DSP DW2_22/q_reg.
+DSP Report: operator DW2_22/q0 is absorbed into DSP DW2_22/q_reg.
+DSP Report: Generating DSP DW2_23/q_reg, operation Mode is: (A*B'')'.
+DSP Report: register DELAY2_K_2/out_reg is absorbed into DSP DW2_23/q_reg.
+DSP Report: register DELAY3_K_2/out_reg is absorbed into DSP DW2_23/q_reg.
+DSP Report: register DW2_23/q_reg is absorbed into DSP DW2_23/q_reg.
+DSP Report: operator DW2_23/q0 is absorbed into DSP DW2_23/q_reg.
+DSP Report: Generating DSP DADZ3_1/tmp_dadz0, operation Mode is: A*B.
+DSP Report: operator DADZ3_1/tmp_dadz0 is absorbed into DSP DADZ3_1/tmp_dadz0.
+DSP Report: operator DADZ3_1/tmp_dadz0 is absorbed into DSP DADZ3_1/tmp_dadz0.
+DSP Report: Generating DSP DADZ3_1/tmp_dadz_reg, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register DADZ3_1/tmp_dadz_reg is absorbed into DSP DADZ3_1/tmp_dadz_reg.
+DSP Report: operator DADZ3_1/tmp_dadz0 is absorbed into DSP DADZ3_1/tmp_dadz_reg.
+DSP Report: operator DADZ3_1/tmp_dadz0 is absorbed into DSP DADZ3_1/tmp_dadz_reg.
+DSP Report: Generating DSP DADZ3_2/tmp_dadz0, operation Mode is: A*B.
+DSP Report: operator DADZ3_2/tmp_dadz0 is absorbed into DSP DADZ3_2/tmp_dadz0.
+DSP Report: operator DADZ3_2/tmp_dadz0 is absorbed into DSP DADZ3_2/tmp_dadz0.
+DSP Report: Generating DSP DADZ3_2/tmp_dadz_reg, operation Mode is: (PCIN>>17)+A*B.
+DSP Report: register DADZ3_2/tmp_dadz_reg is absorbed into DSP DADZ3_2/tmp_dadz_reg.
+DSP Report: operator DADZ3_2/tmp_dadz0 is absorbed into DSP DADZ3_2/tmp_dadz_reg.
+DSP Report: operator DADZ3_2/tmp_dadz0 is absorbed into DSP DADZ3_2/tmp_dadz_reg.
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_127' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[0]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_125' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[1]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_124' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[2]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_123' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[3]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_122' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[4]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_121' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[5]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_120' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[6]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_119' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[7]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_118' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[8]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_117' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[9]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_116' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_115' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[11]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_114' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[12]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_113' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[13]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_112' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[14]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_111' (FD) to 'FORWARD/i_126'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T2/t2_retimed_reg[15]' (FD) to 'FORWARD/T1/t1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_126' (FD) to 'FORWARD/i_94'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[0]' (FD) to 'FORWARD/T1/t1_retimed_reg[1]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_94' (FD) to 'FORWARD/i_93'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[1]' (FD) to 'FORWARD/T1/t1_retimed_reg[2]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_93' (FD) to 'FORWARD/i_92'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[2]' (FD) to 'FORWARD/T1/t1_retimed_reg[3]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_92' (FD) to 'FORWARD/i_91'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[3]' (FD) to 'FORWARD/T1/t1_retimed_reg[4]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_91' (FD) to 'FORWARD/i_90'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[4]' (FD) to 'FORWARD/T1/t1_retimed_reg[5]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_90' (FD) to 'FORWARD/i_89'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[5]' (FD) to 'FORWARD/T1/t1_retimed_reg[6]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_89' (FD) to 'FORWARD/i_88'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[6]' (FD) to 'FORWARD/T1/t1_retimed_reg[7]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_88' (FD) to 'FORWARD/i_87'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[7]' (FD) to 'FORWARD/T1/t1_retimed_reg[8]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_87' (FD) to 'FORWARD/i_86'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[8]' (FD) to 'FORWARD/T1/t1_retimed_reg[9]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_86' (FD) to 'FORWARD/i_85'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[9]' (FD) to 'FORWARD/T1/t1_retimed_reg[11]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_85' (FD) to 'FORWARD/i_84'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_84' (FD) to 'FORWARD/i_83'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[11]' (FD) to 'FORWARD/T1/t1_retimed_reg[12]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_83' (FD) to 'FORWARD/i_82'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[12]' (FD) to 'FORWARD/T1/t1_retimed_reg[13]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_82' (FD) to 'FORWARD/i_81'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[13]' (FD) to 'FORWARD/T1/t1_retimed_reg[14]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_81' (FD) to 'FORWARD/i_80'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[14]' (FD) to 'FORWARD/T1/t1_retimed_reg[15]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_80' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/T1/t1_retimed_reg[15]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_63' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[0]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_62' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[1]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_61' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[2]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_60' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[3]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_59' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[4]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_58' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[5]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_57' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[6]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_56' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[7]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_55' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[8]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_54' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[9]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_53' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[10]' (FD) to 'FORWARD/K2/k2_retimed_reg[12]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_52' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[11]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_51' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_50' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_49' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[14]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_48' (FD) to 'FORWARD/i_31'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K2/k2_retimed_reg[15]' (FD) to 'FORWARD/K1/k1_retimed_reg[0]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_31' (FD) to 'FORWARD/i_30'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K1/k1_retimed_reg[0]' (FD) to 'FORWARD/K1/k1_retimed_reg[1]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_30' (FD) to 'FORWARD/i_29'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K1/k1_retimed_reg[1]' (FD) to 'FORWARD/K1/k1_retimed_reg[2]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_29' (FD) to 'FORWARD/i_28'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K1/k1_retimed_reg[2]' (FD) to 'FORWARD/K1/k1_retimed_reg[3]'
+INFO: [Synth 8-3886] merging instance 'FORWARD/i_28' (FD) to 'FORWARD/i_27'
+INFO: [Synth 8-3886] merging instance 'FORWARD/K1/k1_retimed_reg[3]' (FD) to 'FORWARD/K1/k1_retimed_reg[4]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (FORWARD/\K1/k1_retimed_reg[15] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\GEN_DIN_SEL/din_reg_reg )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (mem:/\dout_retimed_reg[15] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (FORWARD/i_16)
+WARNING: [Synth 8-3332] Sequential element (z2_tmp_reg[5]) is unused and will be removed from module z2.
+WARNING: [Synth 8-3332] Sequential element (z2_tmp_reg[4]) is unused and will be removed from module z2.
+WARNING: [Synth 8-3332] Sequential element (z2_tmp_reg[3]) is unused and will be removed from module z2.
+WARNING: [Synth 8-3332] Sequential element (z2_tmp_reg[2]) is unused and will be removed from module z2.
+WARNING: [Synth 8-3332] Sequential element (z2_tmp_reg[1]) is unused and will be removed from module z2.
+WARNING: [Synth 8-3332] Sequential element (z2_tmp_reg[0]) is unused and will be removed from module z2.
+WARNING: [Synth 8-3332] Sequential element (dout_retimed_reg[15]) is unused and will be removed from module mem.
+WARNING: [Synth 8-3332] Sequential element (z3_tmp_reg[5]) is unused and will be removed from module z3.
+WARNING: [Synth 8-3332] Sequential element (z3_tmp_reg[4]) is unused and will be removed from module z3.
+WARNING: [Synth 8-3332] Sequential element (z3_tmp_reg[3]) is unused and will be removed from module z3.
+WARNING: [Synth 8-3332] Sequential element (z3_tmp_reg[2]) is unused and will be removed from module z3.
+WARNING: [Synth 8-3332] Sequential element (z3_tmp_reg[1]) is unused and will be removed from module z3.
+WARNING: [Synth 8-3332] Sequential element (z3_tmp_reg[0]) is unused and will be removed from module z3.
+WARNING: [Synth 8-3332] Sequential element (i_16) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (K1/k1_retimed_reg[15]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[47]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[46]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[45]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[44]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[43]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[42]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[41]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[40]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[39]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[38]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[37]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[36]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[35]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[34]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[33]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[32]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[31]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[30]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[29]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[28]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[27]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[26]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[25]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[24]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[23]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[22]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[21]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[20]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[19]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[18]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[17]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[9]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[8]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[7]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[6]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[5]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[4]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[3]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[2]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[1]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_delta3_i_reg[0]) is unused and will be removed from module delta3.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[31]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[30]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[29]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[28]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[27]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[26]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[9]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[8]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[7]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[6]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[5]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[4]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[3]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[2]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[1]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdw3_reg[0]) is unused and will be removed from module dw_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[31]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[30]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[29]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[28]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[27]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[26]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[9]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[8]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[7]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[6]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[5]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[4]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[3]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[2]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[1]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (tmp_dcdb_reg[0]) is unused and will be removed from module db_adder.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[15]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[14]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[13]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[12]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[11]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[9]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[8]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[7]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[6]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[5]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[4]) is unused and will be removed from module backward.
+WARNING: [Synth 8-3332] Sequential element (DELAY_T_1/out_reg[3]) is unused and will be removed from module backward.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (FORWARD/A2_3/dout_reg__0i_16)
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (FORWARD/A2_2/dout_reg__0i_16)
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (FORWARD/A2_1/dout_reg__0i_16)
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (FORWARD/A3_2/dout_reg__0i_16)
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (FORWARD/A3_1/dout_reg__0i_16)
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:01:34 . Memory (MB): peak = 1938.098 ; gain = 651.316 ; free physical = 189 ; free virtual = 12174
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|mem         | p_0_out    | 256x32        | LUT            | 
++------------+------------+---------------+----------------+
+
+
+DSP: Preliminary Mapping  Report (see note below)
++------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping     | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|z2          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z2          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z2          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z2          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z2          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z2          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z3          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z3          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z3          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z3          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z3          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|z3          | A*B             | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|delta3      | A*B             | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|delta3      | (PCIN>>17)+A*B  | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|delta3      | A*B             | 18     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|delta3      | (PCIN>>17)+A*B  | 16     | 15     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|backward    | (A2*B'')'       | 16     | 16     | -      | -      | 32     | 1    | 2    | -    | -    | -     | 1    | 0    | 
+|backward    | (A2*BCIN2)'     | 16     | 16     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|backward    | (A2*B'')'       | 16     | 16     | -      | -      | 32     | 1    | 2    | -    | -    | -     | 1    | 0    | 
+|backward    | (A2*BCIN2)'     | 16     | 16     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|backward    | (A2*B'')'       | 16     | 16     | -      | -      | 32     | 1    | 2    | -    | -    | -     | 1    | 0    | 
+|backward    | (A2*BCIN2)'     | 16     | 16     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|backward    | A''*B           | 16     | 16     | -      | -      | 32     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | PCIN+A''*B      | 16     | 16     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | A*B             | 18     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | (PCIN>>17)+A*B  | 17     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|backward    | (A2*B)'         | 16     | 14     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 1    | 0    | 
+|backward    | A*B2            | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|backward    | (PCIN>>17)+A*B2 | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|backward    | (A*B'')'        | 16     | 16     | -      | -      | 32     | 0    | 2    | -    | -    | -     | 1    | 0    | 
+|backward    | A''*B           | 16     | 16     | -      | -      | 32     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | PCIN+A''*B      | 16     | 16     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | A*B             | 18     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | (PCIN>>17)+A*B  | 17     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|backward    | (A2*B)'         | 16     | 14     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 1    | 0    | 
+|backward    | A*B2            | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|backward    | (PCIN>>17)+A*B2 | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|backward    | (A*BCIN2)'      | 16     | 16     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 0    | 
+|backward    | A''*B           | 16     | 16     | -      | -      | 32     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | PCIN+A''*B      | 16     | 16     | -      | -      | 48     | 2    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | A*B             | 18     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | (PCIN>>17)+A*B  | 17     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|backward    | (A2*B)'         | 16     | 14     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 1    | 0    | 
+|backward    | A*B2            | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|backward    | (PCIN>>17)+A*B2 | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 1    | 
+|backward    | (A*B'')'        | 16     | 16     | -      | -      | 32     | 0    | 2    | -    | -    | -     | 1    | 0    | 
+|backward    | (A*B'')'        | 16     | 16     | -      | -      | 32     | 0    | 2    | -    | -    | -     | 1    | 0    | 
+|backward    | (A*BCIN2)'      | 16     | 16     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 0    | 
+|backward    | (A*B'')'        | 16     | 16     | -      | -      | 32     | 0    | 2    | -    | -    | -     | 1    | 0    | 
+|backward    | A*B             | 18     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | (PCIN>>17)+A*B  | 17     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
+|backward    | A*B             | 18     | 17     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|backward    | (PCIN>>17)+A*B  | 17     | 16     | -      | -      | 48     | 0    | 0    | -    | -    | -     | 0    | 1    | 
++------------+-----------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:49 ; elapsed = 00:01:43 . Memory (MB): peak = 1959.078 ; gain = 672.297 ; free physical = 135 ; free virtual = 11976
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:50 ; elapsed = 00:01:45 . Memory (MB): peak = 1975.078 ; gain = 688.297 ; free physical = 127 ; free virtual = 11960
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:53 ; elapsed = 00:01:48 . Memory (MB): peak = 2043.734 ; gain = 756.953 ; free physical = 176 ; free virtual = 11945
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5365] Flop BACKWARD/DELAY_T_1/out_reg[10] is being inverted and renamed to BACKWARD/DELAY_T_1/out_reg[10]_inv.
+INFO: [Synth 8-5365] Flop BACKWARD/DELAY_T_2/out_reg[10] is being inverted and renamed to BACKWARD/DELAY_T_2/out_reg[10]_inv.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:54 ; elapsed = 00:01:48 . Memory (MB): peak = 2043.738 ; gain = 756.957 ; free physical = 169 ; free virtual = 11943
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:54 ; elapsed = 00:01:48 . Memory (MB): peak = 2043.738 ; gain = 756.957 ; free physical = 169 ; free virtual = 11943
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:55 ; elapsed = 00:01:50 . Memory (MB): peak = 2043.738 ; gain = 756.957 ; free physical = 162 ; free virtual = 11940
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:55 ; elapsed = 00:01:50 . Memory (MB): peak = 2043.738 ; gain = 756.957 ; free physical = 162 ; free virtual = 11940
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:55 ; elapsed = 00:01:50 . Memory (MB): peak = 2043.738 ; gain = 756.957 ; free physical = 162 ; free virtual = 11940
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:55 ; elapsed = 00:01:50 . Memory (MB): peak = 2043.738 ; gain = 756.957 ; free physical = 162 ; free virtual = 11940
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+--------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                       | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+--------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|NN_CORE     | BACKWARD/DELAY_T_1/out_reg[10] | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|NN_CORE     | BACKWARD/DELAY_T_2/out_reg[10] | 5      | 1     | YES          | NO                 | YES               | 1      | 0       | 
+|NN_CORE     | BACKWARD/DELAY_K_1/out_reg[15] | 5      | 16    | YES          | NO                 | YES               | 16     | 0       | 
+|NN_CORE     | BACKWARD/DELAY_K_2/out_reg[15] | 5      | 16    | YES          | NO                 | YES               | 16     | 0       | 
++------------+--------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |BUFG       |     1|
+|2     |CARRY4     |   473|
+|3     |DSP48E1    |     8|
+|4     |DSP48E1_1  |     2|
+|5     |DSP48E1_10 |     2|
+|6     |DSP48E1_11 |     5|
+|7     |DSP48E1_12 |     6|
+|8     |DSP48E1_2  |     3|
+|9     |DSP48E1_3  |     3|
+|10    |DSP48E1_4  |     6|
+|11    |DSP48E1_5  |     3|
+|12    |DSP48E1_6  |     8|
+|13    |DSP48E1_7  |     3|
+|14    |DSP48E1_8  |     2|
+|15    |DSP48E1_9  |     2|
+|16    |LUT1       |   364|
+|17    |LUT2       |   528|
+|18    |LUT3       |   924|
+|19    |LUT4       |   519|
+|20    |LUT5       |   322|
+|21    |LUT6       |   432|
+|22    |MUXF7      |    40|
+|23    |MUXF8      |    20|
+|24    |SRL16E     |    34|
+|25    |FDCE       |  1088|
+|26    |FDRE       |   752|
+|27    |FDSE       |     2|
+|28    |IBUF       |    35|
+|29    |OBUF       |    33|
++------+-----------+------+
+
+Report Instance Areas: 
++------+--------------------+------------+------+
+|      |Instance            |Module      |Cells |
++------+--------------------+------------+------+
+|1     |top                 |            |  5620|
+|2     |  BACKWARD          |backward    |  3563|
+|3     |    DADZ2_1         |dadz        |     9|
+|4     |    DADZ2_2         |dadz_22     |     9|
+|5     |    DADZ2_3         |dadz_23     |     9|
+|6     |    DADZ3_1         |dadz_24     |     9|
+|7     |    DADZ3_2         |dadz_25     |     9|
+|8     |    DB_ADDER2_1     |db_adder    |   190|
+|9     |    DB_ADDER2_2     |db_adder_26 |   190|
+|10    |    DB_ADDER2_3     |db_adder_27 |   190|
+|11    |    DB_ADDER3_1     |db_adder_28 |   190|
+|12    |    DB_ADDER3_2     |db_adder_29 |   190|
+|13    |    DELAY2_DELTA3_1 |delay1_30   |    16|
+|14    |    DELAY2_DELTA3_2 |delay1_31   |    16|
+|15    |    DELAY_A2_1      |delay1_32   |    10|
+|16    |    DELAY_A2_2      |delay1_33   |    10|
+|17    |    DELAY_A2_3      |delay1_34   |    10|
+|18    |    DELAY_A3_1      |delay1_35   |    23|
+|19    |    DELAY_A3_2      |delay1_36   |    23|
+|20    |    DELAY_DELTA2_1  |delay1_37   |    16|
+|21    |    DELAY_DELTA2_2  |delay1_38   |    16|
+|22    |    DELAY_DELTA2_3  |delay1_39   |    16|
+|23    |    DELAY_DELTA3_1  |delay1_40   |    16|
+|24    |    DELAY_DELTA3_2  |delay1_41   |    16|
+|25    |    DELAY_K_1       |delay1_42   |    16|
+|26    |    DELAY_K_2       |delay1_43   |    16|
+|27    |    DELAY_T_1       |delay1_44   |     1|
+|28    |    DELAY_T_2       |delay1_45   |     1|
+|29    |    DELTA2_1        |delta2      |     8|
+|30    |    DELTA2_2        |delta2_46   |     8|
+|31    |    DELTA2_3        |delta2_47   |     8|
+|32    |    DELTA3_1        |delta3      |     9|
+|33    |    DELTA3_2        |delta3_48   |     9|
+|34    |    DW2_11          |dw          |     1|
+|35    |    DW2_12          |dw_49       |     1|
+|36    |    DW2_13          |dw_50       |     1|
+|37    |    DW2_21          |dw_51       |     1|
+|38    |    DW2_22          |dw_52       |     1|
+|39    |    DW2_23          |dw_53       |     1|
+|40    |    DW3_11          |dw_54       |     1|
+|41    |    DW3_12          |dw_55       |     1|
+|42    |    DW3_21          |dw_56       |     1|
+|43    |    DW3_22          |dw_57       |     1|
+|44    |    DW3_31          |dw_58       |     1|
+|45    |    DW3_32          |dw_59       |     1|
+|46    |    DW_ADDER2_11    |dw_adder    |   191|
+|47    |    DW_ADDER2_12    |dw_adder_60 |   191|
+|48    |    DW_ADDER2_13    |dw_adder_61 |   191|
+|49    |    DW_ADDER2_21    |dw_adder_62 |   191|
+|50    |    DW_ADDER2_22    |dw_adder_63 |   191|
+|51    |    DW_ADDER2_23    |dw_adder_64 |   191|
+|52    |    DW_ADDER3_11    |dw_adder_65 |   191|
+|53    |    DW_ADDER3_12    |dw_adder_66 |   191|
+|54    |    DW_ADDER3_21    |dw_adder_67 |   191|
+|55    |    DW_ADDER3_22    |dw_adder_68 |   191|
+|56    |    DW_ADDER3_31    |dw_adder_69 |   191|
+|57    |    DW_ADDER3_32    |dw_adder_70 |   191|
+|58    |  DELAY2_A2_1       |delay1      |    23|
+|59    |  DELAY2_A2_2       |delay1_0    |    23|
+|60    |  DELAY2_A2_3       |delay1_1    |    23|
+|61    |  DELAY2_T_1        |delay1_2    |     1|
+|62    |  DELAY3_K_1        |delay1_3    |    16|
+|63    |  DELAY3_K_2        |delay1_4    |    16|
+|64    |  DELAY3_T_1        |delay1_5    |     2|
+|65    |  DELAY3_T_2        |delay1_6    |     1|
+|66    |  DELAY4_K_1        |delay1_7    |    32|
+|67    |  DELAY4_K_2        |delay1_8    |    32|
+|68    |  DELAY4_T_1        |delay1_9    |     3|
+|69    |  DELAY4_T_2        |delay1_10   |     2|
+|70    |  DELAY_A2_1        |delay1_11   |    10|
+|71    |  DELAY_A2_2        |delay1_12   |    10|
+|72    |  DELAY_A2_3        |delay1_13   |    10|
+|73    |  DELAY_T_1         |delay1_14   |     1|
+|74    |  FORWARD           |forward     |  1422|
+|75    |    A2_1            |mem         |    56|
+|76    |    A2_2            |mem_15      |    56|
+|77    |    A2_3            |mem_16      |    56|
+|78    |    A3_1            |mem_17      |    69|
+|79    |    A3_2            |mem_18      |    69|
+|80    |    B2_1            |b2_1        |    42|
+|81    |    B2_2            |b2_2        |    42|
+|82    |    B2_3            |b2_3        |    42|
+|83    |    B3_1            |b3_1        |    42|
+|84    |    B3_2            |b3_2        |    42|
+|85    |    COUNTER         |counter     |    53|
+|86    |    K1              |k1          |     7|
+|87    |    K2              |k2          |     5|
+|88    |    SELECTOR        |selector    |    25|
+|89    |    T1              |t1          |     2|
+|90    |    T2              |t2          |     2|
+|91    |    W2_11           |w2_11       |    40|
+|92    |    W2_12           |w2_12       |    41|
+|93    |    W2_13           |w2_13       |    41|
+|94    |    W2_21           |w2_21       |    41|
+|95    |    W2_22           |w2_22       |    36|
+|96    |    W2_23           |w2_23       |    40|
+|97    |    W3_11           |w3_11       |    41|
+|98    |    W3_12           |w3_12       |    40|
+|99    |    W3_21           |w3_21       |    40|
+|100   |    W3_22           |w3_22       |    36|
+|101   |    W3_31           |w3_31       |    42|
+|102   |    W3_32           |w3_32       |    41|
+|103   |    Z2_1            |z2          |    55|
+|104   |    Z2_2            |z2_19       |    55|
+|105   |    Z2_3            |z2_20       |    81|
+|106   |    Z3_1            |z3          |    71|
+|107   |    Z3_2            |z3_21       |    71|
+|108   |  GEN_DIN_SEL       |gen_din_sel |     4|
++------+--------------------+------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:55 ; elapsed = 00:01:50 . Memory (MB): peak = 2043.738 ; gain = 756.957 ; free physical = 162 ; free virtual = 11940
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 693 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 2043.738 ; gain = 237.180 ; free physical = 226 ; free virtual = 12005
+Synthesis Optimization Complete : Time (s): cpu = 00:00:55 ; elapsed = 00:01:50 . Memory (MB): peak = 2043.742 ; gain = 756.957 ; free physical = 234 ; free virtual = 12012
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 621 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc:4]
+Finished Parsing XDC File [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+215 Infos, 200 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:58 ; elapsed = 00:01:52 . Memory (MB): peak = 2075.754 ; gain = 822.793 ; free physical = 278 ; free virtual = 12023
+# write_checkpoint -force $output_dir/post_synth
+INFO: [Common 17-1381] The checkpoint '/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707/post_synth.dcp' has been generated.
+# opt_design
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2139.789 ; gain = 39.996 ; free physical = 282 ; free virtual = 12028
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 149e5dc54
+
+Time (s): cpu = 00:00:00.61 ; elapsed = 00:00:00.34 . Memory (MB): peak = 2463.234 ; gain = 0.000 ; free physical = 157 ; free virtual = 11694
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 19dfcb72e
+
+Time (s): cpu = 00:00:00.72 ; elapsed = 00:00:00.45 . Memory (MB): peak = 2463.234 ; gain = 0.000 ; free physical = 157 ; free virtual = 11694
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 137eab948
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.89 . Memory (MB): peak = 2463.234 ; gain = 0.000 ; free physical = 158 ; free virtual = 11695
+INFO: [Opt 31-389] Phase Sweep created 20 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 137eab948
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2463.234 ; gain = 0.000 ; free physical = 158 ; free virtual = 11695
+INFO: [Opt 31-389] Phase BUFG optimization created 0 cells and removed 0 cells
+
+Phase 5 Shift Register Optimization
+Phase 5 Shift Register Optimization | Checksum: 137eab948
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2463.234 ; gain = 0.000 ; free physical = 158 ; free virtual = 11695
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2463.234 ; gain = 0.000 ; free physical = 157 ; free virtual = 11694
+Ending Logic Optimization Task | Checksum: 137eab948
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2463.234 ; gain = 0.000 ; free physical = 157 ; free virtual = 11694
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: ddee2454
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2463.238 ; gain = 0.004 ; free physical = 157 ; free virtual = 11694
+INFO: [Common 17-83] Releasing license: Implementation
+16 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:23 . Memory (MB): peak = 2463.238 ; gain = 363.469 ; free physical = 157 ; free virtual = 11694
+# power_opt_design
+Command: power_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Begin power optimizations | Checksum: ddee2454
+INFO: [Pwropt 34-50] Optimizing power for module NN_CORE ...
+INFO: [Pwropt 34-207] Design is in pre-place state. Running in pre-place mode.
+Pre-processing: Time (s): cpu = 00:00:00.19 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2535.238 ; gain = 0.000 ; free physical = 135 ; free virtual = 11646
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+IDT: Time (s): cpu = 00:00:00.70 ; elapsed = 00:00:00.36 . Memory (MB): peak = 2551.246 ; gain = 16.008 ; free physical = 149 ; free virtual = 11623
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=1.589 | TNS=0.000 |
+PSMgr Creation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 2558.277 ; gain = 23.039 ; free physical = 136 ; free virtual = 11616
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+INFO: [Pwropt 34-215] Skipped ODC enables for 0 nets in BRAM flops in bus-based analysis.
+INFO: [Pwropt 34-214] Skipped ODC enables for 0 nets in BRAM address flops in bus-based analysis.
+ODC: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2787.484 ; gain = 236.238 ; free physical = 199 ; free virtual = 11604
+Power optimization passes: Time (s): cpu = 00:00:09 ; elapsed = 00:00:07 . Memory (MB): peak = 2787.484 ; gain = 252.246 ; free physical = 199 ; free virtual = 11604
+
+INFO: [Pwropt 34-77] Creating clock enable groups ...
+INFO: [Pwropt 34-96] Including small groups for filtering based on enable probabilities.
+ Done
+Grouping enables: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 254 ; free virtual = 11670
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-26] Patching clock gating enable signals for design NN_CORE ...
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 0 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+
+Number of Slice Registers augmented: 0 newly gated: 0 Total: 1862
+Number of SRLs augmented: 0  newly gated: 0 Total: 34
+Number of BRAM Ports augmented: 0 newly gated: 0 Total Ports: 0
+Number of Flops added for Enable Generation: 0
+
+Flops dropped: 0/0 RAMS dropped: 0/0 Clusters dropped: 0/0 Enables dropped: 0
+Patching clock gating enables finished successfully.
+Ending PowerOpt Patch Enables Task | Checksum: ddee2454
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 254 ; free virtual = 11670
+INFO: [Pwropt 34-30] Power optimization finished successfully.
+End power optimizations | Checksum: ddee2454
+Power optimization: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 2787.484 ; gain = 324.219 ; free physical = 258 ; free virtual = 11674
+INFO: [Pwropt 34-198] Malloced memory gain at end of power optimization: -7417832 bytes
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: ddee2454
+
+Time (s): cpu = 00:00:00.51 ; elapsed = 00:00:00.31 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 270 ; free virtual = 11686
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 2 BUFG optimization
+Phase 2 BUFG optimization | Checksum: ddee2454
+
+Time (s): cpu = 00:00:00.67 ; elapsed = 00:00:00.47 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 271 ; free virtual = 11687
+INFO: [Opt 31-389] Phase BUFG optimization created 0 cells and removed 0 cells
+
+Phase 3 Remap
+Phase 3 Remap | Checksum: 4fc572fe
+
+Time (s): cpu = 00:00:00.91 ; elapsed = 00:00:00.71 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 271 ; free virtual = 11687
+INFO: [Opt 31-389] Phase Remap created 89 cells and removed 89 cells
+Ending Logic Optimization Task | Checksum: 4fc572fe
+
+Time (s): cpu = 00:00:00.92 ; elapsed = 00:00:00.72 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 271 ; free virtual = 11687
+INFO: [Common 17-83] Releasing license: Implementation
+23 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+power_opt_design completed successfully
+power_opt_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:09 . Memory (MB): peak = 2787.484 ; gain = 324.246 ; free physical = 271 ; free virtual = 11688
+# place_design
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 267 ; free virtual = 11682
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: d180f8d8
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 267 ; free virtual = 11682
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 271 ; free virtual = 11687
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: ab06b077
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 256 ; free virtual = 11662
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: c9721041
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 247 ; free virtual = 11658
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: c9721041
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 247 ; free virtual = 11658
+Phase 1 Placer Initialization | Checksum: c9721041
+
+Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 247 ; free virtual = 11658
+
+Phase 2 Global Placement
+Phase 2 Global Placement | Checksum: a081e3fd
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:13 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 183 ; free virtual = 11590
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: a081e3fd
+
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:13 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 178 ; free virtual = 11590
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 204f0cb4f
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:14 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 167 ; free virtual = 11584
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 1db0eee24
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:14 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 166 ; free virtual = 11583
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 1db0eee24
+
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:14 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 166 ; free virtual = 11583
+
+Phase 3.5 Small Shape Detail Placement
+Phase 3.5 Small Shape Detail Placement | Checksum: 188ef156e
+
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:15 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 156 ; free virtual = 11573
+
+Phase 3.6 Re-assign LUT pins
+Phase 3.6 Re-assign LUT pins | Checksum: 18062f267
+
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:15 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 157 ; free virtual = 11575
+
+Phase 3.7 Pipeline Register Optimization
+Phase 3.7 Pipeline Register Optimization | Checksum: 18062f267
+
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:15 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 157 ; free virtual = 11575
+Phase 3 Detail Placement | Checksum: 18062f267
+
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:15 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 157 ; free virtual = 11575
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 1d6233780
+
+Phase 4.1.1.1 BUFG Insertion
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Place 46-33] Processed net res_IBUF, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-31] BUFG insertion identified 1 candidate nets, 0 success, 1 skipped for placement/routing, 0 skipped for timing, 0 skipped for netlist change reason.
+Phase 4.1.1.1 BUFG Insertion | Checksum: 1d6233780
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:17 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 150 ; free virtual = 11568
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.805. For the most accurate timing information please run report_timing.
+Phase 4.1.1 Post Placement Optimization | Checksum: 15c4b86d3
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:17 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 151 ; free virtual = 11569
+Phase 4.1 Post Commit Optimization | Checksum: 15c4b86d3
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:17 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 151 ; free virtual = 11569
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 15c4b86d3
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:17 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 162 ; free virtual = 11580
+
+Phase 4.3 Placer Reporting
+Phase 4.3 Placer Reporting | Checksum: 15c4b86d3
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:17 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 162 ; free virtual = 11580
+
+Phase 4.4 Final Placement Cleanup
+Phase 4.4 Final Placement Cleanup | Checksum: ed685ab5
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:17 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 162 ; free virtual = 11580
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: ed685ab5
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:17 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 162 ; free virtual = 11580
+Ending Placer Task | Checksum: aad11a57
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:17 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 239 ; free virtual = 11657
+INFO: [Common 17-83] Releasing license: Implementation
+20 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:19 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 239 ; free virtual = 11657
+# phys_opt_design
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.500 ns. Skipping all physical synthesis optimizations.
+INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
+INFO: [Common 17-83] Releasing license: Implementation
+4 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+# write_checkpoint -force $output_dir/post_place
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.66 ; elapsed = 00:00:00.24 . Memory (MB): peak = 2787.484 ; gain = 0.000 ; free physical = 231 ; free virtual = 11657
+INFO: [Common 17-1381] The checkpoint '/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707/post_place.dcp' has been generated.
+# report_timing_summary -file $output_dir/post_place_timing_summary.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+# route_design
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+Checksum: PlaceDB: a184bd95 ConstDB: 0 ShapeSum: 94c5cc2 RouteDB: 0
+
+Phase 1 Build RT Design
+Phase 1 Build RT Design | Checksum: 198f01498
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:21 . Memory (MB): peak = 2927.512 ; gain = 140.027 ; free physical = 204 ; free virtual = 11312
+Post Restoration Checksum: NetGraph: a03c5292 NumContArr: f8b3c206 Constraints: 0 Timing: 0
+
+Phase 2 Router Initialization
+
+Phase 2.1 Create Timer
+Phase 2.1 Create Timer | Checksum: 198f01498
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:21 . Memory (MB): peak = 2927.512 ; gain = 140.027 ; free physical = 198 ; free virtual = 11312
+
+Phase 2.2 Fix Topology Constraints
+Phase 2.2 Fix Topology Constraints | Checksum: 198f01498
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:21 . Memory (MB): peak = 2946.578 ; gain = 159.094 ; free physical = 140 ; free virtual = 11260
+
+Phase 2.3 Pre Route Cleanup
+Phase 2.3 Pre Route Cleanup | Checksum: 198f01498
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:21 . Memory (MB): peak = 2946.578 ; gain = 159.094 ; free physical = 140 ; free virtual = 11260
+ Number of Nodes with overlaps = 0
+
+Phase 2.4 Update Timing
+Phase 2.4 Update Timing | Checksum: 162618e83
+
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:23 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 197 ; free virtual = 11255
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.863  | TNS=0.000  | WHS=-0.167 | THS=-81.354|
+
+Phase 2 Router Initialization | Checksum: 1a90bb6de
+
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:23 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 190 ; free virtual = 11248
+
+Phase 3 Initial Routing
+Phase 3 Initial Routing | Checksum: 1afa8067a
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:24 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 181 ; free virtual = 11239
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 252
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.740  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 22c1529b2
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:24 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 181 ; free virtual = 11239
+Phase 4 Rip-up And Reroute | Checksum: 22c1529b2
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:24 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 181 ; free virtual = 11239
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+Phase 5.1 Delay CleanUp | Checksum: 22c1529b2
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:24 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 181 ; free virtual = 11239
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 22c1529b2
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:24 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 181 ; free virtual = 11239
+Phase 5 Delay and Skew Optimization | Checksum: 22c1529b2
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 181 ; free virtual = 11239
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 1b7a37046
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 180 ; free virtual = 11239
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.753  | TNS=0.000  | WHS=0.071  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 215bdd0a9
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 180 ; free virtual = 11239
+Phase 6 Post Hold Fix | Checksum: 215bdd0a9
+
+Time (s): cpu = 00:00:52 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 180 ; free virtual = 11239
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.207012 %
+  Global Horizontal Routing Utilization  = 0.184848 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 7 Route finalize | Checksum: 1dc833579
+
+Time (s): cpu = 00:00:53 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 177 ; free virtual = 11236
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 1dc833579
+
+Time (s): cpu = 00:00:53 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 176 ; free virtual = 11235
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 19d86c508
+
+Time (s): cpu = 00:00:53 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 176 ; free virtual = 11234
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=0.753  | TNS=0.000  | WHS=0.071  | THS=0.000  |
+
+INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
+Phase 10 Post Router Timing | Checksum: 19d86c508
+
+Time (s): cpu = 00:00:53 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 179 ; free virtual = 11237
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:00:54 ; elapsed = 00:00:25 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 253 ; free virtual = 11312
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+12 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:56 ; elapsed = 00:00:26 . Memory (MB): peak = 2980.289 ; gain = 192.805 ; free physical = 253 ; free virtual = 11312
+# write_checkpoint -force $output_dir/post_route
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.78 ; elapsed = 00:00:00.28 . Memory (MB): peak = 2980.289 ; gain = 0.000 ; free physical = 243 ; free virtual = 11311
+INFO: [Common 17-1381] The checkpoint '/home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707/post_route.dcp' has been generated.
+# report_timing_summary -file $output_dir/post_route_timing_summary.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+# report_timing -sort_by group -max_paths 100 -path_type summary -file $output_dir/post_route_timing_timing.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -max_paths 100 -nworst 1 -delay_type max -sort_by group.
+# report_clock_utilization -file $output_dir/clock_util.rpt
+report_clock_utilization: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2980.289 ; gain = 0.000 ; free physical = 273 ; free virtual = 11330
+# report_utilization -file $output_dir/post_route_power.rpt
+report_utilization: Time (s): cpu = 00:00:00.88 ; elapsed = 00:00:00.84 . Memory (MB): peak = 3004.301 ; gain = 24.012 ; free physical = 270 ; free virtual = 11328
+# report_drc -file $output_dir/post_imp_drc.rpt
+Command: report_drc -file ./nn_core_vc707/post_imp_drc.rpt
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /home/hunghh_59d/Ann/src/verilog/fpga/nn_core_vc707/post_imp_drc.rpt.
+report_drc completed successfully
+# write_verilog -force $output_dir/nn_core_impl_netlist.v
+# write_xdc -no_fixed_only -force $output_dir/nn_core_impl.xdc
+ eixt
+invalid command name "eixt"
+exit
+INFO: [Common 17-206] Exiting Vivado at Fri Dec  8 08:58:10 2017...

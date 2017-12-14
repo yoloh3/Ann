@@ -1,0 +1,1862 @@
+#-----------------------------------------------------------
+# Vivado v2017.3 (64-bit)
+# SW Build 2018833 on Wed Oct  4 19:58:07 MDT 2017
+# IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+# Start of session at: Tue Dec 12 17:16:38 2017
+# Process ID: 20804
+# Current directory: /home/hunghh_59d/Ann/impl/fpga
+# Command line: vivado -mode tcl -source nn_core_vc707_batch.tcl
+# Log file: /home/hunghh_59d/Ann/impl/fpga/vivado.log
+# Journal file: /home/hunghh_59d/Ann/impl/fpga/vivado.jou
+#-----------------------------------------------------------
+source nn_core_vc707_batch.tcl
+# set_param general.maxThreads 4
+# set output_dir ./nn_core_vc707
+# file mkdir $output_dir
+# set src_dir ../../src/rtl
+# set vivado_dir $::env(XILINX_VIVADO)
+# read_vhdl -library ieee $vivado_dir/scripts/rt/data/fixed_pkg_2008.vhd
+# read_vhdl $src_dir/rtl_pkg.vhd
+# read_vhdl $src_dir/weight.vhd
+# read_vhdl $src_dir/bias.vhd
+# read_vhdl -vhdl2008 $src_dir/weighted_input.vhd
+# read_vhdl $src_dir/activation_funct.vhd
+# read_vhdl $src_dir/derivative_activation.vhd
+# read_vhdl $src_dir/error_ouput.vhd
+# read_vhdl $src_dir/error_hidden.vhd
+# read_vhdl $src_dir/delta_bias.vhd
+# read_vhdl $src_dir/delta_weight.vhd
+# read_vhdl $src_dir/delta_bias_cumulation.vhd
+# read_vhdl $src_dir/delta_weight_cumulation.vhd
+# read_vhdl $src_dir/forward.vhd
+# read_vhdl $src_dir/backward.vhd
+# read_vhdl $src_dir/top_ann.vhd
+# read_xdc ./nn_core_vc707.xdc
+# synth_design -top top_ann -part xc7vx485tffg1761-2 -flatten rebuilt
+Command: synth_design -top top_ann -part xc7vx485tffg1761-2 -flatten rebuilt
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7vx485t'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 20823 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1375.777 ; gain = 89.000 ; free physical = 1848 ; free virtual = 13354
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'top_ann' [/home/hunghh_59d/Ann/src/rtl/top_ann.vhd:48]
+INFO: [Synth 8-3491] module 'forward' declared at '/home/hunghh_59d/Ann/src/rtl/forward.vhd:30' bound to instance 'dut_fw' of component 'forward' [/home/hunghh_59d/Ann/src/rtl/top_ann.vhd:141]
+INFO: [Synth 8-638] synthesizing module 'forward' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:55]
+	Parameter init_value bound to: -1.000000 - type: float 
+INFO: [Synth 8-3491] module 'bias' declared at '/home/hunghh_59d/Ann/src/rtl/bias.vhd:43' bound to instance 'dut_bias_hidden' of component 'bias' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:164]
+INFO: [Synth 8-638] synthesizing module 'bias' [/home/hunghh_59d/Ann/src/rtl/bias.vhd:60]
+	Parameter init_value bound to: -1.000000 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'bias' (1#1) [/home/hunghh_59d/Ann/src/rtl/bias.vhd:60]
+	Parameter layer_size bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'weighted_input' declared at '/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:43' bound to instance 'dut_weighted_in_hidden' of component 'weighted_input' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:177]
+INFO: [Synth 8-638] synthesizing module 'weighted_input' [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:58]
+	Parameter layer_size bound to: 2 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element v_sum_mult_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:87]
+INFO: [Synth 8-256] done synthesizing module 'weighted_input' (2#1) [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:58]
+INFO: [Synth 8-3491] module 'activation_funct' declared at '/home/hunghh_59d/Ann/src/rtl/activation_funct.vhd:41' bound to instance 'sigmoid' of component 'activation_funct' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:190]
+INFO: [Synth 8-638] synthesizing module 'activation_funct_behavior' [/home/hunghh_59d/Ann/src/rtl/activation_funct.vhd:95]
+WARNING: [Synth 8-6014] Unused sequential element address_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/activation_funct.vhd:380]
+INFO: [Synth 8-256] done synthesizing module 'activation_funct_behavior' (3#1) [/home/hunghh_59d/Ann/src/rtl/activation_funct.vhd:95]
+	Parameter init_value bound to: -1.000000 - type: float 
+INFO: [Synth 8-3491] module 'bias' declared at '/home/hunghh_59d/Ann/src/rtl/bias.vhd:43' bound to instance 'dut_bias_hidden' of component 'bias' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:164]
+	Parameter layer_size bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'weighted_input' declared at '/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:43' bound to instance 'dut_weighted_in_hidden' of component 'weighted_input' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:177]
+INFO: [Synth 8-3491] module 'activation_funct' declared at '/home/hunghh_59d/Ann/src/rtl/activation_funct.vhd:41' bound to instance 'sigmoid' of component 'activation_funct' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:190]
+	Parameter init_value bound to: -1.000000 - type: float 
+INFO: [Synth 8-3491] module 'bias' declared at '/home/hunghh_59d/Ann/src/rtl/bias.vhd:43' bound to instance 'dut_bias_hidden' of component 'bias' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:164]
+	Parameter layer_size bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'weighted_input' declared at '/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:43' bound to instance 'dut_weighted_in_hidden' of component 'weighted_input' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:177]
+INFO: [Synth 8-3491] module 'activation_funct' declared at '/home/hunghh_59d/Ann/src/rtl/activation_funct.vhd:41' bound to instance 'sigmoid' of component 'activation_funct' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:190]
+	Parameter init_value bound to: -1.000000 - type: float 
+INFO: [Synth 8-3491] module 'bias' declared at '/home/hunghh_59d/Ann/src/rtl/bias.vhd:43' bound to instance 'dut_bias_output' of component 'bias' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:200]
+	Parameter layer_size bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'weighted_input' declared at '/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:43' bound to instance 'dut_weighted_in_output' of component 'weighted_input' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:213]
+INFO: [Synth 8-638] synthesizing module 'weighted_input__parameterized2' [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:58]
+	Parameter layer_size bound to: 3 - type: integer 
+WARNING: [Synth 8-6014] Unused sequential element v_sum_mult_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:87]
+INFO: [Synth 8-256] done synthesizing module 'weighted_input__parameterized2' (3#1) [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:58]
+INFO: [Synth 8-3491] module 'activation_funct' declared at '/home/hunghh_59d/Ann/src/rtl/activation_funct.vhd:41' bound to instance 'sigmoid' of component 'activation_funct' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:226]
+	Parameter init_value bound to: -1.000000 - type: float 
+INFO: [Synth 8-3491] module 'bias' declared at '/home/hunghh_59d/Ann/src/rtl/bias.vhd:43' bound to instance 'dut_bias_output' of component 'bias' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:200]
+	Parameter layer_size bound to: 3 - type: integer 
+INFO: [Synth 8-3491] module 'weighted_input' declared at '/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:43' bound to instance 'dut_weighted_in_output' of component 'weighted_input' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:213]
+INFO: [Synth 8-3491] module 'activation_funct' declared at '/home/hunghh_59d/Ann/src/rtl/activation_funct.vhd:41' bound to instance 'sigmoid' of component 'activation_funct' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:226]
+	Parameter init_value bound to: 0.100000 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_hidden' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:237]
+INFO: [Synth 8-638] synthesizing module 'weight' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.100000 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.399414 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_hidden' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:237]
+INFO: [Synth 8-638] synthesizing module 'weight__parameterized1' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.399414 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight__parameterized1' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.300000 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_hidden' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:237]
+INFO: [Synth 8-638] synthesizing module 'weight__parameterized3' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.300000 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight__parameterized3' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.500000 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_hidden' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:237]
+INFO: [Synth 8-638] synthesizing module 'weight__parameterized5' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.500000 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight__parameterized5' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.600000 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_hidden' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:237]
+INFO: [Synth 8-638] synthesizing module 'weight__parameterized7' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.600000 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight__parameterized7' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.100000 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_hidden' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:237]
+	Parameter init_value bound to: 0.699219 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_output' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:254]
+INFO: [Synth 8-638] synthesizing module 'weight__parameterized10' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.699219 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight__parameterized10' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.199219 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_output' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:254]
+INFO: [Synth 8-638] synthesizing module 'weight__parameterized12' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.199219 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight__parameterized12' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 1.300000 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_output' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:254]
+INFO: [Synth 8-638] synthesizing module 'weight__parameterized14' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 1.300000 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight__parameterized14' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 0.199219 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_output' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:254]
+	Parameter init_value bound to: 0.500000 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_output' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:254]
+	Parameter init_value bound to: 1.100000 - type: float 
+INFO: [Synth 8-3491] module 'weight' declared at '/home/hunghh_59d/Ann/src/rtl/weight.vhd:43' bound to instance 'dut_weight_output' of component 'weight' [/home/hunghh_59d/Ann/src/rtl/forward.vhd:254]
+INFO: [Synth 8-638] synthesizing module 'weight__parameterized16' [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+	Parameter init_value bound to: 1.100000 - type: float 
+INFO: [Synth 8-256] done synthesizing module 'weight__parameterized16' (4#1) [/home/hunghh_59d/Ann/src/rtl/weight.vhd:60]
+INFO: [Synth 8-256] done synthesizing module 'forward' (5#1) [/home/hunghh_59d/Ann/src/rtl/forward.vhd:55]
+INFO: [Synth 8-3491] module 'backward' declared at '/home/hunghh_59d/Ann/src/rtl/backward.vhd:28' bound to instance 'dut_bw' of component 'backward' [/home/hunghh_59d/Ann/src/rtl/top_ann.vhd:192]
+INFO: [Synth 8-638] synthesizing module 'backward' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:45]
+INFO: [Synth 8-3491] module 'derivative_activation' declared at '/home/hunghh_59d/Ann/src/rtl/derivative_activation.vhd:33' bound to instance 'DUT_derivative_activation' of component 'derivative_activation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:176]
+INFO: [Synth 8-638] synthesizing module 'derivative_activation' [/home/hunghh_59d/Ann/src/rtl/derivative_activation.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'derivative_activation' (6#1) [/home/hunghh_59d/Ann/src/rtl/derivative_activation.vhd:45]
+INFO: [Synth 8-3491] module 'error_ouput' declared at '/home/hunghh_59d/Ann/src/rtl/error_ouput.vhd:33' bound to instance 'DUT_error_ouput' of component 'error_ouput' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:184]
+INFO: [Synth 8-638] synthesizing module 'error_ouput' [/home/hunghh_59d/Ann/src/rtl/error_ouput.vhd:47]
+INFO: [Synth 8-256] done synthesizing module 'error_ouput' (7#1) [/home/hunghh_59d/Ann/src/rtl/error_ouput.vhd:47]
+INFO: [Synth 8-3491] module 'delta_bias' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:30' bound to instance 'DUT_delta_bias' of component 'delta_bias' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:194]
+INFO: [Synth 8-638] synthesizing module 'delta_bias' [/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'delta_bias' (8#1) [/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:39]
+INFO: [Synth 8-3491] module 'derivative_activation' declared at '/home/hunghh_59d/Ann/src/rtl/derivative_activation.vhd:33' bound to instance 'DUT_derivative_activation' of component 'derivative_activation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:176]
+INFO: [Synth 8-3491] module 'error_ouput' declared at '/home/hunghh_59d/Ann/src/rtl/error_ouput.vhd:33' bound to instance 'DUT_error_ouput' of component 'error_ouput' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:184]
+INFO: [Synth 8-3491] module 'delta_bias' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:30' bound to instance 'DUT_delta_bias' of component 'delta_bias' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:194]
+INFO: [Synth 8-3491] module 'derivative_activation' declared at '/home/hunghh_59d/Ann/src/rtl/derivative_activation.vhd:33' bound to instance 'DUT_derivative_activation' of component 'derivative_activation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:211]
+INFO: [Synth 8-3491] module 'error_hidden' declared at '/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:30' bound to instance 'DUT_error_hidden' of component 'error_hidden' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:219]
+INFO: [Synth 8-638] synthesizing module 'error_hidden' [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:41]
+WARNING: [Synth 8-6014] Unused sequential element v_tmp_sum_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:61]
+INFO: [Synth 8-256] done synthesizing module 'error_hidden' (9#1) [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:41]
+INFO: [Synth 8-3491] module 'delta_bias' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:30' bound to instance 'DUT_delta_bias' of component 'delta_bias' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:229]
+INFO: [Synth 8-3491] module 'derivative_activation' declared at '/home/hunghh_59d/Ann/src/rtl/derivative_activation.vhd:33' bound to instance 'DUT_derivative_activation' of component 'derivative_activation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:211]
+INFO: [Synth 8-3491] module 'error_hidden' declared at '/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:30' bound to instance 'DUT_error_hidden' of component 'error_hidden' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:219]
+INFO: [Synth 8-3491] module 'delta_bias' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:30' bound to instance 'DUT_delta_bias' of component 'delta_bias' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:229]
+INFO: [Synth 8-3491] module 'derivative_activation' declared at '/home/hunghh_59d/Ann/src/rtl/derivative_activation.vhd:33' bound to instance 'DUT_derivative_activation' of component 'derivative_activation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:211]
+INFO: [Synth 8-3491] module 'error_hidden' declared at '/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:30' bound to instance 'DUT_error_hidden' of component 'error_hidden' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:219]
+INFO: [Synth 8-3491] module 'delta_bias' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:30' bound to instance 'DUT_delta_bias' of component 'delta_bias' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:229]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:240]
+INFO: [Synth 8-638] synthesizing module 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:40]
+INFO: [Synth 8-256] done synthesizing module 'delta_weight' (10#1) [/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:40]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:240]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:240]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:240]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:240]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:240]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:253]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:253]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:253]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:253]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:253]
+INFO: [Synth 8-3491] module 'delta_weight' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight.vhd:30' bound to instance 'DUT_delta_weight' of component 'delta_weight' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:253]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:307]
+INFO: [Synth 8-638] synthesizing module 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:38]
+INFO: [Synth 8-256] done synthesizing module 'delta_weight_cumulation' (11#1) [/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:38]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:307]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:307]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:307]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:307]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:307]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:319]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:319]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:319]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:319]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:319]
+INFO: [Synth 8-3491] module 'delta_weight_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_weight_cumulation.vhd:29' bound to instance 'DUT_delta_weight_cumulation' of component 'delta_weight_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:319]
+INFO: [Synth 8-3491] module 'delta_bias_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias_cumulation.vhd:30' bound to instance 'DUT_delta_bias_cumulation' of component 'delta_bias_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:330]
+INFO: [Synth 8-638] synthesizing module 'delta_bias_cumulation' [/home/hunghh_59d/Ann/src/rtl/delta_bias_cumulation.vhd:39]
+INFO: [Synth 8-256] done synthesizing module 'delta_bias_cumulation' (12#1) [/home/hunghh_59d/Ann/src/rtl/delta_bias_cumulation.vhd:39]
+INFO: [Synth 8-3491] module 'delta_bias_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias_cumulation.vhd:30' bound to instance 'DUT_delta_bias_cumulation' of component 'delta_bias_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:330]
+INFO: [Synth 8-3491] module 'delta_bias_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias_cumulation.vhd:30' bound to instance 'DUT_delta_bias_cumulation' of component 'delta_bias_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:340]
+INFO: [Synth 8-3491] module 'delta_bias_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias_cumulation.vhd:30' bound to instance 'DUT_delta_bias_cumulation' of component 'delta_bias_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:340]
+INFO: [Synth 8-3491] module 'delta_bias_cumulation' declared at '/home/hunghh_59d/Ann/src/rtl/delta_bias_cumulation.vhd:30' bound to instance 'DUT_delta_bias_cumulation' of component 'delta_bias_cumulation' [/home/hunghh_59d/Ann/src/rtl/backward.vhd:340]
+WARNING: [Synth 8-5856] 3D RAM s_weight_output_2_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
+INFO: [Synth 8-256] done synthesizing module 'backward' (13#1) [/home/hunghh_59d/Ann/src/rtl/backward.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'top_ann' (14#1) [/home/hunghh_59d/Ann/src/rtl/top_ann.vhd:48]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1421.316 ; gain = 134.539 ; free physical = 1808 ; free virtual = 13318
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1421.316 ; gain = 134.539 ; free physical = 1820 ; free virtual = 13330
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7vx485tffg1761-2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:4]
+WARNING: [Vivado 12-584] No ports matched 'res'. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:5]
+CRITICAL WARNING: [Vivado 12-4739] set_false_path:No valid object(s) found for '-from [get_ports res]'. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:5]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+Finished Parsing XDC File [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1908.012 ; gain = 0.000 ; free physical = 1540 ; free virtual = 13151
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:34 ; elapsed = 00:01:26 . Memory (MB): peak = 1908.016 ; gain = 621.238 ; free physical = 1659 ; free virtual = 13269
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7vx485tffg1761-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:34 ; elapsed = 00:01:26 . Memory (MB): peak = 1908.020 ; gain = 621.242 ; free physical = 1659 ; free virtual = 13270
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:01:26 . Memory (MB): peak = 1908.020 ; gain = 621.242 ; free physical = 1659 ; free virtual = 13270
+---------------------------------------------------------------------------------
+INFO: [Synth 8-41] '+' operator could not be merged with '+' operator due to loss of accuracy [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:93]
+INFO: [Synth 8-41] '+' operator could not be merged with '+' operator due to loss of accuracy [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:93]
+INFO: [Synth 8-5546] ROM "o_finish_calc" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_select_update" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "o_finish_update" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element count_epochs_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/top_ann.vhd:213]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:35 ; elapsed = 00:01:26 . Memory (MB): peak = 1908.020 ; gain = 621.242 ; free physical = 1681 ; free virtual = 13291
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 56    
+	   2 Input     16 Bit       Adders := 3     
+	   3 Input     16 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	               48 Bit    Registers := 3     
+	               17 Bit    Registers := 22    
+	               16 Bit    Registers := 115   
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Multipliers : 
+	                16x32  Multipliers := 3     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 17    
+	   3 Input      8 Bit        Muxes := 5     
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module top_ann 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 22    
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+Module bias 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weighted_input 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input      8 Bit        Muxes := 1     
+Module activation_funct_behavior 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module weighted_input__parameterized2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
+	   3 Input     16 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input      8 Bit        Muxes := 1     
+Module weight 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weight__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weight__parameterized3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weight__parameterized5 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weight__parameterized7 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weight__parameterized10 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weight__parameterized12 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weight__parameterized14 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module weight__parameterized16 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 1     
++---Registers : 
+	               17 Bit    Registers := 1     
++---Muxes : 
+	   3 Input     17 Bit        Muxes := 1     
+Module forward 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module delta_bias 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
+Module error_hidden 
+Detailed RTL Component Info : 
++---Registers : 
+	               48 Bit    Registers := 1     
++---Multipliers : 
+	                16x32  Multipliers := 1     
+Module delta_bias_cumulation 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 2     
++---Registers : 
+	               16 Bit    Registers := 3     
+Module delta_weight_cumulation 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     17 Bit       Adders := 2     
++---Registers : 
+	               16 Bit    Registers := 3     
+Module backward 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 32    
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 2800 (col length:140)
+BRAMs: 2060 (col length: RAMB18 140 RAMB36 70)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-41] '+' operator could not be merged with '+' operator due to loss of accuracy [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:93]
+INFO: [Synth 8-41] '+' operator could not be merged with '+' operator due to loss of accuracy [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:93]
+INFO: [Synth 8-41] '+' operator could not be merged with '+' operator due to loss of accuracy [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:93]
+INFO: [Synth 8-41] '+' operator could not be merged with '+' operator due to loss of accuracy [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:93]
+INFO: [Synth 8-41] '+' operator could not be merged with '+' operator due to loss of accuracy [/home/hunghh_59d/Ann/src/rtl/weighted_input.vhd:93]
+INFO: [Synth 8-5546] ROM "o_finish_calc" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "s_select_update" won't be mapped to RAM because it is too sparse
+DSP Report: Generating DSP calc_hidden[0].dut_weighted_in_hidden/arg, operation Mode is: A*B.
+DSP Report: operator calc_hidden[0].dut_weighted_in_hidden/arg is absorbed into DSP calc_hidden[0].dut_weighted_in_hidden/arg.
+DSP Report: Generating DSP calc_hidden[0].dut_weighted_in_hidden/arg, operation Mode is: A*B.
+DSP Report: operator calc_hidden[0].dut_weighted_in_hidden/arg is absorbed into DSP calc_hidden[0].dut_weighted_in_hidden/arg.
+DSP Report: Generating DSP calc_hidden[1].dut_weighted_in_hidden/arg, operation Mode is: A*B.
+DSP Report: operator calc_hidden[1].dut_weighted_in_hidden/arg is absorbed into DSP calc_hidden[1].dut_weighted_in_hidden/arg.
+DSP Report: Generating DSP calc_hidden[1].dut_weighted_in_hidden/arg, operation Mode is: A*B.
+DSP Report: operator calc_hidden[1].dut_weighted_in_hidden/arg is absorbed into DSP calc_hidden[1].dut_weighted_in_hidden/arg.
+DSP Report: Generating DSP calc_hidden[2].dut_weighted_in_hidden/arg, operation Mode is: A*B.
+DSP Report: operator calc_hidden[2].dut_weighted_in_hidden/arg is absorbed into DSP calc_hidden[2].dut_weighted_in_hidden/arg.
+DSP Report: Generating DSP calc_hidden[2].dut_weighted_in_hidden/arg, operation Mode is: A*B.
+DSP Report: operator calc_hidden[2].dut_weighted_in_hidden/arg is absorbed into DSP calc_hidden[2].dut_weighted_in_hidden/arg.
+DSP Report: Generating DSP calc_output[0].dut_weighted_in_output/arg, operation Mode is: A2*B.
+DSP Report: register calc_hidden[1].sigmoid/o_activation_funct_reg is absorbed into DSP calc_output[0].dut_weighted_in_output/arg.
+DSP Report: operator calc_output[0].dut_weighted_in_output/arg is absorbed into DSP calc_output[0].dut_weighted_in_output/arg.
+DSP Report: Generating DSP calc_output[0].dut_weighted_in_output/arg, operation Mode is: A2*B.
+DSP Report: register calc_hidden[2].sigmoid/o_activation_funct_reg is absorbed into DSP calc_output[0].dut_weighted_in_output/arg.
+DSP Report: operator calc_output[0].dut_weighted_in_output/arg is absorbed into DSP calc_output[0].dut_weighted_in_output/arg.
+DSP Report: Generating DSP calc_output[0].dut_weighted_in_output/arg, operation Mode is: A2*B.
+DSP Report: register calc_hidden[0].sigmoid/o_activation_funct_reg is absorbed into DSP calc_output[0].dut_weighted_in_output/arg.
+DSP Report: operator calc_output[0].dut_weighted_in_output/arg is absorbed into DSP calc_output[0].dut_weighted_in_output/arg.
+DSP Report: Generating DSP calc_output[1].dut_weighted_in_output/arg, operation Mode is: A2*B.
+DSP Report: register calc_hidden[1].sigmoid/o_activation_funct_reg is absorbed into DSP calc_output[1].dut_weighted_in_output/arg.
+DSP Report: operator calc_output[1].dut_weighted_in_output/arg is absorbed into DSP calc_output[1].dut_weighted_in_output/arg.
+DSP Report: Generating DSP calc_output[1].dut_weighted_in_output/arg, operation Mode is: A2*B.
+DSP Report: register calc_hidden[2].sigmoid/o_activation_funct_reg is absorbed into DSP calc_output[1].dut_weighted_in_output/arg.
+DSP Report: operator calc_output[1].dut_weighted_in_output/arg is absorbed into DSP calc_output[1].dut_weighted_in_output/arg.
+DSP Report: Generating DSP calc_output[1].dut_weighted_in_output/arg, operation Mode is: A2*B.
+DSP Report: register calc_hidden[0].sigmoid/o_activation_funct_reg is absorbed into DSP calc_output[1].dut_weighted_in_output/arg.
+DSP Report: operator calc_output[1].dut_weighted_in_output/arg is absorbed into DSP calc_output[1].dut_weighted_in_output/arg.
+INFO: [Synth 8-4471] merging register 'calc_layer_output[1].DUT_delta_bias/tmp_delta_bias_reg[5:-10]' into 's_tmp_error_output_reg[1][5:-10]' [/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:47]
+INFO: [Synth 8-4471] merging register 'calc_layer_output[0].DUT_delta_bias/tmp_delta_bias_reg[5:-10]' into 's_tmp_error_output_reg[0][5:-10]' [/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:47]
+WARNING: [Synth 8-6014] Unused sequential element calc_layer_output[0].DUT_delta_bias/tmp_delta_bias_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:47]
+WARNING: [Synth 8-6014] Unused sequential element calc_layer_output[1].DUT_delta_bias/tmp_delta_bias_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/delta_bias.vhd:47]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:71]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:71]
+INFO: [Synth 8-5845] Not enough pipeline registers after wide multiplier. Recommended levels of pipeline registers is 2 [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:71]
+WARNING: [Synth 8-6014] Unused sequential element calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:60]
+WARNING: [Synth 8-6014] Unused sequential element calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:60]
+WARNING: [Synth 8-6014] Unused sequential element calc_layer_hidden[2].DUT_error_hidden/tmp_error_hidden_i_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/error_hidden.vhd:60]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp2_activation_hidden_reg[2] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:275]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp3_activation_hidden_reg[2] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:245]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp2_activation_hidden_reg[1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:275]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp3_activation_hidden_reg[1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:245]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp2_activation_hidden_reg[0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:275]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp3_activation_hidden_reg[0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:245]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp2_input_reg[1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:282]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp3_input_reg[1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:258]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp2_input_reg[0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:282]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp3_input_reg[0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:258]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp_activation_output_reg[1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:188]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp_expected_reg[1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:189]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp_activation_output_reg[0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:188]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp_expected_reg[0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:189]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp_dadz_hidden_reg[2] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:223]
+WARNING: [Synth 8-6014] Unused sequential element s_weight_output_2_reg[2][1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:224]
+WARNING: [Synth 8-6014] Unused sequential element s_weight_output_2_reg[2][0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:224]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp_dadz_hidden_reg[1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:223]
+WARNING: [Synth 8-6014] Unused sequential element s_weight_output_2_reg[1][1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:224]
+WARNING: [Synth 8-6014] Unused sequential element s_weight_output_2_reg[1][0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:224]
+WARNING: [Synth 8-6014] Unused sequential element s_tmp_dadz_hidden_reg[0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:223]
+WARNING: [Synth 8-6014] Unused sequential element s_weight_output_2_reg[0][1] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:224]
+WARNING: [Synth 8-6014] Unused sequential element s_weight_output_2_reg[0][0] was removed.  [/home/hunghh_59d/Ann/src/rtl/backward.vhd:224]
+DSP Report: Generating DSP calc_layer_output[0].DUT_derivative_activation/tmp_dadz_reg, operation Mode is: (((D:0x400)-A)*B)'.
+DSP Report: register calc_layer_output[0].DUT_derivative_activation/tmp_dadz_reg is absorbed into DSP calc_layer_output[0].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_output[0].DUT_derivative_activation/arg is absorbed into DSP calc_layer_output[0].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_output[0].DUT_derivative_activation/arg is absorbed into DSP calc_layer_output[0].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: Generating DSP calc_layer_output[0].DUT_error_ouput/tmp_error_ouput_reg, operation Mode is: ((D'-A2)*B)'.
+DSP Report: register s_tmp_activation_output_reg[0] is absorbed into DSP calc_layer_output[0].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: register s_tmp_expected_reg[0] is absorbed into DSP calc_layer_output[0].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: register calc_layer_output[0].DUT_error_ouput/tmp_error_ouput_reg is absorbed into DSP calc_layer_output[0].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: operator calc_layer_output[0].DUT_error_ouput/arg is absorbed into DSP calc_layer_output[0].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: operator calc_layer_output[0].DUT_error_ouput/arg is absorbed into DSP calc_layer_output[0].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: Generating DSP calc_db_adder_output[0].DUT_delta_bias_cumulation/tmp_ouput_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_db_adder_output[0].DUT_delta_bias_cumulation/tmp_ouput_reg is absorbed into DSP calc_db_adder_output[0].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_output[0].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_output[0].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_output[0].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_output[0].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: Generating DSP calc_layer_output[1].DUT_derivative_activation/tmp_dadz_reg, operation Mode is: (((D:0x400)-A)*B)'.
+DSP Report: register calc_layer_output[1].DUT_derivative_activation/tmp_dadz_reg is absorbed into DSP calc_layer_output[1].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_output[1].DUT_derivative_activation/arg is absorbed into DSP calc_layer_output[1].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_output[1].DUT_derivative_activation/arg is absorbed into DSP calc_layer_output[1].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: Generating DSP calc_layer_output[1].DUT_error_ouput/tmp_error_ouput_reg, operation Mode is: ((D'-A2)*B)'.
+DSP Report: register s_tmp_activation_output_reg[1] is absorbed into DSP calc_layer_output[1].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: register s_tmp_expected_reg[1] is absorbed into DSP calc_layer_output[1].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: register calc_layer_output[1].DUT_error_ouput/tmp_error_ouput_reg is absorbed into DSP calc_layer_output[1].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: operator calc_layer_output[1].DUT_error_ouput/arg is absorbed into DSP calc_layer_output[1].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: operator calc_layer_output[1].DUT_error_ouput/arg is absorbed into DSP calc_layer_output[1].DUT_error_ouput/tmp_error_ouput_reg.
+DSP Report: Generating DSP calc_db_adder_output[1].DUT_delta_bias_cumulation/tmp_ouput_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_db_adder_output[1].DUT_delta_bias_cumulation/tmp_ouput_reg is absorbed into DSP calc_db_adder_output[1].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_output[1].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_output[1].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_output[1].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_output[1].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: Generating DSP calc_layer_hidden[0].DUT_error_hidden/arg, operation Mode is: A2*B.
+DSP Report: register s_weight_output_2_reg[0][0] is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[0].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[0].DUT_error_hidden/arg, operation Mode is: PCIN+A2*B.
+DSP Report: register s_weight_output_2_reg[0][1] is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[0].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[0].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[0].DUT_derivative_activation/tmp_dadz_reg, operation Mode is: (((D:0x400)-A)*B)'.
+DSP Report: register calc_layer_hidden[0].DUT_derivative_activation/tmp_dadz_reg is absorbed into DSP calc_layer_hidden[0].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_hidden[0].DUT_derivative_activation/arg is absorbed into DSP calc_layer_hidden[0].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_hidden[0].DUT_derivative_activation/arg is absorbed into DSP calc_layer_hidden[0].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: Generating DSP calc_layer_hidden[0].DUT_error_hidden/arg, operation Mode is: A*B2.
+DSP Report: register s_tmp_dadz_hidden_reg[0] is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[0].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[0].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg, operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register s_tmp_dadz_hidden_reg[0] is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: register calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: operator calc_layer_hidden[0].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: operator calc_layer_hidden[0].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: Generating DSP calc_db_adder_hidden[0].DUT_delta_bias_cumulation/tmp_ouput_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_db_adder_hidden[0].DUT_delta_bias_cumulation/tmp_ouput_reg is absorbed into DSP calc_db_adder_hidden[0].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_hidden[0].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_hidden[0].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_hidden[0].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_hidden[0].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: Generating DSP calc_layer_hidden[1].DUT_error_hidden/arg, operation Mode is: A2*B.
+DSP Report: register s_weight_output_2_reg[1][0] is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[1].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[1].DUT_error_hidden/arg, operation Mode is: PCIN+A2*B.
+DSP Report: register s_weight_output_2_reg[1][1] is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[1].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[1].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[1].DUT_derivative_activation/tmp_dadz_reg, operation Mode is: (((D:0x400)-A)*B)'.
+DSP Report: register calc_layer_hidden[1].DUT_derivative_activation/tmp_dadz_reg is absorbed into DSP calc_layer_hidden[1].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_hidden[1].DUT_derivative_activation/arg is absorbed into DSP calc_layer_hidden[1].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_hidden[1].DUT_derivative_activation/arg is absorbed into DSP calc_layer_hidden[1].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: Generating DSP calc_layer_hidden[1].DUT_error_hidden/arg, operation Mode is: A*B2.
+DSP Report: register s_tmp_dadz_hidden_reg[1] is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[1].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[1].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg, operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register s_tmp_dadz_hidden_reg[1] is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: register calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: operator calc_layer_hidden[1].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: operator calc_layer_hidden[1].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: Generating DSP calc_db_adder_hidden[1].DUT_delta_bias_cumulation/tmp_ouput_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_db_adder_hidden[1].DUT_delta_bias_cumulation/tmp_ouput_reg is absorbed into DSP calc_db_adder_hidden[1].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_hidden[1].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_hidden[1].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_hidden[1].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_hidden[1].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: Generating DSP calc_layer_hidden[2].DUT_error_hidden/arg, operation Mode is: A2*B.
+DSP Report: register s_weight_output_2_reg[2][0] is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[2].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[2].DUT_error_hidden/arg, operation Mode is: PCIN+A2*B.
+DSP Report: register s_weight_output_2_reg[2][1] is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[2].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[2].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[2].DUT_derivative_activation/tmp_dadz_reg, operation Mode is: (((D:0x400)-A)*B)'.
+DSP Report: register calc_layer_hidden[2].DUT_derivative_activation/tmp_dadz_reg is absorbed into DSP calc_layer_hidden[2].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_hidden[2].DUT_derivative_activation/arg is absorbed into DSP calc_layer_hidden[2].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: operator calc_layer_hidden[2].DUT_derivative_activation/arg is absorbed into DSP calc_layer_hidden[2].DUT_derivative_activation/tmp_dadz_reg.
+DSP Report: Generating DSP calc_layer_hidden[2].DUT_error_hidden/arg, operation Mode is: A*B2.
+DSP Report: register s_tmp_dadz_hidden_reg[2] is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[2].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/arg.
+DSP Report: operator calc_layer_hidden[2].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/arg.
+DSP Report: Generating DSP calc_layer_hidden[2].DUT_error_hidden/tmp_error_hidden_i_reg, operation Mode is: (PCIN>>17)+A2*B.
+DSP Report: register s_tmp_dadz_hidden_reg[2] is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: register calc_layer_hidden[2].DUT_error_hidden/tmp_error_hidden_i_reg is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: operator calc_layer_hidden[2].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: operator calc_layer_hidden[2].DUT_error_hidden/arg is absorbed into DSP calc_layer_hidden[2].DUT_error_hidden/tmp_error_hidden_i_reg.
+DSP Report: Generating DSP calc_db_adder_hidden[2].DUT_delta_bias_cumulation/tmp_ouput_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_db_adder_hidden[2].DUT_delta_bias_cumulation/tmp_ouput_reg is absorbed into DSP calc_db_adder_hidden[2].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_hidden[2].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_hidden[2].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: operator calc_db_adder_hidden[2].DUT_delta_bias_cumulation/arg is absorbed into DSP calc_db_adder_hidden[2].DUT_delta_bias_cumulation/tmp_ouput_reg.
+DSP Report: Generating DSP calc_dw_output_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A2*B'')'.
+DSP Report: register s_tmp2_activation_hidden_reg[0] is absorbed into DSP calc_dw_output_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_activation_hidden_reg[0] is absorbed into DSP calc_dw_output_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp_error_output_reg[0] is absorbed into DSP calc_dw_output_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_output_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_output_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_output_i[0].dw_j[0].DUT_delta_weight/arg is absorbed into DSP calc_dw_output_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_output_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_output_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_output_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[0].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[0].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_output_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A2*BCIN2)'.
+DSP Report: register s_tmp_error_output_reg[1] is absorbed into DSP calc_dw_output_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_activation_hidden_reg[0] is absorbed into DSP calc_dw_output_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_output_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_output_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_output_i[0].dw_j[1].DUT_delta_weight/arg is absorbed into DSP calc_dw_output_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_output_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_output_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_output_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[0].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[0].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_output_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A2*B'')'.
+DSP Report: register s_tmp2_activation_hidden_reg[1] is absorbed into DSP calc_dw_output_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_activation_hidden_reg[1] is absorbed into DSP calc_dw_output_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp_error_output_reg[0] is absorbed into DSP calc_dw_output_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_output_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_output_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_output_i[1].dw_j[0].DUT_delta_weight/arg is absorbed into DSP calc_dw_output_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_output_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_output_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_output_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[1].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[1].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_output_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A2*BCIN2)'.
+DSP Report: register s_tmp_error_output_reg[1] is absorbed into DSP calc_dw_output_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_activation_hidden_reg[1] is absorbed into DSP calc_dw_output_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_output_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_output_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_output_i[1].dw_j[1].DUT_delta_weight/arg is absorbed into DSP calc_dw_output_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_output_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_output_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_output_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[1].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[1].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_output_i[2].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A2*B'')'.
+DSP Report: register s_tmp2_activation_hidden_reg[2] is absorbed into DSP calc_dw_output_i[2].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_activation_hidden_reg[2] is absorbed into DSP calc_dw_output_i[2].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp_error_output_reg[1] is absorbed into DSP calc_dw_output_i[2].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_output_i[2].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_output_i[2].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_output_i[2].dw_j[1].DUT_delta_weight/arg is absorbed into DSP calc_dw_output_i[2].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_output_i[2].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A2*BCIN2)'.
+DSP Report: register s_tmp3_activation_hidden_reg[2] is absorbed into DSP calc_dw_output_i[2].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp_error_output_reg[0] is absorbed into DSP calc_dw_output_i[2].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_output_i[2].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_output_i[2].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_output_i[2].dw_j[0].DUT_delta_weight/arg is absorbed into DSP calc_dw_output_i[2].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_output_i[2].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_output_i[2].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_output_i[2].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[2].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[2].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[2].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[2].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_adder_output_i[2].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_output_i[2].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_output_i[2].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[2].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[2].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_output_i[2].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_output_i[2].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_hidden_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A*B'')'.
+DSP Report: register s_tmp2_input_reg[0] is absorbed into DSP calc_dw_hidden_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_input_reg[0] is absorbed into DSP calc_dw_hidden_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_hidden_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_hidden_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_hidden_i[0].dw_j[0].DUT_delta_weight/arg is absorbed into DSP calc_dw_hidden_i[0].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_hidden_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_hidden_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[0].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[0].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_hidden_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A*BCIN2)'.
+DSP Report: register s_tmp3_input_reg[0] is absorbed into DSP calc_dw_hidden_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_hidden_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_hidden_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_hidden_i[0].dw_j[1].DUT_delta_weight/arg is absorbed into DSP calc_dw_hidden_i[0].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_hidden_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_hidden_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[0].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[0].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_hidden_i[0].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A*B'')'.
+DSP Report: register s_tmp2_input_reg[0] is absorbed into DSP calc_dw_hidden_i[0].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_input_reg[0] is absorbed into DSP calc_dw_hidden_i[0].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_hidden_i[0].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_hidden_i[0].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_hidden_i[0].dw_j[2].DUT_delta_weight/arg is absorbed into DSP calc_dw_hidden_i[0].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_hidden_i[0].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_hidden_i[0].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[0].adder_j[2].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[0].adder_j[2].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[0].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_hidden_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A*B'')'.
+DSP Report: register s_tmp2_input_reg[1] is absorbed into DSP calc_dw_hidden_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_input_reg[1] is absorbed into DSP calc_dw_hidden_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_hidden_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_hidden_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_hidden_i[1].dw_j[0].DUT_delta_weight/arg is absorbed into DSP calc_dw_hidden_i[1].dw_j[0].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_hidden_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_hidden_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[1].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[1].adder_j[0].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[0].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_hidden_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A*BCIN2)'.
+DSP Report: register s_tmp3_input_reg[1] is absorbed into DSP calc_dw_hidden_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_hidden_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_hidden_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_hidden_i[1].dw_j[1].DUT_delta_weight/arg is absorbed into DSP calc_dw_hidden_i[1].dw_j[1].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_hidden_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_hidden_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[1].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[1].adder_j[1].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[1].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: Generating DSP calc_dw_hidden_i[1].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg, operation Mode is: (A*B'')'.
+DSP Report: register s_tmp2_input_reg[1] is absorbed into DSP calc_dw_hidden_i[1].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register s_tmp3_input_reg[1] is absorbed into DSP calc_dw_hidden_i[1].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: register calc_dw_hidden_i[1].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg is absorbed into DSP calc_dw_hidden_i[1].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: operator calc_dw_hidden_i[1].dw_j[2].DUT_delta_weight/arg is absorbed into DSP calc_dw_hidden_i[1].dw_j[2].DUT_delta_weight/tmp_delta_weight_reg.
+DSP Report: Generating DSP calc_dw_adder_hidden_i[1].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg, operation Mode is: ((D+A)*(B:0x3ff99))'.
+DSP Report: register calc_dw_adder_hidden_i[1].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[1].adder_j[2].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg.
+DSP Report: operator calc_dw_adder_hidden_i[1].adder_j[2].DUT_delta_weight_cumulation/arg is absorbed into DSP calc_dw_adder_hidden_i[1].adder_j[2].DUT_delta_weight_cumulation/tmp_output_reg.
+INFO: [Synth 8-5545] ROM "o_finish_update" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element count_epochs_reg was removed.  [/home/hunghh_59d/Ann/src/rtl/top_ann.vhd:213]
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[0].sigmoid/o_activation_funct_reg[0]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[0].sigmoid/o_activation_funct_reg[1]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[0].sigmoid/o_activation_funct_reg[2]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[0].sigmoid/o_activation_funct_reg[3]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[0].sigmoid/o_activation_funct_reg[4]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[0].sigmoid/o_activation_funct_reg[5]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[1].sigmoid/o_activation_funct_reg[0]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[1].sigmoid/o_activation_funct_reg[1]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[1].sigmoid/o_activation_funct_reg[2]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[1].sigmoid/o_activation_funct_reg[3]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[1].sigmoid/o_activation_funct_reg[4]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[1].sigmoid/o_activation_funct_reg[5]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[2].sigmoid/o_activation_funct_reg[0]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[2].sigmoid/o_activation_funct_reg[1]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[2].sigmoid/o_activation_funct_reg[2]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[2].sigmoid/o_activation_funct_reg[3]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[2].sigmoid/o_activation_funct_reg[4]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_hidden[2].sigmoid/o_activation_funct_reg[5]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[0]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[1]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[1]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[2]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[2]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[3]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[3]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[4]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[4]' (FDR) to 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[5]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[0].sigmoid/o_activation_funct_reg[5]' (FDR) to 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[5]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[0]' (FDR) to 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[5]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[1]' (FDR) to 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[5]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[2]' (FDR) to 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[5]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[3]' (FDR) to 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[5]'
+INFO: [Synth 8-3886] merging instance 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[4]' (FDR) to 'dut_fw/calc_output[1].sigmoid/o_activation_funct_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (dut_fw/\calc_output[1].sigmoid/o_activation_funct_reg[5] )
+WARNING: [Synth 8-3332] Sequential element (calc_weight_hidden[0].dut_j[1].dut_weight_hidden/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_hidden[0].dut_j[0].dut_weight_hidden/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[0].dut_bias_hidden/bias_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[0].dut_weighted_in_hidden/tmp_sum_reg[-5]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[0].dut_weighted_in_hidden/tmp_sum_reg[-6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[0].dut_weighted_in_hidden/tmp_sum_reg[-7]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[0].dut_weighted_in_hidden/tmp_sum_reg[-8]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[0].dut_weighted_in_hidden/tmp_sum_reg[-9]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[0].dut_weighted_in_hidden/tmp_sum_reg[-10]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_hidden[1].dut_j[1].dut_weight_hidden/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_hidden[1].dut_j[0].dut_weight_hidden/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[1].dut_bias_hidden/bias_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[1].dut_weighted_in_hidden/tmp_sum_reg[-5]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[1].dut_weighted_in_hidden/tmp_sum_reg[-6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[1].dut_weighted_in_hidden/tmp_sum_reg[-7]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[1].dut_weighted_in_hidden/tmp_sum_reg[-8]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[1].dut_weighted_in_hidden/tmp_sum_reg[-9]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[1].dut_weighted_in_hidden/tmp_sum_reg[-10]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_hidden[2].dut_j[1].dut_weight_hidden/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_hidden[2].dut_j[0].dut_weight_hidden/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[2].dut_bias_hidden/bias_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[2].dut_weighted_in_hidden/tmp_sum_reg[-5]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[2].dut_weighted_in_hidden/tmp_sum_reg[-6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[2].dut_weighted_in_hidden/tmp_sum_reg[-7]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[2].dut_weighted_in_hidden/tmp_sum_reg[-8]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[2].dut_weighted_in_hidden/tmp_sum_reg[-9]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_hidden[2].dut_weighted_in_hidden/tmp_sum_reg[-10]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_output[0].dut_j[1].dut_weight_output/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_output[0].dut_j[2].dut_weight_output/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_output[0].dut_j[0].dut_weight_output/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[0].dut_bias_output/bias_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[0].dut_weighted_in_output/tmp_sum_reg[-5]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[0].dut_weighted_in_output/tmp_sum_reg[-6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[0].dut_weighted_in_output/tmp_sum_reg[-7]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[0].dut_weighted_in_output/tmp_sum_reg[-8]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[0].dut_weighted_in_output/tmp_sum_reg[-9]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[0].dut_weighted_in_output/tmp_sum_reg[-10]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_output[1].dut_j[1].dut_weight_output/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_output[1].dut_j[2].dut_weight_output/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_weight_output[1].dut_j[0].dut_weight_output/weight_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[1].dut_bias_output/bias_tmp_reg[6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[1].dut_weighted_in_output/tmp_sum_reg[-5]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[1].dut_weighted_in_output/tmp_sum_reg[-6]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[1].dut_weighted_in_output/tmp_sum_reg[-7]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[1].dut_weighted_in_output/tmp_sum_reg[-8]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[1].dut_weighted_in_output/tmp_sum_reg[-9]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[1].dut_weighted_in_output/tmp_sum_reg[-10]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (calc_output[1].sigmoid/o_activation_funct_reg[5]) is unused and will be removed from module forward.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[47]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[46]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[45]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[44]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[43]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[42]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[41]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[40]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[39]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[38]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[37]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[36]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[35]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[34]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[33]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[32]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[31]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[30]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[29]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[28]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[27]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[26]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[25]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[24]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[23]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[22]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[21]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[20]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[19]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[18]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[17]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[16]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[15]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[14]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[13]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[12]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[11]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[10]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[9]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[8]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[7]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[6]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[5]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[4]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[3]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[2]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[1]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[0].DUT_error_hidden/tmp_error_hidden_i_reg[0]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg[47]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg[46]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg[45]) is unused and will be removed from module top_ann.
+WARNING: [Synth 8-3332] Sequential element (dut_bw/calc_layer_hidden[1].DUT_error_hidden/tmp_error_hidden_i_reg[44]) is unused and will be removed from module top_ann.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:01:32 . Memory (MB): peak = 1908.020 ; gain = 621.242 ; free physical = 1648 ; free virtual = 13261
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++--------------------------+------------+---------------+----------------+
+|Module Name               | RTL Object | Depth x Width | Implemented As | 
++--------------------------+------------+---------------+----------------+
+|activation_funct_behavior | p_0_out    | 256x32        | LUT            | 
+|forward                   | p_0_out    | 256x32        | LUT            | 
+|forward                   | p_0_out    | 256x32        | LUT            | 
+|forward                   | p_0_out    | 256x32        | LUT            | 
+|forward                   | p_0_out    | 256x32        | LUT            | 
+|forward                   | p_0_out    | 256x32        | LUT            | 
++--------------------------+------------+---------------+----------------+
+
+
+DSP: Preliminary Mapping  Report (see note below)
++------------------------+----------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name             | DSP Mapping          | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------------------+----------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|weighted_input          | A*B                  | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|weighted_input          | A*B                  | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|weighted_input          | A*B                  | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|weighted_input          | A*B                  | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|weighted_input          | A*B                  | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|weighted_input          | A*B                  | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|forward                 | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|forward                 | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|forward                 | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|forward                 | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|forward                 | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|forward                 | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|derivative_activation   | (((D:0x400)-A)*B)'   | 16     | 16     | -      | 12     | 33     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | ((D'-A2)*B)'         | 16     | 16     | -      | 16     | 33     | 1    | 0    | -    | 1    | 0     | 1    | 0    | 
+|delta_bias_cumulation   | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|derivative_activation   | (((D:0x400)-A)*B)'   | 16     | 16     | -      | 12     | 33     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | ((D'-A2)*B)'         | 16     | 16     | -      | 16     | 33     | 1    | 0    | -    | 1    | 0     | 1    | 0    | 
+|delta_bias_cumulation   | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|backward                | PCIN+A2*B            | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|derivative_activation   | (((D:0x400)-A)*B)'   | 16     | 16     | -      | 12     | 33     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | A*B2                 | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|backward                | (PCIN>>17)+A2*B      | 16     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|delta_bias_cumulation   | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|backward                | PCIN+A2*B            | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|derivative_activation   | (((D:0x400)-A)*B)'   | 16     | 16     | -      | 12     | 33     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | A*B2                 | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|backward                | (PCIN>>17)+A2*B      | 16     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|delta_bias_cumulation   | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | A2*B                 | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|backward                | PCIN+A2*B            | 16     | 16     | -      | -      | 32     | 1    | 0    | -    | -    | -     | 0    | 0    | 
+|derivative_activation   | (((D:0x400)-A)*B)'   | 16     | 16     | -      | 12     | 33     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | A*B2                 | 18     | 16     | -      | -      | 48     | 0    | 1    | -    | -    | -     | 0    | 0    | 
+|backward                | (PCIN>>17)+A2*B      | 16     | 15     | -      | -      | 48     | 1    | 0    | -    | -    | -     | 0    | 1    | 
+|delta_bias_cumulation   | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A2*B'')'            | 16     | 16     | -      | -      | 32     | 1    | 2    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A2*BCIN2)'          | 16     | 16     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A2*B'')'            | 16     | 16     | -      | -      | 32     | 1    | 2    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A2*BCIN2)'          | 16     | 16     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A2*B'')'            | 16     | 16     | -      | -      | 32     | 1    | 2    | -    | -    | -     | 1    | 0    | 
+|backward                | (A2*BCIN2)'          | 16     | 16     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A*B'')'             | 16     | 16     | -      | -      | 32     | 0    | 2    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A*BCIN2)'           | 16     | 16     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A*B'')'             | 16     | 16     | -      | -      | 32     | 0    | 2    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A*B'')'             | 16     | 16     | -      | -      | 32     | 0    | 2    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A*BCIN2)'           | 16     | 16     | -      | -      | 32     | 0    | 1    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
+|backward                | (A*B'')'             | 16     | 16     | -      | -      | 32     | 0    | 2    | -    | -    | -     | 1    | 0    | 
+|delta_weight_cumulation | ((D+A)*(B:0x3ff99))' | 17     | 8      | -      | 17     | 26     | 0    | 0    | -    | 0    | 0     | 1    | 0    | 
++------------------------+----------------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:01:42 . Memory (MB): peak = 1958.012 ; gain = 671.234 ; free physical = 1376 ; free virtual = 12997
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:01:43 . Memory (MB): peak = 1972.012 ; gain = 685.234 ; free physical = 1322 ; free virtual = 12943
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:50 ; elapsed = 00:01:45 . Memory (MB): peak = 2016.848 ; gain = 730.070 ; free physical = 1281 ; free virtual = 12902
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:50 ; elapsed = 00:01:45 . Memory (MB): peak = 2016.852 ; gain = 730.074 ; free physical = 1280 ; free virtual = 12902
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:50 ; elapsed = 00:01:45 . Memory (MB): peak = 2016.852 ; gain = 730.074 ; free physical = 1280 ; free virtual = 12902
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:01:46 . Memory (MB): peak = 2016.852 ; gain = 730.074 ; free physical = 1279 ; free virtual = 12900
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:01:46 . Memory (MB): peak = 2016.852 ; gain = 730.074 ; free physical = 1279 ; free virtual = 12900
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:51 ; elapsed = 00:01:46 . Memory (MB): peak = 2016.852 ; gain = 730.074 ; free physical = 1279 ; free virtual = 12900
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:51 ; elapsed = 00:01:46 . Memory (MB): peak = 2016.852 ; gain = 730.074 ; free physical = 1279 ; free virtual = 12900
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                     | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|top_ann     | dut_bw/s_tmp_input_reg[0][5] | 5      | 32    | YES          | NO                 | YES               | 32     | 0       | 
+|top_ann     | s_tmp4_expected_reg[1][5]    | 4      | 32    | YES          | NO                 | YES               | 32     | 0       | 
++------------+------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |BUFG       |     1|
+|2     |CARRY4     |   291|
+|3     |DSP48E1    |     6|
+|4     |DSP48E1_1  |    12|
+|5     |DSP48E1_10 |     2|
+|6     |DSP48E1_11 |     5|
+|7     |DSP48E1_2  |    17|
+|8     |DSP48E1_3  |     2|
+|9     |DSP48E1_4  |     3|
+|10    |DSP48E1_5  |     3|
+|11    |DSP48E1_6  |     3|
+|12    |DSP48E1_7  |     3|
+|13    |DSP48E1_8  |     2|
+|14    |DSP48E1_9  |     2|
+|15    |LUT1       |    45|
+|16    |LUT2       |  1092|
+|17    |LUT3       |    31|
+|18    |LUT4       |    39|
+|19    |LUT5       |    51|
+|20    |LUT6       |   161|
+|21    |MUXF7      |    50|
+|22    |MUXF8      |    25|
+|23    |SRL16E     |    64|
+|24    |FDRE       |  1569|
+|25    |IBUF       |    68|
+|26    |OBUF       |    33|
++------+-----------+------+
+
+Report Instance Areas: 
++------+-----------------------------------------------------------------------+---------------------------------+------+
+|      |Instance                                                               |Module                           |Cells |
++------+-----------------------------------------------------------------------+---------------------------------+------+
+|1     |top                                                                    |                                 |  3580|
+|2     |  dut_bw                                                               |backward                         |  1818|
+|3     |    \calc_db_adder_hidden[0].DUT_delta_bias_cumulation                 |delta_bias_cumulation            |    93|
+|4     |    \calc_db_adder_hidden[1].DUT_delta_bias_cumulation                 |delta_bias_cumulation_14         |    93|
+|5     |    \calc_db_adder_hidden[2].DUT_delta_bias_cumulation                 |delta_bias_cumulation_15         |    93|
+|6     |    \calc_db_adder_output[0].DUT_delta_bias_cumulation                 |delta_bias_cumulation_16         |    93|
+|7     |    \calc_db_adder_output[1].DUT_delta_bias_cumulation                 |delta_bias_cumulation_17         |    93|
+|8     |    \calc_dw_adder_hidden_i[0].adder_j[0].DUT_delta_weight_cumulation  |delta_weight_cumulation          |    93|
+|9     |    \calc_dw_adder_hidden_i[0].adder_j[1].DUT_delta_weight_cumulation  |delta_weight_cumulation_18       |    93|
+|10    |    \calc_dw_adder_hidden_i[0].adder_j[2].DUT_delta_weight_cumulation  |delta_weight_cumulation_19       |    93|
+|11    |    \calc_dw_adder_hidden_i[1].adder_j[0].DUT_delta_weight_cumulation  |delta_weight_cumulation_20       |    93|
+|12    |    \calc_dw_adder_hidden_i[1].adder_j[1].DUT_delta_weight_cumulation  |delta_weight_cumulation_21       |    93|
+|13    |    \calc_dw_adder_hidden_i[1].adder_j[2].DUT_delta_weight_cumulation  |delta_weight_cumulation_22       |    93|
+|14    |    \calc_dw_adder_output_i[0].adder_j[0].DUT_delta_weight_cumulation  |delta_weight_cumulation_23       |    93|
+|15    |    \calc_dw_adder_output_i[0].adder_j[1].DUT_delta_weight_cumulation  |delta_weight_cumulation_24       |    93|
+|16    |    \calc_dw_adder_output_i[1].adder_j[0].DUT_delta_weight_cumulation  |delta_weight_cumulation_25       |    93|
+|17    |    \calc_dw_adder_output_i[1].adder_j[1].DUT_delta_weight_cumulation  |delta_weight_cumulation_26       |    93|
+|18    |    \calc_dw_adder_output_i[2].adder_j[0].DUT_delta_weight_cumulation  |delta_weight_cumulation_27       |    93|
+|19    |    \calc_dw_adder_output_i[2].adder_j[1].DUT_delta_weight_cumulation  |delta_weight_cumulation_28       |    93|
+|20    |    \calc_dw_hidden_i[0].dw_j[0].DUT_delta_weight                      |delta_weight                     |     1|
+|21    |    \calc_dw_hidden_i[0].dw_j[1].DUT_delta_weight                      |delta_weight_29                  |     1|
+|22    |    \calc_dw_hidden_i[0].dw_j[2].DUT_delta_weight                      |delta_weight_30                  |     1|
+|23    |    \calc_dw_hidden_i[1].dw_j[0].DUT_delta_weight                      |delta_weight_31                  |     1|
+|24    |    \calc_dw_hidden_i[1].dw_j[1].DUT_delta_weight                      |delta_weight_32                  |     1|
+|25    |    \calc_dw_hidden_i[1].dw_j[2].DUT_delta_weight                      |delta_weight_33                  |     1|
+|26    |    \calc_dw_output_i[0].dw_j[0].DUT_delta_weight                      |delta_weight_34                  |     1|
+|27    |    \calc_dw_output_i[0].dw_j[1].DUT_delta_weight                      |delta_weight_35                  |     1|
+|28    |    \calc_dw_output_i[1].dw_j[0].DUT_delta_weight                      |delta_weight_36                  |     1|
+|29    |    \calc_dw_output_i[1].dw_j[1].DUT_delta_weight                      |delta_weight_37                  |     1|
+|30    |    \calc_dw_output_i[2].dw_j[0].DUT_delta_weight                      |delta_weight_38                  |     1|
+|31    |    \calc_dw_output_i[2].dw_j[1].DUT_delta_weight                      |delta_weight_39                  |     1|
+|32    |    \calc_layer_hidden[0].DUT_delta_bias                               |delta_bias                       |    16|
+|33    |    \calc_layer_hidden[0].DUT_derivative_activation                    |derivative_activation            |     1|
+|34    |    \calc_layer_hidden[0].DUT_error_hidden                             |error_hidden                     |     4|
+|35    |    \calc_layer_hidden[1].DUT_delta_bias                               |delta_bias_40                    |    16|
+|36    |    \calc_layer_hidden[1].DUT_derivative_activation                    |derivative_activation_41         |     1|
+|37    |    \calc_layer_hidden[1].DUT_error_hidden                             |error_hidden_42                  |     4|
+|38    |    \calc_layer_hidden[2].DUT_delta_bias                               |delta_bias_43                    |    16|
+|39    |    \calc_layer_hidden[2].DUT_derivative_activation                    |derivative_activation_44         |     1|
+|40    |    \calc_layer_hidden[2].DUT_error_hidden                             |error_hidden_45                  |     4|
+|41    |    \calc_layer_output[0].DUT_derivative_activation                    |derivative_activation_46         |     1|
+|42    |    \calc_layer_output[0].DUT_error_ouput                              |error_ouput                      |     1|
+|43    |    \calc_layer_output[1].DUT_derivative_activation                    |derivative_activation_47         |     1|
+|44    |    \calc_layer_output[1].DUT_error_ouput                              |error_ouput_48                   |     1|
+|45    |  dut_fw                                                               |forward                          |  1356|
+|46    |    \calc_hidden[0].dut_bias_hidden                                    |bias                             |    42|
+|47    |    \calc_hidden[0].dut_weighted_in_hidden                             |weighted_input                   |    64|
+|48    |    \calc_hidden[0].sigmoid                                            |activation_funct_behavior        |    10|
+|49    |    \calc_hidden[1].dut_bias_hidden                                    |bias_0                           |    42|
+|50    |    \calc_hidden[1].dut_weighted_in_hidden                             |weighted_input_1                 |    64|
+|51    |    \calc_hidden[1].sigmoid                                            |activation_funct_behavior_2      |    10|
+|52    |    \calc_hidden[2].dut_bias_hidden                                    |bias_3                           |    42|
+|53    |    \calc_hidden[2].dut_weighted_in_hidden                             |weighted_input_4                 |    64|
+|54    |    \calc_hidden[2].sigmoid                                            |activation_funct_behavior_5      |    10|
+|55    |    \calc_output[0].dut_bias_output                                    |bias_6                           |    42|
+|56    |    \calc_output[0].dut_weighted_in_output                             |weighted_input__parameterized2   |    79|
+|57    |    \calc_output[0].sigmoid                                            |activation_funct_behavior_7      |    10|
+|58    |    \calc_output[1].dut_bias_output                                    |bias_8                           |    43|
+|59    |    \calc_output[1].dut_weighted_in_output                             |weighted_input__parameterized2_9 |    79|
+|60    |    \calc_output[1].sigmoid                                            |activation_funct_behavior_10     |    10|
+|61    |    \calc_weight_hidden[0].dut_j[0].dut_weight_hidden                  |weight                           |    40|
+|62    |    \calc_weight_hidden[0].dut_j[1].dut_weight_hidden                  |weight__parameterized1           |    41|
+|63    |    \calc_weight_hidden[1].dut_j[0].dut_weight_hidden                  |weight__parameterized3           |    41|
+|64    |    \calc_weight_hidden[1].dut_j[1].dut_weight_hidden                  |weight__parameterized5           |    37|
+|65    |    \calc_weight_hidden[2].dut_j[0].dut_weight_hidden                  |weight__parameterized7           |    41|
+|66    |    \calc_weight_hidden[2].dut_j[1].dut_weight_hidden                  |weight_11                        |    40|
+|67    |    \calc_weight_output[0].dut_j[0].dut_weight_output                  |weight__parameterized10          |    41|
+|68    |    \calc_weight_output[0].dut_j[1].dut_weight_output                  |weight__parameterized12          |    40|
+|69    |    \calc_weight_output[0].dut_j[2].dut_weight_output                  |weight__parameterized14          |    42|
+|70    |    \calc_weight_output[1].dut_j[0].dut_weight_output                  |weight__parameterized12_12       |    40|
+|71    |    \calc_weight_output[1].dut_j[1].dut_weight_output                  |weight__parameterized5_13        |    38|
+|72    |    \calc_weight_output[1].dut_j[2].dut_weight_output                  |weight__parameterized16          |    41|
++------+-----------------------------------------------------------------------+---------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:51 ; elapsed = 00:01:46 . Memory (MB): peak = 2016.852 ; gain = 730.074 ; free physical = 1279 ; free virtual = 12900
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 276 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 2016.852 ; gain = 243.375 ; free physical = 1349 ; free virtual = 12970
+Synthesis Optimization Complete : Time (s): cpu = 00:00:51 ; elapsed = 00:01:46 . Memory (MB): peak = 2016.855 ; gain = 730.074 ; free physical = 1349 ; free virtual = 12970
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 494 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc]
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:4]
+WARNING: [Vivado 12-584] No ports matched 'res'. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:5]
+CRITICAL WARNING: [Vivado 12-4739] set_false_path:No valid object(s) found for '-from [get_ports res]'. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:5]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+Finished Parsing XDC File [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+181 Infos, 137 Warnings, 2 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:54 ; elapsed = 00:01:49 . Memory (MB): peak = 2016.855 ; gain = 763.898 ; free physical = 1389 ; free virtual = 13012
+INFO: [Common 17-600] The following parameters have non-default value.
+general.maxThreads
+# write_checkpoint -force $output_dir/post_synth
+INFO: [Common 17-1381] The checkpoint '/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707/post_synth.dcp' has been generated.
+# opt_design
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 4 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2048.871 ; gain = 7.980 ; free physical = 1488 ; free virtual = 13112
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: fa2773b2
+
+Time (s): cpu = 00:00:00.31 ; elapsed = 00:00:00.22 . Memory (MB): peak = 2396.320 ; gain = 0.000 ; free physical = 1037 ; free virtual = 12685
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 6a001768
+
+Time (s): cpu = 00:00:00.38 ; elapsed = 00:00:00.29 . Memory (MB): peak = 2396.320 ; gain = 0.000 ; free physical = 1037 ; free virtual = 12685
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 46320b73
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2396.320 ; gain = 0.000 ; free physical = 1033 ; free virtual = 12681
+INFO: [Opt 31-389] Phase Sweep created 20 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 46320b73
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2396.320 ; gain = 0.000 ; free physical = 1033 ; free virtual = 12681
+INFO: [Opt 31-389] Phase BUFG optimization created 0 cells and removed 0 cells
+
+Phase 5 Shift Register Optimization
+Phase 5 Shift Register Optimization | Checksum: 46320b73
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2396.320 ; gain = 0.000 ; free physical = 1033 ; free virtual = 12681
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2396.320 ; gain = 0.000 ; free physical = 1033 ; free virtual = 12681
+Ending Logic Optimization Task | Checksum: 46320b73
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2396.320 ; gain = 0.000 ; free physical = 1033 ; free virtual = 12681
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 147206576
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2396.320 ; gain = 0.000 ; free physical = 1033 ; free virtual = 12681
+INFO: [Common 17-83] Releasing license: Implementation
+16 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:12 ; elapsed = 00:00:25 . Memory (MB): peak = 2396.320 ; gain = 355.453 ; free physical = 1033 ; free virtual = 12681
+INFO: [Common 17-600] The following parameters have non-default value.
+general.maxThreads
+# power_opt_design
+Command: power_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Begin power optimizations | Checksum: 147206576
+INFO: [Pwropt 34-50] Optimizing power for module top_ann ...
+INFO: [Pwropt 34-207] Design is in pre-place state. Running in pre-place mode.
+Pre-processing: Time (s): cpu = 00:00:00.14 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2476.328 ; gain = 8.008 ; free physical = 965 ; free virtual = 12620
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+IDT: Time (s): cpu = 00:00:00.23 ; elapsed = 00:00:00.12 . Memory (MB): peak = 2476.328 ; gain = 0.000 ; free physical = 960 ; free virtual = 12615
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=0.356 | TNS=0.000 |
+PSMgr Creation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2479.344 ; gain = 11.023 ; free physical = 953 ; free virtual = 12609
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+INFO: [Pwropt 34-215] Skipped ODC enables for 0 nets in BRAM flops in bus-based analysis.
+INFO: [Pwropt 34-214] Skipped ODC enables for 0 nets in BRAM address flops in bus-based analysis.
+ODC: Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 2605.457 ; gain = 129.129 ; free physical = 932 ; free virtual = 12589
+Power optimization passes: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2605.457 ; gain = 137.137 ; free physical = 932 ; free virtual = 12589
+
+INFO: [Pwropt 34-77] Creating clock enable groups ...
+INFO: [Pwropt 34-96] Including small groups for filtering based on enable probabilities.
+ Done
+Grouping enables: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.08 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 991 ; free virtual = 12647
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-26] Patching clock gating enable signals for design top_ann ...
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 0 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+
+Number of Slice Registers augmented: 0 newly gated: 0 Total: 1589
+Number of SRLs augmented: 0  newly gated: 0 Total: 64
+Number of BRAM Ports augmented: 0 newly gated: 0 Total Ports: 0
+Number of Flops added for Enable Generation: 0
+
+Flops dropped: 0/0 RAMS dropped: 0/0 Clusters dropped: 0/0 Enables dropped: 0
+Patching clock gating enables finished successfully.
+Ending PowerOpt Patch Enables Task | Checksum: 147206576
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 991 ; free virtual = 12647
+INFO: [Pwropt 34-30] Power optimization finished successfully.
+End power optimizations | Checksum: 147206576
+Power optimization: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 2605.457 ; gain = 209.109 ; free physical = 995 ; free virtual = 12651
+INFO: [Pwropt 34-198] Malloced memory gain at end of power optimization: -9384544 bytes
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 147206576
+
+Time (s): cpu = 00:00:00.31 ; elapsed = 00:00:00.24 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 1001 ; free virtual = 12657
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 2 BUFG optimization
+Phase 2 BUFG optimization | Checksum: 147206576
+
+Time (s): cpu = 00:00:00.43 ; elapsed = 00:00:00.36 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 1002 ; free virtual = 12658
+INFO: [Opt 31-389] Phase BUFG optimization created 0 cells and removed 0 cells
+
+Phase 3 Remap
+Phase 3 Remap | Checksum: 1637a14c1
+
+Time (s): cpu = 00:00:00.63 ; elapsed = 00:00:00.55 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 997 ; free virtual = 12653
+INFO: [Opt 31-389] Phase Remap created 67 cells and removed 67 cells
+Ending Logic Optimization Task | Checksum: 1637a14c1
+
+Time (s): cpu = 00:00:00.64 ; elapsed = 00:00:00.56 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 997 ; free virtual = 12653
+INFO: [Common 17-83] Releasing license: Implementation
+23 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+power_opt_design completed successfully
+power_opt_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 2605.457 ; gain = 209.137 ; free physical = 997 ; free virtual = 12653
+INFO: [Common 17-600] The following parameters have non-default value.
+general.maxThreads
+# place_design
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [DRC 23-27] Running DRC with 4 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 4 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 4 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 997 ; free virtual = 12654
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: b73d717b
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 997 ; free virtual = 12654
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 999 ; free virtual = 12656
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 19845b76
+
+Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 966 ; free virtual = 12627
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 77c93f9b
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 962 ; free virtual = 12623
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 77c93f9b
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 962 ; free virtual = 12623
+Phase 1 Placer Initialization | Checksum: 77c93f9b
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 962 ; free virtual = 12623
+
+Phase 2 Global Placement
+Phase 2 Global Placement | Checksum: fcfdf074
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 916 ; free virtual = 12579
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: fcfdf074
+
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:11 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 916 ; free virtual = 12579
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1d01966f5
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:12 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 915 ; free virtual = 12577
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 119739f8a
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:12 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 914 ; free virtual = 12577
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: 119739f8a
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:12 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 914 ; free virtual = 12577
+
+Phase 3.5 Timing Path Optimizer
+Phase 3.5 Timing Path Optimizer | Checksum: 119739f8a
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:12 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 914 ; free virtual = 12577
+
+Phase 3.6 Fast Optimization
+Phase 3.6 Fast Optimization | Checksum: 119739f8a
+
+Time (s): cpu = 00:00:21 ; elapsed = 00:00:12 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 914 ; free virtual = 12577
+
+Phase 3.7 Small Shape Detail Placement
+Phase 3.7 Small Shape Detail Placement | Checksum: 398396a3
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:13 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 902 ; free virtual = 12566
+
+Phase 3.8 Re-assign LUT pins
+Phase 3.8 Re-assign LUT pins | Checksum: a9cb0591
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:13 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 903 ; free virtual = 12566
+
+Phase 3.9 Pipeline Register Optimization
+Phase 3.9 Pipeline Register Optimization | Checksum: a9cb0591
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:13 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 903 ; free virtual = 12566
+
+Phase 3.10 Fast Optimization
+Phase 3.10 Fast Optimization | Checksum: a9cb0591
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:14 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 903 ; free virtual = 12567
+Phase 3 Detail Placement | Checksum: a9cb0591
+
+Time (s): cpu = 00:00:23 ; elapsed = 00:00:14 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 903 ; free virtual = 12567
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Constraints 18-483] create_clock: no pin(s)/port(s)/net(s) specified as objects, only virtual clock 'virtual_clk' will be created. If you don't want this, please specify pin(s)/ports(s)/net(s) as objects to the command. [/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707.xdc:4]
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 1431ae63a
+
+Phase 4.1.1.1 BUFG Insertion
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 4 CPUs
+INFO: [Place 46-33] Processed net reset_IBUF, BUFG insertion was skipped due to placement/routing conflicts.
+INFO: [Place 46-31] BUFG insertion identified 1 candidate nets, 0 success, 1 skipped for placement/routing, 0 skipped for timing, 0 skipped for netlist change reason.
+Phase 4.1.1.1 BUFG Insertion | Checksum: 1431ae63a
+
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:15 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 898 ; free virtual = 12562
+INFO: [Place 30-746] Post Placement Timing Summary WNS=-0.517. For the most accurate timing information please run report_timing.
+Phase 4.1.1 Post Placement Optimization | Checksum: 1e967f203
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:29 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 896 ; free virtual = 12560
+Phase 4.1 Post Commit Optimization | Checksum: 1e967f203
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:29 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 896 ; free virtual = 12560
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 1e967f203
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:29 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 907 ; free virtual = 12571
+
+Phase 4.3 Placer Reporting
+Phase 4.3 Placer Reporting | Checksum: 1e967f203
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:29 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 907 ; free virtual = 12571
+
+Phase 4.4 Final Placement Cleanup
+Phase 4.4 Final Placement Cleanup | Checksum: 1ad26a29d
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:29 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 907 ; free virtual = 12571
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 1ad26a29d
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:29 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 907 ; free virtual = 12571
+Ending Placer Task | Checksum: d0565624
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:29 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 961 ; free virtual = 12625
+INFO: [Common 17-83] Releasing license: Implementation
+20 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:00:42 ; elapsed = 00:00:30 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 961 ; free virtual = 12625
+INFO: [Common 17-600] The following parameters have non-default value.
+general.maxThreads
+# phys_opt_design
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 962 ; free virtual = 12625
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 4 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.807 | TNS=-63.298 |
+Phase 1 Physical Synthesis Initialization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 935 ; free virtual = 12609
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.807 | TNS=-63.298 |
+
+Phase 2 Fanout Optimization
+INFO: [Physopt 32-64] No nets found for fanout-optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 4 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 2 Fanout Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 932 ; free virtual = 12607
+
+Phase 3 Placement Based Optimization
+INFO: [Physopt 32-661] Optimized 0 net.  Re-placed 0 instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 3 Placement Based Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 930 ; free virtual = 12604
+
+Phase 4 Rewire
+INFO: [Physopt 32-246] Starting Signal Push optimization...
+INFO: [Physopt 32-241] No nets found for rewiring () optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 4 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 929 ; free virtual = 12604
+Phase 4 Rewire | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 929 ; free virtual = 12604
+
+Phase 5 Critical Cell Optimization
+INFO: [Physopt 32-68] No nets found for critical-cell optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 5 Critical Cell Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:03 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 928 ; free virtual = 12603
+
+Phase 6 DSP Register Optimization
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 6 DSP Register Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 928 ; free virtual = 12603
+
+Phase 7 BRAM Register Optimization
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 7 BRAM Register Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 928 ; free virtual = 12603
+
+Phase 8 URAM Register Optimization
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 8 URAM Register Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 928 ; free virtual = 12603
+
+Phase 9 Shift Register Optimization
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 9 Shift Register Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 928 ; free virtual = 12603
+
+Phase 10 Critical Pin Optimization
+INFO: [Physopt 32-607] No candidate nets found for critical-pin optimization.
+INFO: [Physopt 32-608] Optimized 0 net.  Swapped 0 pin.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 10 Critical Pin Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 928 ; free virtual = 12603
+
+Phase 11 Very High Fanout Optimization
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 11 Very High Fanout Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 927 ; free virtual = 12603
+
+Phase 12 BRAM Enable Optimization
+Phase 12 BRAM Enable Optimization | Checksum: 1c49d7055
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 927 ; free virtual = 12603
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 927 ; free virtual = 12603
+INFO: [Physopt 32-603] Post Physical Optimization Timing Summary | WNS=-0.807 | TNS=-63.298 |
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization       |  WNS Gain (ns)  |  TNS Gain (ns)  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Fanout             |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Placement Based    |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Rewire             |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Critical Cell      |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register       |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register      |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  URAM Register      |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register     |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Critical Pin       |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout   |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Enable        |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total              |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |          11  |  00:00:00  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Physical Synthesis Task | Checksum: 121cbcfc8
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 926 ; free virtual = 12602
+INFO: [Common 17-83] Releasing license: Implementation
+32 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+INFO: [Common 17-600] The following parameters have non-default value.
+general.maxThreads
+# write_checkpoint -force $output_dir/post_place
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.54 ; elapsed = 00:00:00.19 . Memory (MB): peak = 2605.457 ; gain = 0.000 ; free physical = 934 ; free virtual = 12616
+INFO: [Common 17-1381] The checkpoint '/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707/post_place.dcp' has been generated.
+# report_timing_summary -file $output_dir/post_place_timing_summary.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+# route_design
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7vx485t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7vx485t'
+Running DRC as a precondition to command route_design
+INFO: [DRC 23-27] Running DRC with 4 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 4 CPUs
+Checksum: PlaceDB: 8fa2b57b ConstDB: 0 ShapeSum: 168f29f3 RouteDB: 0
+
+Phase 1 Build RT Design
+Phase 1 Build RT Design | Checksum: 1830e1058
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:21 . Memory (MB): peak = 2832.516 ; gain = 227.059 ; free physical = 615 ; free virtual = 12292
+Post Restoration Checksum: NetGraph: c326c7a4 NumContArr: bfe748b4 Constraints: 0 Timing: 0
+
+Phase 2 Router Initialization
+
+Phase 2.1 Create Timer
+Phase 2.1 Create Timer | Checksum: 1830e1058
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:21 . Memory (MB): peak = 2832.520 ; gain = 227.062 ; free physical = 616 ; free virtual = 12293
+
+Phase 2.2 Fix Topology Constraints
+Phase 2.2 Fix Topology Constraints | Checksum: 1830e1058
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:21 . Memory (MB): peak = 2851.406 ; gain = 245.949 ; free physical = 587 ; free virtual = 12265
+
+Phase 2.3 Pre Route Cleanup
+Phase 2.3 Pre Route Cleanup | Checksum: 1830e1058
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:21 . Memory (MB): peak = 2851.406 ; gain = 245.949 ; free physical = 587 ; free virtual = 12265
+ Number of Nodes with overlaps = 0
+
+Phase 2.4 Update Timing
+Phase 2.4 Update Timing | Checksum: 11aa5982f
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:23 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 575 ; free virtual = 12253
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.863 | TNS=-67.090| WHS=-0.188 | THS=-98.649|
+
+Phase 2 Router Initialization | Checksum: 138f88099
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:23 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 572 ; free virtual = 12250
+
+Phase 3 Initial Routing
+Phase 3 Initial Routing | Checksum: 2db5eac94
+
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:23 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 565 ; free virtual = 12243
+
+Phase 4 Rip-up And Reroute
+
+Phase 4.1 Global Iteration 0
+ Number of Nodes with overlaps = 97
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.630 | TNS=-56.338| WHS=N/A    | THS=N/A    |
+
+Phase 4.1 Global Iteration 0 | Checksum: 13d99c7c9
+
+Time (s): cpu = 00:00:45 ; elapsed = 00:00:24 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 562 ; free virtual = 12241
+
+Phase 4.2 Global Iteration 1
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.594 | TNS=-48.082| WHS=N/A    | THS=N/A    |
+
+Phase 4.2 Global Iteration 1 | Checksum: 186442296
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 562 ; free virtual = 12241
+
+Phase 4.3 Global Iteration 2
+ Number of Nodes with overlaps = 1
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.594 | TNS=-51.346| WHS=N/A    | THS=N/A    |
+
+Phase 4.3 Global Iteration 2 | Checksum: 26baa59d5
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 563 ; free virtual = 12241
+Phase 4 Rip-up And Reroute | Checksum: 26baa59d5
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 563 ; free virtual = 12241
+
+Phase 5 Delay and Skew Optimization
+
+Phase 5.1 Delay CleanUp
+
+Phase 5.1.1 Update Timing
+Phase 5.1.1 Update Timing | Checksum: 1e6ed6d8c
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 563 ; free virtual = 12241
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.504 | TNS=-42.706| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 5.1 Delay CleanUp | Checksum: 20f02bf0b
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 556 ; free virtual = 12235
+
+Phase 5.2 Clock Skew Optimization
+Phase 5.2 Clock Skew Optimization | Checksum: 20f02bf0b
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 556 ; free virtual = 12235
+Phase 5 Delay and Skew Optimization | Checksum: 20f02bf0b
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 556 ; free virtual = 12235
+
+Phase 6 Post Hold Fix
+
+Phase 6.1 Hold Fix Iter
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 20a12821c
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 556 ; free virtual = 12235
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-0.468 | TNS=-37.714| WHS=0.098  | THS=0.000  |
+
+Phase 6.1 Hold Fix Iter | Checksum: 20a12821c
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 556 ; free virtual = 12235
+Phase 6 Post Hold Fix | Checksum: 20a12821c
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 556 ; free virtual = 12235
+
+Phase 7 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0.171994 %
+  Global Horizontal Routing Utilization  = 0.190996 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Utilization threshold used for congestion level computation: 0.85
+Congestion Report
+North Dir 1x1 Area, Max Cong = 47.7477%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 50.4505%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 55.8824%, No Congested Regions.
+West Dir 1x1 Area, Max Cong = 48.5294%, No Congested Regions.
+Phase 7 Route finalize | Checksum: 2310d2811
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 555 ; free virtual = 12233
+
+Phase 8 Verifying routed nets
+
+ Verification completed successfully
+Phase 8 Verifying routed nets | Checksum: 2310d2811
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:25 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 554 ; free virtual = 12232
+
+Phase 9 Depositing Routes
+Phase 9 Depositing Routes | Checksum: 1bdf1ad9a
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:26 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 553 ; free virtual = 12231
+
+Phase 10 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-0.468 | TNS=-37.714| WHS=0.098  | THS=0.000  |
+
+WARNING: [Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
+Phase 10 Post Router Timing | Checksum: 1bdf1ad9a
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:26 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 556 ; free virtual = 12234
+INFO: [Route 35-16] Router Completed Successfully
+
+Time (s): cpu = 00:00:49 ; elapsed = 00:00:26 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 605 ; free virtual = 12283
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+14 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:00:51 ; elapsed = 00:00:27 . Memory (MB): peak = 2901.117 ; gain = 295.660 ; free physical = 605 ; free virtual = 12283
+INFO: [Common 17-600] The following parameters have non-default value.
+general.maxThreads
+# write_checkpoint -force $output_dir/post_route
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00.55 ; elapsed = 00:00:00.21 . Memory (MB): peak = 2901.117 ; gain = 0.000 ; free physical = 595 ; free virtual = 12282
+INFO: [Common 17-1381] The checkpoint '/home/hunghh_59d/Ann/impl/fpga/nn_core_vc707/post_route.dcp' has been generated.
+# report_timing_summary -file $output_dir/post_route_timing_summary.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+# report_timing -sort_by group -max_paths 100 -path_type summary -file $output_dir/post_route_timing_timing.rpt
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -2, Delay Type: max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -max_paths 100 -nworst 1 -delay_type max -sort_by group.
+# report_clock_utilization -file $output_dir/clock_util.rpt
+report_clock_utilization: Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2901.117 ; gain = 0.000 ; free physical = 612 ; free virtual = 12282
+# report_utilization -file $output_dir/post_route_utilization.rpt
+report_utilization: Time (s): cpu = 00:00:00.72 ; elapsed = 00:00:00.75 . Memory (MB): peak = 2901.117 ; gain = 0.000 ; free physical = 612 ; free virtual = 12282
+# report_drc -file $output_dir/post_imp_drc.rpt
+Command: report_drc -file ./nn_core_vc707/post_imp_drc.rpt
+INFO: [DRC 23-27] Running DRC with 4 threads
+INFO: [Coretcl 2-168] The results of DRC are in file /home/hunghh_59d/Ann/impl/fpga/nn_core_vc707/post_imp_drc.rpt.
+report_drc completed successfully
+# write_verilog -force $output_dir/nn_core_impl_netlist.v
+# write_xdc -no_fixed_only -force $output_dir/nn_core_impl.xdc
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Dec 12 17:20:49 2017...

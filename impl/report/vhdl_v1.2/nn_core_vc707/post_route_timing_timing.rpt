@@ -1,0 +1,318 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.3 (lin64) Build 2018833 Wed Oct  4 19:58:07 MDT 2017
+| Date         : Thu Dec 14 14:30:08 2017
+| Host         : centos_sinhnn running 64-bit CentOS Linux release 7.4.1708 (Core)
+| Command      : report_timing -sort_by group -max_paths 100 -path_type summary -file ./nn_core_vc707/post_route_timing_timing.rpt
+| Design       : top_ann
+| Device       : 7vx485t-ffg1761
+| Speed File   : -2  PRODUCTION 1.12 2014-09-11
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Startpoint                     Endpoint                       Slack(ns)     
+----------------------------------------------------------------------------
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[0]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[10]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[11]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[12]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[13]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[14]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[15]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[16]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[17]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[18]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[19]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[1]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[20]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[21]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[22]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[23]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[24]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[25]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[26]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[27]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[28]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[29]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[2]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[30]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[31]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[32]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[33]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[34]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[35]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[36]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[37]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[38]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[39]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[3]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[40]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[41]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[42]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[43]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[44]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[45]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[46]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[47]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[4]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[5]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[6]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[7]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[8]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[2].DUT_error_hidden/arg__2/PCIN[9]
+                                                              0.565         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[0]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[10]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[11]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[12]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[13]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[14]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[15]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[16]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[17]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[18]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[19]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[1]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[20]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[21]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[22]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[23]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[24]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[25]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[26]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[27]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[28]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[29]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[2]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[30]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[31]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[32]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[33]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[34]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[35]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[36]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[37]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[38]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[39]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[3]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[40]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[41]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[42]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[43]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[44]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[45]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[46]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[47]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[4]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[5]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[6]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[7]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[8]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[0].DUT_error_hidden/arg__2/PCIN[9]
+                                                              0.629         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[1].DUT_error_hidden/arg__2/PCIN[0]
+                                                              0.756         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[1].DUT_error_hidden/arg__2/PCIN[10]
+                                                              0.756         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[1].DUT_error_hidden/arg__2/PCIN[11]
+                                                              0.756         
+dut_bw/calc_layer_output[0].DUT_error_ouput/arg/CLK
+                               dut_bw/calc_layer_hidden[1].DUT_error_hidden/arg__2/PCIN[12]
+                                                              0.756         
+
+
+

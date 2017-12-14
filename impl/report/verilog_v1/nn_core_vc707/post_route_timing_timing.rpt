@@ -1,0 +1,318 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.3 (lin64) Build 2018833 Wed Oct  4 19:58:07 MDT 2017
+| Date         : Fri Dec  8 08:57:24 2017
+| Host         : centos_sinhnn running 64-bit CentOS Linux release 7.4.1708 (Core)
+| Command      : report_timing -sort_by group -max_paths 100 -path_type summary -file ./nn_core_vc707/post_route_timing_timing.rpt
+| Design       : NN_CORE
+| Device       : 7vx485t-ffg1761
+| Speed File   : -2  PRODUCTION 1.12 2014-09-11
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Startpoint                     Endpoint                       Slack(ns)     
+----------------------------------------------------------------------------
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[0]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[10]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[11]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[12]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[13]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[14]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[15]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[16]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[17]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[18]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[19]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[1]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[20]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[21]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[22]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[23]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[24]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[25]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[26]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[27]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[28]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[29]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[2]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[30]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[31]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[32]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[33]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[34]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[35]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[36]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[37]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[38]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[39]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[3]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[40]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[41]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[42]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[43]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[44]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[45]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[46]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[47]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[4]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[5]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[6]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[7]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[8]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_1/tmp_delta2_i_reg__0/PCIN[9]
+                                                              0.754         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[0]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[10]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[11]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[12]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[13]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[14]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[15]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[16]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[17]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[18]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[19]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[1]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[20]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[21]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[22]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[23]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[24]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[25]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[26]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[27]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[28]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[29]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[2]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[30]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[31]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[32]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[33]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[34]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[35]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[36]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[37]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[38]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[39]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[3]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[40]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[41]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[42]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[43]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[44]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[45]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[46]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[47]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[4]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[5]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[6]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[7]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[8]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg__0/CLK
+                               BACKWARD/DELTA2_2/tmp_delta2_i_reg__0/PCIN[9]
+                                                              0.955         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg[16]/C
+                               BACKWARD/DELTA2_3/tmp_delta2_i_reg__0/PCIN[0]
+                                                              1.122         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg[16]/C
+                               BACKWARD/DELTA2_3/tmp_delta2_i_reg__0/PCIN[10]
+                                                              1.122         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg[16]/C
+                               BACKWARD/DELTA2_3/tmp_delta2_i_reg__0/PCIN[11]
+                                                              1.122         
+BACKWARD/DELTA3_1/tmp_delta3_i_reg[16]/C
+                               BACKWARD/DELTA2_3/tmp_delta2_i_reg__0/PCIN[12]
+                                                              1.122         
+
+
+
