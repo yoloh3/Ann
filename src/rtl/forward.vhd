@@ -33,7 +33,7 @@ entity forward is
         clk                   : in  std_logic;
         areset                : in  std_logic;
         i_select_initial      : in  std_logic;
-        i_update_coeff        : in std_logic;
+        i_update_coeff        : in  std_logic;
         i_input               : in  input_array_t(layer_input_size - 1 downto 0);
 
         i_adder_weight_hidden : in  weight_array2_input2hidden_t;

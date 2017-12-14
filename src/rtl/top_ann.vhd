@@ -31,7 +31,7 @@ use ieee.math_real.all;
 entity top_ann is
     port(
         clk              : in std_logic;
-        reset            : in std_logic;
+        areset            : in std_logic;
         i_select_initial : in std_logic;
         i_update_coeff   : in std_logic;
         i_input          : in  input_array_t(layer_input_size - 1 downto 0);
@@ -49,7 +49,7 @@ architecture behavior of top_ann is
     component forward
         port (
             clk                   : in  std_logic;
-            reset                 : in  std_logic;
+            areset                 : in  std_logic;
             i_select_initial      : in  std_logic;
             i_update_coeff        : in  std_logic;
             i_input               : in  input_array_t(layer_input_size - 1 downto 0);
@@ -67,7 +67,7 @@ architecture behavior of top_ann is
     component backward
         port (
             clk                   : in  std_logic;
-            reset                 : in  std_logic;
+            areset                 : in  std_logic;
             i_input               : in  input_array_t(layer_input_size - 1 downto 0);
             i_expected            : in  input_array_t(layer_input_size - 1 downto 0);
             i_weight_output       : in  weight_array2_hidden2output_t;
@@ -111,7 +111,7 @@ architecture behavior of top_ann is
     -- signal real_activation_hidden   :  bias_init_array_t(layer_hidden_size - 1 downto 0);
     -- signal real_activation_output   :  bias_init_array_t(layer_output_size - 1 downto 0);
 
-    signal count_epochs : integer := 0;
+    signal count: integer := 0;
 begin
     -- -- For simulation
     -- mult_real_w_hidden: for i in 0 to layer_hidden_size - 1 generate
@@ -141,7 +141,7 @@ begin
     dut_fw: forward
     port map (
        clk                    => clk,
-       reset                  => reset ,
+       areset                 => areset,
        i_select_initial       => i_select_initial,
        i_update_coeff         => i_update_coeff,
        i_input                => i_input,
@@ -156,10 +156,10 @@ begin
        o_activation_output    => s_activation_output   
     );
 
-    delay: process(reset , clk)
+    delay: process(areset , clk)
     begin
         if rising_edge(clk) then
-            if (reset  = '1') then
+            if (areset  = '1') then
                 s_tmp_input <= (others => (others => '0'));
                 s_tmp2_input <= (others => (others => '0'));
                 s_tmp3_input <= (others => (others => '0'));
@@ -191,7 +191,7 @@ begin
      dut_bw: backward
     port map (
        clk                    => clk,
-       reset                  => reset ,
+       areset                 => areset ,
        i_input                => s_tmp4_input,
        i_expected             => s_tmp4_expected,
        i_weight_output        => s_weight_output,
@@ -205,29 +205,17 @@ begin
 
     o_output_result <= s_activation_output;
 
-<<<<<<< HEAD
     cout_finish: process(reset, clk)
-    begin
-        if rising_edge(clk) then
-            if (reset  = '1') then
-                count_epochs <= 0;
-            else
-                if s_finish_calc = '1' then
-                    count_epochs <= count_epochs + 1;
-                end if;
-=======
-    cout_finish: process(areset, clk)
     begin
         if (areset = '1') then
             count <= 0;
         elsif rising_edge(clk) then
             if i_update_coeff = '1' then
                 count <= count + 1;
->>>>>>> Resolves: Return to first demo version and fix bug. (demo ver: commit: 98afebf9422) (not revert).
             end if;
         end if;
     end process;
 
-    o_finish_update <= '1' when count_epochs = epochs
+    o_finish_update <= '1' when count = epochs
                   else '0';
 end behavior;

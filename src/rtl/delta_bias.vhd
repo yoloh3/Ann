@@ -51,5 +51,3 @@ begin
 
     o_delta_bias <= tmp_delta_bias(bias_int_w - 1 downto -bias_fract_w);
 end rtl;
-
->>>>>>> Resolves: Return to first demo version and fix bug. (demo ver: commit: 98afebf9422) (not revert).
