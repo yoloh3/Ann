@@ -205,7 +205,7 @@ begin
 
     o_output_result <= s_activation_output;
 
-    cout_finish: process(reset, clk)
+    cout_finish: process(areset, clk)
     begin
         if (areset = '1') then
             count <= 0;
