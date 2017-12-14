@@ -38,6 +38,12 @@ package tb_pkg is
     procedure print (
         constant prefix : in string);
 
+    procedure test_case_top_ann (
+        signal clk         : in std_logic;
+        signal output      : in activation_array_t(layer_output_size - 1 downto 0);
+        constant expected  : in bias_init_array_t(layer_output_size - 1 downto 0)
+    );
+ 
     procedure test_case_backward (
         signal   clk            : in  std_logic;
         constant i_input1       : in  real;
@@ -330,4 +336,21 @@ package body tb_pkg is
         assert is_real_equal(to_real(result), expected, -6.0)
             report "Test failed!";
     end test_case_error_hidden;
+
+    procedure test_case_top_ann (
+        signal clk         : in std_logic;
+        signal output      : in activation_array_t(layer_output_size - 1 downto 0);
+        constant expected  : in bias_init_array_t(0 to layer_output_size - 1)
+    )
+    is
+    begin
+        print("");
+        print("At: " & time'image(now) &
+            " output1 = " & real'image(to_real(output(1))) &
+            " output2 = " & real'image(to_real(output(0))));
+
+        assert is_real_equal(to_real(output(0)), expected(0), -6.0)
+           and is_real_equal(to_real(output(1)), expected(1), -6.0)
+        report "Test failed!";
+    end test_case_top_ann;
 end tb_pkg;

@@ -128,9 +128,43 @@ begin
                 end loop;
 
                 -- wait for next input
-                 wait until rising_edge(s_clk);
-
+                wait until rising_edge(s_clk);
+                wait for 1 ns;
             end loop read_line;
+
+            test_case: if (i = epochs - 2) then
+                test1: test_case_top_ann (
+                    clk      => s_clk,
+                    output   => s_o_output_result,
+                    expected => (0.90918, 0.0634766)
+                );
+                wait until rising_edge(s_clk);
+                wait for 1 ns;
+
+                test2: test_case_top_ann (
+                    clk      => s_clk,
+                    output   => s_o_output_result,
+                    expected => (0.0673828, 0.935547)
+                );
+                wait until rising_edge(s_clk);
+                wait for 1 ns;
+
+                test3: test_case_top_ann (
+                    clk      => s_clk,
+                    output   => s_o_output_result,
+                    expected => (0.0673828, 0.935547)
+                );
+                wait until rising_edge(s_clk);
+                wait for 1 ns;
+
+                test4: test_case_top_ann (
+                    clk      => s_clk,
+                    output   => s_o_output_result,
+                    expected => (0.0322266, 0.96875)
+                );
+                wait until rising_edge(s_clk);
+                wait for 1 ns;
+        end if;
 
             file_close(inf);
             wait for 9 * period;
