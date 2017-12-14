@@ -1,7 +1,7 @@
 ##############################################################################
 # Project name   :
 # File name      : Makefile
-# Last modified  : xim 29 2017 16:15
+# Last modified  : Dec 14 2017 10:33
 # Guide          : run make sim_top & dataset open/reload
 ###############################################################################
 
@@ -20,8 +20,7 @@ vpath %.vhd ../rtl ../tb
 SRCS := $(wildcard ../rtl/*.$(LANG))
 TB   := $(wildcard ../tb/*.$(LANG))
 
-all: $(TARGET)
-	@$(SIMULATE) -c $(TARGET) -do $(CHECK_COMMAND)
+all: sim_top
 
 sim: $(TARGET)
 	@$(SIMULATE) $(TARGET) -do $(SIM_COMMAND)
