@@ -188,8 +188,7 @@ begin
             end if;
         end if;
     end process;
-
-    dut_bw: backward
+     dut_bw: backward
     port map (
        clk                    => clk,
        reset                  => reset ,
@@ -206,6 +205,7 @@ begin
 
     o_output_result <= s_activation_output;
 
+<<<<<<< HEAD
     cout_finish: process(reset, clk)
     begin
         if rising_edge(clk) then
@@ -215,6 +215,15 @@ begin
                 if s_finish_calc = '1' then
                     count_epochs <= count_epochs + 1;
                 end if;
+=======
+    cout_finish: process(areset, clk)
+    begin
+        if (areset = '1') then
+            count <= 0;
+        elsif rising_edge(clk) then
+            if i_update_coeff = '1' then
+                count <= count + 1;
+>>>>>>> Resolves: Return to first demo version and fix bug. (demo ver: commit: 98afebf9422) (not revert).
             end if;
         end if;
     end process;

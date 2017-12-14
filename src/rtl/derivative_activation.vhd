@@ -33,7 +33,7 @@ use work.rtl_pkg.all;
 entity derivative_activation is
     port(
         clk    : in  std_logic;
-        reset  : in  std_logic;
+        areset : in  std_logic;
         i_a    : in  activation_float_t;
         o_dadz : out dadz_float_t
     );
@@ -46,17 +46,14 @@ architecture rtl of derivative_activation is
     signal tmp_dadz :
         sfixed(2 * activation_int_w downto - 2 *activation_fract_w);
 begin
-    derivative_activation: process(clk)
+    derivative_activation: process(clk, areset)
     begin
-        if rising_edge(clk) then
-            if reset  = '1' then
-                tmp_dadz <= (others => '0');
-            else
-                tmp_dadz <= (to_sfixed(1.0, i_a) - i_a) * i_a;
-            end if;
+        if areset = '1' then
+            tmp_dadz <= (others => '0');
+        elsif rising_edge(clk) then
+            tmp_dadz <= (to_sfixed(1.0, i_a) - i_a) * i_a;
         end if;
     end process;
 
     o_dadz <= tmp_dadz(dadz_int_w - 1 downto -dadz_fract_w);
 end rtl;
-

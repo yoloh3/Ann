@@ -30,7 +30,7 @@ use work.rtl_pkg.all;
 entity delta_bias is
     port (
         clk            : in  std_logic;
-        reset          : in  std_logic;
+        areset         : in  std_logic;
         i_error        : in  error_float_t;
         o_delta_bias   : out weight_float_t
     );
@@ -40,17 +40,16 @@ architecture rtl of delta_bias  is
     signal tmp_delta_bias :
         sfixed(error_int_w - 1 downto -error_fract_w);
 begin
-    process(clk)
+    process(clk, areset)
     begin
-        if rising_edge(clk) then
-            if reset  = '1' then
-                tmp_delta_bias <= (others => '0');
-            else
-                tmp_delta_bias <= i_error;
-            end if;
+        if areset = '1' then
+            tmp_delta_bias <= (others => '0');
+        elsif rising_edge(clk) then
+            tmp_delta_bias <= i_error;
         end if;
     end process;
 
     o_delta_bias <= tmp_delta_bias(bias_int_w - 1 downto -bias_fract_w);
 end rtl;
 
+>>>>>>> Resolves: Return to first demo version and fix bug. (demo ver: commit: 98afebf9422) (not revert).

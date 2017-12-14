@@ -30,7 +30,7 @@ use work.rtl_pkg.all;
 entity delta_bias_cumulation  is
     port (
         clk               : in  std_logic;
-        reset             : in  std_logic;
+        areset            : in  std_logic;
         i_delta_bias      : in  bias_float_t;
         o_bias_cumulation : out bias_float_t
     );
@@ -44,20 +44,18 @@ architecture rtl of delta_bias_cumulation  is
     signal tmp_ouput
         : sfixed(2*bias_int_w + 1 downto -2*bias_fract_w);
 begin
-    mux4: process(clk)
+    mux4: process(clk, areset)
     begin
-        if rising_edge(clk) then
-            if reset  = '1' then
-                s_delta_bias <= (others => (others => '0'));
-                tmp_ouput    <= (others => '0');
-            else
-                s_delta_bias(2) <= s_delta_bias(1);
-                s_delta_bias(1) <= s_delta_bias(0);
-                s_delta_bias(0) <= i_delta_bias;
-                tmp_ouput <= learning_rate
-                           * ((s_delta_bias(2) + s_delta_bias(1))
-                            + (s_delta_bias(0) + i_delta_bias));
-            end if;
+        if areset = '1' then
+            s_delta_bias <= (others => (others => '0'));
+            tmp_ouput    <= (others => '0');
+        elsif rising_edge(clk) then
+            s_delta_bias(2) <= s_delta_bias(1);
+            s_delta_bias(1) <= s_delta_bias(0);
+            s_delta_bias(0) <= i_delta_bias;
+            tmp_ouput <= learning_rate
+                       * ((s_delta_bias(2) + s_delta_bias(1))
+                        + (s_delta_bias(0) + i_delta_bias));
         end if;
     end process mux4;
 

@@ -19,7 +19,7 @@
 --  Input:
 --      i_dbias             : 32 bits 0000_0000.0000_0000_0000_0000_0000_0000 signed : delta bias2_1
 --      clk                 : 1 bit
---      reset               : 1 bit : high active
+--      areset              : 1 bit : high active
 --      i_select_initial    : 1 bit : high active
 --      i_select_update     : 1 bit : high active
 --  Output:
@@ -46,7 +46,7 @@ entity bias is
     );
     port(
         clk              : in  std_logic;
-        reset            : in  std_logic;
+        areset           : in  std_logic;
         i_select_initial : in  std_logic;
         i_select_update  : in  std_logic;
         i_dbias          : in  bias_float_t;
@@ -62,12 +62,12 @@ architecture rtl of bias is
     signal bias_tmp     : sfixed(bias_int_w downto -bias_fract_w);
 
 begin
-    process(clk)
+    process(clk, areset)
     begin
-        if(rising_edge(clk)) then
-            if(reset  = '1') then
-                    bias_tmp <= (others => '0');
-            elsif(i_select_initial = '1') then
+        if(areset = '1') then
+                bias_tmp <= (others => '0');
+        elsif(rising_edge(clk)) then
+            if(i_select_initial = '1') then
                 bias_tmp <= to_sfixed(init_value, bias_tmp);
             elsif (i_select_update = '1') then
                 bias_tmp <= bias_tmp(bias_int_w - 1 downto -bias_fract_w) + i_dbias;

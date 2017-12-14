@@ -42,7 +42,7 @@ entity activation_funct is
     port
     (
         clk                : in  std_logic;
-        reset              : in  std_logic;
+        areset             : in  std_logic;
         i_weighted_input   : in  weighted_input_float_t;
         o_activation_funct : out activation_float_t
     );
@@ -73,12 +73,12 @@ architecture funct of activation_funct is
 
     signal mem: mem_type := init_mem;
 begin
-    process(reset , clk)
+    process(areset , clk)
         subtype address_t is std_logic_vector (i_weighted_input'length - 1 downto 0);
         variable address : address_t;
     begin
         if rising_edge(clk) then
-            if reset  = '1' then
+            if areset  = '1' then
                 o_activation_funct <= (others => '0');
             else
                 address := address_t(i_weighted_input);
@@ -373,21 +373,19 @@ begin
         subtype address_t is std_logic_vector(i_weighted_input'length - 1 downto 0);
         variable address : address_t;
     begin
-      if rising_edge(clk) then
-			  if(reset  = '1') then
-				  o_activation_funct <= (others => '0');
-			  else
-                address := address_t(i_weighted_input);
+          if(areset = '1') then
+              o_activation_funct <= (others => '0');
+          elsif rising_edge(clk) then
+            address := address_t(i_weighted_input);
 
-				    o_activation_funct <=
-                  mem(to_integer(unsigned(address)))(activation_int_w - 1 downto
-                     -activation_fract_w);
-			  end if;
-		  end if;
+                o_activation_funct <=
+              mem(to_integer(unsigned(address)))(activation_int_w - 1 downto
+                 -activation_fract_w);
+          end if;
 	end process;
 end behavior;
 
 configuration config1 of activation_funct is
-    for behavior
+    for funct 
     end for;
 end config1;

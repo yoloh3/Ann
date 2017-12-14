@@ -28,7 +28,7 @@ use work.rtl_pkg.all;
 entity backward is
     port (
         clk                   : in  std_logic;
-        reset                 : in  std_logic;
+        areset                : in  std_logic;
         i_input               : in  input_array_t(layer_input_size - 1 downto 0);
         i_expected            : in  input_array_t(layer_input_size - 1 downto 0);
         i_weight_output       : in  weight_array2_hidden2output_t;
@@ -46,7 +46,7 @@ architecture struct of backward is
     component derivative_activation
         port (
             clk                    : in  std_logic;
-            reset                  : in  std_logic;
+            areset                 : in  std_logic;
             i_a                    : in  activation_float_t;
             o_dadz                 : out dadz_float_t
         );
@@ -54,7 +54,7 @@ architecture struct of backward is
     component error_hidden
         port (
             clk                  : in  std_logic;
-            reset                : in  std_logic;
+            areset               : in  std_logic;
             i_dadz2              : in  dadz_float_t;
             i_weight_ouput_array : in  weight_array_t(layer_output_size - 1 downto 0);
             i_error_ouput_array  : in  error_array_t(layer_output_size - 1 downto 0);
@@ -64,7 +64,7 @@ architecture struct of backward is
     component error_ouput
         port (
             clk                : in  std_logic;
-            reset              : in  std_logic;
+            areset             : in  std_logic;
             i_activation_ouput : in  activation_float_t;
             i_exptected_value  : in  input_float_t;
             i_dadz_ouput       : in  dadz_float_t;
@@ -74,7 +74,7 @@ architecture struct of backward is
     component delta_weight is
         port (
             clk            : in  std_logic;
-            reset          : in  std_logic;
+            areset         : in  std_logic;
             i_error        : in  error_float_t;
             i_input_signal : in  input_float_t;
             o_delta_weight : out weight_float_t
@@ -83,7 +83,7 @@ architecture struct of backward is
     component delta_bias is
         port (
             clk            : in  std_logic;
-            reset          : in  std_logic;
+            areset         : in  std_logic;
             i_error        : in  error_float_t;
             o_delta_bias   : out weight_float_t
         );
@@ -91,7 +91,7 @@ architecture struct of backward is
     component delta_weight_cumulation  is
         port (
             clk             : in  std_logic;
-            reset           : in  std_logic;
+            areset          : in  std_logic;
             i_delta_weight  : in  weight_float_t;
             o_dw_cumulation : out weight_float_t
         );
@@ -99,7 +99,7 @@ architecture struct of backward is
     component delta_bias_cumulation  is
         port (
             clk               : in  std_logic;
-            reset             : in  std_logic;
+            areset            : in  std_logic;
             i_delta_bias      : in  bias_float_t;
             o_bias_cumulation : out bias_float_t
         );
@@ -135,48 +135,15 @@ architecture struct of backward is
     signal s_delta_bias_output_2    : bias_array_t(layer_output_size - 1 downto 0);
     signal s_delta_bias_hidden    : bias_array_t(layer_hidden_size - 1 downto 0);
 
-    -- -- For simulation
-    -- signal real_error_output        : bias_init_array_t(layer_output_size - 1 downto 0);
-    -- signal real_error_hidden        : bias_init_array_t(layer_hidden_size - 1 downto 0);
-    -- signal real_dadz_output         : bias_init_array_t(layer_output_size - 1 downto 0);
-    -- signal real_delta_bias_output   : bias_init_array_t(layer_output_size - 1 downto 0);
-    -- signal real_delta_bias_hidden   : bias_init_array_t(layer_hidden_size - 1 downto 0);
-    -- signal real_dadz_hidden         : bias_init_array_t(layer_hidden_size - 1 downto 0);
-    -- signal real_delta_weight_output : weight_init_hidden2output_array_t;
-    -- signal real_delta_weight_hidden : weight_init_input2hidden_array_t;
+
 begin
-    -- -- For simulation
-    -- mult_real_w_hidden: for i in 0 to layer_hidden_size - 1 generate
-        -- for_j: for j in 0 to layer_input_size - 1 generate
-            -- real_delta_weight_hidden(i)(j) <= 1024.0 * to_real(s_delta_weight_hidden(i)(j));
-        -- end generate for_j;
-    -- end generate mult_real_w_hidden;
-
-    -- mult_real_w_output: for i in 0 to layer_output_size - 1 generate
-        -- for_j: for j in 0 to layer_hidden_size - 1 generate
-            -- real_delta_weight_output(i)(j) <= 1024.0 * to_real(s_delta_weight_output(i)(j));
-        -- end generate for_j;
-    -- end generate mult_real_w_output;
-
-    -- mult_real_hidden: for i in 0 to layer_hidden_size - 1 generate
-        -- real_error_hidden(i) <= 1024.0 * to_real(s_error_hidden(i));
-        -- real_dadz_hidden(i) <= 1024.0 * to_real(s_dadz_hidden(i));
-        -- real_delta_bias_hidden(i) <= 1024.0 * to_real(s_error_hidden(i));
-    -- end generate mult_real_hidden;
-
-    -- mult_real_output: for i in 0 to layer_output_size - 1 generate
-        -- real_error_output(i) <= 1024.0 * to_real(s_error_output(i));
-        -- real_dadz_output(i) <= 1024.0 * to_real(s_dadz_output(i));
-        -- real_delta_bias_output(i) <= 1024.0 * to_real(s_error_output(i));
-    -- end generate  mult_real_output;
-
 
    -- Calculate dadz, error, delta_bias
    calc_layer_output: for i in 0 to layer_output_size - 1 generate
        DUT_derivative_activation: derivative_activation
            port map (
               clk                     => clk,
-              reset                   => reset ,
+              areset                  => areset,
               i_a                     => i_activation_output(i),
               o_dadz                  => s_dadz_output(i)
            );
@@ -184,7 +151,7 @@ begin
        DUT_error_ouput: error_ouput
            port map (
               clk                 => clk,
-              reset               => reset ,
+              areset              => areset,
               i_activation_ouput  => s_tmp_activation_output(i),
               i_exptected_value   => s_tmp_expected(i),
               i_dadz_ouput        => s_dadz_output(i),
@@ -194,7 +161,7 @@ begin
        DUT_delta_bias: delta_bias
            port map (
               clk             => clk,
-              reset           => reset ,
+              areset          => areset,
               i_error         => s_error_output(i),
               o_delta_bias    => s_delta_bias_output(i)
            );
@@ -211,7 +178,7 @@ begin
        DUT_derivative_activation: derivative_activation
            port map (
               clk                     => clk,
-              reset                   => reset ,
+              areset                  => areset,
               i_a                     => i_activation_hidden(i),
               o_dadz                  => s_dadz_hidden(i)
            );
@@ -219,7 +186,7 @@ begin
        DUT_error_hidden: error_hidden
            port map (
               clk                   => clk,
-              reset                 => reset ,
+              areset                => areset,
               i_dadz2               => s_tmp_dadz_hidden(i),
               i_weight_ouput_array  => s_weight_output_2(i),
               i_error_ouput_array   => s_error_output,
@@ -229,7 +196,7 @@ begin
        DUT_delta_bias: delta_bias
            port map (
               clk             => clk,
-              reset           => reset ,
+              areset          => areset,
               i_error         => s_error_hidden(i),
               o_delta_bias    => s_delta_bias_hidden(i)
            );
@@ -240,7 +207,7 @@ begin
            DUT_delta_weight: delta_weight
                port map (
                   clk             => clk,
-                  reset           => reset ,
+                  areset          => areset,
                   i_error         => s_tmp_error_output(j),
                   i_input_signal  => s_tmp3_activation_hidden(i),
                   o_delta_weight  => s_delta_weight_output(j)(i)
@@ -253,7 +220,7 @@ begin
            DUT_delta_weight: delta_weight
                port map (
                   clk             => clk,
-                  reset           => reset ,
+                  areset          => areset,
                   i_error         => s_error_hidden(j),
                   i_input_signal  => s_tmp3_input(i),
                   o_delta_weight  => s_delta_weight_hidden(j)(i)
@@ -263,42 +230,40 @@ begin
 
    delay: process(clk)
    begin
-       if(rising_edge(clk)) then
-           if(reset  = '1') then
-                   s_tmp_activation_output     <= (others => (others => '0'));
-                   s_tmp_expected              <= (others => (others => '0'));
-                   s_tmp_dadz_hidden           <= (others => (others => '0'));
+       if(areset  = '1') then
+               s_tmp_activation_output     <= (others => (others => '0'));
+               s_tmp_expected              <= (others => (others => '0'));
+               s_tmp_dadz_hidden           <= (others => (others => '0'));
 
-                   s_weight_output_2           <= (others => (others => (others => '0')));
+               s_weight_output_2           <= (others => (others => (others => '0')));
 
-                   s_tmp_activation_hidden     <= (others => (others => '0'));
-                   s_tmp2_activation_hidden    <= (others => (others => '0'));
-                   s_tmp3_activation_hidden    <= (others => (others => '0'));
+               s_tmp_activation_hidden     <= (others => (others => '0'));
+               s_tmp2_activation_hidden    <= (others => (others => '0'));
+               s_tmp3_activation_hidden    <= (others => (others => '0'));
 
-                   s_tmp_error_output          <= (others => (others => '0'));
-                   s_delta_bias_output_2       <= (others => (others => '0'));
+               s_tmp_error_output          <= (others => (others => '0'));
+               s_delta_bias_output_2       <= (others => (others => '0'));
 
-                   s_tmp_input                 <= (others => (others => '0'));
-                   s_tmp2_input                <= (others => (others => '0'));
-                   s_tmp3_input                <= (others => (others => '0'));
-           else
-               s_tmp_activation_output     <= i_activation_output;
-               s_tmp_expected              <= i_expected;
-               s_tmp_dadz_hidden           <= s_dadz_hidden;
+               s_tmp_input                 <= (others => (others => '0'));
+               s_tmp2_input                <= (others => (others => '0'));
+               s_tmp3_input                <= (others => (others => '0'));
+       elsif(rising_edge(clk)) then
+           s_tmp_activation_output     <= i_activation_output;
+           s_tmp_expected              <= i_expected;
+           s_tmp_dadz_hidden           <= s_dadz_hidden;
 
-               s_weight_output_2           <= s_weight_output;
+           s_weight_output_2           <= s_weight_output;
 
-               s_tmp_activation_hidden     <= i_activation_hidden;
-               s_tmp2_activation_hidden    <= s_tmp_activation_hidden;
-               s_tmp3_activation_hidden    <= s_tmp2_activation_hidden;
+           s_tmp_activation_hidden     <= i_activation_hidden;
+           s_tmp2_activation_hidden    <= s_tmp_activation_hidden;
+           s_tmp3_activation_hidden    <= s_tmp2_activation_hidden;
 
-               s_tmp_error_output          <= s_error_output;
-               s_delta_bias_output_2       <= s_delta_bias_output;
+           s_tmp_error_output          <= s_error_output;
+           s_delta_bias_output_2       <= s_delta_bias_output;
 
-               s_tmp_input                 <= i_input;
-               s_tmp2_input                <= s_tmp_input;
-               s_tmp3_input                <= s_tmp2_input;
-           end if;
+           s_tmp_input                 <= i_input;
+           s_tmp2_input                <= s_tmp_input;
+           s_tmp3_input                <= s_tmp2_input;
        end if;
    end process;
 
@@ -307,7 +272,7 @@ begin
            DUT_delta_weight_cumulation: delta_weight_cumulation
                port map (
                   clk                       => clk,
-                  reset                     => reset ,
+                  areset                    => areset ,
                   i_delta_weight            => s_delta_weight_output(j)(i),
                   o_dw_cumulation           => o_adder_weight_output(j)(i)
                );
@@ -319,7 +284,7 @@ begin
            DUT_delta_weight_cumulation: delta_weight_cumulation
                port map (
                   clk                       => clk,
-                  reset                     => reset ,
+                  areset                    => areset,
                   i_delta_weight            => s_delta_weight_hidden(j)(i),
                   o_dw_cumulation           => o_adder_weight_hidden(j)(i)
                );
@@ -330,7 +295,7 @@ begin
        DUT_delta_bias_cumulation: delta_bias_cumulation
            port map (
               clk                     => clk,
-              reset                   => reset ,
+              areset                  => areset,
               i_delta_bias            => s_delta_bias_output_2(i),
               o_bias_cumulation       => o_adder_bias_output(i)
            );
@@ -340,7 +305,7 @@ begin
        DUT_delta_bias_cumulation: delta_bias_cumulation
            port map (
               clk                     => clk,
-              reset                   => reset ,
+              areset                  => areset,
               i_delta_bias            => s_delta_bias_hidden(i),
               o_bias_cumulation       => o_adder_bias_hidden(i)
            );

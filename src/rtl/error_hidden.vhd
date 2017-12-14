@@ -30,7 +30,7 @@ use work.rtl_pkg.all;
 entity error_hidden  is
     port (
         clk                  : in  std_logic;
-        reset                : in  std_logic;
+        areset               : in  std_logic;
         i_dadz2              : in  dadz_float_t;
         i_weight_ouput_array : in  weight_array_t(layer_output_size - 1 downto 0);
         i_error_ouput_array  : in  error_array_t(layer_output_size - 1 downto 0);
@@ -43,33 +43,25 @@ architecture rtl_error_hidden  of error_hidden  is
     constant mult_fract_w     : integer := weight_fract_w + error_fract_w;
     signal tmp_error_hidden_i :
         sfixed(mult_int_w + dadz_int_w - 1 downto -(mult_fract_w + dadz_fract_w));
-
-    type mult_array_t is array (integer range <>)
-        of sfixed(mult_int_w - 1 downto -mult_fract_w);
-    signal s_mult_array: mult_array_t(layer_output_size - 1 downto 0);
 begin
-    mult_parallel: for i in 0 to layer_output_size - 1 generate
-        s_mult_array(i) <= i_weight_ouput_array(i) * i_error_ouput_array(i);
-    end generate mult_parallel;
-
-    process(clk)
+    process(clk, areset)
         variable v_tmp_sum    : sfixed(mult_int_w downto -mult_fract_w);
     begin
-        if rising_edge(clk) then
-            if(reset  = '1') then
-                tmp_error_hidden_i  <= (others => '0');
-                v_tmp_sum           := (others => '0');
-            else
-                v_tmp_sum           := (others => '0');
-                for i in 0 to layer_output_size - 1 loop
-                    v_tmp_sum := v_tmp_sum(mult_int_w - 1 downto -mult_fract_w)
-                               + s_mult_array(i);
-                end loop;
+        if(areset = '1') then
+            tmp_error_hidden_i  <= (others => '0');
+        elsif rising_edge(clk) then
+            v_tmp_sum(mult_int_w - 1 downto -mult_fract_w)
+                := i_weight_ouput_array(0) * i_error_ouput_array(0);
 
-                tmp_error_hidden_i <= v_tmp_sum(mult_int_w - 1 downto
-                                      -mult_fract_w)
-                                    * i_dadz2;
-            end if;
+            for i in 1 to layer_output_size - 1 loop
+                v_tmp_sum := v_tmp_sum(mult_int_w - 1 downto -mult_fract_w)
+                           + i_weight_ouput_array(i) * i_error_ouput_array(i);
+            end loop;
+
+            tmp_error_hidden_i <= v_tmp_sum(mult_int_w - 1 downto
+                                  -mult_fract_w)
+                                * i_dadz2;
+
         end if;
     end process;
 

@@ -30,7 +30,7 @@ use work.rtl_pkg.all;
 entity delta_weight is
     port (
         clk            : in  std_logic;
-        reset          : in  std_logic;
+        areset         : in  std_logic;
         i_error        : in  error_float_t;
         i_input_signal : in  input_float_t;
         o_delta_weight : out weight_float_t
@@ -42,17 +42,14 @@ architecture rtl of delta_weight  is
         sfixed(error_int_w + input_int_w - 1
             downto -(error_fract_w + input_fract_w));
 begin
-    process(clk)
+    process(clk, areset)
     begin
-        if rising_edge(clk) then
-            if reset  = '1' then
-                tmp_delta_weight <= (others => '0');
-            else
-                tmp_delta_weight <= i_error * i_input_signal;
-            end if;
+        if areset = '1' then
+            tmp_delta_weight <= (others => '0');
+        elsif rising_edge(clk) then
+            tmp_delta_weight <= i_error * i_input_signal;
         end if;
     end process;
 
     o_delta_weight <= tmp_delta_weight(weight_int_w - 1 downto -weight_fract_w);
 end rtl;
-

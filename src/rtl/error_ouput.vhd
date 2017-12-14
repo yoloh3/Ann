@@ -33,7 +33,7 @@ use work.rtl_pkg.all;
 entity error_ouput is
     port(
         clk                : in  std_logic;
-        reset              : in  std_logic;
+        areset             : in  std_logic;
         i_activation_ouput : in  activation_float_t;
         i_exptected_value  : in  input_float_t;
         i_dadz_ouput       : in  dadz_float_t;
@@ -49,15 +49,13 @@ architecture rtl of error_ouput is
         sfixed(dadz_int_w + input_int_w
             downto - (dadz_fract_w + input_fract_w));
 begin
-    process(clk)
+    process(clk, areset)
     begin
-        if rising_edge(clk) then
-            if reset  = '1' then
-                tmp_error_ouput <= (others => '0');
-            else
-                tmp_error_ouput <= i_dadz_ouput
-                                * (i_activation_ouput - i_exptected_value);
-            end if;
+        if areset = '1' then
+            tmp_error_ouput <= (others => '0');
+        elsif rising_edge(clk) then
+            tmp_error_ouput <= i_dadz_ouput
+                            * (i_activation_ouput - i_exptected_value);
         end if;
     end process;
 
