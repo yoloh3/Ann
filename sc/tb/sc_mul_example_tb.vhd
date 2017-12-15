@@ -22,7 +22,9 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
+USE ieee.math_real.ALL;
 USE std.env.ALL;
+USE std.textio.ALL;
 
 -------------------------------------------------------------------------------
 
@@ -35,7 +37,7 @@ END ENTITY sc_mul_example_tb;
 ARCHITECTURE test OF sc_mul_example_tb IS
 
   -- component generics
-  CONSTANT DATA_WIDTH  : INTEGER   := 4;
+  CONSTANT DATA_WIDTH  : INTEGER   := 8;
   CONSTANT CLK_PERIOD  : TIME      := 10 NS;
   -- component ports
   SIGNAL clk           : STD_LOGIC := '1';
@@ -70,33 +72,75 @@ BEGIN  -- ARCHITECTURE test
   rst_n <= '1'     AFTER 3*CLK_PERIOD + CLK_PERIOD/8;
   -- waveform generation
   WaveGen_Proc : PROCESS
+    PROCEDURE print (
+      CONSTANT str : IN STRING)
+    IS
+      VARIABLE l : LINE;
+    BEGIN
+      write(l, str);
+      writeline(output, l);
+    END PROCEDURE;
+
+    PROCEDURE test_sc (
+      CONSTANT px1 : IN REAL;
+      CONSTANT px2 : IN REAL)
+    IS
+      VARIABLE px1_int      : INTEGER;
+      VARIABLE px2_int      : INTEGER;
+      VARIABLE px1_real     : REAL;
+      VARIABLE px2_real     : REAL;
+      VARIABLE mul_expected : REAL;
+      VARIABLE mul_real     : REAL;
+      VARIABLE max_val      : REAL := REAL(2**DATA_WIDTH);
+    BEGIN
+      ASSERT
+        px1     >= 0.0 AND px1 <= 1.0
+        AND px2 >= 0.0 AND px2 <= 1.0
+        REPORT "Invalid inputs" SEVERITY ERROR;
+      px1_int      := INTEGER(px1 * max_val);
+      px2_int      := INTEGER(px2 * max_val);
+      px1_real     := REAL(px1_int) / max_val;
+      px2_real     := REAL(px2_int) / max_val;
+      mul_expected := px1*px2;
+
+      px1_in   <= STD_LOGIC_VECTOR(to_unsigned(px1_int, px1_in'LENGTH));
+      seed1_in <= STD_LOGIC_VECTOR(to_unsigned(11, seed1_in'LENGTH));
+      seed2_in <= STD_LOGIC_VECTOR(to_unsigned(7, seed2_in'LENGTH));
+      px2_in   <= STD_LOGIC_VECTOR(to_unsigned(px2_int, px2_in'LENGTH));
+      start_in <= '1';
+
+      print(STRING'("Input: px1 = ") & REAL'IMAGE(px1)
+            & STRING'("     px2 = ") & REAL'IMAGE(px2));
+      print(STRING'("Input converted: px1 = ") & INTEGER'IMAGE(px1_int)
+            & STRING'("     px2 = ") & INTEGER'IMAGE(px2_int));
+      print(STRING'("ERROR converted: px1 = ") & REAL'IMAGE(px1_real - px1)
+            & STRING'("     px2 = ") & REAL'IMAGE(px2_real-px2));
+
+      WAIT UNTIL rising_edge(clk);
+      WAIT FOR CLK_PERIOD/8;
+      start_in <= '0';
+      WAIT UNTIL mul_valid_out = '1';
+
+      mul_real := REAL(to_integer(UNSIGNED(mul_out)))/max_val;
+
+      print(STRING'("Result: px1*px2 = ") & real'IMAGE(mul_real));
+      print(STRING'("Result Error: ") & REAL'IMAGE(mul_real - mul_expected));
+
+      -- ASSERT mul_out = STD_LOGIC_VECTOR(to_unsigned(INTEGER(mul_expected * max_val), mul_out'LENGTH)) REPORT "Test failed" SEVERITY ERROR;
+
+      WAIT UNTIL rising_edge(clk);
+    END PROCEDURE test_sc;
   BEGIN
     -- insert signal assignments here
     start_in <= '0';
-    seed1_in <= STD_LOGIC_VECTOR(to_unsigned(5,seed1_in'LENGTH));
-    seed2_in <= STD_LOGIC_VECTOR(to_unsigned(7, seed2_in'LENGTH));
-    px1_in <= STD_LOGIC_VECTOR(to_unsigned(4, px1_in'LENGTH)); -- 4/16
-    px2_in <= STD_LOGIC_VECTOR(to_unsigned(4, px2_in'LENGTH)); -- 4/16
+    seed1_in <= (OTHERS => '0');
+    seed2_in <= (OTHERS => '0');
+    px1_in   <= (OTHERS => '0');
+    px2_in   <= (OTHERS => '0');
     WAIT UNTIL rst_n = '1';
-    start_in <= '1';
-    WAIT UNTIL Clk = '1';
-    WAIT FOR CLK_PERIOD/8;
-    start_in <= '0';
-
-    WAIT UNTIL mul_valid_out = '1';
-    ASSERT mul_out = STD_LOGIC_VECTOR(to_unsigned(1, mul_out'LENGTH)) REPORT "Test failed" SEVERITY ERROR;
-    WAIT UNTIL rising_edge(clk);
-    WAIT FOR CLK_PERIOD/8;
-    start_in <= '1';
-    px1_in <= STD_LOGIC_VECTOR(to_unsigned(4, px1_in'LENGTH)); -- 4/16
-    px2_in <= STD_LOGIC_VECTOR(to_unsigned(7, px2_in'LENGTH)); -- 7/16
-    WAIT UNTIL Clk = '1';
-    WAIT FOR CLK_PERIOD/8;
-    start_in <= '0';
-
-    WAIT UNTIL mul_valid_out = '1';
-    ASSERT mul_out = STD_LOGIC_VECTOR(to_unsigned(2, mul_out'LENGTH)) REPORT "Test failed" SEVERITY ERROR;
-    WAIT UNTIL rising_edge(clk);
+    test_sc(0.5, 0.5);
+    test_sc(0.3, 0.4);
+    test_sc(0.9, 0.8);
     WAIT FOR 3*CLK_PERIOD;
 
     finish(2);
