@@ -44,7 +44,7 @@ END ENTITY sc_mul_example;
 ARCHITECTURE beh OF sc_mul_example IS
   SIGNAL set_seed   : STD_LOGIC;
   SIGNAL enable     : STD_LOGIC;
-  SIGNAL sc_counter : UNSIGNED(INTEGER(ceil(log2(REAL(DATA_WIDTH))))+1 DOWNTO 0);
+  SIGNAL sc_counter : UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL px1        : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL px2        : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL sc_stream  : STD_LOGIC_VECTOR(1 DOWNTO 0);
@@ -67,6 +67,7 @@ BEGIN  -- ARCHITECTURE beh
         px1           <= px1_in;
         px2           <= px2_in;
         sc_counter    <= (OTHERS => '0');
+        result_counter <= (OTHERS => '0');
         enable        <= '1';
         mul_valid_out <= '0';
       END IF;
