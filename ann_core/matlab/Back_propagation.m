@@ -1,59 +1,99 @@
-function [w2,w3,b2,b3] = Back_propagation(X,w2,w3,b2,b3,t,eta)
+%clc
+%clear
+%
+%%% Set input neural
+%
+%k_set     = [8 8 5 5 3;
+%             8 5 8 5 3];
+%
+%t_set     = [1 0 0 0 1;
+%         	 0 1 1 1 0];
+%
+%% Random weight
+%
+%% w2 = randi([-10 10], 3, 2)
+%% w3 = randi([-10 10], 2, 3)
+%% b2 = randi([-10 10], 3, 1)
+%% b3 = randi([-10 10], 2, 1)
+%
+%%Fix weight
+%
+%w2        = [0.1 0.4;
+%			 0.3 0.5;
+%			 0.6 0.1];
+%
+%w3        = [0.7 0.2 1.3;
+%			 0.2 0.5 1.1];
+%
+%b2        = [-1;
+%			 -1;
+%			 -1];
+%
+%b3        = [-1;
+%			 -1];
+%
+%eta       = 0.05;
+%
+%%% Calculation
+function [w2,w3,b2,b3] = Back_propagation(k_set,w2,w3,b2,b3,t,eta)
 
-% 学習回数 Iteration 
+a3 = zeros(2, 10000);
+mse = [];
 for j = 1:10000
-    C=0;
-    dCdw2=0;
-    dCdw3=0;
-    dCdb2=0;
-    dCdb3=0;
+    C     = 0;
+    dCdw2 = 0;
+    dCdw3 = 0;
+    dCdb2 = 0;
+    dCdb3 = 0;
 
-    for i=1:size(X,2)                     % 学習サンプルだけ繰り返す 	loop for sample data=4
-        % 入力→中間層パラメータ	input -> hidden parameter
-        k = X(:,i);                       % 一列ごと入力            insert input column by column
-        z2 = w2 * k + b2;			            % 中間層の重み付き入力     input weight for hidden layer
-        a2= 1./(1+exp(-z2));		          % 中間層の出力           output for hidden layer
-        dadz2 = (1-a2).*a2;			          % a2の微分系(da(z2)/dz) differentiation of a2 (differentiation of sigmoid, da(z2)/dz)
+    for i = 1:size(k_set,2)                     % loop for sample data=4
+        k        = k_set(:,i);					% insert_set k_set_set column by column
+        z2       = w2 * k + b2;                 % k_set_set weight_set for hidden layer
+        a2       = 1./(1+exp(-z2));             % output_set for hidden layer
+        dadz2    = (1-a2).*a2;                  % differentiation of a2 (differentiation of sigmoid, da(z2)/dz)
     
-        % 中間→出力層パラメータ	hidden -> output parameter
-        z3 = w3 * a2 + b3;			          % 出力層の重み付き入力		 input weight for output layer
-        a3= 1./(1+exp(-z3));		          % 出力層の出力			     output for output layer
-        dadz3 = (1-a3).*a3;			          % a3の微分系(da(z3)/dz) differentiation of a3 (differentiation of sigmoid, (da(z3)/dz))
+        % hidden -> output_set parameter
+        z3      = w3 * a2 + b3;                 % k_set_set weight_set for output_set layer
+        a3(:, j) = 1./ (1 + exp(-z3));          % output_set for output_set layer
+        dadz3    = (1 - a3(:, j)).* a3(:, j);	% differentiation of a3 (differentiation of sigmoid, (da(z3)/dz))
     
-        % 誤差逆伝搬法による学習過程		learning process of backpropagation
-        % 誤差決定				Error determination
-        tx=t(:,i);
+        % error determination
+        tx       = t(:, i);
     
-        Q=sum((tx-a3).^2)/2;
-        C = C + Q;                        % 二乗誤差			square error
+        Q        = sum((tx - a3(:, j)).^ 2) / 2;
+        C        = C + Q;						% square error
     
-        delta3 = (a3-tx) .* dadz3;		    % 出力層の誤差関数		error funtion for output layer
-        delta2 = (w3.' * delta3).*dadz2;  % 中間層の誤差関数		error funtion for hidden layer
+        delta3   = (a3(:, j) - tx).* dadz3;     % error funtion for output_set layer
+        delta2   = (w3.' * delta3).* dadz2;     % error funtion for hidden layer
     
-        % コスト関数の導出			Derivation of Cost funtion 
-        o = (a2 * (delta3).').';
-        dCdw3 = dCdw3 + o;			          % Partial derivative of C in w3 (dC/dw3 = sum(a2*delta3))
-        o = (k * (delta2).').';
-        dCdw2 = dCdw2 +o ;			          % Partial derivative of C in w2 (dC/dw2 = sum(k*delta2))
-        dCdb3 = dCdb3 + delta3;           % Partial derivative of C in b3 (dC/db3 = sum(delta3))
-        dCdb2 = dCdb2 + delta2;           % Partial derivative of C in b2 (dC/db2 = sum(delta2))
+        % Derivation of Cost_set funtion 
+        o        = (a2 * (delta3).').';
+        dCdw3    = dCdw3 + o;					% Partial derivative of C in w3 (dC/dw3 = sum(a2*delta3))
+        o        = (k * (delta2).').';
+        dCdw2    = dCdw2 +o ;					% Partial derivative of C in w2 (dC/dw2 = sum(k*delta2))
+        dCdb3    = dCdb3 + delta3;				% Partial derivative of C in b3 (dC/db3 = sum(delta3))
+        dCdb2    = dCdb2 + delta2;				% Partial derivative of C in b2 (dC/db2 = sum(delta2))
     end
-    % fprintf('%dth learning C = %g\n',j,C);
+
     w2 = w2 - eta * dCdw2;
     w3 = w3 - eta * dCdw3;
     b2 = b2 - eta * dCdb2;
     b3 = b3 - eta * dCdb3;
+
+    mse = [mse Q];
 end
 
+%Result's display
+for i = 1:size(k_set,2)				
+	k_  = k_set(:,i);				
+	z2_ = w2 * k_ + b2;			
+	a2_ = 1./(1+exp(-z2_));		
 
-% 結果の表示				Result's display
-for i=1:size(X,2)				
-    % 入力→中間層パラメータ
-    k = X(:,i);				
-    z2 = w2 * k + b2;			
-    a2= 1./(1+exp(-z2));		
+	z3_ = w3 * a2_ + b3;			
+	a3_ = 1./(1+exp(-z3_))
+end
+
+save('a3')
+plot(mse)
+title('Mean square error');
     
-    % 中間→出力層パラメータ
-    z3 = w3 * a2 + b3;			
-    a3= 1./(1+exp(-z3))	 
-end
