@@ -23,6 +23,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 USE std.env.ALL;
+use work.tb_pkg.all;
 
 -------------------------------------------------------------------------------
 
@@ -35,7 +36,7 @@ END ENTITY sng_tb;
 ARCHITECTURE test OF sng_tb IS
 
   -- component generics
-  CONSTANT DATA_WIDTH : INTEGER   := 4;
+  CONSTANT DATA_WIDTH : INTEGER   := 6;
   CONSTANT CLK_PERIOD : TIME      := 10 NS;
   -- component ports
   SIGNAL clk          : STD_LOGIC := '1';
@@ -72,33 +73,44 @@ BEGIN  -- ARCHITECTURE test
     -- insert signal assignments here
     set_seed_in <= '0';
     enable_in   <= '0';
-    seed_in     <= STD_LOGIC_VECTOR(to_unsigned(5, seed_in'LENGTH));
-    -- 1/4 represented in 8-bit data
-    px_in       <= STD_LOGIC_VECTOR(to_unsigned(16#4#, px_in'LENGTH));
-    WAIT UNTIL rst_n = '1';
 
+    -- 1/4 represented in 8-bit data
+    WAIT UNTIL rst_n = '1';
     set_seed_in <= '1';
+    seed_in     <= STD_LOGIC_VECTOR(to_unsigned(5, seed_in'LENGTH));
     WAIT UNTIL Clk = '1';
     WAIT FOR CLK_PERIOD/8;
     set_seed_in <= '0';
-    enable_in   <= '1';
-    FOR i IN 0 TO 15 LOOP
-      WAIT UNTIL clk = '1';
-    END LOOP;  -- i
-    enable_in <= '0';
-    WAIT FOR 3*CLK_PERIOD;
-    ASSERT counter = UNSIGNED(px_in) REPORT "Error or Data correlated" SEVERITY ERROR;
+
+    for i in 0 to 2**DATA_WIDTH - 1 loop
+        enable_in   <= '1';
+        px_in       <= STD_LOGIC_VECTOR(to_unsigned(i, px_in'LENGTH));
+
+        FOR i IN 0 TO 2**DATA_WIDTH - 2 LOOP
+          WAIT UNTIL clk = '1';
+        END LOOP;  -- i
+
+        enable_in <= '0';
+        WAIT FOR CLK_PERIOD / 2;
+        ASSERT counter = UNSIGNED(px_in)
+            REPORT "Error or Data correlated" SEVERITY ERROR;
+        WAIT FOR 3*CLK_PERIOD;
+    end loop;
     finish(2);
   END PROCESS WaveGen_Proc;
 
   convert_proc: PROCESS (clk, rst_n) IS
   BEGIN  -- PROCESS convert_proc
-    IF rst_n = '0' THEN                 -- asynchronous reset (active low)
+    IF rst_n = '0'THEN                 -- asynchronous reset (active low)
       counter <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN         -- rising clock edge
-      IF enable_in = '1' AND sc_out = '1' THEN
-        counter <= counter + 1;
-      END IF;
+        IF enable_in = '1' THEN
+            IF sc_out = '1' THEN
+                counter <= counter + 1;
+            END IF;
+        ELSE
+            counter <= (OTHERS => '0');
+        END IF;
     END IF;
   END PROCESS convert_proc;
 
