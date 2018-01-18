@@ -52,6 +52,7 @@ end activation_funct;
 -- Function memory generate architecture description
 ---------------------------------------------------------------------------------
 architecture funct of activation_funct is
+
     constant addr_int_w   : integer := 4;
     constant addr_fract_w : integer := 4;
     constant mem_depth    : integer := 2**(addr_int_w + addr_fract_w);
@@ -68,6 +69,7 @@ architecture funct of activation_funct is
             temp_mem(i) := to_sfixed(1.0 / (1.0 + exp((real(i-mem_depth/2)/2.0**addr_fract_w))),
                 activation_int_w - 1, -activation_fract_w);
         end loop;
+
         return temp_mem;
     end function;
 
@@ -89,6 +91,26 @@ begin
     end process;
 end funct;
 
+architecture hierarchy of activation_funct is
+    constant OUTPUT_OF_SATURATION       : real := 0.96875;
+    constant PASS_REGION_BOUNDARY       : real := 0.5;
+    constant PROCESSING_REGION_BOUNDARY : real := 2.0;
+    constant SATURATION_REGION_BOUNDARY : real := 8.0;
+    constant ZERO                       : real := 0.0;
+begin
+    SIGMOID_FUNC : process (clk, rst, i_weighted_input) 
+    begin
+        if i_weighted_input >= 0 or i_weighted_input < PASS_REGION_BOUNDARY  then
+            o_activation_funct <= i_weighted_input;
+        elsif i_weighted_input >= PASS_REGION_BOUNDARY or i_weighted_input <
+        PROCESSING_REGION_BOUNDARY then
+            
+        elsif i_weighted_input >= PROCESSING_REGION_BOUNDARY or
+            i_weighted_input < SATURATION_REGION_BOUNDARY then
+             o_activation_funct <= OUTPUT_OF_SATURATION;
+        end if;
+    end process SIGMOID_FUNC;
+end hierarchy;
 ---------------------------------------------------------------------------------
 -- Specifier architecture description
 ---------------------------------------------------------------------------------
