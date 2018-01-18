@@ -26,6 +26,7 @@ USE ieee.math_real.ALL;
 USE std.env.ALL;
 USE std.textio.ALL;
 USE work.sc_tb_pkg.ALL;
+use work.tb_pkg.all;
 
 -------------------------------------------------------------------------------
 
@@ -50,6 +51,7 @@ ARCHITECTURE test OF sc_mul_example_tb IS
   SIGNAL px2_in        : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL mul_valid_out : STD_LOGIC;
   SIGNAL mul_out       : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
+  signal mse_error : real := 0.01;
 
 BEGIN  -- ARCHITECTURE test
 
@@ -71,6 +73,7 @@ BEGIN  -- ARCHITECTURE test
   -- clock generation
   clk   <= NOT clk AFTER CLK_PERIOD/2;
   rst_n <= '1'     AFTER 3*CLK_PERIOD + CLK_PERIOD/8;
+
   -- waveform generation
   WaveGen_Proc : PROCESS
     PROCEDURE test_sc (
@@ -92,31 +95,21 @@ BEGIN  -- ARCHITECTURE test
       mul_expected := px1*px2;
 
       px1_in   <= real_to_stdlv(px1, px1_in'LENGTH);
-      seed1_in <= STD_LOGIC_VECTOR(to_unsigned(11, seed1_in'LENGTH));
-      seed2_in <= STD_LOGIC_VECTOR(to_unsigned(7, seed2_in'LENGTH));
+      seed1_in <= STD_LOGIC_VECTOR(to_unsigned(180, seed1_in'LENGTH));
+      seed2_in <= STD_LOGIC_VECTOR(to_unsigned(75, seed2_in'LENGTH));
       px2_in   <= real_to_stdlv(px2, px2_in'LENGTH);
       start_in <= '1';
-
-      print(STRING'("Input: px1 = ") & REAL'IMAGE(px1));
-      print(STRING'("Input: px2 = ") & REAL'IMAGE(px2));
-      print(STRING'("Converted input: px1 = ")
-            & INTEGER'IMAGE(to_integer(UNSIGNED(px1_in))));
-      print(STRING'("Converted input: px2 = ")
-            & INTEGER'IMAGE(to_integer(UNSIGNED(px2_in))));
-      print(STRING'("Conversion ERROR: px1 = ")
-            & REAL'IMAGE(real_to_stdlv_error(px1, px1_in'LENGTH)));
-      print(STRING'("Conversion ERROR: px2 = ")
-            & REAL'IMAGE(real_to_stdlv_error(px2, px2_in'LENGTH)));
 
       WAIT UNTIL rising_edge(clk);
       WAIT FOR CLK_PERIOD/8;
       start_in <= '0';
       WAIT UNTIL mul_valid_out = '1';
 
-      print(STRING'("Result: px1*px2 = ")
-            & REAL'IMAGE(stdlv_to_real(mul_out)));
-      print(STRING'("Result Error: ")
-            & REAL'IMAGE(mul_expected - stdlv_to_real(mul_out)));
+   --    print(STRING'("ERROR = ")
+   --    & REAL'IMAGE((0.001 + mul_expected - stdlv_to_real(mul_out))**2));
+      print(real'image(mse_error));
+      mse_error <= mse_error
+                 + mse(mul_expected, stdlv_to_real(mul_out));
 
       WAIT UNTIL rising_edge(clk);
     END PROCEDURE test_sc;
@@ -127,11 +120,18 @@ BEGIN  -- ARCHITECTURE test
     seed2_in <= (OTHERS => '0');
     px1_in   <= (OTHERS => '0');
     px2_in   <= (OTHERS => '0');
+    mse_error <= 0.0001;
     WAIT UNTIL rst_n = '1';
-    test_sc(0.5, 0.5);
-    test_sc(0.3, 0.4);
-    test_sc(0.9, 0.8);
+
+    for i in 1 to 2**DATA_WIDTH - 1  loop
+        for j in 1 to 2**DATA_WIDTH - 1 loop
+            test_sc(real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH);
+        end loop;
+    end loop;
+
     WAIT FOR 3*CLK_PERIOD;
+    print(STRING'("MSE = ")
+        & real'image(mse_error));
 
     finish(2);
   END PROCESS WaveGen_Proc;

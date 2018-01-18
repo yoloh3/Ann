@@ -42,7 +42,7 @@ ENTITY sc_mul_example IS
 END ENTITY sc_mul_example;
 
 ARCHITECTURE beh OF sc_mul_example IS
-  SIGNAL set_seed   : STD_LOGIC;
+--  SIGNAL set_seed   : STD_LOGIC;
   SIGNAL enable     : STD_LOGIC;
   SIGNAL sc_counter : UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL px1        : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
@@ -51,6 +51,9 @@ ARCHITECTURE beh OF sc_mul_example IS
 
   SIGNAL result_counter : UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL result         : STD_LOGIC;
+
+  type counter_t is array(integer range <>) of UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
+  SIGNAL counter :  counter_t(1 downto 0);
 BEGIN  -- ARCHITECTURE beh
 
   sc_counter_proc : PROCESS (clk, rst_n) IS
@@ -76,7 +79,7 @@ BEGIN  -- ARCHITECTURE beh
         sc_counter <= sc_counter + 1;
       END IF;
 
-      IF sc_counter = to_unsigned((2**DATA_WIDTH)-1, sc_counter'LENGTH) THEN
+      IF sc_counter = to_unsigned((2**DATA_WIDTH) - 2, sc_counter'LENGTH) THEN
         enable        <= '0';
         mul_valid_out <= '1';
       ELSE
@@ -110,9 +113,28 @@ BEGIN  -- ARCHITECTURE beh
       set_seed_in => start_in,
       enable_in   => enable,
       seed_in     => seed2_in,
-      px_in       => px1,
+      px_in       => px2,
       sc_out      => sc_stream(1));
+
   -- Stochastic multiplication in unipolar domain
-  result  <= AND(sc_stream);
+  result  <= sc_stream(0) AND sc_stream(1);
   mul_out <= STD_LOGIC_VECTOR(result_counter);
+
+  count: PROCESS (clk, rst_n) IS
+  BEGIN  -- PROCESS convert_proc
+    IF rst_n = '0'THEN
+        counter <= (others => (OTHERS => '0'));
+    ELSIF rising_edge(clk) THEN         -- rising clock edge
+        IF enable = '1' THEN
+            IF sc_stream(0) = '1' THEN
+                counter(0) <= counter(0) + 1;
+            END IF;
+            IF sc_stream(1) = '1' THEN
+                counter(1) <= counter(1) + 1;
+            END IF;
+        ELSE
+            counter <= (others => (OTHERS => '0'));
+        END IF;
+    END IF;
+  END PROCESS count;
 END ARCHITECTURE beh;

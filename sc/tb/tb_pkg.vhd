@@ -34,8 +34,9 @@ use ieee.math_real.all;
 package tb_pkg is
     function is_real_equal(a, b, error_rate: real) return boolean;
 
-    procedure print (
-        constant prefix : in string);
+    function error_percent(expected, actual: real) return real;
+
+    function mse(expected, actual: real) return real;
 end tb_pkg;
 
 ---------------------------------------------------------------------------------
@@ -51,12 +52,21 @@ package body tb_pkg is
         end if;
     end function;
 
-    procedure print(
-        constant prefix : in string)
-    is
-        variable my_line : line;
+    function error_percent(expected, actual: real) return real is
     begin
-        write(my_line, prefix);
-        writeline(output, my_line);
-    end print;
+        if expected = 0.0 then
+            return 200.0;
+        else
+            return abs((expected - actual) / expected * 100.0);
+        end if;
+    end function;
+
+    function mse(expected, actual: real) return real is
+    begin
+        if expected = actual or (expected - actual) < 1.0e-5 then
+            return 0.0;
+        else
+            return (expected - actual)**2;
+        end if;
+    end mse;
 end tb_pkg;

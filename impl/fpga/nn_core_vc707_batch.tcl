@@ -15,7 +15,7 @@ file mkdir $output_dir
 #
 #	
 
-set src_dir ../../src/rtl
+set src_dir ../../ann_core/rtl
 set vivado_dir $::env(XILINX_VIVADO)
 read_vhdl -library ieee $vivado_dir/scripts/rt/data/fixed_pkg_2008.vhd
 

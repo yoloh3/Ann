@@ -42,7 +42,7 @@ b3=[-1;
 %b_3=randn(3,1);
 
 % Step size
-eta = 0.1
+eta = 0.2
 %Learning rate. If the learning rate is too high, the updated coefficient becomes too large and the cost may not decrease
 
 %%
