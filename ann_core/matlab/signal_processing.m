@@ -16,11 +16,12 @@ close all;
 %  t=[1 0 0 0 1;
 %     0 1 1 1 0];
 
- k=[8 8 5 5 3;
-    8 5 8 5 3];		%input matrix for supervisor data
+ k=[8 8 5 5;
+    8 5 8 5];		%input matrix for supervisor data
+k = k / 10;
 % Labeled output
- t=[1 0 0 0 1;
-    0 1 1 1 0];
+ t=[1 0 0 0;
+    0 1 1 1];
 
 % Initialization values of weights (Hidden layer and Output layer)
 w2=[0.1 0.4;
@@ -42,7 +43,7 @@ b3=[-1;
 %b_3=randn(3,1);
 
 % Step size
-eta = 0.2
+eta = 0.2;
 %Learning rate. If the learning rate is too high, the updated coefficient becomes too large and the cost may not decrease
 
 %%
@@ -56,7 +57,7 @@ a3= 1./(1+exp(-z3));                            % output for output layer
 
 % Plot figure
 figure(1); 
-mesh([0:0.1:9.9],[0:0.1:9.9],reshape(a3(1,:),100,100));
+mesh([0:0.01:0.99],[0:0.01:0.99],reshape(a3(1,:),100,100));
 zlim([0 1]); view([0 90]);
 grid('on'); hold('all');
 title('a^3_1 (Initial weight)');
@@ -65,7 +66,7 @@ colorbar(); caxis([0 1]);
 
 % Plot figure
 figure(2); 
-mesh([0:0.1:9.9],[0:0.1:9.9],reshape(a3(2,:),100,100));
+mesh([0:0.01:0.99],[0:0.01:0.99],reshape(a3(2,:),100,100));
 zlim([0 1]); view([0 90]);
 grid('on'); hold('all');
 title('a^3_2 (Initial weight)');
@@ -86,7 +87,7 @@ a3= 1./(1+exp(-z3));                            	% output for output layer
 
 % Plot figure
 figure(3); 
-mesh([0:0.1:9.9],[0:0.1:9.9],reshape(a3(1,:),100,100));
+mesh([0:0.01:0.99],[0:0.01:0.99],reshape(a3(1,:),100,100));
 zlim([0 1]); view([0 90]);
 grid('on'); hold('all');
 title('a^3_1 (Final weight)');
@@ -95,7 +96,7 @@ colorbar(); caxis([0 1]);
 
 % Plot figure
 figure(4); 
-mesh([0:0.1:9.9],[0:0.1:9.9],reshape(a3(2,:),100,100));
+mesh([0:0.01:0.99],[0:0.01:0.99],reshape(a3(2,:),100,100));
 zlim([0 1]); view([0 90]);
 grid('on'); hold('all');
 title('a^3_2 (Final weight)');

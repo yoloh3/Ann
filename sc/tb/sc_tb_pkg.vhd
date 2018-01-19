@@ -41,7 +41,19 @@ PACKAGE sc_tb_pkg IS
     RETURN REAL;
   PROCEDURE print (
     CONSTANT str : IN STRING);
+
+
+  FUNCTION real_sign_to_stdlv (
+    CONSTANT real_val : REAL;
+    CONSTANT size     : INTEGER)
+    RETURN STD_LOGIC_VECTOR;
+
+ FUNCTION stdlv_sign_to_real (
+    CONSTANT stdlv : STD_LOGIC_VECTOR)
+    RETURN REAL;
 END PACKAGE sc_tb_pkg;
+
+
 
 PACKAGE BODY sc_tb_pkg IS
 
@@ -54,6 +66,18 @@ PACKAGE BODY sc_tb_pkg IS
     max_val := REAL(2**size);
     RETURN STD_LOGIC_VECTOR(to_unsigned(INTEGER(real_val*max_val), size));
   END FUNCTION real_to_stdlv;
+
+
+  FUNCTION real_sign_to_stdlv (
+    CONSTANT real_val : REAL;
+    CONSTANT size     : INTEGER)
+    RETURN STD_LOGIC_VECTOR IS
+    VARIABLE max_val : REAL;
+  BEGIN  -- FUNCTION real_to_stdlv
+    max_val := REAL(2**size);
+    RETURN STD_LOGIC_VECTOR(to_unsigned(INTEGER((real_val+1.0)*max_val/2.0) , size));
+  END FUNCTION real_sign_to_stdlv;
+
 
   FUNCTION real_to_stdlv_error (
     CONSTANT real_val : REAL;
@@ -79,6 +103,15 @@ PACKAGE BODY sc_tb_pkg IS
   BEGIN
     RETURN REAL(to_integer(UNSIGNED(stdlv)))/REAL(2**stdlv'LENGTH);
   END FUNCTION stdlv_to_real;
+
+  FUNCTION stdlv_sign_to_real (
+    CONSTANT stdlv : STD_LOGIC_VECTOR)
+    RETURN REAL
+  IS
+  BEGIN
+    RETURN REAL(to_integer(UNSIGNED(stdlv)))/REAL(2**stdlv'LENGTH) * 2.0 - 1.0;
+  END FUNCTION stdlv_sign_to_real;
+
   PROCEDURE print (
     CONSTANT str : IN STRING)
   IS

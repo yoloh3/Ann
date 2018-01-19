@@ -26,6 +26,7 @@ USE ieee.math_real.ALL;
 USE std.env.ALL;
 USE std.textio.ALL;
 USE work.sc_tb_pkg.ALL;
+USE work.tb_pkg.ALL;
 -------------------------------------------------------------------------------
 
 ENTITY sc_add_example_tb IS
@@ -37,7 +38,7 @@ END ENTITY sc_add_example_tb;
 ARCHITECTURE test OF sc_add_example_tb IS
 
   -- component generics
-  CONSTANT DATA_WIDTH : INTEGER := 10;
+  CONSTANT DATA_WIDTH : INTEGER := 8;
   CONSTANT SC_VARS    : INTEGER := 3; -- don't change this
 
   CONSTANT CLK_PERIOD : TIME := 10 NS;
@@ -53,6 +54,7 @@ ARCHITECTURE test OF sc_add_example_tb IS
   SIGNAL pxs_in        : STD_LOGIC_VECTOR(DATA_WIDTH * SC_VARS-1 DOWNTO 0);
   SIGNAL add_valid_out : STD_LOGIC;
   SIGNAL add_out       : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
+  signal mse_error     : real;
 
 BEGIN  -- ARCHITECTURE test
 
@@ -83,25 +85,31 @@ BEGIN  -- ARCHITECTURE test
     PROCEDURE test_sc (
       CONSTANT pxs : IN darray_t)
     IS
-      CONSTANT max_val : REAL := REAL(2**DATA_WIDTH);
+      --CONSTANT max_val : REAL := REAL(2**DATA_WIDTH);
       VARIABLE pxs_v   : sarray_t;
       VARIABLE sum : REAL := 0.0;
     BEGIN
       FOR i IN 0 TO SC_VARS-1 LOOP
         pxs_v(i) := real_to_stdlv(pxs(i), DATA_WIDTH);
-        print(STRING'("Conversion ERROR: ")
-              & REAL'IMAGE(real_to_stdlv_error(pxs(i), DATA_WIDTH)));
+        -- print(STRING'("Conversion ERROR: ")
+              -- & REAL'IMAGE(real_to_stdlv_error(pxs(i), DATA_WIDTH)));
         pxs_in(DATA_WIDTH*(i+1)-1 DOWNTO DATA_WIDTH*i) <= pxs_v(i);
       END LOOP;  -- i
+
       sum := (pxs(0) + pxs(1))/2.0;
+      seed_in <= STD_LOGIC_VECTOR(to_unsigned(45428, seed_in'LENGTH));
       start_in <= '1';
       WAIT UNTIL rising_edge(clk);
       WAIT FOR CLK_PERIOD/2;
       start_in <= '0';
-
       WAIT UNTIL add_valid_out = '1';
-      print(STRING'("Result ERROR: ")
-            & real'IMAGE(sum-stdlv_to_real(add_out)));
+
+      mse_error <= mse_error
+                 + mse(sum, stdlv_to_real(add_out));
+--      print(real'image(mse_error));
+
+--       print(STRING'("Result ERROR: ")
+--             & real'IMAGE(sum-stdlv_to_real(add_out)));
       WAIT UNTIL rising_edge(clk);
       WAIT FOR CLK_PERIOD/8;
     END PROCEDURE;
@@ -110,22 +118,30 @@ BEGIN  -- ARCHITECTURE test
     start_in <= '0';
     seed_in  <= (OTHERS => '0');
     pxs_in   <= (OTHERS => '0');
+    mse_error <= 1.0e-10;
     WAIT UNTIL rst_n = '1';
     -- uniform(seed1, seed2, rand_val);
     -- seed_in  <= real_to_stdlv(rand_val, seed_in'LENGTH);
-    seed_in <= real_to_stdlv(0.5, seed_in'LENGTH);
-    test_sc((0.5, 0.5, 0.5));
-    test_sc((0.3, 0.3, 0.5));
-    test_sc((0.1, 0.2, 0.5));
-    test_sc((0.8, 0.8, 0.5));
-    test_sc((0.8, 0.3, 0.5));
-    WAIT UNTIL rising_edge(clk);
+    -- seed_in <= real_to_stdlv(0.5, seed_in'LENGTH);
+    -- test_sc((0.5, 0.5, 0.5));
+    -- test_sc((0.3, 0.3, 0.5));
+    -- test_sc((0.1, 0.2, 0.5));
+    -- test_sc((0.8, 0.8, 0.5));
+    -- test_sc((0.8, 0.3, 0.5));
+
+    for i in 1 to 2**DATA_WIDTH - 1  loop
+        for j in 1 to 2**DATA_WIDTH - 1 loop
+            test_sc((real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH, 0.5));
+        end loop;
+    end loop;
+
+
+    WAIT FOR 3*CLK_PERIOD;
+    print(STRING'("MSE = ")
+        & real'image(mse_error / real(2**(DATA_WIDTH*2))));
 
     finish(2);
   END PROCESS WaveGen_Proc;
-
-
-
 END ARCHITECTURE test;
 
 -------------------------------------------------------------------------------

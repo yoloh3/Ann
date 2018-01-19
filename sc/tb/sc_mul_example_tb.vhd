@@ -120,7 +120,7 @@ BEGIN  -- ARCHITECTURE test
     seed2_in <= (OTHERS => '0');
     px1_in   <= (OTHERS => '0');
     px2_in   <= (OTHERS => '0');
-    mse_error <= 0.0001;
+    mse_error <= 1.0e-8;
     WAIT UNTIL rst_n = '1';
 
     for i in 1 to 2**DATA_WIDTH - 1  loop

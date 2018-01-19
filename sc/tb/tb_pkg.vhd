@@ -32,7 +32,7 @@ use ieee.math_real.all;
 -- entity declaration
 ---------------------------------------------------------------------------------
 package tb_pkg is
-    function is_real_equal(a, b, error_rate: real) return boolean;
+    function is_real_equal(expected, actual, error_rate: real) return boolean;
 
     function error_percent(expected, actual: real) return real;
 
@@ -43,12 +43,12 @@ end tb_pkg;
 -- architecture description
 ---------------------------------------------------------------------------------
 package body tb_pkg is
-    function is_real_equal(a, b, error_rate: real) return boolean is
+    function is_real_equal(expected, actual, error_rate: real) return boolean is
     begin
-        if a = b then
+        if expected = actual then
             return true;
         else
-            return abs(a - b) < 10.0 ** error_rate;
+            return abs(expected - actual) < 10.0 ** error_rate;
         end if;
     end function;
 
@@ -63,7 +63,7 @@ package body tb_pkg is
 
     function mse(expected, actual: real) return real is
     begin
-        if expected = actual or (expected - actual) < 1.0e-5 then
+        if expected = actual or abs(expected - actual) < 1.0e-8 then
             return 0.0;
         else
             return (expected - actual)**2;
