@@ -51,7 +51,7 @@ ARCHITECTURE test OF sc_mul_example_tb IS
   SIGNAL px2_in        : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL mul_valid_out : STD_LOGIC;
   SIGNAL mul_out       : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
-  signal mse_error : real := 0.01;
+  signal mse_error     : REAL; 
 
 BEGIN  -- ARCHITECTURE test
 
@@ -131,7 +131,7 @@ BEGIN  -- ARCHITECTURE test
 
     WAIT FOR 3*CLK_PERIOD;
     print(STRING'("MSE = ")
-        & real'image(mse_error));
+        & real'image(mse_error / real(2**(DATA_WIDTH*2))));
 
     finish(2);
   END PROCESS WaveGen_Proc;
