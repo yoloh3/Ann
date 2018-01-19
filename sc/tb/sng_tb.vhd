@@ -23,7 +23,7 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 USE std.env.ALL;
-use work.tb_pkg.all;
+use work.sc_tb_pkg.all;
 
 -------------------------------------------------------------------------------
 

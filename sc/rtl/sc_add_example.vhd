@@ -51,7 +51,6 @@ ARCHITECTURE beh OF sc_add_example IS
   SIGNAL lfsr : STD_LOGIC_VECTOR(DATA_WIDTH * SC_VARS - 1 DOWNTO 0);
 
   SIGNAL enable     : STD_LOGIC;
-  SIGNAL set_seed   : STD_LOGIC;
   SIGNAL sc_counter : UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL sc_stream  : STD_LOGIC_VECTOR(SC_VARS-1 DOWNTO 0);
 
@@ -102,7 +101,7 @@ BEGIN  -- ARCHITECTURE beh
       clk         => clk,
       rst_n       => rst_n,
       seed_in     => seed_in,
-      set_seed_in => set_seed,
+      set_seed_in => start_in,
       enable_in   => enable,
       lfsr_out    => lfsr);
 

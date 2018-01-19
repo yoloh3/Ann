@@ -51,6 +51,12 @@ PACKAGE sc_tb_pkg IS
  FUNCTION stdlv_sign_to_real (
     CONSTANT stdlv : STD_LOGIC_VECTOR)
     RETURN REAL;
+
+ FUNCTION is_real_equal(expected, actual, error_rate: real) return boolean;
+
+ FUNCTION error_percent(expected, actual: real) return real;
+
+ FUNCTION mse(expected, actual: real) return real;
 END PACKAGE sc_tb_pkg;
 
 
@@ -120,4 +126,31 @@ PACKAGE BODY sc_tb_pkg IS
     write(msg, str);
     writeline(output, msg);
   END PROCEDURE;
+
+  function is_real_equal(expected, actual, error_rate: real) return boolean is
+  begin
+      if expected = actual then
+          return true;
+      else
+          return abs(expected - actual) < 10.0 ** error_rate;
+      end if;
+  end function;
+
+  function error_percent(expected, actual: real) return real is
+  begin
+      if expected = 0.0 then
+          return 200.0;
+      else
+          return abs((expected - actual) / expected * 100.0);
+      end if;
+  end function;
+
+  function mse(expected, actual: real) return real is
+  begin
+      if expected = actual or abs(expected - actual) < 1.0e-8 then
+          return 0.0;
+      else
+          return (expected - actual)**2;
+      end if;
+  end mse;
 END PACKAGE BODY sc_tb_pkg;

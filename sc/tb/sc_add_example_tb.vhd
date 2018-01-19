@@ -26,7 +26,6 @@ USE ieee.math_real.ALL;
 USE std.env.ALL;
 USE std.textio.ALL;
 USE work.sc_tb_pkg.ALL;
-USE work.tb_pkg.ALL;
 -------------------------------------------------------------------------------
 
 ENTITY sc_add_example_tb IS
