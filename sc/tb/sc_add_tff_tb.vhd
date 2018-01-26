@@ -76,10 +76,6 @@ BEGIN  -- ARCHITECTURE test
 
   -- waveform generation
   WaveGen_Proc : PROCESS
-    VARIABLE seed1    : POSITIVE := 10;
-    VARIABLE seed2    : POSITIVE := 2000;
-    VARIABLE rand_val : REAL     := 0.0;
-
 
     PROCEDURE test_sc (
       CONSTANT pxs : IN darray_t)
@@ -107,7 +103,8 @@ BEGIN  -- ARCHITECTURE test
 
       mse_error <= mse_error
                  + mse(sum, stdlv_to_real(add_out));
-      -- print(real'image(mse_error));
+      print(real'image(sum) & string'(" ")
+        & real'image(stdlv_to_real(add_out)));
 
       WAIT UNTIL rising_edge(clk);
       WAIT FOR CLK_PERIOD/8;
@@ -119,6 +116,7 @@ BEGIN  -- ARCHITECTURE test
     pxs_in   <= (OTHERS => '0');
     mse_error <= 1.0e-10;
     WAIT UNTIL rst_n = '1';
+
     -- test_sc((0.5, 0.5));
     -- test_sc((0.3, 0.3));
     -- test_sc((0.1, 0.2));
@@ -127,12 +125,13 @@ BEGIN  -- ARCHITECTURE test
 
     for i in 1 to 2**DATA_WIDTH - 1  loop
         for j in 1 to 2**DATA_WIDTH - 1 loop
-            test_sc((real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH, 0.5));
+            test_sc((real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH));
         end loop;
     end loop;
 
     WAIT FOR 3*CLK_PERIOD;
     print(STRING'("MSE = ")
+        -- & real'image(mse_error / 5.0));
         & real'image(mse_error / real(2**(DATA_WIDTH*2))));
 
     finish(2);

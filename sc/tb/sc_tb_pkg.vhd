@@ -1,4 +1,4 @@
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
 -- Title      : Stochastic Computing Testbench package for vhdl
 -- Project    : 
 -------------------------------------------------------------------------------
@@ -73,17 +73,41 @@ PACKAGE BODY sc_tb_pkg IS
     RETURN STD_LOGIC_VECTOR(to_unsigned(INTEGER(real_val*max_val), size));
   END FUNCTION real_to_stdlv;
 
-
   FUNCTION real_sign_to_stdlv (
     CONSTANT real_val : REAL;
     CONSTANT size     : INTEGER)
     RETURN STD_LOGIC_VECTOR IS
     VARIABLE max_val : REAL;
-  BEGIN  -- FUNCTION real_to_stdlv
-    max_val := REAL(2**size);
-    RETURN STD_LOGIC_VECTOR(to_unsigned(INTEGER((real_val+1.0)*max_val/2.0) , size));
+  BEGIN  -- FUNCTION real_sign_to_stdlv
+    max_val := REAL(2**size / 2);
+    RETURN STD_LOGIC_VECTOR(to_signed(INTEGER(real_val*max_val), size));
   END FUNCTION real_sign_to_stdlv;
 
+
+  FUNCTION stdlv_to_real (
+    CONSTANT stdlv : STD_LOGIC_VECTOR)
+    RETURN REAL
+  IS
+  BEGIN
+    RETURN REAL(to_integer(UNSIGNED(stdlv))) / REAL(2**stdlv'LENGTH);
+  END FUNCTION stdlv_to_real;
+
+  FUNCTION stdlv_sign_to_real (
+    CONSTANT stdlv : STD_LOGIC_VECTOR)
+    RETURN REAL
+  IS
+  BEGIN
+    RETURN REAL(to_integer(SIGNED(stdlv))) / REAL(2**stdlv'LENGTH / 2);
+  END FUNCTION stdlv_sign_to_real;
+
+  PROCEDURE print (
+    CONSTANT str : IN STRING)
+  IS
+    VARIABLE msg : LINE;
+  BEGIN
+    write(msg, str);
+    writeline(output, msg);
+  END PROCEDURE;
 
   FUNCTION real_to_stdlv_error (
     CONSTANT real_val : REAL;
@@ -101,31 +125,6 @@ PACKAGE BODY sc_tb_pkg IS
     error_val     := real_val - converted_val;
     RETURN error_val;
   END FUNCTION real_to_stdlv_error;
-
-  FUNCTION stdlv_to_real (
-    CONSTANT stdlv : STD_LOGIC_VECTOR)
-    RETURN REAL
-  IS
-  BEGIN
-    RETURN REAL(to_integer(UNSIGNED(stdlv)))/REAL(2**stdlv'LENGTH);
-  END FUNCTION stdlv_to_real;
-
-  FUNCTION stdlv_sign_to_real (
-    CONSTANT stdlv : STD_LOGIC_VECTOR)
-    RETURN REAL
-  IS
-  BEGIN
-    RETURN REAL(to_integer(UNSIGNED(stdlv)))/REAL(2**stdlv'LENGTH) * 2.0 - 1.0;
-  END FUNCTION stdlv_sign_to_real;
-
-  PROCEDURE print (
-    CONSTANT str : IN STRING)
-  IS
-    VARIABLE msg : LINE;
-  BEGIN
-    write(msg, str);
-    writeline(output, msg);
-  END PROCEDURE;
 
   function is_real_equal(expected, actual, error_rate: real) return boolean is
   begin

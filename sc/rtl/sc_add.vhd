@@ -2,7 +2,7 @@
 -- Title      : Stochastic Multiplication
 -- Project    : 
 -------------------------------------------------------------------------------
--- File       : sc_mul.vhd
+-- File       : sc_add.vhd
 -- Author     : Hieu D. Bui  <Hieu D. Bui@>
 -- Company    : SISLAB, VNU-UET
 -- Created    : 2017-12-16
@@ -25,11 +25,11 @@ USE ieee.numeric_std.ALL;
 
 USE ieee.math_real.ALL;
 
-ENTITY sc_mul IS
+ENTITY sc_add IS
 
   GENERIC (
     DATA_WIDTH : INTEGER := 8;          -- variable data width
-    SC_VARS    : INTEGER := 2);         -- number of sc variables
+    SC_VARS    : INTEGER := 3);         -- only support 2 variable
 
   PORT (
     clk           : IN  STD_LOGIC;
@@ -37,17 +37,18 @@ ENTITY sc_mul IS
     start_in      : IN  STD_LOGIC;
     seed_in       : IN  STD_LOGIC_VECTOR(DATA_WIDTH * SC_VARS-1 DOWNTO 0);
     pxs_in        : IN  STD_LOGIC_VECTOR(DATA_WIDTH * SC_VARS-1 DOWNTO 0);
-    mul_valid_out : OUT STD_LOGIC;
-    mul_out       : OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0));
+    add_valid_out : OUT STD_LOGIC;
+    add_out       : OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0));
 
-END ENTITY sc_mul;
+END ENTITY sc_add;
 
-ARCHITECTURE beh OF sc_mul IS
+ARCHITECTURE beh OF sc_add IS
 
   TYPE darray_t IS ARRAY (0 TO SC_VARS-1)
     OF STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL pxs  : darray_t;
   SIGNAL rngs : darray_t;
+  SIGNAL lfsr : STD_LOGIC_VECTOR(DATA_WIDTH * SC_VARS - 1 DOWNTO 0);
 
   SIGNAL enable     : STD_LOGIC;
   SIGNAL sc_counter : UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
@@ -62,7 +63,7 @@ BEGIN  -- ARCHITECTURE beh
     IF rst_n = '0' THEN                 -- asynchronous reset (active low)
       sc_counter     <= (OTHERS => '0');
       enable         <= '0';
-      mul_valid_out  <= '0';
+      add_valid_out  <= '0';
       pxs            <= (OTHERS => (OTHERS => '0'));
       result_counter <= (OTHERS => '0');
     ELSIF rising_edge(clk) THEN         -- rising clock edge
@@ -73,7 +74,7 @@ BEGIN  -- ARCHITECTURE beh
         sc_counter     <= (OTHERS => '0');
         result_counter <= (OTHERS => '0');
         enable         <= '1';
-        mul_valid_out  <= '0';
+        add_valid_out  <= '0';
       END IF;
 
       IF enable = '1' THEN
@@ -82,9 +83,9 @@ BEGIN  -- ARCHITECTURE beh
 
       IF AND(sc_counter) THEN
         enable        <= '0';
-        mul_valid_out <= '1';
+        add_valid_out <= '1';
       ELSE
-        mul_valid_out <= '0';
+        add_valid_out <= '0';
       END IF;
 
       IF enable = '1' AND result = '1' THEN
@@ -93,7 +94,18 @@ BEGIN  -- ARCHITECTURE beh
     END IF;
   END PROCESS sc_counter_proc;
 
-  lfsr_1 : ENTITY work.lfsr
+  lfsr_3 : ENTITY work.lfsr
+    GENERIC MAP (
+      DATA_WIDTH => DATA_WIDTH)
+    PORT MAP (
+      clk         => clk,
+      rst_n       => rst_n,
+      seed_in     => seed_in(3*DATA_WIDTH - 1 DOWNTO 2*DATA_WIDTH),
+      set_seed_in => start_in,
+      enable_in   => enable,
+      lfsr_out    => rngs(2));
+
+  lfsr_2 : ENTITY work.lfsr
     GENERIC MAP (
       DATA_WIDTH => DATA_WIDTH)
     PORT MAP (
@@ -102,9 +114,9 @@ BEGIN  -- ARCHITECTURE beh
       seed_in     => seed_in(2*DATA_WIDTH - 1 DOWNTO DATA_WIDTH),
       set_seed_in => start_in,
       enable_in   => enable,
-      lfsr_out    => rngs(0));
+      lfsr_out    => rngs(1));
 
-  lfsr_2 : ENTITY work.lfsr
+  lfsr_1 : ENTITY work.lfsr
     GENERIC MAP (
       DATA_WIDTH => DATA_WIDTH)
     PORT MAP (
@@ -113,13 +125,13 @@ BEGIN  -- ARCHITECTURE beh
       seed_in     => seed_in(DATA_WIDTH - 1 DOWNTO 0),
       set_seed_in => start_in,
       enable_in   => enable,
-      lfsr_out    => rngs(1));
+      lfsr_out    => rngs(0));
 
-  rngs_gen : FOR i IN 0 TO SC_VARS - 1 GENERATE
+  rngs_gen : FOR i IN 0 TO SC_VARS -1 GENERATE
     sc_stream(i) <= '1' WHEN UNSIGNED(rngs(i)) < UNSIGNED(pxs(i)) ELSE '0';
   END GENERATE rngs_gen;
 
   -- Stochastic multiplication in unipolar domain
-  result  <= AND(sc_stream);
-  mul_out <= STD_LOGIC_VECTOR(result_counter);
+  result  <= sc_stream(1) WHEN sc_stream(2) = '1' ELSE sc_stream(0);
+  add_out <= STD_LOGIC_VECTOR(result_counter);
 END ARCHITECTURE beh;

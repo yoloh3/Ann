@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- Title      : Stochastic Multiplication
+-- Title      : Stochastic Adder
 -- Project    : 
 -------------------------------------------------------------------------------
--- File       : sc_mul.vhd
+-- File       : sc_add_tff_fixed.vhd
 -- Author     : Hieu D. Bui  <Hieu D. Bui@>
 -- Company    : SISLAB, VNU-UET
 -- Created    : 2017-12-16
