@@ -119,6 +119,8 @@ BEGIN  -- ARCHITECTURE test
 
       WAIT UNTIL rising_edge(clk);
     END PROCEDURE test_sc;
+
+    variable counter: integer;
   BEGIN
     -- insert signal assignments here
     start_in   <= '0';
@@ -128,20 +130,30 @@ BEGIN  -- ARCHITECTURE test
     weight2    <= (OTHERS => '0');
     bias       <= (OTHERS => '0');
     mse_error  <= 0.0;
+    counter    := 0;
 
     WAIT UNTIL rst_n = '1';
 
-    test_sc(0.1, 0.0, 0.0, 0.1, 0.99);
+    -- test_sc(0.1, 0.0, 0.0, 0.1, 0.99);
 
-    -- for i in -2**(DATA_WIDTH-1) to 2**(DATA_WIDTH - 1) - 1 loop
-        -- for j in -2**(DATA_WIDTH-1) to 2**(DATA_WIDTH - 1) - 1 loop
-            -- test_sc(real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH);
-        -- end loop;
-    -- end loop;
+    for i in -9 to 9 loop
+        for j in -9 to 9 loop
+            for k in -9 to 9 loop
+                for k in -9 to 9 loop
+                    for m in -9 to 9 loop
+                        for n in -9 to 9 loop
+                            test_sc(real(i)/10.0, real(j)/10.0, real(k)/10.0, real(m)/10.0, real(n)/10.0);
+                            counter := counter + 1;
+                        end loop;
+                    end loop;
+                end loop;
+            end loop;
+        end loop;
+    end loop;
 
     WAIT FOR 3*CLK_PERIOD;
     print(STRING'("MSE = ")
-        & real'image(mse_error / 3.0));
+        & real'image(mse_error / real(counter)));
 
     finish(2);
   END PROCESS WaveGen_Proc;

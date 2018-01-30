@@ -56,7 +56,6 @@ ARCHITECTURE beh OF sc_weighted_in_hidden IS
 
   SIGNAL enable          : STD_LOGIC;
   SIGNAL sc_counter      : UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
-  SIGNAL sc_stream       : STD_LOGIC_VECTOR(1 DOWNTO 0);
 
   SIGNAL result_counter  : UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL result          : STD_LOGIC;
