@@ -36,7 +36,7 @@ package rtl_pkg is
     constant layer_input_size       : integer := 2;
     constant weight_output_size     : integer := 2;
     constant epochs                 : integer := 10000;
-    constant learning_rate          : real    := -0.100586;
+    constant learning_rate          : real    := -0.1;
 
     -- -- forward package
     constant input_int_w            : integer := 6;
@@ -91,9 +91,9 @@ package rtl_pkg is
         of bias_init_array_t(layer_hidden_size - 1 downto 0);
 
     constant bias_init_hidden : bias_init_array_t(layer_hidden_size - 1 downto 0)
-        := (others => -1.0);
+        := (others => -6.0);
     constant bias_init_output  : bias_init_array_t(layer_output_size - 1 downto 0)
-        := (others => -1.0);
+        := (others => -3.0);
     constant weight_init_hidden : weight_init_input2hidden_array_t
         := ((0.1, 0.6),
             (0.5, 0.3),

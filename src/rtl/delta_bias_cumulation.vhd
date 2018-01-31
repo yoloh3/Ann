@@ -37,12 +37,12 @@ entity delta_bias_cumulation  is
 end entity;
 
 architecture rtl of delta_bias_cumulation  is
-    signal s_delta_bias : bias_array_t(2 downto 0);
+    signal s_delta_bias : bias_array_t(3 downto 0);
 
     constant learning_rate : bias_float_t
         := to_sfixed(learning_rate, bias_int_w - 1, -bias_fract_w);
     signal tmp_ouput
-        : sfixed(2*bias_int_w + 1 downto -2*bias_fract_w);
+        : sfixed(2*bias_int_w + 2 downto -2*bias_fract_w);
 begin
     mux4: process(clk, areset)
     begin
@@ -50,11 +50,13 @@ begin
             s_delta_bias <= (others => (others => '0'));
             tmp_ouput    <= (others => '0');
         elsif rising_edge(clk) then
+            s_delta_bias(3) <= s_delta_bias(2);
             s_delta_bias(2) <= s_delta_bias(1);
             s_delta_bias(1) <= s_delta_bias(0);
             s_delta_bias(0) <= i_delta_bias;
             tmp_ouput <= learning_rate
-                       * ((s_delta_bias(2) + s_delta_bias(1))
+                       * (s_delta_bias(3)
+                        + (s_delta_bias(2) + s_delta_bias(1))
                         + (s_delta_bias(0) + i_delta_bias));
         end if;
     end process mux4;

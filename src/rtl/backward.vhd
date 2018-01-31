@@ -11,7 +11,7 @@
 -- @Author          : Dung-Van Nguyen
 -- @Modifier        : Huy-Hung Ho
 -- @Created Date    : Tue 21 Nov 2017 11:00:06 PM DST   
--- @Modified Date   : xim 30 2017 10:01
+-- @Modified Date   : Jan 31 2018 12:31
 -- @Project         : Neural Network
 -- @Module          : backward
 -- @Description     : Description of module.

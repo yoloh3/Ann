@@ -37,12 +37,12 @@ end entity;
 
 architecture rtl of delta_weight_cumulation  is
 
-    signal s_delta_weight: weight_array_t(2 downto 0);
+    signal s_delta_weight: weight_array_t(3 downto 0);
 
     constant learning_rate : weight_float_t
         := to_sfixed(learning_rate, weight_int_w - 1, -weight_fract_w);
     signal tmp_output
-        : sfixed(2*weight_int_w + 1 downto -2*weight_fract_w);
+        : sfixed(2*weight_int_w + 2 downto -2*weight_fract_w);
 begin
     mux4: process(clk, areset)
     begin
@@ -50,11 +50,13 @@ begin
             s_delta_weight <= (others => (others => '0'));
             tmp_output      <= (others => '0');
         elsif rising_edge(clk) then
+            s_delta_weight(3) <= s_delta_weight(2);
             s_delta_weight(2) <= s_delta_weight(1);
             s_delta_weight(1) <= s_delta_weight(0);
             s_delta_weight(0) <= i_delta_weight;
             tmp_output <= learning_rate
-                       * ((s_delta_weight(2) + s_delta_weight(1))
+                       * (s_delta_weight(3)
+                        + (s_delta_weight(2) + s_delta_weight(1))
                         + (s_delta_weight(0) + i_delta_weight));
         end if;
     end process mux4;

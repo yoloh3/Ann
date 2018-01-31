@@ -7,11 +7,11 @@
 -- Copyright notification
 -- No part may be reproduced except as authorized by written permission.
 --
--- @File            : NN_forward.vhd
+-- @File            : forward.vhd
 -- @Author          : Xuan-Thuan Nguyen 	 @Modifier      : Huy-Hung Ho
--- @Created Date    : 17/11/2017      		 @Modified Date : kax 01 2017 16:00
+-- @Created Date    : 17/11/2017      		 @Modified Date : Jan 31 2018 12:30
 -- @Project         : Library
--- @Module          : NN_forward
+-- @Module          : forward
 -- @Description     : Description of module.
 -- @Version         : 0.1beta
 -- @ID              : N/A
@@ -117,8 +117,8 @@ architecture rtl of forward is
     signal s_activ_funct_output : activation_array_t(layer_output_size - 1 downto 0);
 
     constant counter_w       : integer := 8;
-    constant max_count       : integer := 13;
-    constant finish_count    : integer := 4;
+    constant max_count       : integer := 14;
+    constant finish_count    : integer := 3;
     signal   counter         : unsigned(counter_w - 1 downto 0);
     signal   s_select_update : std_logic;
 begin
