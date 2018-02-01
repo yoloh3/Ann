@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
--- Title      : Testbench for design "sc_add_example"
+-- Title      : Testbench for design "sc_add"
 -- Project    : 
 -------------------------------------------------------------------------------
--- File       : sc_add_example_tb.vhd
+-- File       : sc_add_tb.vhd
 -- Author     : Hieu D. Bui  <Hieu D. Bui@>
 -- Company    : SISLAB, VNU-UET
 -- Created    : 2017-12-16
@@ -26,16 +26,15 @@ USE ieee.math_real.ALL;
 USE std.env.ALL;
 USE std.textio.ALL;
 USE work.sc_tb_pkg.ALL;
-USE work.tb_pkg.ALL;
 -------------------------------------------------------------------------------
 
-ENTITY sc_add_example_tb IS
+ENTITY sc_add_tb IS
 
-END ENTITY sc_add_example_tb;
+END ENTITY sc_add_tb;
 
 -------------------------------------------------------------------------------
 
-ARCHITECTURE test OF sc_add_example_tb IS
+ARCHITECTURE test OF sc_add_tb IS
 
   -- component generics
   CONSTANT DATA_WIDTH : INTEGER := 8;
@@ -59,7 +58,7 @@ ARCHITECTURE test OF sc_add_example_tb IS
 BEGIN  -- ARCHITECTURE test
 
   -- component instantiation
-  DUT : ENTITY work.sc_add_example
+  DUT : ENTITY work.sc_add
     GENERIC MAP (
       DATA_WIDTH => DATA_WIDTH,
       SC_VARS    => SC_VARS)
@@ -78,10 +77,6 @@ BEGIN  -- ARCHITECTURE test
 
   -- waveform generation
   WaveGen_Proc : PROCESS
-    VARIABLE seed1    : POSITIVE := 10;
-    VARIABLE seed2    : POSITIVE := 2000;
-    VARIABLE rand_val : REAL     := 0.0;
-
     PROCEDURE test_sc (
       CONSTANT pxs : IN darray_t)
     IS
@@ -106,10 +101,9 @@ BEGIN  -- ARCHITECTURE test
 
       mse_error <= mse_error
                  + mse(sum, stdlv_to_real(add_out));
---      print(real'image(mse_error));
+      print(real'image(sum) & string'(" ")
+        & real'image(stdlv_to_real(add_out)));
 
---       print(STRING'("Result ERROR: ")
---             & real'IMAGE(sum-stdlv_to_real(add_out)));
       WAIT UNTIL rising_edge(clk);
       WAIT FOR CLK_PERIOD/8;
     END PROCEDURE;
@@ -120,20 +114,18 @@ BEGIN  -- ARCHITECTURE test
     pxs_in   <= (OTHERS => '0');
     mse_error <= 1.0e-10;
     WAIT UNTIL rst_n = '1';
-    -- uniform(seed1, seed2, rand_val);
-    -- seed_in  <= real_to_stdlv(rand_val, seed_in'LENGTH);
-    -- seed_in <= real_to_stdlv(0.5, seed_in'LENGTH);
-    -- test_sc((0.5, 0.5, 0.5));
-    -- test_sc((0.3, 0.3, 0.5));
-    -- test_sc((0.1, 0.2, 0.5));
-    -- test_sc((0.8, 0.8, 0.5));
-    -- test_sc((0.8, 0.3, 0.5));
 
-    for i in 1 to 2**DATA_WIDTH - 1  loop
-        for j in 1 to 2**DATA_WIDTH - 1 loop
-            test_sc((real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH, 0.5));
-        end loop;
-    end loop;
+    test_sc((0.5, 0.5, 0.5));
+    test_sc((0.3, 0.3, 0.5));
+    test_sc((0.1, 0.2, 0.5));
+    test_sc((0.8, 0.8, 0.5));
+    test_sc((0.8, 0.3, 0.5));
+
+    -- for i in 1 to 2**DATA_WIDTH - 1  loop
+        -- for j in 1 to 2**DATA_WIDTH - 1 loop
+            -- test_sc((real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH, 0.5));
+        -- end loop;
+    -- end loop;
 
 
     WAIT FOR 3*CLK_PERIOD;
@@ -146,9 +138,9 @@ END ARCHITECTURE test;
 
 -------------------------------------------------------------------------------
 
-CONFIGURATION sc_add_example_tb_test_cfg OF sc_add_example_tb IS
+CONFIGURATION sc_add_tb_test_cfg OF sc_add_tb IS
   FOR test
   END FOR;
-END sc_add_example_tb_test_cfg;
+END sc_add_tb_test_cfg;
 
 -------------------------------------------------------------------------------

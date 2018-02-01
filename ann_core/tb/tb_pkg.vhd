@@ -35,6 +35,8 @@ use work.rtl_pkg.all;
 package tb_pkg is
     function is_real_equal(a, b, error_rate: real) return boolean;
 
+    function mse(expected, actual: real) return real;
+
     procedure print (
         constant prefix : in string);
 
@@ -140,6 +142,15 @@ end tb_pkg;
 -- architecture description
 ---------------------------------------------------------------------------------
 package body tb_pkg is
+    function mse(expected, actual: real) return real is
+    begin
+    	if expected = actual or abs(expected - actual) < 1.0e-8 then
+    		return 0.0;
+    	else
+    		return (expected - actual)**2;
+    	end if;
+    end mse;     
+
     function is_real_equal(a, b, error_rate: real) return boolean is
     begin
         if a = b then

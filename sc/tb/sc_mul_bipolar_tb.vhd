@@ -26,7 +26,6 @@ USE ieee.math_real.ALL;
 USE std.env.ALL;
 USE std.textio.ALL;
 USE work.sc_tb_pkg.ALL;
-use work.tb_pkg.all;
 
 -------------------------------------------------------------------------------
 
@@ -51,7 +50,7 @@ ARCHITECTURE test OF sc_mul_bipolar_tb IS
   SIGNAL px2_in        : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL mul_valid_out : STD_LOGIC;
   SIGNAL mul_out       : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
-  signal mse_error     : real;
+  SIGNAL mse_error     : real;
 
 BEGIN  -- ARCHITECTURE test
 
@@ -94,22 +93,21 @@ BEGIN  -- ARCHITECTURE test
         REPORT "Invalid inputs" SEVERITY ERROR;
       mul_expected := px1*px2;
 
-      seed1_in <= STD_LOGIC_VECTOR(to_unsigned(180, seed1_in'LENGTH));
-      seed2_in <= STD_LOGIC_VECTOR(to_unsigned(75, seed2_in'LENGTH));
-      px1_in   <= real_sign_to_stdlv(px1, px1_in'LENGTH);
-      px2_in   <= real_sign_to_stdlv(px2, px2_in'LENGTH);
-      start_in <= '1';
+      seed1_in <= STD_LOGIC_VECTOR(to_unsigned(123, seed1_in'LENGTH));
+      seed2_in <= STD_LOGIC_VECTOR(to_unsigned(154, seed2_in'LENGTH));
+      px1_in   <= real_to_stdlv((px1 + 1.0) / 2.0, px1_in'LENGTH);
+      px2_in   <= real_to_stdlv((px2 + 1.0) / 2.0, px2_in'LENGTH);
 
+      start_in <= '1';
       WAIT UNTIL rising_edge(clk);
       WAIT FOR CLK_PERIOD/8;
       start_in <= '0';
       WAIT UNTIL mul_valid_out = '1';
 
-   --    print(STRING'("ERROR = ")
-   --    & REAL'IMAGE((0.001 + mul_expected - stdlv_to_real(mul_out))**2));
-      print(real'image(mse_error));
       mse_error <= mse_error
                  + mse(mul_expected, stdlv_to_real(mul_out) * 2.0 - 1.0);
+      print(real'image(mul_expected) & string'(" ")
+        & real'image(stdlv_to_real(mul_out) * 2.0 - 1.0));
 
       WAIT UNTIL rising_edge(clk);
     END PROCEDURE test_sc;
@@ -120,20 +118,25 @@ BEGIN  -- ARCHITECTURE test
     seed2_in <= (OTHERS => '0');
     px1_in   <= (OTHERS => '0');
     px2_in   <= (OTHERS => '0');
-    mse_error <= 0.0001;
+    mse_error <= 1.0e-8;
     WAIT UNTIL rst_n = '1';
 
-    --test_sc(-0.5, -0.25);
+    test_sc(0.3, 0.12);
+    -- test_sc(0.3, -0.25);
+    -- test_sc(-0.7, 0.9);
+    -- test_sc(0.7, 0.9);
+    -- test_sc(-0.01, 0.09);
 
-    for i in -2**(DATA_WIDTH-1) to 2**(DATA_WIDTH - 1) - 1 loop
-        for j in -2**(DATA_WIDTH-1) to 2**(DATA_WIDTH - 1) - 1 loop
-            test_sc(real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH);
-        end loop;
-    end loop;
+    -- for i in -2**(DATA_WIDTH-1) to 2**(DATA_WIDTH - 1) - 1 loop
+        -- for j in -2**(DATA_WIDTH-1) to 2**(DATA_WIDTH - 1) - 1 loop
+            -- test_sc(real(i) / 2.0**DATA_WIDTH, real(j) / 2.0**DATA_WIDTH);
+        -- end loop;
+    -- end loop;
 
     WAIT FOR 3*CLK_PERIOD;
     print(STRING'("MSE = ")
         & real'image(mse_error / real(2**(DATA_WIDTH*2))));
+        -- & real'image(mse_error / 5.0));
 
     finish(2);
   END PROCESS WaveGen_Proc;

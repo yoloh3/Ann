@@ -48,7 +48,6 @@ ARCHITECTURE beh OF sc_add_tff IS
     OF STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL pxs  : darray_t;
   SIGNAL rngs : darray_t;
-  SIGNAL lfsr : STD_LOGIC_VECTOR(DATA_WIDTH * SC_VARS - 1 DOWNTO 0);
 
   SIGNAL enable     : STD_LOGIC;
   SIGNAL control    : STD_LOGIC;
@@ -98,17 +97,27 @@ BEGIN  -- ARCHITECTURE beh
 
   lfsr_1 : ENTITY work.lfsr
     GENERIC MAP (
-      DATA_WIDTH => DATA_WIDTH * SC_VARS)
+      DATA_WIDTH => DATA_WIDTH)
     PORT MAP (
       clk         => clk,
       rst_n       => rst_n,
-      seed_in     => seed_in,
+      seed_in     => seed_in(2*DATA_WIDTH - 1 DOWNTO DATA_WIDTH),
       set_seed_in => start_in,
       enable_in   => enable,
-      lfsr_out    => lfsr);
+      lfsr_out    => rngs(0));
+
+  lfsr_2 : ENTITY work.lfsr
+    GENERIC MAP (
+      DATA_WIDTH => DATA_WIDTH)
+    PORT MAP (
+      clk         => clk,
+      rst_n       => rst_n,
+      seed_in     => seed_in(DATA_WIDTH - 1 DOWNTO 0),
+      set_seed_in => start_in,
+      enable_in   => enable,
+      lfsr_out    => rngs(1));
 
   rngs_gen : FOR i IN 0 TO SC_VARS - 1 GENERATE
-    rngs(i)      <= lfsr(DATA_WIDTH * (i+1) - 1 DOWNTO DATA_WIDTH*i);
     sc_stream(i) <= '1' WHEN UNSIGNED(rngs(i)) < UNSIGNED(pxs(i)) ELSE '0';
   END GENERATE rngs_gen;
 

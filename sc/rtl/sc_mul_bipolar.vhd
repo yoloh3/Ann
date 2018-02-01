@@ -42,7 +42,6 @@ ENTITY sc_mul_bipolar IS
 END ENTITY sc_mul_bipolar;
 
 ARCHITECTURE beh OF sc_mul_bipolar IS
---  SIGNAL set_seed   : STD_LOGIC;
   SIGNAL enable     : STD_LOGIC;
   SIGNAL sc_counter : UNSIGNED(DATA_WIDTH-1 DOWNTO 0);
   SIGNAL px1        : STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
@@ -79,7 +78,7 @@ BEGIN  -- ARCHITECTURE beh
         sc_counter <= sc_counter + 1;
       END IF;
 
-      IF sc_counter = to_unsigned((2**DATA_WIDTH) - 2, sc_counter'LENGTH) THEN
+      IF sc_counter = to_unsigned((2**DATA_WIDTH) -1, sc_counter'LENGTH) THEN
         enable        <= '0';
         mul_valid_out <= '1';
       ELSE
@@ -116,8 +115,8 @@ BEGIN  -- ARCHITECTURE beh
       px_in       => px2,
       sc_out      => sc_stream(1));
 
-  -- Stochastic multiplication in unipolar domain
-  result  <= sc_stream(0) xnor sc_stream(1);
+    -- Stochastic multiplication in bipolar domain
+  result  <= sc_stream(0) XNOR sc_stream(1);
   mul_out <= STD_LOGIC_VECTOR(result_counter);
 
   count: PROCESS (clk, rst_n) IS

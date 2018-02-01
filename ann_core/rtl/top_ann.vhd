@@ -7,10 +7,10 @@
 -- Copyright notification -- No part may be reproduced except as authorized by written permission.  -- 
 -- @File            : top_ann.vhd
 -- @Author          : Huy-Hung Ho       @Modifier      : Huy-Hung Ho
--- @Created Date    : kax 05 2017       @Modified Date : Dec 11 2017 15:00
+-- @Created Date    : November 05 2017  @Modified Date : Dec 11 2017 15:00
 -- @Project         : Artificial Neural Network
 -- @Module          : top_ann
--- @Description     :
+-- @Description     : The top architecture
 -- @Version         :
 -- @ID              :
 --
@@ -23,6 +23,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.fixed_pkg.all;
 use work.rtl_pkg.all;
+use ieee.numeric_std.all;
 use ieee.math_real.all;
 
 ---------------------------------------------------------------------------------
@@ -101,43 +102,10 @@ architecture behavior of top_ann is
     signal s_tmp_activation_hidden  : activation_array_t(layer_hidden_size - 1 downto 0);
     signal s_tmp2_activation_hidden : activation_array_t(layer_hidden_size - 1 downto 0);
 
-    -- Real signal for simulation
-    -- signal real_adder_weight_hidden :  weight_init_input2hidden_array_t;
-    -- signal real_adder_weight_output :  weight_init_hidden2output_array_t;
-    -- signal real_adder_bias_hidden   :  bias_init_array_t(layer_hidden_size - 1 downto 0);
-    -- signal real_adder_bias_output   :  bias_init_array_t(layer_output_size - 1 downto 0);
-    -- signal real_weight_hidden       :  weight_init_input2hidden_array_t;
-    -- signal real_weight_output       :  weight_init_hidden2output_array_t;
-    -- signal real_activation_hidden   :  bias_init_array_t(layer_hidden_size - 1 downto 0);
-    -- signal real_activation_output   :  bias_init_array_t(layer_output_size - 1 downto 0);
 
-    signal count: integer := 0;
+    constant max_count: integer := 16;
+    signal count: unsigned(max_count - 1 downto 0);
 begin
-    -- -- For simulation
-    -- mult_real_w_hidden: for i in 0 to layer_hidden_size - 1 generate
-        -- for_j: for j in 0 to layer_input_size - 1 generate
-            -- real_adder_weight_hidden(i)(j) <= 1024.0 * to_real(s_adder_weight_hidden(i)(j));
-            -- real_weight_hidden(i)(j) <= 1024.0 * to_real(s_weight_hidden(i)(j));
-        -- end generate for_j;
-    -- end generate mult_real_w_hidden;
-
-    -- mult_real_w_output: for i in 0 to layer_output_size - 1 generate
-        -- for_j: for j in 0 to layer_hidden_size - 1 generate
-            -- real_adder_weight_output(i)(j) <= 1024.0 * to_real(s_adder_weight_output(i)(j));
-            -- real_weight_output(i)(j) <= 1024.0 * to_real(s_weight_output(i)(j));
-        -- end generate for_j;
-    -- end generate mult_real_w_output;
-
-    -- mult_real_hidden: for i in 0 to layer_hidden_size - 1 generate
-        -- real_adder_bias_hidden(i) <= 1024.0 * to_real(s_adder_bias_hidden(i));
-        -- real_activation_hidden(i) <= 1024.0 * to_real(s_activation_hidden(i));
-    -- end generate mult_real_hidden;
-
-    -- mult_real_output: for i in 0 to layer_output_size - 1 generate
-        -- real_adder_bias_output(i) <= 1024.0 * to_real(s_adder_bias_output(i));
-        -- real_activation_output(i) <= 1024.0 * to_real(s_activation_output(i));
-    -- end generate  mult_real_output;
-
     dut_fw: forward
     port map (
        clk                    => clk,
@@ -208,14 +176,14 @@ begin
     cout_finish: process(areset, clk)
     begin
         if (areset = '1') then
-            count <= 0;
+            count <= (others => '0');
         elsif rising_edge(clk) then
-            if i_update_coeff = '1' then
+            if i_update_coeff = '1' and s_finish_calc = '1' then
                 count <= count + 1;
             end if;
         end if;
     end process;
 
-    o_finish_update <= '1' when count = epochs
+    o_finish_update <= '1' when count = to_unsigned(epochs, max_count)
                   else '0';
 end behavior;
