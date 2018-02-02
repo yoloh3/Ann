@@ -122,7 +122,6 @@ architecture rtl of forward is
     signal   counter         : unsigned(counter_w - 1 downto 0);
     signal   s_select_update : std_logic;
 begin
-
     count: process(clk)
     begin
         if(areset  = '1') then
