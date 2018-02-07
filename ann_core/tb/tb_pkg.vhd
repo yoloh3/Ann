@@ -351,7 +351,7 @@ package body tb_pkg is
     procedure test_case_top_ann (
         signal clk         : in std_logic;
         signal output      : in activation_array_t(layer_output_size - 1 downto 0);
-        constant expected  : in bias_init_array_t(0 to layer_output_size - 1)
+        constant expected  : in bias_init_array_t(layer_output_size - 1 downto 0)
     )
     is
     begin

@@ -18,7 +18,7 @@ close all;
 
  k=[8 8 5 5;
     8 5 8 5];		%input matrix for supervisor data
-k = k / 10;
+
 % Labeled output
  t=[1 0 0 0;
     0 1 1 1];
@@ -43,9 +43,13 @@ b3=[-1;
 %b_3=randn(3,1);
 
 % Step size
-eta = 0.2;
+eta = 0.1;
 %Learning rate. If the learning rate is too high, the updated coefficient becomes too large and the cost may not decrease
-
+k = k / 10;
+w2 = w2 / 10;
+w3 = w3 / 10;
+b2 = b2 / 10;
+b3 = b3 / 10;
 %%
 % Forward Process (Initial weight)
 [sweet,sour]=meshgrid(0:0.1:9.9, 0:0.1:9.9);
