@@ -23,9 +23,9 @@ USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 USE ieee.math_real.ALL;
 USE std.textio.ALL;
+USE work.sc_rtl_pkg.ALL;
 
 PACKAGE sc_tb_pkg IS
-
   FUNCTION real_to_stdlv (
     CONSTANT real_val : REAL;
     CONSTANT size     : INTEGER)
@@ -39,30 +39,37 @@ PACKAGE sc_tb_pkg IS
     CONSTANT real_val : REAL;
     CONSTANT size     : INTEGER)
     RETURN REAL;
+
   PROCEDURE print (
     CONSTANT str : IN STRING);
 
+  PROCEDURE print_sc (
+    CONSTANT val : IN sc_float_t);
+
+  PROCEDURE print_sc_array (
+    CONSTANT val    : IN sc_array_t;
+    CONSTANT number : IN integer);
 
   FUNCTION real_sign_to_stdlv (
     CONSTANT real_val : REAL;
     CONSTANT size     : INTEGER)
     RETURN STD_LOGIC_VECTOR;
 
- FUNCTION stdlv_sign_to_real (
+  FUNCTION stdlv_sign_to_real (
     CONSTANT stdlv : STD_LOGIC_VECTOR)
     RETURN REAL;
 
- FUNCTION is_real_equal(expected, actual, error_rate: real) return boolean;
+  FUNCTION is_real_equal(expected, actual, error_rate: real) return boolean;
 
- FUNCTION error_percent(expected, actual: real) return real;
+  FUNCTION error_percent(expected, actual: real) return real;
 
- FUNCTION mse(expected, actual: real) return real;
+  FUNCTION mse(expected, actual: real) return real;
+
 END PACKAGE sc_tb_pkg;
 
 
 
 PACKAGE BODY sc_tb_pkg IS
-
   FUNCTION real_to_stdlv (
     CONSTANT real_val : REAL;
     CONSTANT size     : INTEGER)
@@ -78,9 +85,17 @@ PACKAGE BODY sc_tb_pkg IS
     CONSTANT size     : INTEGER)
     RETURN STD_LOGIC_VECTOR IS
     VARIABLE max_val : REAL;
+    VARIABLE actual_val: INTEGER;
   BEGIN  -- FUNCTION real_sign_to_stdlv
-    max_val := REAL(2**size / 2);
-    RETURN STD_LOGIC_VECTOR(to_signed(INTEGER(real_val*max_val), size));
+    max_val := REAL(2**size);
+    actual_val := INTEGER((real_val+1.0)/2.0*max_val);
+    if actual_val < 0 then
+        return STD_LOGIC_VECTOR(to_unsigned(0, size));
+    elsif actual_val >= 2**size then
+        return STD_LOGIC_VECTOR(to_unsigned(2**size - 1, size));
+    else
+        RETURN STD_LOGIC_VECTOR(to_unsigned(INTEGER((real_val+1.0)/2.0*max_val), size));
+    end if;
   END FUNCTION real_sign_to_stdlv;
 
 
@@ -97,7 +112,7 @@ PACKAGE BODY sc_tb_pkg IS
     RETURN REAL
   IS
   BEGIN
-    RETURN REAL(to_integer(SIGNED(stdlv))) / REAL(2**stdlv'LENGTH / 2);
+    RETURN REAL(to_integer(UNSIGNED(stdlv))) / REAL(2**stdlv'LENGTH) * 2.0 - 1.0;
   END FUNCTION stdlv_sign_to_real;
 
   PROCEDURE print (
@@ -108,6 +123,25 @@ PACKAGE BODY sc_tb_pkg IS
     write(msg, str);
     writeline(output, msg);
   END PROCEDURE;
+
+  PROCEDURE print_sc (
+    CONSTANT val : IN sc_float_t)
+  IS
+  BEGIN
+    print("  " & real'image( stdlv_sign_to_real(val) ));
+  END PROCEDURE print_sc;
+
+  PROCEDURE print_sc_array (
+    CONSTANT val    : IN sc_array_t;
+    CONSTANT number : IN integer)
+  IS
+  BEGIN
+      for i in 0 to number - 1 loop
+          print_sc(val(i));
+      end loop;
+      print("");
+  END PROCEDURE print_sc_array;
+
 
   FUNCTION real_to_stdlv_error (
     CONSTANT real_val : REAL;

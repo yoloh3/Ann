@@ -1,0 +1,12 @@
+*.[oa]
+*~*
+.*
+*.swo
+*.swp
+*.obj
+*.out
+*modelsim.ini
+*sim/
+*work/
+*vivado*
+*transcript
