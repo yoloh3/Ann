@@ -48,7 +48,7 @@ sc_weighted_in_output:
 		-c -do "log -r /*; run -a; exit;"
 
 
-sc_forward: 
+sc_forward:  sc_weighted_in_output sc_weighted_in_hidden
 	vcom -2008 $(RTL_DIR)/sc_rtl_pkg.vhd \
 	           $(TB_DIR)/sc_tb_pkg.vhd \
 	           $(RTL_DIR)/sc_sigmoid_hidden.vhd \
