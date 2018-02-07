@@ -43,19 +43,33 @@ end sc_sigmoid_hidden;
 ---------------------------------------------------------------------------------
 -- Function memory generate architecture description
 ---------------------------------------------------------------------------------
-architecture behavior of sc_sigmoid_hidden is
+architecture funct of sc_sigmoid_hidden is
+    constant mem_depth    : integer := 2**sc_data_width;
+    type mem_type is array(0 to mem_depth - 1) of sc_float_t;
+
+    function init_mem return mem_type is
+        variable temp_mem : mem_type;
+        variable input_real : real := 0.0;
+    begin
+        for i in 0 to mem_depth - 1 loop
+            input_real := 40.0  * (real(i) / 2.0**(sc_data_width - 1) - 1.0);
+
+            temp_mem(i) := real_sign_to_stdlv(sigmoid_funct(input_real),
+                                              sc_data_width);
+        end loop;
+        return temp_mem;
+    end function;
+
+    signal mem: mem_type := init_mem;
 begin
     process(areset , clk)
-        variable v_tmp: real;
     begin
-        if(areset = '0') then
-           o_sc_sigmoid <= (others => '0');
+        if areset  = '0' then
+            o_sc_sigmoid <= (others => '0');
         elsif rising_edge(clk) then
             if i_start = '1' then
-                v_tmp := 10.0 * 4.0 * stdlv_sign_to_real(i_weighted_input);
-                o_sc_sigmoid <= real_sign_to_stdlv(sigmoid_funct(v_tmp), sc_data_width);
+                o_sc_sigmoid <= mem(to_integer(unsigned(i_weighted_input)));
             end if;
         end if;
     end process;
-
-end behavior;
+end funct;

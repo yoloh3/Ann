@@ -134,12 +134,6 @@ begin
             wait until s_o_finish_calc <= '1';
             wait until rising_edge(s_clk);
 
-            -- print("Expected a2:");
-            -- for i in 0 to layer_hidden_size - 1 loop
-                -- print(real'image(v_a2(i)) & string'(" "));
-            -- end loop;
-            -- print("");
-
             print("Expected a3 vs actual a3: ");
             for i in 0 to layer_output_size - 1 loop
                 print(real'image(v_a3(i)) & string'(" ")
@@ -151,7 +145,7 @@ begin
             print("");
         end procedure test_case;
 
-        variable test_num      : integer := 5;
+        variable test_num      : integer := 10;
         constant rand_num      : integer := 19;
         variable seed1, seed2  : positive;
         variable rand          : real_array_t(0 to rand_num - 1);
@@ -184,7 +178,8 @@ begin
 
         WAIT FOR 3 * period;
         print(string'("mse = ")
-              & real'image(mse_error / (real(layer_output_size) * real(test_num))));
+              & real'image(mse_error / (real(layer_output_size) *
+              real(test_num+1))));
 
        finish(2);
    end process;
