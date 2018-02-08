@@ -69,8 +69,7 @@ begin
             variable actual:  real;
         begin
             i_weighted_input <= to_sfixed(in_real, i_weighted_input);
-            expected := (exp(in_real) - exp(-in_real))
-                     / (exp(in_real) + exp(-in_real));
+            expected := 1.0 / (1.0 + exp(-in_real));
             wait until rising_edge(clk);
             wait for CLOCK_CYCLE / 8; 
 
