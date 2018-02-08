@@ -41,13 +41,14 @@ read_vhdl -vhdl2008 $src_dir/sc_add_bipolar.vhd
 read_vhdl -vhdl2008 $src_dir/sc_weighted_in_hidden.vhd
 read_vhdl -vhdl2008 $src_dir/sc_weighted_in_output.vhd
 read_vhdl -vhdl2008 $src_dir/sc_rtl_pkg.vhd
+read_vhdl -vhdl2008 $src_dir/../tb/sc_tb_pkg.vhd
 read_vhdl -vhdl2008 $src_dir/sc_sigmoid_hidden.vhd
 read_vhdl -vhdl2008 $src_dir/sc_sigmoid.vhd
 read_vhdl -vhdl2008 $src_dir/sc_forward.vhd
 read_xdc ./nn_core_vc707.xdc
 
 ## step 2 run synthesis
-synth_design -top top_ann -part xc7vx485tffg1761-2 -flatten rebuilt
+synth_design -top sc_forward -part xc7vx485tffg1761-2 -flatten rebuilt
 write_checkpoint -force $output_dir/post_synth
 
 ## Step 3 run placement and logic optimization, report utilization and timing
