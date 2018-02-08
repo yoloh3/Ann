@@ -65,7 +65,7 @@ architecture funct of activation_funct is
                 activation_int_w - 1, -activation_fract_w);
         end loop;
         for i in mem_depth / 2 to mem_depth - 1 loop
-            temp_mem(i) := to_sfixed(1.0 / (1.0 + exp((real(i-mem_depth/2)/2.0**addr_fract_w))),
+            temp_mem(i) := to_sfixed(1.0 / (1.0 + exp(-(real(-mem_depth + i)/2.0**addr_fract_w))),
                 activation_int_w - 1, -activation_fract_w);
         end loop;
         return temp_mem;

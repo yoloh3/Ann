@@ -61,7 +61,7 @@ architecture bench of top_ann_tb is
     signal s_o_finish_update  : std_logic;
     signal s_o_output_result  : activation_array_t(layer_output_size - 1 downto 0);
     signal s_clk              : std_logic := '0';
-    signal s_areset            : std_logic := '1';
+    signal s_areset           : std_logic := '1';
     constant period           : time := 100 ns;
 begin
     -- device unit test
@@ -94,8 +94,7 @@ begin
 
         file inf : text;
         file ouf : text;
-
-
+        variable mse_error : real := 0.0;
 
     begin
         file_open(ouf, "../tb/textio/top_ann_result.txt",   write_mode);
@@ -105,6 +104,7 @@ begin
         wait until s_areset  = '0';
         wait until rising_edge(s_clk);
         s_i_select_initial <= '0';
+        mse_error := 0.0;
 
         for i in 0 to epochs - 1 loop
             file_open(inf, "../tb/textio/top_ann_testcase.txt", read_mode);
@@ -138,6 +138,9 @@ begin
                     output   => s_o_output_result,
                     expected => (0.90918, 0.0634766)
                 );
+                mse_error := mse_error
+                             + mse(1.0, to_real(s_o_output_result(0)))
+                             + mse(0.0, to_real(s_o_output_result(1)));
                 wait until rising_edge(s_clk);
                 wait for 1 ns;
 
@@ -146,6 +149,9 @@ begin
                     output   => s_o_output_result,
                     expected => (0.0673828, 0.935547)
                 );
+                mse_error := mse_error
+                             + mse(0.0, to_real(s_o_output_result(0)))
+                             + mse(1.0, to_real(s_o_output_result(1)));
                 wait until rising_edge(s_clk);
                 wait for 1 ns;
 
@@ -154,6 +160,9 @@ begin
                     output   => s_o_output_result,
                     expected => (0.0673828, 0.935547)
                 );
+                mse_error := mse_error
+                             + mse(0.0, to_real(s_o_output_result(0)))
+                             + mse(1.0, to_real(s_o_output_result(1)));
                 wait until rising_edge(s_clk);
                 wait for 1 ns;
 
@@ -162,8 +171,13 @@ begin
                     output   => s_o_output_result,
                     expected => (0.0322266, 0.96875)
                 );
+                mse_error := mse_error
+                             + mse(0.0, to_real(s_o_output_result(0)))
+                             + mse(1.0, to_real(s_o_output_result(1)));
                 wait until rising_edge(s_clk);
                 wait for 1 ns;
+
+                print("MSE = " & real'image(mse_error / 8.0));
         end if;
 
             file_close(inf);
