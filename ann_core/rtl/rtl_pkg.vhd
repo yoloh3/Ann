@@ -36,7 +36,7 @@ package rtl_pkg is
     constant layer_input_size       : integer := 2;
     constant weight_output_size     : integer := 2;
     constant epochs                 : integer := 10000;
-    constant learning_rate          : real    := -0.100586;
+    constant learning_rate          : real    := -0.2;
 
     -- -- forward package
     constant input_int_w            : integer := 6;
@@ -90,17 +90,42 @@ package rtl_pkg is
     type weight_init_hidden2output_array_t is array (layer_output_size - 1 downto 0)
         of bias_init_array_t(layer_hidden_size - 1 downto 0);
 
+    -- Origin parameters
+    -- constant bias_init_hidden : bias_init_array_t(layer_hidden_size - 1 downto 0)
+        -- := (others => -1.0);
+        -- := (others => -1.0);
+    -- constant weight_init_hidden : weight_init_input2hidden_array_t
+        -- := (( 0.1, 0.6),
+            -- (0.5, 0.3),
+            -- (0.399414, 0.1));
+    -- constant weight_init_output : weight_init_hidden2output_array_t
+        -- := ((1.1, 0.5, 0.199921875),
+            -- (1.3, 0.19921875, 0.69921875));
+
+    -- Result of matlab simulation
+    --constant bias_init_hidden : bias_init_array_t(layer_hidden_size - 1 downto 0)
+    --    := ( -8.5522, 4.5047, -9.6504);
+    --constant bias_init_output  : bias_init_array_t(layer_output_size - 1 downto 0)
+    --    := (4.8426, -6.1217) ;
+    --constant weight_init_hidden : weight_init_input2hidden_array_t
+    --    := (( 5.7887, 5.9145),
+    --        ( -2.9411, -3.1022),
+    --        (6.7257, 6.5017));
+    --constant weight_init_output : weight_init_hidden2output_array_t
+    --    := ((-7.2093, 6.2029, -9.1909),
+    --        (8.4980, -4.6304, 8.8234));
+
+    -- Origin parameters
     constant bias_init_hidden : bias_init_array_t(layer_hidden_size - 1 downto 0)
-        := (others => -1.0);
-    constant bias_init_output  : bias_init_array_t(layer_output_size - 1 downto 0)
-        := (others => -1.0);
+        := (others => -2.0);
+        := (others => -1.2);
     constant weight_init_hidden : weight_init_input2hidden_array_t
-        := ((0.1, 0.6),
-            (0.5, 0.3),
-            (0.399414, 0.1));
+        := (( 0.1, -0.26),
+            (0.5, -3.3),
+            (-0.49, 0.1));
     constant weight_init_output : weight_init_hidden2output_array_t
-        := ((1.1, 0.5, 0.19921875),
-            (1.3, 0.19921875, 0.69921875));
+        := ((-1.1, 0.5, -0.8),
+            (2.3, -5.3, 0.6));
 
     -- -- backward package
 

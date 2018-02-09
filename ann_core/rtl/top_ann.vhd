@@ -184,6 +184,6 @@ begin
         end if;
     end process;
 
-    o_finish_update <= '1' when count = to_unsigned(epochs, max_count)
+    o_finish_update <= '1' when count = to_unsigned(epochs - 1, max_count)
                   else '0';
 end behavior;

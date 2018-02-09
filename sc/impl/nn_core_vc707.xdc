@@ -1,7 +1,7 @@
 ## simple constraint for evaluation
 
-create_clock -period 2.7 -name clk [get_ports clk]
-create_clock -period 2.7 -name virtual_clk
+create_clock -period 2.8 -name clk [get_ports clk]
+create_clock -period 2.8 -name virtual_clk
 set_false_path -from [get_ports res]
 
 group_path -name INPUT -from [all_inputs] -to [all_clocks]

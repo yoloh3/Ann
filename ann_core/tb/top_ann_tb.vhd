@@ -94,10 +94,13 @@ begin
 
         file inf : text;
         file ouf : text;
+<<<<<<< HEAD
         variable mse_error : real := 0.0;
+=======
+>>>>>>> git-svn
 
     begin
-        file_open(ouf, "../tb/textio/top_ann_result.txt",   write_mode);
+        file_open(ouf, "../tb/top_ann_result.txt",   write_mode);
 
         s_i_select_initial <= '1';
         s_i_update_coeff   <= '1';
@@ -107,7 +110,8 @@ begin
         mse_error := 0.0;
 
         for i in 0 to epochs - 1 loop
-            file_open(inf, "../tb/textio/top_ann_testcase.txt", read_mode);
+            file_open(inf, "../tb/top_ann_testcase.txt", read_mode);
+
             read_line: while not endfile(inf) loop
                 line_counter := line_counter + 1;
 
@@ -132,59 +136,70 @@ begin
                 wait for 1 ns;
             end loop read_line;
 
-            test_case: if (i = epochs - 2) then
-                test1: test_case_top_ann (
-                    clk      => s_clk,
-                    output   => s_o_output_result,
-                    expected => (0.90918, 0.0634766)
-                );
-                mse_error := mse_error
-                             + mse(1.0, to_real(s_o_output_result(0)))
-                             + mse(0.0, to_real(s_o_output_result(1)));
-                wait until rising_edge(s_clk);
-                wait for 1 ns;
-
-                test2: test_case_top_ann (
-                    clk      => s_clk,
-                    output   => s_o_output_result,
-                    expected => (0.0673828, 0.935547)
-                );
-                mse_error := mse_error
-                             + mse(0.0, to_real(s_o_output_result(0)))
-                             + mse(1.0, to_real(s_o_output_result(1)));
-                wait until rising_edge(s_clk);
-                wait for 1 ns;
-
-                test3: test_case_top_ann (
-                    clk      => s_clk,
-                    output   => s_o_output_result,
-                    expected => (0.0673828, 0.935547)
-                );
-                mse_error := mse_error
-                             + mse(0.0, to_real(s_o_output_result(0)))
-                             + mse(1.0, to_real(s_o_output_result(1)));
-                wait until rising_edge(s_clk);
-                wait for 1 ns;
-
-                test4: test_case_top_ann (
-                    clk      => s_clk,
-                    output   => s_o_output_result,
-                    expected => (0.0322266, 0.96875)
-                );
-                mse_error := mse_error
-                             + mse(0.0, to_real(s_o_output_result(0)))
-                             + mse(1.0, to_real(s_o_output_result(1)));
-                wait until rising_edge(s_clk);
-                wait for 1 ns;
-
-                print("MSE = " & real'image(mse_error / 8.0));
-        end if;
-
             file_close(inf);
-            wait for 9 * period;
         end loop;
-   
+
         file_close(ouf);
         finish(0);
     end process readio;
+
+    check_output: process
+        variable mse_error : real := 0.0;
+    begin
+        mse_error := 0.0;
+        wait until s_o_finish_update = '1';
+
+        -- Test case 1
+        wait for period/8;
+        print("At: " & time'image(now) &
+            " a1 = " & real'image(to_real(s_o_output_result(0))) &
+            " a2 = " & real'image(to_real(s_o_output_result(1))));
+        mse_error := mse_error
+                     + mse(1.0, to_real(s_o_output_result(0)))
+                     + mse(0.0, to_real(s_o_output_result(1)));
+        wait until rising_edge(s_clk);
+
+        -- Test case 2
+        wait for period/8;
+        print("At: " & time'image(now) &
+            " a1 = " & real'image(to_real(s_o_output_result(0))) &
+            " a2 = " & real'image(to_real(s_o_output_result(1))));
+        mse_error := mse_error
+                     + mse(0.0, to_real(s_o_output_result(0)))
+                     + mse(1.0, to_real(s_o_output_result(1)));
+        wait until rising_edge(s_clk);
+
+        -- Test case 3
+        wait for period/8;
+        print("At: " & time'image(now) &
+            " a1 = " & real'image(to_real(s_o_output_result(0))) &
+            " a2 = " & real'image(to_real(s_o_output_result(1))));
+        mse_error := mse_error
+                     + mse(0.0, to_real(s_o_output_result(0)))
+                     + mse(1.0, to_real(s_o_output_result(1)));
+        wait until rising_edge(s_clk);
+
+        -- Test case 4
+        wait for period/8;
+        print("At: " & time'image(now) &
+            " a1 = " & real'image(to_real(s_o_output_result(0))) &
+            " a2 = " & real'image(to_real(s_o_output_result(1))));
+        mse_error := mse_error
+                     + mse(0.0, to_real(s_o_output_result(0)))
+                     + mse(1.0, to_real(s_o_output_result(1)));
+        wait until rising_edge(s_clk);
+
+        -- Test case 5
+        wait for period/8;
+        print("At: " & time'image(now) &
+            " a1 = " & real'image(to_real(s_o_output_result(0))) &
+            " a2 = " & real'image(to_real(s_o_output_result(1))));
+        mse_error := mse_error
+                     + mse(1.0, to_real(s_o_output_result(0)))
+                     + mse(0.0, to_real(s_o_output_result(1)));
+        wait until rising_edge(s_clk);
+
+        print("MSE = " & real'image(mse_error / 8.0));
+    end process;
+
 end bench;

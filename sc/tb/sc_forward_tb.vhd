@@ -145,7 +145,7 @@ begin
             print("");
         end procedure test_case;
 
-        variable test_num      : integer := 10;
+        variable test_num      : integer := 1;
         constant rand_num      : integer := 19;
         variable seed1, seed2  : positive;
         variable rand          : real_array_t(0 to rand_num - 1);
@@ -155,13 +155,13 @@ begin
         wait until s_reset  = '1';
 
         -- -- Main simulation
-        print("-------  Trainning number 0 -----");
+        -- print("-------  Trainning number 0 -----");
 
-        test_case( (0.8, 0.8),
-                   ((0.1, 0.4), (0.3, 0.5), (0.6, 0.1)),
-                   ((0.7, 0.2, 0.9), (0.2, 0.5, 0.9)),
-                   (-0.1, -0.1, -0.1), (-0.9999, -0.9999) );
- 
+        -- test_case( (0.8, 0.8),
+                   -- ((0.1, 0.4), (0.3, 0.5), (0.6, 0.1)),
+                   -- ((0.7, 0.2, 0.9), (0.2, 0.5, 0.9)),
+                   -- (-0.1, -0.1, -0.1), (-0.9999, -0.9999) );
+
         for i in 0 to test_num - 1 loop
             print("-------  Trainning number " & integer'image(i+1) & " -----");
             for j in 0 to rand_num - 1 loop

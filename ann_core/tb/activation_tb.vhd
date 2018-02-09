@@ -62,6 +62,7 @@ begin
     areset <= '0' after 3 * CLOCK_CYCLE;
 
     simulate : process
+
         procedure test_activ_funct( 
             constant in_real:   in real)
         is
@@ -74,22 +75,22 @@ begin
             wait for CLOCK_CYCLE / 8; 
 
             actual := to_real(o_activation_funct);
-            print(real'image(expected) & string'(" ") & real'image(actual));
+            -- print(real'image(expected) & string'(" ") & real'image(actual));
             mse_error <= mse_error 
                        + mse(expected, actual);
 		end procedure test_activ_funct;
     begin
 		wait until areset = '0';
 		i_weighted_input <= (others => '0');
-		mse_error <= 1.0e-10;
+		mse_error <= 0.0;
 		wait for CLOCK_CYCLE;
 
-		for i in 0 to 2**8 - 1 loop
+		for i in 0 to 255 loop
 			test_activ_funct(8.0 - real(i) / 16.0);
 		end loop;
 
 		wait for CLOCK_CYCLE;
 		print(string'("MSE = ") & real'image(mse_error / 2.0**8));
 		finish(1);
-	 end process Simulate;
+	 end process simulate;
 end tb;

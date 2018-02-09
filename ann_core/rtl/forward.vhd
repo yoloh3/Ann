@@ -116,9 +116,9 @@ architecture rtl of forward is
     signal s_activ_funct_hidden : activation_array_t(layer_hidden_size - 1 downto 0);
     signal s_activ_funct_output : activation_array_t(layer_output_size - 1 downto 0);
 
-    constant counter_w       : integer := 8;
-    constant max_count       : integer := 13;
-    constant finish_count    : integer := 4;
+    constant counter_w       : integer := 3;
+    constant max_count       : integer := 5;
+    constant finish_count    : integer := 3;
     signal   counter         : unsigned(counter_w - 1 downto 0);
     signal   s_select_update : std_logic;
 begin

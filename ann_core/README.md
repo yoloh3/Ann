@@ -31,10 +31,10 @@ Files and directories:
 Edit $TARGET variable in ./sim/Makefile
 
 Compile and debug
-	cd sim; make
+	cd sim; make init; make
 
 Simulation
-	cd sim; make sim
+	cd sim; make init; make sim
 
 TOP_ANN core simulation
 	cd sim; vsim vhdl.wlf

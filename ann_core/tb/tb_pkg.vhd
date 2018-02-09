@@ -356,10 +356,6 @@ package body tb_pkg is
     is
     begin
         print("");
-        print("At: " & time'image(now) &
-            " output1 = " & real'image(to_real(output(1))) &
-            " output2 = " & real'image(to_real(output(0))));
-
 --        assert is_real_equal(to_real(output(0)), expected(0), -6.0)
 --           and is_real_equal(to_real(output(1)), expected(1), -6.0)
 --        report "Test failed!";
