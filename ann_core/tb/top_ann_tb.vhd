@@ -94,20 +94,13 @@ begin
 
         file inf : text;
         file ouf : text;
-<<<<<<< HEAD
-        variable mse_error : real := 0.0;
-=======
->>>>>>> git-svn
 
     begin
-        file_open(ouf, "../tb/top_ann_result.txt",   write_mode);
-
         s_i_select_initial <= '1';
         s_i_update_coeff   <= '1';
         wait until s_areset  = '0';
         wait until rising_edge(s_clk);
         s_i_select_initial <= '0';
-        mse_error := 0.0;
 
         for i in 0 to epochs - 1 loop
             file_open(inf, "../tb/top_ann_testcase.txt", read_mode);

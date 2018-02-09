@@ -55,7 +55,6 @@ end activation_funct;
 architecture funct of activation_funct is
     type reg_type is array(0 to 255) of sfixed(7 downto -24);
     signal mem1: reg_type :=(
->>>>>>> git-svn
             "00000000100000000000000000000000",	--0.0000//addr: 0
             "00000000100000111111111110101011",
             "00000000100001111111110101010110",
@@ -334,12 +333,12 @@ architecture funct of activation_funct is
     constant addr_fract_w : integer := 4;
     constant mem_depth    : integer := 2**(addr_int_w + addr_fract_w);
     constant VALUE_0        : weighted_input_float_t := to_sfixed (0.0 ,  weighted_input_int_w - 1, - weighted_input_fract_w);
-    constant VALUE_1_0      : weighted_input_float_t := to_sfixed (0.5 ,  weighted_input_int_w - 1, - weighted_input_fract_w);
+    constant VALUE_1_0      : weighted_input_float_t := to_sfixed (1.0 ,  weighted_input_int_w - 1, - weighted_input_fract_w);
     constant VALUE_3_5      : weighted_input_float_t := to_sfixed (3.5 ,  weighted_input_int_w - 1, - weighted_input_fract_w);
-    constant VALUE_4_5      : weighted_input_float_t := to_sfixed (5.5 ,  weighted_input_int_w - 1, - weighted_input_fract_w);
-    constant VALUE_1_0_NEG  : weighted_input_float_t := to_sfixed (-0.5,  weighted_input_int_w - 1, - weighted_input_fract_w);
+    constant VALUE_4_5      : weighted_input_float_t := to_sfixed (4.5 ,  weighted_input_int_w - 1, - weighted_input_fract_w);
+    constant VALUE_1_0_NEG  : weighted_input_float_t := to_sfixed (-1.0,  weighted_input_int_w - 1, - weighted_input_fract_w);
     constant VALUE_3_5_NEG  : weighted_input_float_t := to_sfixed (-3.5,  weighted_input_int_w - 1, - weighted_input_fract_w);
-    constant VALUE_4_5_NEG  : weighted_input_float_t := to_sfixed (-5.5,  weighted_input_int_w - 1, - weighted_input_fract_w);
+    constant VALUE_4_5_NEG  : weighted_input_float_t := to_sfixed (-4.5,  weighted_input_int_w - 1, - weighted_input_fract_w);
 
     type mem_type is array(0 to mem_depth - 1) of activation_float_t;
 
