@@ -25,13 +25,15 @@ init:
 	vcom $(RTL_DIR)/rtl_pkg.vhd \
 		 $(TB_DIR)/tb_pkg.vhd
 
-top_ann_tb: forward_tb backward_tb
-	vcom $(RTL_DIR)/top_ann.vhd \
+top_ann_tb: forward_module backward_module
+	vcom $(RTL_DIR)/forward.vhd \
+		 $(RTL_DIR)/backward.vhd \
+		 $(RTL_DIR)/top_ann.vhd \
 	     $(TB_DIR)/top_ann_tb.vhd
 
 forward_tb: forward_module
-	vcom $(RTL_DIR)/forward.vhd \
-	     $(TB_DIR)/tb_pkg.vhd \
+	vcom $(TB_DIR)/tb_pkg.vhd \
+		 $(RTL_DIR)/forward.vhd \
 	     $(TB_DIR)/forward_tb.vhd
 
 backward_tb: backward_module
@@ -40,10 +42,10 @@ backward_tb: backward_module
 	     $(TB_DIR)/backward_tb.vhd
 
 forward_module:
-	vcom $(RTL_DIR)/rtl_pkg.vhd \
-	     $(RTL_DIR)/weight.vhd \
+	vcom $(RTL_DIR)/weight.vhd \
 	     $(RTL_DIR)/bias.vhd \
 	     -2008 $(RTL_DIR)/weighted_input.vhd \
+		 $(TB_DIR)/tb_pkg.vhd \
 	     $(RTL_DIR)/activation_funct.vhd
 
 backward_module:
@@ -54,6 +56,8 @@ backward_module:
 		 $(RTL_DIR)/delta_weight.vhd \
 		 $(RTL_DIR)/delta_bias_cumulation.vhd \
 		 $(RTL_DIR)/delta_weight_cumulation.vhd
-
+activation_funct: init
+	vcom $(RTL_DIR)/activation_funct.vhd
+	vcom $(TB_DIR)/activation_tb.vhd
 clean:
 	rm -rf work/ modelsim.ini transcript vsim.wlf $(RTL_DIR)/modelsim.ini $(TB_DIR)/modelsim.ini

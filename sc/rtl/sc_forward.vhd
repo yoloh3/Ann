@@ -104,6 +104,37 @@ begin
                 s_finish <= '0';
             end if;
 
+            if (i_start = '1') then
+                print("Input: ");
+                print_sc_array(i_input, 2);
+                print("Weight: ");
+                print_sc_array(i_weight_hidden(0), 2);
+                print_sc_array(i_weight_hidden(1), 2);
+                print_sc_array(i_weight_hidden(2), 2);
+                print("Bias hidden: ");
+                print_sc_array(i_bias_hidden, 3);
+            end if;
+
+            if s_enab_a_hidden = '1' then
+                print("Weighted hidden:");
+                print_sc_array(s_weighted_in_hidden, 3);
+            end if;
+
+            if s_enab_w_output = '1' then
+                print("Sigmoid hidden:");
+                print_sc_array(s_activ_funct_hidden, 3);
+                print("Weight output:");
+                print_sc_array(i_weight_output(0), 3);
+                print_sc_array(i_weight_output(1), 3);
+                print("Bias output: ");
+                print_sc_array(i_bias_output, 2);
+            end if;
+
+            if s_finish = '1' then
+                print("Sigmoid output:");
+                print_sc_array(s_activ_funct_output, 2);
+            end if;
+
          end if;
     end process controller;
 

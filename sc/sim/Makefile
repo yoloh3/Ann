@@ -57,7 +57,10 @@ sc_forward:  sc_weighted_in_output sc_weighted_in_hidden
 	           $(TB_DIR)/sc_forward_tb.vhd
 	vsim -novopt -wlf sc_forward.wlf sc_forward_tb \
 		-c -do "log -r /*; run -a; exit;"
+
 fw:
+	vcom -2008 $(RTL_DIR)/sc_forward.vhd \
+			   $(TB_DIR)/sc_forward_tb.vhd
 	vsim -novopt -wlf sc_forward.wlf sc_forward_tb \
 		-c -do "log -r /*; run -a; exit;"
 
