@@ -25,6 +25,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.fixed_pkg.all;
 use ieee.numeric_std.all;
+use ieee.math_real.all;
 
 ---------------------------------------------------------------------------------
 -- entity declaration
@@ -118,6 +119,7 @@ package rtl_pkg is
     -- Origin parameters
     constant bias_init_hidden : bias_init_array_t(layer_hidden_size - 1 downto 0)
         := (others => -2.0);
+    constant bias_init_output : bias_init_array_t(layer_output_size - 1 downto 0)
         := (others => -1.2);
     constant weight_init_hidden : weight_init_input2hidden_array_t
         := (( 0.1, -0.26),
@@ -153,11 +155,17 @@ package rtl_pkg is
     type weight_array2_output2hidden_t
         is array (layer_hidden_size - 1 downto 0)
             of weight_array_t(layer_output_size - 1 downto 0);
+
+    function sigmoid_funct (input: real) return real;
 end rtl_pkg; 
 
 ---------------------------------------------------------------------------------
 -- architecture description
 ---------------------------------------------------------------------------------
 package body rtl_pkg is
+    function sigmoid_funct (input: real) return real is
+    begin
+        return 1.0 / (1.0 + exp(-input));
+    end function;
 end rtl_pkg;
 
