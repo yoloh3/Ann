@@ -27,9 +27,9 @@ hardware architecture, having an result.
 
 # Useful links
 
-- [`Important information - Thông tin quan trọng`](PLAN.md)
-- [PDF report](PAPER - SISLAB team 2018.pdf)
-- [PPTX report](SLIDE - SISLAB team 2018.pptx)
+- [Important information](PLAN.md)
+- [PDF report](PAPER-SISLAB_team_2018.pdf)
+- [PPTX report](SLIDE-SISLAB_team_2018.pptx)
 - [Contest website](http://www.lsi-contest.com/2018/index_e.html)
 
 # Contest result
