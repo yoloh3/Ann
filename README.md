@@ -4,7 +4,7 @@
 // File name      : README.md
 // Created date   : Thu 28 Sep 2017 03:50:15 PM ICT
 // Author         : Huy-Hung Ho
-// Last modified  : Dec 15 2017 11:27
+// Last modified  : Mar 20 2021 01:18
 // Desc           :
 *******************************************************************************/
 -->
@@ -27,7 +27,14 @@ hardware architecture, having an result.
 
 # LINK
 
-- [`Important information - Thông tin quan trọng`](INFO.md)
-- [The website](http://www.lsi-contest.com/index_e.html).
+- [`Important information - Thông tin quan trọng`](PLAN.md)
+- [PDF report](PAPER - SISLAB team 2018.pdf)
+- [PPTX report](SLIDE - SISLAB team 2018.pptx)
+- [Contest website](http://www.lsi-contest.com/2018/index_e.html)
 
-# TIP
+# RESULT
+
+Obtaining 1st Runner-up award in LSI Design Contest 2018. YOLO
+
+![Award](Award.jpg)
+

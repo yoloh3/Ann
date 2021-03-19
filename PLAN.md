@@ -24,7 +24,7 @@ hardware architecture, having an result.
 * [Huy-Hung Ho](https://yoloh3.github.io)
 * Van-Thuat Nguyen
 * Xuan-Thuan Nguyen
-* Van-Dung Nguyen (not invited)
+* Van-Dung Nguyen
 
 
 # Architecture
@@ -65,13 +65,13 @@ hardware architecture, having an result.
 
 ## Timeline
 
-- Start time	: 8th Oct, 2017 
-- Deadline		: 31st Jan, 2018 
+- Start time	: 8th Oct, 2017
+- Deadline		: 31st Jan, 2018
 - Timing		: 116 days
 - Do the exam	: 11th Dec - 7th Jan
 
 
 # Service
 
-- [The website](http://www.lsi-contest.com/index_e.html).
-- [Git](https://desktop.github.com/).
+- [Contest website](http://www.lsi-contest.com/2018/index_e.html)
+- [Git](https://github.com/)
